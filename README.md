@@ -53,7 +53,7 @@ ZWU-2026-2-001/
 
 Deployed on **GitHub Pages**:
 ```
-https://[username].github.io/ZWU-2026-2-001/
+https://[17poi].github.io/ZWU-2026-2-001/
 ```
 
 ## License
