@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>what the dog doing - Team Showcase Website</title>
+    <style>
+        /* ===== 基础样式重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== 导航栏 - Apple 风格毛玻璃效果 ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 0.7;
+        }
+
+        /* ===== 主内容区 ===== */
+        .main-content {
+            margin-top: 60px;
+            min-height: calc(100vh - 60px);
+        }
+
+        .page-section {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== 首页 ===== */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(72, 0, 255, 0.3) 0%,
+                rgba(0, 212, 255, 0.3) 50%,
+                rgba(255, 0, 212, 0.3) 100%);
+            z-index: 0;
+            filter: blur(80px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #a8a8a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .team-name {
+            font-size: 6rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff, #ff00d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== 卡片样式 - Apple 风格 ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card-avatar:hover {
+            transform: rotateY(360deg);
+        }
+
+        .card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .card .role {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== 成员详情页 ===== */
+        .member-detail {
+            padding: 4rem 2rem;
+        }
+
+        .member-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .member-avatar-large {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 600;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .member-avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .member-detail h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-detail .role {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .member-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .member-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .member-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.875rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* ===== 项目页面 ===== */
+        .project-showcase {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 3rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-showcase h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: rgba(0, 212, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #ff00d4);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* ===== 练习列表 ===== */
+        .exercise-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        .exercise-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise-card a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .exercise-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 响应式设计 ===== */
+        @media (max-width: 1024px) {
+            .hero .team-name {
+                font-size: 5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                margin-top: 90px;
+                min-height: calc(100vh - 90px);
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .team-name {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .page-title {
+                font-size: 2.25rem;
+                margin: 2rem 0 1.5rem;
+            }
+
+            .page-description {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .member-avatar-large {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .member-detail h2 {
+                font-size: 2rem;
+            }
+
+            .member-section {
+                padding: 0 1rem;
+            }
+
+            .project-showcase {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-showcase h2 {
+                font-size: 1.75rem;
+            }
+
+            .tech-stack {
+                gap: 0.75rem;
+            }
+
+            .tech-item {
+                font-size: 0.8rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-link {
+                width: 80%;
+                text-align: center;
+            }
+
+            .intro-section {
+                padding: 0 1rem;
+            }
+
+            .intro-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .team-photo {
+                height: 200px;
+                margin: 1rem auto;
+            }
+
+            .exercise-card {
+                padding: 1.25rem;
+            }
+
+            .exercise-card h3 {
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5rem 0.75rem;
+            }
+
+            .navbar-content {
+                gap: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 0.25rem 0;
+            }
+
+            .main-content {
+                margin-top: 80px;
+                min-height: calc(100vh - 80px);
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: calc(100vh - 80px);
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero .team-name {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+                padding: 0 0.5rem;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+                margin: 1.5rem 0 1rem;
+            }
+
+            .page-description {
+                font-size: 0.875rem;
+                margin-bottom: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+
+            .card-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .card h3 {
+                font-size: 1.125rem;
+            }
+
+            .card .role {
+                font-size: 0.875rem;
+            }
+
+            .member-avatar-large {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .member-detail h2 {
+                font-size: 1.75rem;
+            }
+
+            .member-detail .role {
+                font-size: 1rem;
+            }
+
+            .member-section h3 {
+                font-size: 1.25rem;
+            }
+
+            .member-section p {
+                font-size: 0.875rem;
+            }
+
+            .skill-tag {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+            }
+
+            .project-showcase {
+                padding: 1.5rem 1rem;
+            }
+
+            .project-showcase h2 {
+                font-size: 1.5rem;
+            }
+
+            .project-showcase p {
+                font-size: 0.875rem;
+            }
+
+            .tech-stack {
+                gap: 0.5rem;
+            }
+
+            .tech-item {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+            }
+
+            .intro-section h3 {
+                font-size: 1.25rem;
+            }
+
+            .intro-section p {
+                font-size: 0.875rem;
+            }
+
+            .team-photo {
+                height: 150px;
+                font-size: 1rem;
+            }
+
+            .exercise-card {
+                padding: 1rem;
+            }
+
+            .exercise-card h3 {
+                font-size: 1rem;
+            }
+
+            .exercise-card p {
+                font-size: 0.875rem;
+            }
+
+            .exercise-card a {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 360px) {
+            .hero .team-name {
+                font-size: 2rem;
+            }
+
+            .card-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+
+            .member-avatar-large {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== 页面标题 ===== */
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            background: linear-gradient(135deg, #ffffff, #a8a8a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-description {
+            text-align: center;
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* ===== 团队介绍页面 ===== */
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .intro-section h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .intro-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .team-photo {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 212, 0.2));
+            border-radius: 18px;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#home" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-nav>Home</a></li>
+                <li><a href="#exercises" data-nav>Daily Homework</a></li>
+                <li><a href="#project" data-nav>Final Project</a></li>
+                <li><a href="#members" data-nav>About us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="page-section hero">
+            <div class="hero-content">
+                <h1>Welcome to our team's web page!</h1>
+                <div class="team-name">what the dog doing</div>
+            </div>
+        </section>
+
+        <!-- 团队介绍 -->
+        <section id="intro" class="page-section">
+            <h2 class="page-title">About Us</h2>
+            <div class="page-description">
+                Welcome to the what the dog doing team! We are a group of passionate and determined heroes, dedicated to paving the way with knives and shields in our hands. Our name comes from an image that we particularly like. Click the button below to view this image.
+            </div>
+            
+            <div style="text-align: center; margin: 3rem 0;">
+                <button class="show-image-btn" onclick="toggleImage()" style="
+                    background: linear-gradient(135deg, #00d4ff, #ff00d4);
+                    color: #ffffff;
+                    border: none;
+                    padding: 1rem 2.5rem;
+                    border-radius: 30px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+                ">Show Image</button>
+            </div>
+
+            <div id="image-container" style="display: none; max-width: 800px; margin: 2rem auto;">
+                <div style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 18px;
+                    padding: 2rem;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(10px);
+                ">
+                    <img id="team-image" src="" alt="Team Image" style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border-radius: 12px;
+                        display: block;
+                        margin: 0 auto;
+                    ">
+                </div>
+            </div>
+        </section>
+
+        <!-- 团队成员列表 -->
+        <section id="members" class="page-section">
+            <h2 class="page-title">Our Team Members</h2>
+            <div class="page-description">
+                Meet our amazing team members. Each member brings unique skills and perspectives to our projects.
+            </div>
+            <div class="card-grid" id="members-grid">
+                <!-- 成员卡片将通过 JavaScript 动态生成 -->
+            </div>
+        </section>
+
+        <!-- 成员详情页（动态生成） -->
+        <section id="member-detail" class="page-section">
+            <div id="member-detail-content">
+                <!-- 成员详情将通过 JavaScript 动态生成 -->
+            </div>
+        </section>
+
+        <!-- 期末项目 -->
+        <section id="project" class="page-section">
+            <h2 class="page-title">Final Project</h2>
+            <div class="project-showcase">
+                <h2>Health Monitoring System</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
+                    Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
+                    and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
+                    providing users with comprehensive health data monitoring services.
+                </p>
+
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #00d4ff;">Technology Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-item">Arduino</span>
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">Sensor Technology</span>
+                    <span class="tech-item">Data Visualization</span>
+                </div>
+
+                <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">Project Progress</h3>
+                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">Development Progress: 75%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
+                    <h4 style="margin-bottom: 0.5rem;">Key Achievements</h4>
+                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;">
+                        <li>Completed hardware prototype design and assembly</li>
+                        <li>Implemented data collection and transmission functionality</li>
+                        <li>Developed web visualization interface</li>
+                        <li>Optimized user interaction experience</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 课程练习 -->
+        <section id="exercises" class="page-section">
+            <h2 class="page-title">Daily Homework</h2>
+            <div class="page-description">
+                A series of exercise projects we completed during the course, showcasing our learning outcomes and technical practices.
+            </div>
+
+            <div id="exercises-list">
+                <!-- 练习列表将通过 JavaScript 动态生成 -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ===== 团队成员数据 =====
+        const members = [
+            {
+                id: 0,
+                name: 'Ash',
+                role: 'Frontend Developer',
+                bio: 'Specialized in modern web technologies with expertise in HTML, CSS, and JavaScript. Passionate about user experience design and dedicated to creating beautiful and functional interfaces.',
+                skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'UI/UX'],
+                email: '1059436880@qq.com',
+                github: 'https://github.com/17poi',
+                avatar: './Ash.jpg',
+                studentId: '2024014757',
+                hobby: ['Game', 'Music', 'Sleep'],
+                assignment: ['Software Building', 'Web Building']
+            },
+            {
+                id: 1,
+                name: 'Felix',
+                role: 'Hardware Engineer',
+                bio: 'Passionate about hardware development and proficient in Arduino and embedded systems. Responsible for sensor integration and hardware prototype design in our projects.',
+                skills: ['Arduino', 'Sensor Technology', 'Circuit Design', 'C/C++', 'Prototyping'],
+                email: 'felix@example.com',
+                github: 'https://github.com/felix',
+                avatar: './default-avatar.png',
+                studentId: '',
+                hobby: [],
+                assignment: []
+            },
+            {
+                id: 2,
+                name: 'Howie',
+                role: 'Backend Developer',
+                bio: 'Skilled in data processing and server-side development. Responsible for data storage and business logic implementation in our projects.',
+                skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
+                email: 'howie@example.com',
+                github: 'https://github.com/howie',
+                avatar: './default-avatar.png',
+                studentId: '',
+                hobby: [],
+                assignment: []
+            },
+            {
+                id: 3,
+                name: 'Max',
+                role: 'Project Manager',
+                bio: 'Responsible for team coordination and project progress management. Possesses excellent communication skills and leadership, ensuring projects are delivered on time and with high quality.',
+                skills: ['Project Management', 'Team Collaboration', 'Agile Development', 'Requirement Analysis', 'Documentation'],
+                email: 'max@example.com',
+                github: 'https://github.com/max',
+                avatar: './default-avatar.png',
+                studentId: '',
+                hobby: [],
+                assignment: []
+            },
+            {
+                id: 4,
+                name: 'Joe',
+                role: 'UI/UX Designer',
+                bio: 'Focused on user interface and experience design. Responsible for visual design and interaction optimization of the website, ensuring users get the best experience.',
+                skills: ['UI Design', 'UX Research', 'Figma', 'Prototyping', 'User Testing'],
+                email: 'joe@example.com',
+                github: 'https://github.com/joe',
+                avatar: './default-avatar.png',
+                studentId: '',
+                hobby: [],
+                assignment: []
+            },
+            {
+                id: 5,
+                name: 'David',
+                role: 'Full Stack Developer',
+                bio: 'Equipped with full-stack development capabilities, able to independently complete development work from frontend to backend. Taking on multiple key tasks in our projects.',
+                skills: ['React', 'Node.js', 'MongoDB', 'Git', 'DevOps'],
+                email: 'david@example.com',
+                github: 'https://github.com/david',
+                avatar: './default-avatar.png',
+                studentId: '',
+                hobby: [],
+                assignment: []
+            }
+        ];
+
+        // ===== 课程练习数据 =====
+        const exercises = [
+            {
+                title: 'Arduino Input & Output Experiment',
+                description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
+                link: 'https://profabx.com/tutorials/5arduino/arduino_input/'
+            },
+            {
+                title: 'Sensor Data Collection',
+                description: 'Use various sensors to collect environmental data and perform initial processing.',
+                link: '#'
+            },
+            {
+                title: 'Web Interface Design',
+                description: 'Design and implement responsive web interfaces to optimize user experience.',
+                link: '#'
+            },
+            {
+                title: 'Data Visualization Practice',
+                description: 'Implement data visualization displays using JavaScript libraries.',
+                link: '#'
+            },
+            {
+                title: 'Team Collaboration Project',
+                description: 'Complete a comprehensive project as a team to enhance teamwork skills.',
+                link: '#'
+            }
+        ];
+
+        // ===== 渲染成员卡片 =====
+        function renderMembers() {
+            const grid = document.getElementById('members-grid');
+            grid.innerHTML = members.map(member => {
+                const avatarSrc = member.avatar || './default-avatar.png';
+                return `
+                    <div class="card" onclick="showMemberDetail(${member.id})">
+                        <div class="card-avatar">
+                            <img src="${avatarSrc}" alt="${member.name}">
+                        </div>
+                        <h3>${member.name}</h3>
+                        <p class="role">${member.role}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ===== 显示成员详情 =====
+        function showMemberDetail(id) {
+            const member = members.find(m => m.id === id);
+            if (!member) return;
+
+            const avatarContent = member.avatar 
+                ? `<img src="${member.avatar}" alt="${member.name}">`
+                : `${member.name[0]}`;
+
+            // 构建详细信息
+            let detailsHTML = `
+                <div class="member-detail">
+                    <div class="member-header">
+                        <div class="member-avatar-large">${avatarContent}</div>
+                        <h2>${member.name}</h2>
+                        <p class="role">${member.role}</p>
+                    </div>
+                    
+                    <div class="member-section">
+                        <h3>Bio</h3>
+                        <p>${member.bio}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Student ID</h3>
+                        <p>${member.studentId || 'N/A'}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Hobbies</h3>
+                        <div class="skills">
+                            ${member.hobby ? member.hobby.map(h => `<span class="skill-tag">${h}</span>`).join('') : '<p>No hobbies listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Assignment</h3>
+                        <div class="skills">
+                            ${member.assignment ? member.assignment.map(a => `<span class="skill-tag">${a}</span>`).join('') : '<p>No assignments listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Skills</h3>
+                        <div class="skills">
+                            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:${member.email}" class="contact-link">Send Email</a>
+                        <a href="${member.github}" target="_blank" class="contact-link">GitHub</a>
+                    </div>
+                </div>
+            `;
+
+            const detailContent = document.getElementById('member-detail-content');
+            detailContent.innerHTML = detailsHTML;
+
+            // 导航到成员详情页
+            window.location.hash = `#member-${id}`;
+        }
+
+        // ===== 渲染练习列表 =====
+        function renderExercises() {
+            const list = document.getElementById('exercises-list');
+            list.innerHTML = exercises.map((exercise, index) => `
+                <div class="exercise-card">
+                    <h3>练习 ${index + 1}: ${exercise.title}</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
+                    <a href="${exercise.link}" target="_blank">查看练习详情 →</a>
+                </div>
+            `).join('');
+        }
+
+        // ===== 路由管理 =====
+        function handleRoute() {
+            const hash = window.location.hash || '#home';
+            
+            // 隐藏所有页面
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 更新导航栏激活状态
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === hash || 
+                    (hash.startsWith('#member-') && link.getAttribute('href') === '#members')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 处理成员详情页
+            if (hash.startsWith('#member-')) {
+                const memberId = parseInt(hash.split('-')[1]);
+                if (!isNaN(memberId) && memberId >= 0 && memberId < members.length) {
+                    showMemberDetailFromHash(memberId);
+                    return;
+                }
+            }
+
+            // 显示对应页面
+            const targetSection = document.querySelector(hash);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            } else {
+                // 无效路由重定向到首页
+                window.location.hash = '#home';
+            }
+
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+
+        // ===== 从 Hash 显示成员详情 =====
+        function showMemberDetailFromHash(id) {
+            const member = members.find(m => m.id === id);
+            if (!member) return;
+
+            const avatarContent = member.avatar 
+                ? `<img src="${member.avatar}" alt="${member.name}">`
+                : `${member.name[0]}`;
+
+            const detailContent = document.getElementById('member-detail-content');
+            detailContent.innerHTML = `
+                <div class="member-detail">
+                    <div class="member-header">
+                        <div class="member-avatar-large">${avatarContent}</div>
+                        <h2>${member.name}</h2>
+                        <p class="role">${member.role}</p>
+                    </div>
+                    
+                    <div class="member-section">
+                        <h3>Bio</h3>
+                        <p>${member.bio}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Student ID</h3>
+                        <p>${member.studentId || 'N/A'}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Hobbies</h3>
+                        <div class="skills">
+                            ${member.hobby ? member.hobby.map(h => `<span class="skill-tag">${h}</span>`).join('') : '<p>No hobbies listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Assignment</h3>
+                        <div class="skills">
+                            ${member.assignment ? member.assignment.map(a => `<span class="skill-tag">${a}</span>`).join('') : '<p>No assignments listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Skills</h3>
+                        <div class="skills">
+                            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:${member.email}" class="contact-link">Send Email</a>
+                        <a href="${member.github}" target="_blank" class="contact-link">GitHub</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('member-detail').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#members') {
+                    link.classList.add('active');
+                }
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        // ===== 初始化 =====
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMembers();
+            renderExercises();
+            handleRoute();
+
+            // 监听路由变化
+            window.addEventListener('hashchange', handleRoute);
+            
+            // 默认导航到首页
+            if (!window.location.hash || window.location.hash === '#') {
+                window.location.hash = '#home';
+            }
+        });
+
+        // ===== 切换图片显示 =====
+        function toggleImage() {
+            const container = document.getElementById('image-container');
+            const image = document.getElementById('team-image');
+            const button = document.querySelector('.show-image-btn');
+            
+            if (container.style.display === 'none') {
+                // 显示图片
+                // 注意：这里需要您提供 GIF 文件的路径
+                // 请将 GIF 文件放在项目目录中，然后修改下面的路径
+                image.src = './what-the-dog-doing.gif'; // 替换为您的 GIF 文件名
+                container.style.display = 'block';
+                button.textContent = 'Hide Image';
+                
+                // 添加淡入动画
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.style.transition = 'opacity 0.5s ease';
+                    container.style.opacity = '1';
+                }, 10);
+            } else {
+                // 隐藏图片
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    button.textContent = 'Show Image';
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
