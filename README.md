@@ -4,14 +4,14 @@ Official website for the **what the dog doing** team.
 
 ## Team Members
 
-| Name | Role | Email |
-|------|------|-------|
-| Ash | Frontend Developer | 1059436880@qq.com |
-| Felix | Hardware Engineer | felix@example.com |
-| Howie | Backend Developer | howie@example.com |
-| Max | Project Manager | max@example.com |
-| Joe | UI/UX Designer | joe@example.com |
-| David | Full Stack Developer | david@example.com |
+| Name | Role | GitHub |
+|------|------|--------|
+| Ash | Frontend Developer | [@17poi](https://github.com/17poi) |
+| Felix | Hardware Engineer | - |
+| Howie | Backend Developer | - |
+| Max | Project Manager | - |
+| Joe | UI/UX Designer | - |
+| David | Full Stack Developer | - |
 
 ## About Us
 
@@ -25,6 +25,7 @@ Welcome to the what the dog doing team! We are a group of passionate and determi
 
 ## Features
 
+- **Separate Pages**: "About us" (team intro) and "Team members" (individual profiles) are independent sections
 - **Hash-based routing** (`#home`, `#intro`, `#members`, `#member-0`~`#member-5`, `#project`, `#exercises`)
 - **Apple-inspired UI** – Blur navbar, gradient backgrounds, card hover effects, 360° avatar flip animation
 - **Fully responsive** – Optimized for desktop, tablet, and mobile devices
