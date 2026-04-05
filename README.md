@@ -53,7 +53,7 @@ ZWU-2026-2-001/
 
 Deployed on **GitHub Pages**:
 ```
-https://17poi.github.io/ZWU-2026-2-001/
+https://nexmaker-fab.github.io/ZWU-2026-2-001/#home
 ```
 
 ## License
