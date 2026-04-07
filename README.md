@@ -10,7 +10,7 @@ Official website for the **what the dog doing** team.
 | Felix | Hardware Engineer | [@WanShang2026](https://github.com/WanShang2026) |
 | Howie | Backend Developer | - |
 | Max | Project Manager | [@HMZ766](https://github.com/HMZ766) |
-| Joe | UI/UX Designer | - |
+| Joe | UI/UX Designer | [@SONATA360](https://github.com/SONATA360) |
 | David | Full Stack Developer | - |
 
 ## About Us
