@@ -11,7 +11,7 @@ Official website for the **what the dog doing** team.
 | Howie | Backend Developer | - |
 | Max | Project Manager | [@HMZ766](https://github.com/HMZ766) |
 | Joe | UI/UX Designer | [@SONATA360](https://github.com/SONATA360) |
-| David | Full Stack Developer | - |
+| David | Full Stack Developer | [@Excalibuuuuur](https://github.com/Excalibuuuuur) |
 
 ## About Us
 
@@ -42,6 +42,8 @@ ZWU-2026-2-001/
 ├── Ash.jpg                 # Ash's avatar
 ├── Felix.jpg               # Felix's avatar
 ├── Max.jpg                 # Max's avatar
+├── Joe.jpg                 # Joe's avatar
+├── Excalibuuuuur.jpg       # David's avatar
 ├── default-avatar.png      # Default member avatar
 └── what-the-dog-doing.gif  # Team branding GIF
 ```
