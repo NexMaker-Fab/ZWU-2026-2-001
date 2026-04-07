@@ -7,7 +7,7 @@ Official website for the **what the dog doing** team.
 | Name | Role | GitHub |
 |------|------|--------|
 | Ash | Frontend Developer | [@17poi](https://github.com/17poi) |
-| Felix | Hardware Engineer | - |
+| Felix | Hardware Engineer | [@WanShang2026](https://github.com/WanShang2026) |
 | Howie | Backend Developer | - |
 | Max | Project Manager | - |
 | Joe | UI/UX Designer | - |
@@ -39,7 +39,8 @@ ZWU-2026-2-001/
 ├── index.html              # Main entry (single-page application)
 ├── README.md               # Project documentation
 ├── LICENSE                 # MIT License
-├── Ash.jpg                 # Team member avatar
+├── Ash.jpg                 # Ash's avatar
+├── Felix.jpg               # Felix's avatar
 ├── default-avatar.png      # Default member avatar
 └── what-the-dog-doing.gif  # Team branding GIF
 ```
