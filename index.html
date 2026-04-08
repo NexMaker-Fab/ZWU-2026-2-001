@@ -1054,27 +1054,6 @@
             }
         }
 
-        // 检查是否有仓库写入权限
-        async function checkWritePermission(token) {
-            try {
-                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`;
-                const response = await fetch(url, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                
-                if (!response.ok) return false;
-                
-                const repoData = await response.json();
-                // permissions.push 为 true 表示有写入权限
-                return repoData.permissions && repoData.permissions.push;
-            } catch (error) {
-                console.error('检查权限失败:', error);
-                return false;
-            }
-        }
 
         // 从 GitHub 加载作业数据
         async function loadHomeworkFromGitHub() {
@@ -1559,41 +1538,7 @@
                 return;
             }
             
-            // 第三步：检查是否有写入权限
-            const token = getGitHubToken();
-            showNotification('🔄 正在检查权限...', 'info');
-            
-            const hasWritePermission = await checkWritePermission(token);
-            
-            if (!hasWritePermission) {
-                // 没有写入权限，提供替代方案
-                const alternative = confirm('⚠️ 您没有该仓库的写入权限。\n\n可选方案：\n1. Fork 仓库后提交修改（需要管理员合并）\n2. 通过 Issue 提交修改建议\n\n点击“确定”使用 Issue 方式，点击“取消”退出。');
-                
-                if (alternative) {
-                    // 打开编辑器，但使用 Issue 方式
-                    editorEditMode = true;
-                    openExerciseEditor(id, true);
-                    document.getElementById('editorHomeworkArea').classList.add('editing');
-                    document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'true');
-                    document.getElementById('editorEditToolbar').style.display = 'flex';
-                    
-                    // 修改保存按钮行为
-                    document.querySelector('button[onclick="exitEditMode()"]').onclick = submitChangeRequest;
-                    document.querySelector('button[onclick="exitEditMode()"]').textContent = '📝 提交修改建议';
-                    
-                    showNotification('✅ 已进入编辑模式（Issue 模式）', 'success');
-                    isEnteringEditMode = false;
-                } else {
-                    showNotification('❌ 已取消编辑', 'info');
-                    isEnteringEditMode = false;
-                }
-                return;
-            }
-            
-            // 有写入权限，正常进入编辑模式
-            isEnteringEditMode = true;
-            openExerciseEditor(id, true);
-            
+
             editorEditMode = true;
             document.getElementById('editorHomeworkArea').classList.add('editing');
             document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'true');
@@ -1601,50 +1546,6 @@
             
             showNotification('✅ 已进入编辑模式，现在可以编辑作业内容、插入图片和视频', 'success');
             
-            isEnteringEditMode = false;
-        }
-
-        // 提交修改建议（通过 Issue）
-        function submitChangeRequest() {
-            if (currentEditorExerciseId === null) return;
-            
-            const content = document.getElementById('editorHomeworkContent').innerHTML;
-            const exercise = exercises.find(e => e.id === currentEditorExerciseId);
-            
-            // 先保存到 localStorage
-            localStorage.setItem(`homework_${currentEditorExerciseId}`, content);
-            
-            // 构建 Issue 内容
-            const issueBody = `## 📝 作业内容更新建议
-
-### 练习信息
-- **练习编号**: ${currentEditorExerciseId + 1}
-- **练习标题**: ${exercise.title}
-- **练习描述**: ${exercise.description}
-
-### 更新内容
-
-\`\`\`html
-${content}
-\`\`\`
-
-### 操作说明
-请管理员将以上内容更新到 \`data/homework.json\` 文件中对应的 \`homework_${currentEditorExerciseId}\` 键。
-
----
-
-_此 Issue 由网站编辑器自动生成_`;
-            
-            // 打开创建 Issue 页面
-            const issueUrl = `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/issues/new?title=${encodeURIComponent(`📝 更新练习 ${currentEditorExerciseId + 1} 作业内容`)}&body=${encodeURIComponent(issueBody)}`;
-            
-            window.open(issueUrl, '_blank');
-            
-            // 退出编辑模式
-            exitEditMode();
-            
-            showNotification('✅ 已打开 Issue 创建页面，请提交修改建议', 'success');
-        }
 
         // 退出编辑模式并保存到 GitHub
         async function exitEditMode() {
