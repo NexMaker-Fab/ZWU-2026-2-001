@@ -752,6 +752,56 @@
             line-height: 1.8;
         }
 
+        /* ===== 可编辑区域样式 ===== */
+        .editable-area {
+            position: relative;
+        }
+
+        .editable-area::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed transparent;
+            border-radius: 16px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .editable-area.editing::before {
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .editable-content[contenteditable="true"] {
+            cursor: text;
+            background: rgba(0, 212, 255, 0.1) !important;
+            border: 2px solid rgba(0, 212, 255, 0.5) !important;
+            outline: none !important;
+        }
+
+        .editable-content[contenteditable="true"]:focus {
+            background: rgba(0, 212, 255, 0.15) !important;
+            border-color: #00d4ff !important;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* 图片样式 */
+        .editable-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .exercise-content-section img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
         /* ===== 团队介绍页面 ===== */
         .intro-section {
             max-width: 800px;
@@ -874,16 +924,20 @@
         <!-- 期末项目 -->
         <section id="project" class="page-section">
             <h2 class="page-title">Final Project</h2>
-            <div class="project-showcase">
-                <h2>Health Monitoring System</h2>
-                <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
-                    Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
-                    and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
-                    providing users with comprehensive health data monitoring services.
-                </p>
+            <div class="project-showcase" id="project-content">
+                <div class="editable-area" data-field="project.title">
+                    <h2 contenteditable="false">Health Monitoring System</h2>
+                </div>
+                <div class="editable-area" data-field="project.description">
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;" contenteditable="false">
+                        Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
+                        and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
+                        providing users with comprehensive health data monitoring services.
+                    </p>
+                </div>
 
                 <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #00d4ff;">Technology Stack</h3>
-                <div class="tech-stack">
+                <div class="tech-stack" id="project-tech-stack">
                     <span class="tech-item">Arduino</span>
                     <span class="tech-item">HTML5</span>
                     <span class="tech-item">CSS3</span>
@@ -893,19 +947,23 @@
                 </div>
 
                 <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">Project Progress</h3>
-                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">Development Progress: 75%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
+                <div class="editable-area" data-field="project.progress">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;" contenteditable="false">Development Progress: 75%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
                 </div>
 
                 <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
-                    <h4 style="margin-bottom: 0.5rem;">Key Achievements</h4>
-                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;">
-                        <li>Completed hardware prototype design and assembly</li>
-                        <li>Implemented data collection and transmission functionality</li>
-                        <li>Developed web visualization interface</li>
-                        <li>Optimized user interaction experience</li>
-                    </ul>
+                    <div class="editable-area" data-field="project.achievements">
+                        <h4 style="margin-bottom: 0.5rem;" contenteditable="false">Key Achievements</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;" contenteditable="false">
+                            <li>Completed hardware prototype design and assembly</li>
+                            <li>Implemented data collection and transmission functionality</li>
+                            <li>Developed web visualization interface</li>
+                            <li>Optimized user interaction experience</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -928,9 +986,166 @@
                 <!-- 练习详情将通过 JavaScript 动态生成 -->
             </div>
         </section>
+
+        <!-- 练习编辑器页面 -->
+        <section id="exercise-editor" class="page-section">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem;">
+                    <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
+                </div>
+                
+                <h2 id="editorExerciseTitle" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
+                <p id="editorExerciseDescription" style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 3rem;"></p>
+                
+                <!-- 练习内容（只读，不可编辑） -->
+                <div style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
+                    <div id="editorExerciseContent" style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;"></div>
+                </div>
+                
+                <!-- 作业内容（可编辑） -->
+                <div class="editable-area" id="editorHomeworkArea">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">作业内容</h3>
+                    <div id="editorHomeworkContent" class="editable-content" style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; min-height: 300px;"></div>
+                    
+                    <!-- 编辑工具栏 -->
+                    <div id="editorEditToolbar" style="margin-top: 1rem; display: none; gap: 0.5rem; flex-wrap: wrap;">
+                        <button onclick="insertImageEditor()" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">📷 插入图片</button>
+                        <button onclick="insertVideoEditor()" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">🎬 插入视频</button>
+                        <button onclick="insertTextEditor()" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">📝 插入文本</button>
+                        <button onclick="clearHomeworkContentEditor()" style="background: rgba(255, 0, 0, 0.2); color: #ff4444; border: 1px solid rgba(255, 0, 0, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">🗑️ 清空内容</button>
+                        <button onclick="exitEditMode()" style="background: rgba(0, 255, 136, 0.2); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">💾 保存并退出</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 隐藏的图片上传输入框 -->
+            <input type="file" id="editorImageInput" accept="image/*" style="display: none;" onchange="handleImageUploadEditor(event)">
+            <!-- 隐藏的视频上传输入框 -->
+            <input type="file" id="editorVideoInput" accept="video/*" style="display: none;" onchange="handleVideoUploadEditor(event)">
+        </section>
     </main>
 
     <script>
+        // ===== GitHub 同步功能 =====
+        const GITHUB_CONFIG = {
+            owner: 'NexMaker-Fab',
+            repo: 'ZWU-2026-2-001',
+            branch: 'homework-edits',
+            filePath: 'data/homework.json'
+        };
+
+        // 获取存储的 GitHub Token
+        function getGitHubToken() {
+            const token = localStorage.getItem('github_token');
+            if (!token) return null;
+            try {
+                return atob(token);
+            } catch (e) {
+                console.error('Token decode error:', e);
+                return null;
+            }
+        }
+
+        // 保存 GitHub Token
+        function saveGitHubToken(token) {
+            if (token) {
+                localStorage.setItem('github_token', btoa(token));
+            }
+        }
+
+        // 检查是否有仓库写入权限
+        async function checkWritePermission(token) {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (!response.ok) return false;
+                
+                const repoData = await response.json();
+                // permissions.push 为 true 表示有写入权限
+                return repoData.permissions && repoData.permissions.push;
+            } catch (error) {
+                console.error('检查权限失败:', error);
+                return false;
+            }
+        }
+
+        // 从 GitHub 加载作业数据
+        async function loadHomeworkFromGitHub() {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
+                const response = await fetch(url, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const data = await response.json();
+                const content = atob(data.content);
+                return JSON.parse(content);
+            } catch (error) {
+                console.error('从 GitHub 加载失败:', error);
+                return null;
+            }
+        }
+
+        // 保存作业数据到 GitHub
+        async function saveHomeworkToGitHub(homeworkData, exerciseId) {
+            const token = getGitHubToken();
+            if (!token) throw new Error('未找到 GitHub Token');
+
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
+                
+                // 获取当前文件的 SHA
+                const getResponse = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!getResponse.ok) throw new Error('无法获取文件信息');
+
+                const fileData = await getResponse.json();
+                const sha = fileData.sha;
+
+                // 更新文件
+                const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(homeworkData, null, 2))));
+
+                const putResponse = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: `Update homework ${exerciseId + 1} content`,
+                        content: encodedContent,
+                        sha: sha,
+                        branch: GITHUB_CONFIG.branch
+                    })
+                });
+
+                if (!putResponse.ok) {
+                    const error = await putResponse.json();
+                    throw new Error(error.message || '保存失败');
+                }
+
+                return true;
+            } catch (error) {
+                console.error('保存到 GitHub 失败:', error);
+                throw error;
+            }
+        }
+
         // ===== 团队成员数据 =====
         const members = [
             {
@@ -1123,7 +1338,9 @@
                 <div class="exercise-card">
                     <h3>练习 ${exercise.id + 1}: ${exercise.title}</h3>
                     <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
-                    <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
+                    </div>
                 </div>
             `).join('');
         }
@@ -1131,13 +1348,26 @@
         // ===== 显示练习详情 =====
         function showExerciseDetail(id) {
             const exercise = exercises.find(e => e.id === id);
-            if (!exercise) return;
+            if (!exercise) {
+                console.error('Exercise not found:', id);
+                return;
+            }
 
-            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
+            console.log('显示练习详情:', exercise.title);
+            const exerciseContentWithBreaks = exercise.content.replace(/\n/g, '<br>');
 
             const detailContent = document.getElementById('exercise-detail-content');
+            if (!detailContent) {
+                console.error('exercise-detail-content element not found');
+                return;
+            }
+
+            // 从 localStorage 恢复作业内容
+            const savedHomeworkContent = localStorage.getItem(`homework_${id}`) || '<p>在这里写下你的作业内容...</p>';
+
+            // 使用 innerHTML 插入内容
             detailContent.innerHTML = `
-                <div class="exercise-detail">
+                <div style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
                     <div style="margin-bottom: 2rem;">
                         <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
                     </div>
@@ -1145,21 +1375,496 @@
                     <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
                     <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
                     
-                    <div class="exercise-content-section">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
-                            ${contentWithBreaks}
+                    <div style="margin-bottom: 2rem;">
+                        <button onclick="enterEditMode(${exercise.id})" style="display: inline-block; color: #ff00d4; text-decoration: none; padding: 0.75rem 1.5rem; background: rgba(255, 0, 212, 0.1); border: 1px solid rgba(255, 0, 212, 0.3); border-radius: 8px; transition: all 0.3s; cursor: pointer; font-size: 1rem;" onmouseover="this.style.background='rgba(255, 0, 212, 0.2)'" onmouseout="this.style.background='rgba(255, 0, 212, 0.1)'">✏️ 进入编辑模式</button>
+                    </div>
+                    
+                    <!-- 练习内容（只读，不可编辑） -->
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            ${exerciseContentWithBreaks}
+                        </div>
+                    </div>
+                    
+                    <!-- 作业内容（可编辑） -->
+                    <div id="homeworkArea_${id}" class="editable-area">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">作业内容</h3>
+                        <div id="homeworkContent_${id}" class="editable-content" style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; min-height: 200px;">
+                            ${savedHomeworkContent}
+                        </div>
+                        
+                        <!-- 编辑工具栏 -->
+                        <div id="editToolbar_${id}" style="margin-top: 1rem; display: none; gap: 0.5rem; flex-wrap: wrap;">
+                            <button onclick="insertImage(${id})" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">📷 插入图片</button>
+                            <button onclick="insertText(${id})" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">📝 插入文本</button>
+                            <button onclick="clearHomeworkContent(${id})" style="background: rgba(255, 0, 0, 0.2); color: #ff4444; border: 1px solid rgba(255, 0, 0, 0.3); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">🗑️ 清空内容</button>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 隐藏的图片上传输入框 -->
+                <input type="file" id="imageInput_${id}" accept="image/*" style="display: none;" onchange="handleImageUpload(event, ${id})">
             `;
 
+            console.log('✅ 练习详情页已渲染，包含练习内容和作业内容区域');
+            console.log('DOM 内容长度:', detailContent.innerHTML.length);
+            
+            // 激活练习详情页 section
+            document.getElementById('exercise-detail').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#exercises') {
+                    link.classList.add('active');
+                }
+            });
+            
             window.location.hash = `#exercise-${id}`;
+            window.scrollTo(0, 0);
         }
 
         // ===== 显示练习列表 =====
         function showExercisesList() {
             window.location.hash = '#exercises';
+        }
+
+        // ===== 作业内容编辑辅助函数 =====
+        
+        // 插入图片
+        function insertImage(exerciseId) {
+            if (!editMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            const imageInput = document.getElementById(`imageInput_${exerciseId}`);
+            if (imageInput) {
+                imageInput.click();
+            }
+        }
+
+        // 处理图片上传
+        function handleImageUpload(event, exerciseId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // 验证文件类型
+            if (!file.type.startsWith('image/')) {
+                showNotification('请选择图片文件！', 'error');
+                return;
+            }
+            
+            // 验证文件大小（限制 5MB）
+            if (file.size > 5 * 1024 * 1024) {
+                showNotification('图片大小不能超过 5MB！', 'error');
+                return;
+            }
+            
+            // 读取图片并转换为 Base64
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageDataUrl = e.target.result;
+                const imgHtml = `<img src="${imageDataUrl}" alt="上传的图片" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">`;
+                insertHtmlAtCursor(imgHtml, exerciseId);
+                showNotification('✅ 图片已插入', 'success');
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        }
+
+        // 在光标位置插入 HTML
+        function insertHtmlAtCursor(html, exerciseId) {
+            const contentBox = document.getElementById(`homeworkContent_${exerciseId}`);
+            if (!contentBox) return;
+            
+            contentBox.focus();
+            const selection = window.getSelection();
+            
+            if (selection.rangeCount > 0 && contentBox.contains(selection.anchorNode)) {
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                let lastNode;
+                while (tempDiv.firstChild) {
+                    lastNode = range.insertNode(tempDiv.firstChild);
+                    range.setStartAfter(lastNode);
+                }
+                
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else {
+                contentBox.innerHTML += html;
+            }
+        }
+
+        // 插入文本
+        function insertText(exerciseId) {
+            if (!editMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            const text = prompt('请输入要插入的文本:');
+            if (text) {
+                insertHtmlAtCursor(`<p>${text}</p>`, exerciseId);
+            }
+        }
+
+        // 清空作业内容
+        function clearHomeworkContent(exerciseId) {
+            if (!editMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            if (confirm('确定要清空所有作业内容吗？此操作不可撤销。')) {
+                const contentBox = document.getElementById(`homeworkContent_${exerciseId}`);
+                if (contentBox) {
+                    contentBox.innerHTML = '<p>在这里写下你的作业内容...</p>';
+                }
+            }
+        }
+
+        // ===== 练习编辑器功能 =====
+        let currentEditorExerciseId = null;
+        let editorEditMode = false;
+        let isEnteringEditMode = false;
+
+        // 进入编辑模式（需要密码验证）
+        async function enterEditMode(id) {
+            // 第一步：输入管理员密码
+            const password = prompt('请输入管理员密码以进入编辑模式：');
+            if (!password) return;
+            
+            if (password !== 'zwu20262001') {
+                showNotification('❌ 密码错误！', 'error');
+                return;
+            }
+            
+            // 第二步：输入 GitHub Token
+            const existingToken = getGitHubToken();
+            const tokenPrompt = existingToken 
+                ? '请输入 GitHub Personal Access Token（留空使用已保存的 Token）：' 
+                : '请输入 GitHub Personal Access Token：\n\n获取方法：\n1. 访问 https://github.com/settings/tokens\n2. 生成新 Token（需要 repo 权限）\n3. 粘贴到这里';
+            
+            const githubToken = prompt(tokenPrompt);
+            
+            // 如果用户输入了新 Token，保存它
+            if (githubToken !== null && githubToken.trim() !== '') {
+                saveGitHubToken(githubToken.trim());
+            } else if (!existingToken) {
+                // 如果没有已有 Token 且用户未输入，取消操作
+                showNotification('❌ 需要 GitHub Token 才能编辑！', 'error');
+                return;
+            }
+            
+            // 第三步：检查是否有写入权限
+            const token = getGitHubToken();
+            showNotification('🔄 正在检查权限...', 'info');
+            
+            const hasWritePermission = await checkWritePermission(token);
+            
+            if (!hasWritePermission) {
+                // 没有写入权限，提供替代方案
+                const alternative = confirm('⚠️ 您没有该仓库的写入权限。\n\n可选方案：\n1. Fork 仓库后提交修改（需要管理员合并）\n2. 通过 Issue 提交修改建议\n\n点击“确定”使用 Issue 方式，点击“取消”退出。');
+                
+                if (alternative) {
+                    // 打开编辑器，但使用 Issue 方式
+                    editorEditMode = true;
+                    openExerciseEditor(id, true);
+                    document.getElementById('editorHomeworkArea').classList.add('editing');
+                    document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'true');
+                    document.getElementById('editorEditToolbar').style.display = 'flex';
+                    
+                    // 修改保存按钮行为
+                    document.querySelector('button[onclick="exitEditMode()"]').onclick = submitChangeRequest;
+                    document.querySelector('button[onclick="exitEditMode()"]').textContent = '📝 提交修改建议';
+                    
+                    showNotification('✅ 已进入编辑模式（Issue 模式）', 'success');
+                    isEnteringEditMode = false;
+                } else {
+                    showNotification('❌ 已取消编辑', 'info');
+                    isEnteringEditMode = false;
+                }
+                return;
+            }
+            
+            // 有写入权限，正常进入编辑模式
+            isEnteringEditMode = true;
+            openExerciseEditor(id, true);
+            
+            editorEditMode = true;
+            document.getElementById('editorHomeworkArea').classList.add('editing');
+            document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'true');
+            document.getElementById('editorEditToolbar').style.display = 'flex';
+            
+            showNotification('✅ 已进入编辑模式，现在可以编辑作业内容、插入图片和视频', 'success');
+            
+            isEnteringEditMode = false;
+        }
+
+        // 提交修改建议（通过 Issue）
+        function submitChangeRequest() {
+            if (currentEditorExerciseId === null) return;
+            
+            const content = document.getElementById('editorHomeworkContent').innerHTML;
+            const exercise = exercises.find(e => e.id === currentEditorExerciseId);
+            
+            // 先保存到 localStorage
+            localStorage.setItem(`homework_${currentEditorExerciseId}`, content);
+            
+            // 构建 Issue 内容
+            const issueBody = `## 📝 作业内容更新建议
+
+### 练习信息
+- **练习编号**: ${currentEditorExerciseId + 1}
+- **练习标题**: ${exercise.title}
+- **练习描述**: ${exercise.description}
+
+### 更新内容
+
+\`\`\`html
+${content}
+\`\`\`
+
+### 操作说明
+请管理员将以上内容更新到 \`data/homework.json\` 文件中对应的 \`homework_${currentEditorExerciseId}\` 键。
+
+---
+
+_此 Issue 由网站编辑器自动生成_`;
+            
+            // 打开创建 Issue 页面
+            const issueUrl = `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/issues/new?title=${encodeURIComponent(`📝 更新练习 ${currentEditorExerciseId + 1} 作业内容`)}&body=${encodeURIComponent(issueBody)}`;
+            
+            window.open(issueUrl, '_blank');
+            
+            // 退出编辑模式
+            exitEditMode();
+            
+            showNotification('✅ 已打开 Issue 创建页面，请提交修改建议', 'success');
+        }
+
+        // 退出编辑模式并保存到 GitHub
+        async function exitEditMode() {
+            if (currentEditorExerciseId !== null) {
+                const content = document.getElementById('editorHomeworkContent').innerHTML;
+                
+                // 先保存到 localStorage 作为备份
+                localStorage.setItem(`homework_${currentEditorExerciseId}`, content);
+                
+                // 然后同步到 GitHub
+                try {
+                    showNotification('🔄 正在同步到 GitHub...', 'info');
+                    
+                    // 加载所有作业数据
+                    let homeworkData = await loadHomeworkFromGitHub();
+                    if (!homeworkData) {
+                        // 如果从 GitHub 加载失败，从 localStorage 构建数据
+                        homeworkData = {};
+                        for (let i = 0; i < exercises.length; i++) {
+                            homeworkData[`homework_${i}`] = localStorage.getItem(`homework_${i}`) || '<p>在这里写下你的作业内容...</p>';
+                        }
+                    }
+                    
+                    // 更新当前练习的内容
+                    homeworkData[`homework_${currentEditorExerciseId}`] = content;
+                    
+                    // 保存到 GitHub
+                    await saveHomeworkToGitHub(homeworkData, currentEditorExerciseId);
+                    
+                    console.log('✅ 已同步到 GitHub，练习', currentEditorExerciseId + 1);
+                    showNotification('✅ 已保存到 GitHub，约 2-3 分钟后所有成员可见！', 'success');
+                } catch (error) {
+                    console.error('同步到 GitHub 失败:', error);
+                    showNotification('⚠️ 已保存到本地，但同步到 GitHub 失败。请检查 Token 是否有效。', 'error');
+                }
+            }
+            
+            editorEditMode = false;
+            document.getElementById('editorHomeworkArea').classList.remove('editing');
+            document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'false');
+            document.getElementById('editorEditToolbar').style.display = 'none';
+        }
+
+        // 打开练习编辑器
+        async function openExerciseEditor(id, preserveEditMode = false) {
+            const exercise = exercises.find(e => e.id === id);
+            if (!exercise) return;
+
+            currentEditorExerciseId = id;
+            // 如果不是从 enterEditMode 调用的，则重置编辑状态
+            if (!preserveEditMode) {
+                editorEditMode = false;
+            }
+
+            // 填充练习内容
+            document.getElementById('editorExerciseTitle').textContent = `练习 ${exercise.id + 1}: ${exercise.title}`;
+            document.getElementById('editorExerciseDescription').textContent = exercise.description;
+            document.getElementById('editorExerciseContent').innerHTML = exercise.content.replace(/\n/g, '<br>');
+
+            // 从 GitHub 加载作业内容
+            let savedContent = '<p>在这里写下你的作业内容...</p>';
+            try {
+                const homeworkData = await loadHomeworkFromGitHub();
+                if (homeworkData && homeworkData[`homework_${id}`]) {
+                    savedContent = homeworkData[`homework_${id}`];
+                } else {
+                    // 如果 GitHub 加载失败，尝试从 localStorage 加载
+                    savedContent = localStorage.getItem(`homework_${id}`) || savedContent;
+                }
+            } catch (error) {
+                console.error('加载作业内容失败:', error);
+                savedContent = localStorage.getItem(`homework_${id}`) || savedContent;
+            }
+            
+            document.getElementById('editorHomeworkContent').innerHTML = savedContent;
+
+            // 如果不是从 enterEditMode 调用的，则重置编辑状态
+            if (!preserveEditMode) {
+                document.getElementById('editorHomeworkArea').classList.remove('editing');
+                document.getElementById('editorHomeworkContent').setAttribute('contenteditable', 'false');
+                document.getElementById('editorEditToolbar').style.display = 'none';
+                editorEditMode = false;
+            }
+
+            // 跳转到编辑器页面
+            window.location.hash = `#exercise-editor-${id}`;
+            window.scrollTo(0, 0);
+
+            console.log('✅ 编辑器已打开，练习 ID:', id);
+        }
+
+        // 插入图片（编辑器）
+        function insertImageEditor() {
+            if (!editorEditMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            document.getElementById('editorImageInput').click();
+        }
+
+        // 插入视频（编辑器）
+        function insertVideoEditor() {
+            if (!editorEditMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            document.getElementById('editorVideoInput').click();
+        }
+
+        // 处理图片上传（编辑器）
+        function handleImageUploadEditor(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('image/')) {
+                showNotification('请选择图片文件！', 'error');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                showNotification('图片大小不能超过 5MB！', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageDataUrl = e.target.result;
+                const imgHtml = `<img src="${imageDataUrl}" alt="上传的图片" style="max-width: 100%; border-radius: 8px; margin: 1rem 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">`;
+                insertHtmlAtCursorEditor(imgHtml);
+                showNotification('✅ 图片已插入', 'success');
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        }
+
+        // 处理视频上传（编辑器）
+        function handleVideoUploadEditor(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!file.type.startsWith('video/')) {
+                showNotification('请选择视频文件！', 'error');
+                return;
+            }
+
+            if (file.size > 50 * 1024 * 1024) {
+                showNotification('视频大小不能超过 50MB！', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const videoDataUrl = e.target.result;
+                const videoHtml = `<video src="${videoDataUrl}" controls style="max-width: 100%; border-radius: 8px; margin: 1rem 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);"></video>`;
+                insertHtmlAtCursorEditor(videoHtml);
+                showNotification('✅ 视频已插入', 'success');
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        }
+
+        // 在光标位置插入 HTML（编辑器）
+        function insertHtmlAtCursorEditor(html) {
+            const contentBox = document.getElementById('editorHomeworkContent');
+            contentBox.focus();
+
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0 && contentBox.contains(selection.anchorNode)) {
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+
+                let lastNode;
+                while (tempDiv.firstChild) {
+                    lastNode = range.insertNode(tempDiv.firstChild);
+                    range.setStartAfter(lastNode);
+                }
+
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else {
+                contentBox.innerHTML += html;
+            }
+        }
+
+        // 插入文本（编辑器）
+        function insertTextEditor() {
+            if (!editorEditMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            const text = prompt('请输入要插入的文本:');
+            if (text) {
+                insertHtmlAtCursorEditor(`<p>${text}</p>`);
+            }
+        }
+
+        // 清空内容（编辑器）
+        function clearHomeworkContentEditor() {
+            if (!editorEditMode) {
+                showNotification('请先进入编辑模式！', 'warning');
+                return;
+            }
+            if (confirm('确定要清空所有作业内容吗？此操作不可撤销。')) {
+                document.getElementById('editorHomeworkContent').innerHTML = '<p>在这里写下你的作业内容...</p>';
+            }
+        }
+
+        // 保存所有练习的作业内容
+        function saveHomeworkContent() {
+            exercises.forEach(exercise => {
+                const contentBox = document.getElementById(`homeworkContent_${exercise.id}`);
+                if (contentBox) {
+                    localStorage.setItem(`homework_${exercise.id}`, contentBox.innerHTML);
+                    console.log(`✅ 已保存练习 ${exercise.id + 1} 的作业内容`);
+                }
+            });
         }
 
 
@@ -1182,11 +1887,38 @@
                 }
             });
 
+            // 控制编辑模式按钮显示/隐藏（已移除导航栏按钮，此逻辑保留用于其他功能）
+            const editButton = document.getElementById('edit-mode-toggle');
+            if (editButton) {
+                editButton.style.display = 'none';
+            }
+
             // 处理成员详情页
             if (hash.startsWith('#member-')) {
                 const memberId = parseInt(hash.split('-')[1]);
                 if (!isNaN(memberId) && memberId >= 0 && memberId < members.length) {
                     showMemberDetailFromHash(memberId);
+                    return;
+                }
+            }
+
+            // 处理练习编辑器页（必须在练习详情页之前检查）
+            if (hash.startsWith('#exercise-editor-')) {
+                const exerciseId = parseInt(hash.split('-')[2]);
+                if (!isNaN(exerciseId) && exerciseId >= 0 && exerciseId < exercises.length) {
+                    // 检查当前是否已经在编辑器页面且处于编辑模式，或者正在进入编辑模式
+                    const isAlreadyInEditMode = editorEditMode && currentEditorExerciseId === exerciseId;
+                    if (!isAlreadyInEditMode && !isEnteringEditMode) {
+                        openExerciseEditor(exerciseId);
+                    }
+                    // 激活编辑器页面
+                    document.getElementById('exercise-editor').classList.add('active');
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#exercises') {
+                            link.classList.add('active');
+                        }
+                    });
                     return;
                 }
             }
@@ -1277,39 +2009,8 @@
 
         // ===== 从 Hash 显示练习详情 =====
         function showExerciseDetailFromHash(id) {
-            const exercise = exercises.find(e => e.id === id);
-            if (!exercise) return;
-
-            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
-
-            const detailContent = document.getElementById('exercise-detail-content');
-            detailContent.innerHTML = `
-                <div class="exercise-detail">
-                    <div style="margin-bottom: 2rem;">
-                        <a href="#exercises" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
-                    </div>
-                    
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
-                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
-                    
-                    <div class="exercise-content-section">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
-                            ${contentWithBreaks}
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('exercise-detail').classList.add('active');
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#exercises') {
-                    link.classList.add('active');
-                }
-            });
-
-            window.scrollTo(0, 0);
+            // 调用更新后的 showExerciseDetail 函数
+            showExerciseDetail(id);
         }
 
         // ===== 初始化 =====
@@ -1356,6 +2057,461 @@
                 }, 500);
             }
         }
+
+        // ===== 编辑模式功能 =====
+        let editMode = false;
+        const ADMIN_PASSWORD = 'zwu20262001'; // 管理员密码（可以修改）
+
+        // 显示密码输入对话框
+        function showPasswordDialog() {
+            return new Promise((resolve) => {
+                // 创建遮罩层
+                const overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    backdrop-filter: blur(10px);
+                    z-index: 99999;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    animation: fadeIn 0.3s ease;
+                `;
+
+                // 创建对话框
+                const dialog = document.createElement('div');
+                dialog.style.cssText = `
+                    background: linear-gradient(135deg, #1a1a2e, #16213e);
+                    padding: 2.5rem;
+                    border-radius: 20px;
+                    border: 1px solid rgba(0, 212, 255, 0.3);
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    max-width: 400px;
+                    width: 90%;
+                    animation: slideUp 0.3s ease;
+                `;
+
+                dialog.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔐</div>
+                        <h3 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.5rem;">Admin Access Required</h3>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Please enter the admin password to enable edit mode</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="password" id="admin-password-input" placeholder="Enter password..." 
+                            style="width: 100%; padding: 0.875rem 1rem; background: rgba(255, 255, 255, 0.05); 
+                            border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #ffffff; 
+                            font-size: 1rem; outline: none; transition: all 0.3s ease;"
+                            onfocus="this.style.borderColor='rgba(0, 212, 255, 0.5)'" 
+                            onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'">
+                    </div>
+                    
+                    <div id="password-error" style="color: #ff6b6b; font-size: 0.875rem; margin-bottom: 1rem; display: none; text-align: center;">
+                        ❌ Incorrect password. Please try again.
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="cancel-btn" style="flex: 1; padding: 0.75rem; background: rgba(255, 255, 255, 0.1); 
+                            color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+                            Cancel
+                        </button>
+                        <button id="submit-btn" style="flex: 1; padding: 0.75rem; 
+                            background: linear-gradient(135deg, #00d4ff, #ff00d4); 
+                            color: #ffffff; border: none; border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Unlock
+                        </button>
+                    </div>
+                `;
+
+                overlay.appendChild(dialog);
+                document.body.appendChild(overlay);
+
+                // 自动聚焦输入框
+                setTimeout(() => {
+                    document.getElementById('admin-password-input').focus();
+                }, 100);
+
+                // 提交按钮事件
+                const submitBtn = document.getElementById('submit-btn');
+                const cancelBtn = document.getElementById('cancel-btn');
+                const passwordInput = document.getElementById('admin-password-input');
+                const errorDiv = document.getElementById('password-error');
+
+                const handleSubmit = () => {
+                    const password = passwordInput.value;
+                    if (password === ADMIN_PASSWORD) {
+                        // 密码正确，关闭对话框并返回 true
+                        overlay.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(overlay);
+                        }, 300);
+                        resolve(true);
+                    } else {
+                        // 密码错误，显示错误信息
+                        errorDiv.style.display = 'block';
+                        passwordInput.value = '';
+                        passwordInput.style.borderColor = '#ff6b6b';
+                        setTimeout(() => {
+                            passwordInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        }, 1000);
+                        passwordInput.focus();
+                    }
+                };
+
+                const handleCancel = () => {
+                    overlay.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(overlay);
+                    }, 300);
+                    resolve(false);
+                };
+
+                submitBtn.addEventListener('click', handleSubmit);
+                cancelBtn.addEventListener('click', handleCancel);
+
+                // Enter 键提交
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSubmit();
+                    }
+                });
+
+                // ESC 键取消
+                overlay.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        handleCancel();
+                    }
+                });
+            });
+        }
+
+        // 切换编辑模式
+        async function toggleEditMode() {
+            const button = document.getElementById('edit-mode-toggle');
+            
+            if (!editMode) {
+                // 尝试进入编辑模式，先验证密码
+                const authenticated = await showPasswordDialog();
+                
+                if (!authenticated) {
+                    // 用户取消或密码错误
+                    showNotification('❌ Authentication failed or cancelled.', 'error');
+                    return;
+                }
+                
+                // 密码验证通过，进入编辑模式
+                editMode = true;
+                button.textContent = '💾 Save Changes';
+                button.style.background = 'linear-gradient(135deg, #00d4ff, #ff00d4)';
+                button.style.border = 'none';
+                
+                // 只启用特定区域的编辑功能（.editable-area 内的元素）
+                const editableAreas = document.querySelectorAll('.editable-area');
+                editableAreas.forEach(area => {
+                    area.classList.add('editing');
+                    const contentElements = area.querySelectorAll('[contenteditable]');
+                    contentElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'true');
+                    });
+                    // 显示编辑工具栏
+                    const toolbar = area.querySelector('.edit-toolbar');
+                    if (toolbar) toolbar.style.display = 'flex';
+                });
+                
+                // 添加编辑提示
+                showNotification('✏️ Edit mode enabled. You can edit the "作业内容" section and add images.', 'info');
+                
+                // 为练习详情页添加编辑按钮
+                addExerciseEditButtons();
+            } else {
+                // 退出编辑模式并保存
+                editMode = false;
+                button.textContent = '✏️ Edit Mode';
+                button.style.background = 'rgba(255, 255, 255, 0.1)';
+                button.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+                
+                // 禁用所有可编辑区域
+                const editableAreas = document.querySelectorAll('.editable-area');
+                editableAreas.forEach(area => {
+                    area.classList.remove('editing');
+                    const contentElements = area.querySelectorAll('[contenteditable]');
+                    contentElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'false');
+                    });
+                    // 隐藏编辑工具栏
+                    const toolbar = area.querySelector('.edit-toolbar');
+                    if (toolbar) toolbar.style.display = 'none';
+                });
+                
+                // 保存作业内容到 localStorage
+                saveHomeworkContent();
+                
+                // 保存其他数据
+                saveAllData();
+                showNotification('✅ Changes saved!', 'success');
+                
+                // 移除练习编辑按钮
+                removeExerciseEditButtons();
+            }
+        }
+
+        // 为练习详情添加编辑按钮
+        function addExerciseEditButtons() {
+            const detailContent = document.getElementById('exercise-detail-content');
+            if (!detailContent || detailContent.innerHTML.trim() === '') return;
+            
+            // 检查是否已经添加了按钮
+            if (detailContent.querySelector('.exercise-edit-actions')) return;
+            
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'exercise-edit-actions';
+            actionsDiv.style.cssText = 'margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.3);';
+            actionsDiv.innerHTML = `
+                <h4 style="margin-bottom: 1rem; color: #00d4ff;">Edit Exercise Content</h4>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button onclick="saveCurrentExercise()" style="background: linear-gradient(135deg, #00d4ff, #ff00d4); color: #ffffff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">💾 Save This Exercise</button>
+                    <button onclick="exportAllData()" style="background: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">📥 Export All Data</button>
+                </div>
+            `;
+            detailContent.appendChild(actionsDiv);
+        }
+
+        // 移除练习编辑按钮
+        function removeExerciseEditButtons() {
+            const actionsDiv = document.querySelector('.exercise-edit-actions');
+            if (actionsDiv) {
+                actionsDiv.remove();
+            }
+        }
+
+        // 保存当前练习
+        function saveCurrentExercise() {
+            const hash = window.location.hash;
+            if (!hash.startsWith('#exercise-')) {
+                showNotification('⚠️ Please navigate to an exercise detail page first.', 'warning');
+                return;
+            }
+            
+            const exerciseId = parseInt(hash.split('-')[1]);
+            const exercise = exercises.find(e => e.id === exerciseId);
+            
+            if (!exercise) {
+                showNotification('❌ Exercise not found.', 'error');
+                return;
+            }
+            
+            // 获取编辑后的内容
+            const contentEl = document.querySelector('.exercise-content-section div');
+            if (contentEl) {
+                exercise.content = contentEl.innerHTML.replace(/<br>/g, '\n');
+            }
+            
+            // 保存到 localStorage
+            saveToLocalStorage();
+            showNotification('✅ Exercise saved successfully!', 'success');
+        }
+
+        // 保存所有数据
+        function saveAllData() {
+            // 保存项目数据
+            const projectData = {
+                title: document.querySelector('[data-field="project.title"] h2')?.textContent || '',
+                description: document.querySelector('[data-field="project.description"] p')?.innerHTML || '',
+                progress: document.querySelector('[data-field="project.progress"] p')?.textContent || '',
+                progressPercent: parseInt(document.querySelector('[data-field="project.progress"] .progress-fill')?.style.width || '75'),
+                achievements: document.querySelector('[data-field="project.achievements"] ul')?.innerHTML || ''
+            };
+            
+            // 保存到 localStorage
+            const dataToSave = {
+                exercises: exercises,
+                project: projectData,
+                lastModified: new Date().toISOString()
+            };
+            
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+            console.log('Data saved to localStorage:', dataToSave);
+        }
+
+        // 保存到 localStorage
+        function saveToLocalStorage() {
+            const dataToSave = {
+                exercises: exercises,
+                lastModified: new Date().toISOString()
+            };
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+        }
+
+        // 导出所有数据为 JSON 文件
+        function exportAllData() {
+            saveAllData();
+            
+            const dataStr = localStorage.getItem('teamWebsiteData');
+            if (!dataStr) {
+                showNotification('❌ No data to export.', 'error');
+                return;
+            }
+            
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `team-website-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('📥 Data exported! Check your downloads folder.', 'success');
+        }
+
+        // 显示通知
+        function showNotification(message, type = 'info') {
+            // 移除现有通知
+            const existing = document.querySelector('.notification-toast');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            
+            const colors = {
+                success: '#00ff88',
+                error: '#ff6b6b',
+                warning: '#ffa500',
+                info: '#00d4ff'
+            };
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: ${colors[type]};
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                border: 1px solid ${colors[type]};
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+                font-size: 0.95rem;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // 添加 CSS 动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化编辑数据
+        function initEditData() {
+            // 从 localStorage 加载已保存的数据
+            const savedData = localStorage.getItem('teamWebsiteData');
+            if (savedData) {
+                try {
+                    const parsed = JSON.parse(savedData);
+                    if (parsed.exercises && parsed.exercises.length > 0) {
+                        exercises = parsed.exercises;
+                        renderExercises();
+                    }
+                    if (parsed.project && Object.keys(parsed.project).length > 0) {
+                        loadProjectData(parsed.project);
+                    }
+                } catch (e) {
+                    console.error('Failed to load saved data:', e);
+                }
+            }
+        }
+
+        // 加载项目数据到页面
+        function loadProjectData(projectData) {
+            if (projectData.title) {
+                const titleEl = document.querySelector('[data-field="project.title"] h2');
+                if (titleEl) titleEl.textContent = projectData.title;
+            }
+            if (projectData.description) {
+                const descEl = document.querySelector('[data-field="project.description"] p');
+                if (descEl) descEl.innerHTML = projectData.description;
+            }
+            if (projectData.progress) {
+                const progressEl = document.querySelector('[data-field="project.progress"] p');
+                if (progressEl) progressEl.textContent = projectData.progress;
+                const fillEl = document.querySelector('[data-field="project.progress"] .progress-fill');
+                if (fillEl && projectData.progressPercent) {
+                    fillEl.style.width = projectData.progressPercent + '%';
+                }
+            }
+            if (projectData.achievements) {
+                const achievementsEl = document.querySelector('[data-field="project.achievements"] ul');
+                if (achievementsEl) achievementsEl.innerHTML = projectData.achievements;
+            }
+        }
+
+        // 页面加载时初始化编辑数据
+        window.addEventListener('load', initEditData);
     </script>
 </body>
 </html>
