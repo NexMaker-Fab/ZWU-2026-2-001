@@ -798,6 +798,17 @@
                 <li><a href="#exercises" data-nav>Daily Homework</a></li>
                 <li><a href="#project" data-nav>Final Project</a></li>
             </ul>
+            <button id="edit-mode-toggle" onclick="toggleEditMode()" style="
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 0.5rem 1.25rem;
+                border-radius: 20px;
+                font-size: 0.875rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-left: 1rem;
+            ">✏️ Edit Mode</button>
         </div>
     </nav>
 
@@ -874,16 +885,20 @@
         <!-- 期末项目 -->
         <section id="project" class="page-section">
             <h2 class="page-title">Final Project</h2>
-            <div class="project-showcase">
-                <h2>Health Monitoring System</h2>
-                <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
-                    Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
-                    and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
-                    providing users with comprehensive health data monitoring services.
-                </p>
+            <div class="project-showcase" id="project-content">
+                <div class="editable-area" data-field="project.title">
+                    <h2 contenteditable="false">Health Monitoring System</h2>
+                </div>
+                <div class="editable-area" data-field="project.description">
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;" contenteditable="false">
+                        Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
+                        and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
+                        providing users with comprehensive health data monitoring services.
+                    </p>
+                </div>
 
                 <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #00d4ff;">Technology Stack</h3>
-                <div class="tech-stack">
+                <div class="tech-stack" id="project-tech-stack">
                     <span class="tech-item">Arduino</span>
                     <span class="tech-item">HTML5</span>
                     <span class="tech-item">CSS3</span>
@@ -893,19 +908,23 @@
                 </div>
 
                 <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">Project Progress</h3>
-                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">Development Progress: 75%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
+                <div class="editable-area" data-field="project.progress">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;" contenteditable="false">Development Progress: 75%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
                 </div>
 
                 <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
-                    <h4 style="margin-bottom: 0.5rem;">Key Achievements</h4>
-                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;">
-                        <li>Completed hardware prototype design and assembly</li>
-                        <li>Implemented data collection and transmission functionality</li>
-                        <li>Developed web visualization interface</li>
-                        <li>Optimized user interaction experience</li>
-                    </ul>
+                    <div class="editable-area" data-field="project.achievements">
+                        <h4 style="margin-bottom: 0.5rem;" contenteditable="false">Key Achievements</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;" contenteditable="false">
+                            <li>Completed hardware prototype design and assembly</li>
+                            <li>Implemented data collection and transmission functionality</li>
+                            <li>Developed web visualization interface</li>
+                            <li>Optimized user interaction experience</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1356,6 +1375,449 @@
                 }, 500);
             }
         }
+
+        // ===== 编辑模式功能 =====
+        let editMode = false;
+        const ADMIN_PASSWORD = 'zwu20262001'; // 管理员密码（可以修改）
+
+        // 显示密码输入对话框
+        function showPasswordDialog() {
+            return new Promise((resolve) => {
+                // 创建遮罩层
+                const overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    backdrop-filter: blur(10px);
+                    z-index: 99999;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    animation: fadeIn 0.3s ease;
+                `;
+
+                // 创建对话框
+                const dialog = document.createElement('div');
+                dialog.style.cssText = `
+                    background: linear-gradient(135deg, #1a1a2e, #16213e);
+                    padding: 2.5rem;
+                    border-radius: 20px;
+                    border: 1px solid rgba(0, 212, 255, 0.3);
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    max-width: 400px;
+                    width: 90%;
+                    animation: slideUp 0.3s ease;
+                `;
+
+                dialog.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔐</div>
+                        <h3 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.5rem;">Admin Access Required</h3>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Please enter the admin password to enable edit mode</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="password" id="admin-password-input" placeholder="Enter password..." 
+                            style="width: 100%; padding: 0.875rem 1rem; background: rgba(255, 255, 255, 0.05); 
+                            border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #ffffff; 
+                            font-size: 1rem; outline: none; transition: all 0.3s ease;"
+                            onfocus="this.style.borderColor='rgba(0, 212, 255, 0.5)'" 
+                            onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'">
+                    </div>
+                    
+                    <div id="password-error" style="color: #ff6b6b; font-size: 0.875rem; margin-bottom: 1rem; display: none; text-align: center;">
+                        ❌ Incorrect password. Please try again.
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="cancel-btn" style="flex: 1; padding: 0.75rem; background: rgba(255, 255, 255, 0.1); 
+                            color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+                            Cancel
+                        </button>
+                        <button id="submit-btn" style="flex: 1; padding: 0.75rem; 
+                            background: linear-gradient(135deg, #00d4ff, #ff00d4); 
+                            color: #ffffff; border: none; border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Unlock
+                        </button>
+                    </div>
+                `;
+
+                overlay.appendChild(dialog);
+                document.body.appendChild(overlay);
+
+                // 自动聚焦输入框
+                setTimeout(() => {
+                    document.getElementById('admin-password-input').focus();
+                }, 100);
+
+                // 提交按钮事件
+                const submitBtn = document.getElementById('submit-btn');
+                const cancelBtn = document.getElementById('cancel-btn');
+                const passwordInput = document.getElementById('admin-password-input');
+                const errorDiv = document.getElementById('password-error');
+
+                const handleSubmit = () => {
+                    const password = passwordInput.value;
+                    if (password === ADMIN_PASSWORD) {
+                        // 密码正确，关闭对话框并返回 true
+                        overlay.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(overlay);
+                        }, 300);
+                        resolve(true);
+                    } else {
+                        // 密码错误，显示错误信息
+                        errorDiv.style.display = 'block';
+                        passwordInput.value = '';
+                        passwordInput.style.borderColor = '#ff6b6b';
+                        setTimeout(() => {
+                            passwordInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        }, 1000);
+                        passwordInput.focus();
+                    }
+                };
+
+                const handleCancel = () => {
+                    overlay.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(overlay);
+                    }, 300);
+                    resolve(false);
+                };
+
+                submitBtn.addEventListener('click', handleSubmit);
+                cancelBtn.addEventListener('click', handleCancel);
+
+                // Enter 键提交
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSubmit();
+                    }
+                });
+
+                // ESC 键取消
+                overlay.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        handleCancel();
+                    }
+                });
+            });
+        }
+
+        // 切换编辑模式
+        async function toggleEditMode() {
+            const button = document.getElementById('edit-mode-toggle');
+            const editableElements = document.querySelectorAll('[contenteditable]');
+            
+            if (!editMode) {
+                // 尝试进入编辑模式，先验证密码
+                const authenticated = await showPasswordDialog();
+                
+                if (!authenticated) {
+                    // 用户取消或密码错误
+                    showNotification('❌ Authentication failed or cancelled.', 'error');
+                    return;
+                }
+                
+                // 密码验证通过，进入编辑模式
+                editMode = true;
+                button.textContent = '💾 Save Changes';
+                button.style.background = 'linear-gradient(135deg, #00d4ff, #ff00d4)';
+                button.style.border = 'none';
+                
+                // 启用所有可编辑区域
+                editableElements.forEach(el => {
+                    el.setAttribute('contenteditable', 'true');
+                    el.style.outline = '2px dashed rgba(0, 212, 255, 0.5)';
+                    el.style.padding = '0.5rem';
+                    el.style.borderRadius = '4px';
+                    el.style.transition = 'all 0.3s ease';
+                });
+                
+                // 添加编辑提示
+                showNotification('✏️ Edit mode enabled. Click on any text to edit.', 'info');
+                
+                // 为练习详情页添加编辑按钮
+                addExerciseEditButtons();
+            } else {
+                // 退出编辑模式并保存
+                editMode = false;
+                button.textContent = '✏️ Edit Mode';
+                button.style.background = 'rgba(255, 255, 255, 0.1)';
+                button.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+                
+                // 禁用所有可编辑区域
+                editableElements.forEach(el => {
+                    el.setAttribute('contenteditable', 'false');
+                    el.style.outline = 'none';
+                    el.style.padding = '0';
+                });
+                
+                // 保存数据
+                saveAllData();
+                showNotification('✅ Changes saved to local storage!', 'success');
+                
+                // 移除练习编辑按钮
+                removeExerciseEditButtons();
+            }
+        }
+
+        // 为练习详情添加编辑按钮
+        function addExerciseEditButtons() {
+            const detailContent = document.getElementById('exercise-detail-content');
+            if (!detailContent || detailContent.innerHTML.trim() === '') return;
+            
+            // 检查是否已经添加了按钮
+            if (detailContent.querySelector('.exercise-edit-actions')) return;
+            
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'exercise-edit-actions';
+            actionsDiv.style.cssText = 'margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.3);';
+            actionsDiv.innerHTML = `
+                <h4 style="margin-bottom: 1rem; color: #00d4ff;">Edit Exercise Content</h4>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button onclick="saveCurrentExercise()" style="background: linear-gradient(135deg, #00d4ff, #ff00d4); color: #ffffff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">💾 Save This Exercise</button>
+                    <button onclick="exportAllData()" style="background: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">📥 Export All Data</button>
+                </div>
+            `;
+            detailContent.appendChild(actionsDiv);
+        }
+
+        // 移除练习编辑按钮
+        function removeExerciseEditButtons() {
+            const actionsDiv = document.querySelector('.exercise-edit-actions');
+            if (actionsDiv) {
+                actionsDiv.remove();
+            }
+        }
+
+        // 保存当前练习
+        function saveCurrentExercise() {
+            const hash = window.location.hash;
+            if (!hash.startsWith('#exercise-')) {
+                showNotification('⚠️ Please navigate to an exercise detail page first.', 'warning');
+                return;
+            }
+            
+            const exerciseId = parseInt(hash.split('-')[1]);
+            const exercise = exercises.find(e => e.id === exerciseId);
+            
+            if (!exercise) {
+                showNotification('❌ Exercise not found.', 'error');
+                return;
+            }
+            
+            // 获取编辑后的内容
+            const contentEl = document.querySelector('.exercise-content-section div');
+            if (contentEl) {
+                exercise.content = contentEl.innerHTML.replace(/<br>/g, '\n');
+            }
+            
+            // 保存到 localStorage
+            saveToLocalStorage();
+            showNotification('✅ Exercise saved successfully!', 'success');
+        }
+
+        // 保存所有数据
+        function saveAllData() {
+            // 保存项目数据
+            const projectData = {
+                title: document.querySelector('[data-field="project.title"] h2')?.textContent || '',
+                description: document.querySelector('[data-field="project.description"] p')?.innerHTML || '',
+                progress: document.querySelector('[data-field="project.progress"] p')?.textContent || '',
+                progressPercent: parseInt(document.querySelector('[data-field="project.progress"] .progress-fill')?.style.width || '75'),
+                achievements: document.querySelector('[data-field="project.achievements"] ul')?.innerHTML || ''
+            };
+            
+            // 保存到 localStorage
+            const dataToSave = {
+                exercises: exercises,
+                project: projectData,
+                lastModified: new Date().toISOString()
+            };
+            
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+            console.log('Data saved to localStorage:', dataToSave);
+        }
+
+        // 保存到 localStorage
+        function saveToLocalStorage() {
+            const dataToSave = {
+                exercises: exercises,
+                lastModified: new Date().toISOString()
+            };
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+        }
+
+        // 导出所有数据为 JSON 文件
+        function exportAllData() {
+            saveAllData();
+            
+            const dataStr = localStorage.getItem('teamWebsiteData');
+            if (!dataStr) {
+                showNotification('❌ No data to export.', 'error');
+                return;
+            }
+            
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `team-website-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('📥 Data exported! Check your downloads folder.', 'success');
+        }
+
+        // 显示通知
+        function showNotification(message, type = 'info') {
+            // 移除现有通知
+            const existing = document.querySelector('.notification-toast');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            
+            const colors = {
+                success: '#00ff88',
+                error: '#ff6b6b',
+                warning: '#ffa500',
+                info: '#00d4ff'
+            };
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: ${colors[type]};
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                border: 1px solid ${colors[type]};
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+                font-size: 0.95rem;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // 添加 CSS 动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化编辑数据
+        function initEditData() {
+            // 从 localStorage 加载已保存的数据
+            const savedData = localStorage.getItem('teamWebsiteData');
+            if (savedData) {
+                try {
+                    const parsed = JSON.parse(savedData);
+                    if (parsed.exercises && parsed.exercises.length > 0) {
+                        exercises = parsed.exercises;
+                        renderExercises();
+                    }
+                    if (parsed.project && Object.keys(parsed.project).length > 0) {
+                        loadProjectData(parsed.project);
+                    }
+                } catch (e) {
+                    console.error('Failed to load saved data:', e);
+                }
+            }
+        }
+
+        // 加载项目数据到页面
+        function loadProjectData(projectData) {
+            if (projectData.title) {
+                const titleEl = document.querySelector('[data-field="project.title"] h2');
+                if (titleEl) titleEl.textContent = projectData.title;
+            }
+            if (projectData.description) {
+                const descEl = document.querySelector('[data-field="project.description"] p');
+                if (descEl) descEl.innerHTML = projectData.description;
+            }
+            if (projectData.progress) {
+                const progressEl = document.querySelector('[data-field="project.progress"] p');
+                if (progressEl) progressEl.textContent = projectData.progress;
+                const fillEl = document.querySelector('[data-field="project.progress"] .progress-fill');
+                if (fillEl && projectData.progressPercent) {
+                    fillEl.style.width = projectData.progressPercent + '%';
+                }
+            }
+            if (projectData.achievements) {
+                const achievementsEl = document.querySelector('[data-field="project.achievements"] ul');
+                if (achievementsEl) achievementsEl.innerHTML = projectData.achievements;
+            }
+        }
+
+        // 页面加载时初始化编辑数据
+        window.addEventListener('load', initEditData);
     </script>
 </body>
 </html>
