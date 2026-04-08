@@ -25,12 +25,15 @@ Welcome to the what the dog doing team! We are a group of passionate and determi
 
 ## Features
 
+- **Animated Gradient Homepage**: Flowing gradient background with smooth color transitions
 - **Separate Pages**: "About us" (team intro) and "Team members" (individual profiles) are independent sections
 - **Hash-based routing** (`#home`, `#intro`, `#members`, `#member-0`~`#member-5`, `#project`, `#exercises`)
-- **Apple-inspired UI** – Blur navbar, gradient backgrounds, card hover effects, 360° avatar flip animation
-- **Fully responsive** – Optimized for desktop, tablet, and mobile devices
+- **Apple-inspired UI** – Frosted glass navbar, gradient backgrounds, card hover effects, 360° avatar flip animation
+- **Fully responsive** – Optimized for desktop, tablet, and mobile devices (1024px, 768px, 480px, 360px breakpoints)
 - **Data-driven** – Member info, projects, and exercises stored in JS objects for easy updates
 - **GIF showcase** – Interactive image reveal with smooth fade animation
+- **Member Detail Pages** – Individual profiles with Student ID, Email, Hobbies, and Assignments
+- **Transparent Navbar** – Optimized opacity for seamless gradient background integration
 
 ## Project Structure
 
