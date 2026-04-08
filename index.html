@@ -921,6 +921,13 @@
                 <!-- 练习列表将通过 JavaScript 动态生成 -->
             </div>
         </section>
+
+        <!-- 练习详情页 -->
+        <section id="exercise-detail" class="page-section">
+            <div id="exercise-detail-content">
+                <!-- 练习详情将通过 JavaScript 动态生成 -->
+            </div>
+        </section>
     </main>
 
     <script>
@@ -934,8 +941,7 @@
                 skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'UI/UX'],
                 email: '1059436880@qq.com',
                 github: 'https://github.com/17poi',
-                avatar: './resources/image/avatars/Ash.jpg',
-                studentId: '2024014757',
+                avatar: './assets/image/avatars/Ash.jpg',
                 hobby: ['Game', 'Music', 'Sleep'],
                 assignment: ['Software Building', 'Web Building']
             },
@@ -947,8 +953,7 @@
                 skills: ['Arduino', 'Sensor Technology', 'Circuit Design', 'Prototyping', 'Interactive Systems'],
                 email: '2301618056@qq.com',
                 github: 'https://github.com/WanShang2026',
-                avatar: './resources/image/avatars/Felix.jpg',
-                studentId: '2024014768',
+                avatar: './assets/image/avatars/Felix.jpg',
                 hobby: ['Electronics', 'Coding', 'Gaming'],
                 assignment: ['Software Building', 'Web Building']
             },
@@ -960,8 +965,7 @@
                 skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
                 email: 'howie@example.com',
                 github: 'https://github.com/howie',
-                avatar: './resources/image/avatars/default-avatar.png',
-                studentId: '',
+                avatar: './assets/image/avatars/default-avatar.png',
                 hobby: [],
                 assignment: []
             },
@@ -973,8 +977,7 @@
                 skills: ['Project Planning', 'Team Coordination', 'Progress Tracking', 'Risk Management', 'Stakeholder Communication'],
                 email: '2500401537@qq.com',
                 github: 'https://github.com/HMZ766',
-                avatar: './resources/image/avatars/Max.jpg',
-                studentId: '2024014771',
+                avatar: './assets/image/avatars/Max.jpg',
                 hobby: ['Coding', 'Gaming', 'Reading'],
                 assignment: ['Software Building', 'Web Building']
             },
@@ -986,8 +989,7 @@
                 skills: ['平面设计', '美术美工'],
                 email: '2012362350@QQ.COM',
                 github: 'https://github.com/SONATA360',
-                avatar: './resources/image/avatars/Joe.jpg',
-                studentId: '2024014755',
+                avatar: './assets/image/avatars/Joe.jpg',
                 hobby: ['电子游戏', '手绘'],
                 assignment: []
             },
@@ -999,8 +1001,7 @@
                 skills: ['平面设计'],
                 email: '2417857974@qq.com',
                 github: 'https://github.com/Excalibuuuuur',
-                avatar: './resources/image/avatars/Excalibuuuuur.jpg',
-                studentId: '2024014781',
+                avatar: './assets/image/avatars/Excalibuuuuur.jpg',
                 hobby: ['电子游戏', '绘画'],
                 assignment: []
             }
@@ -1009,29 +1010,34 @@
         // ===== 课程练习数据 =====
         const exercises = [
             {
+                id: 0,
                 title: 'Arduino Input & Output Experiment',
                 description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
-                link: 'https://profabx.com/tutorials/5arduino/arduino_input/'
+                content: 'In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:\n\n• Digital pin configuration (INPUT/OUTPUT)\n• Pull-up and pull-down resistors\n• Button debouncing\n• LED brightness control with PWM\n• Serial monitor for debugging\n\nComponents used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.'
             },
             {
+                id: 1,
                 title: 'Sensor Data Collection',
                 description: 'Use various sensors to collect environmental data and perform initial processing.',
-                link: '#'
+                content: 'This exercise focused on interfacing various sensors with Arduino to collect real-world data. We worked with:\n\n• Temperature sensor (DHT11/DHT22)\n• Humidity sensor\n• Light sensor (LDR)\n• Ultrasonic distance sensor (HC-SR04)\n• Soil moisture sensor\n\nData was collected and displayed via Serial Monitor, forming the foundation for our health monitoring project.'
             },
             {
+                id: 2,
                 title: 'Web Interface Design',
                 description: 'Design and implement responsive web interfaces to optimize user experience.',
-                link: '#'
+                content: 'In this exercise, we designed and built responsive web interfaces using HTML5, CSS3, and JavaScript. Topics covered:\n\n• Semantic HTML5 structure\n• CSS Grid and Flexbox layouts\n• Responsive design with media queries\n• CSS animations and transitions\n• Form validation\n• Accessibility best practices\n\nThis exercise directly contributed to building our team showcase website.'
             },
             {
+                id: 3,
                 title: 'Data Visualization Practice',
                 description: 'Implement data visualization displays using JavaScript libraries.',
-                link: '#'
+                content: 'We explored various JavaScript libraries for creating interactive data visualizations:\n\n• Chart.js for basic charts (line, bar, pie)\n• D3.js for custom visualizations\n• Real-time data updating\n• Interactive tooltips and legends\n• Export functionality\n\nApplied these skills to visualize sensor data from our Arduino projects in the browser.'
             },
             {
+                id: 4,
                 title: 'Team Collaboration Project',
                 description: 'Complete a comprehensive project as a team to enhance teamwork skills.',
-                link: '#'
+                content: 'Our team collaboration exercise involved planning, executing, and presenting a complete project from concept to delivery:\n\n• Project planning and requirement analysis\n• Task division and timeline management\n• Git version control and branch management\n• Code review and integration\n• Testing and debugging\n• Final presentation and documentation\n\nThis exercise prepared us for our final Health Monitoring System project.'
             }
         ];
 
@@ -1039,7 +1045,7 @@
         function renderMembers() {
             const grid = document.getElementById('members-grid');
             grid.innerHTML = members.map(member => {
-                const avatarSrc = member.avatar || './resources/image/avatars/default-avatar.png';
+                const avatarSrc = member.avatar || './assets/image/avatars/default-avatar.png';
                 return `
                     <div class="card" onclick="showMemberDetail(${member.id})">
                         <div class="card-avatar">
@@ -1073,11 +1079,6 @@
                     <div class="member-section">
                         <h3>Bio</h3>
                         <p>${member.bio}</p>
-                    </div>
-
-                    <div class="member-section">
-                        <h3>Student ID</h3>
-                        <p>${member.studentId || 'N/A'}</p>
                     </div>
 
                     <div class="member-section">
@@ -1118,14 +1119,50 @@
         // ===== 渲染练习列表 =====
         function renderExercises() {
             const list = document.getElementById('exercises-list');
-            list.innerHTML = exercises.map((exercise, index) => `
+            list.innerHTML = exercises.map((exercise) => `
                 <div class="exercise-card">
-                    <h3>练习 ${index + 1}: ${exercise.title}</h3>
+                    <h3>练习 ${exercise.id + 1}: ${exercise.title}</h3>
                     <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
-                    <a href="${exercise.link}" target="_blank">查看练习详情 →</a>
+                    <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
                 </div>
             `).join('');
         }
+
+        // ===== 显示练习详情 =====
+        function showExerciseDetail(id) {
+            const exercise = exercises.find(e => e.id === id);
+            if (!exercise) return;
+
+            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
+
+            const detailContent = document.getElementById('exercise-detail-content');
+            detailContent.innerHTML = `
+                <div class="exercise-detail">
+                    <div style="margin-bottom: 2rem;">
+                        <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
+                    </div>
+                    
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
+                    
+                    <div class="exercise-content-section">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            ${contentWithBreaks}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            window.location.hash = `#exercise-${id}`;
+        }
+
+        // ===== 显示练习列表 =====
+        function showExercisesList() {
+            window.location.hash = '#exercises';
+        }
+
+
 
         // ===== 路由管理 =====
         function handleRoute() {
@@ -1150,6 +1187,15 @@
                 const memberId = parseInt(hash.split('-')[1]);
                 if (!isNaN(memberId) && memberId >= 0 && memberId < members.length) {
                     showMemberDetailFromHash(memberId);
+                    return;
+                }
+            }
+
+            // 处理练习详情页
+            if (hash.startsWith('#exercise-')) {
+                const exerciseId = parseInt(hash.split('-')[1]);
+                if (!isNaN(exerciseId) && exerciseId >= 0 && exerciseId < exercises.length) {
+                    showExerciseDetailFromHash(exerciseId);
                     return;
                 }
             }
@@ -1191,11 +1237,6 @@
                     </div>
 
                     <div class="member-section">
-                        <h3>Student ID</h3>
-                        <p>${member.studentId || 'N/A'}</p>
-                    </div>
-
-                    <div class="member-section">
                         <h3>Hobbies</h3>
                         <div class="skills">
                             ${member.hobby ? member.hobby.map(h => `<span class="skill-tag">${h}</span>`).join('') : '<p>No hobbies listed</p>'}
@@ -1234,6 +1275,43 @@
             window.scrollTo(0, 0);
         }
 
+        // ===== 从 Hash 显示练习详情 =====
+        function showExerciseDetailFromHash(id) {
+            const exercise = exercises.find(e => e.id === id);
+            if (!exercise) return;
+
+            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
+
+            const detailContent = document.getElementById('exercise-detail-content');
+            detailContent.innerHTML = `
+                <div class="exercise-detail">
+                    <div style="margin-bottom: 2rem;">
+                        <a href="#exercises" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
+                    </div>
+                    
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
+                    
+                    <div class="exercise-content-section">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            ${contentWithBreaks}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('exercise-detail').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#exercises') {
+                    link.classList.add('active');
+                }
+            });
+
+            window.scrollTo(0, 0);
+        }
+
         // ===== 初始化 =====
         document.addEventListener('DOMContentLoaded', () => {
             renderMembers();
@@ -1259,7 +1337,7 @@
                 // 显示图片
                 // 注意：这里需要您提供 GIF 文件的路径
                 // 请将 GIF 文件放在项目目录中，然后修改下面的路径
-                image.src = './resources/image/eggs/what-the-dog-doing.gif';
+                image.src = './assets/image/eggs/what-the-dog-doing.gif';
                 container.style.display = 'block';
                 button.textContent = 'Hide Image';
                 

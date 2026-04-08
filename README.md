@@ -27,28 +27,32 @@ Welcome to the what the dog doing team! We are a group of passionate and determi
 
 - **Animated Gradient Homepage**: Flowing gradient background with smooth color transitions
 - **Separate Pages**: "About us" (team intro) and "Team members" (individual profiles) are independent sections
-- **Hash-based routing** (`#home`, `#intro`, `#members`, `#member-0`~`#member-5`, `#project`, `#exercises`)
+- **Hash-based routing** (`#home`, `#intro`, `#members`, `#member-0`~`#member-5`, `#exercise-0`~`#exercise-4`, `#project`, `#exercises`)
 - **Apple-inspired UI** – Frosted glass navbar, gradient backgrounds, card hover effects, 360° avatar flip animation
 - **Fully responsive** – Optimized for desktop, tablet, and mobile devices (1024px, 768px, 480px, 360px breakpoints)
 - **Data-driven** – Member info, projects, and exercises stored in JS objects for easy updates
 - **GIF showcase** – Interactive image reveal with smooth fade animation
-- **Member Detail Pages** – Individual profiles with Student ID, Email, Hobbies, and Assignments
+- **Member Detail Pages** – Individual profiles with Bio, Email, Hobbies, and Assignments
+- **Exercise Detail Pages** – Local hash routing with detailed content for each exercise
 - **Transparent Navbar** – Optimized opacity for seamless gradient background integration
 
 ## Project Structure
 
 ```
 ZWU-2026-2-001/
-├── index.html              # Main entry (single-page application)
-├── README.md               # Project documentation
-├── LICENSE                 # MIT License
-├── Ash.jpg                 # Ash's avatar
-├── Felix.jpg               # Felix's avatar
-├── Max.jpg                 # Max's avatar
-├── Joe.jpg                 # Joe's avatar
-├── Excalibuuuuur.jpg       # David's avatar
-├── default-avatar.png      # Default member avatar
-└── what-the-dog-doing.gif  # Team branding GIF
+├── index.html                  # Main entry (single-page application)
+├── README.md                   # Project documentation
+├── LICENSE                     # MIT License
+├── assets/
+│   └── image/
+│       └── avatars/
+│           ├── Ash.jpg         # Ash's avatar
+│           ├── Felix.jpg       # Felix's avatar
+│           ├── Max.jpg         # Max's avatar
+│           ├── Joe.jpg         # Joe's avatar
+│           ├── Excalibuuuuur.jpg # David's avatar
+│           └── default-avatar.png # Default member avatar
+└── what-the-dog-doing.gif      # Team branding GIF
 ```
 
 ## Getting Started
