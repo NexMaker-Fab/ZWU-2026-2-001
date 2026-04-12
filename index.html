@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="what the dog doing - Team Showcase Website">
     <title>what the dog doing - Team Showcase Website</title>
+    <script>
+        // GitHub 同步功能已移至底部的 script 标签中
+    </script>
     <style>
         /* ===== 基础样式重置 ===== */
         * {
@@ -752,6 +755,38 @@
             line-height: 1.8;
         }
 
+        /* ===== 可编辑区域样式 ===== */
+        .editable-area {
+            position: relative;
+        }
+
+        .editable-area::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed transparent;
+            border-radius: 16px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        /* 图片样式 */
+        .editable-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .exercise-content-section img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
         /* ===== 团队介绍页面 ===== */
         .intro-section {
             max-width: 800px;
@@ -874,16 +909,20 @@
         <!-- 期末项目 -->
         <section id="project" class="page-section">
             <h2 class="page-title">Final Project</h2>
-            <div class="project-showcase">
-                <h2>Health Monitoring System</h2>
-                <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
-                    Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
-                    and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
-                    providing users with comprehensive health data monitoring services.
-                </p>
+            <div class="project-showcase" id="project-content">
+                <div class="editable-area" data-field="project.title">
+                    <h2>Health Monitoring System</h2>
+                </div>
+                <div class="editable-area" data-field="project.description">
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
+                        Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
+                        and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
+                        providing users with comprehensive health data monitoring services.
+                    </p>
+                </div>
 
                 <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #00d4ff;">Technology Stack</h3>
-                <div class="tech-stack">
+                <div class="tech-stack" id="project-tech-stack">
                     <span class="tech-item">Arduino</span>
                     <span class="tech-item">HTML5</span>
                     <span class="tech-item">CSS3</span>
@@ -893,19 +932,47 @@
                 </div>
 
                 <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">Project Progress</h3>
-                <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;">Development Progress: 75%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
+                <div class="editable-area" data-field="project.progress">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;" contenteditable="false">Development Progress: 75%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
                 </div>
 
                 <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
-                    <h4 style="margin-bottom: 0.5rem;">Key Achievements</h4>
-                    <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;">
-                        <li>Completed hardware prototype design and assembly</li>
-                        <li>Implemented data collection and transmission functionality</li>
-                        <li>Developed web visualization interface</li>
-                        <li>Optimized user interaction experience</li>
-                    </ul>
+                    <div class="editable-area" data-field="project.achievements">
+                        <h4 style="margin-bottom: 0.5rem;" contenteditable="false">Key Achievements</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;" contenteditable="false">
+                            <li>Completed hardware prototype design and assembly</li>
+                            <li>Implemented data collection and transmission functionality</li>
+                            <li>Developed web visualization interface</li>
+                            <li>Optimized user interaction experience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">项目文件</h3>
+                <div id="project-file-upload" style="margin-bottom: 2rem;">
+                    <div style="background: rgba(0, 212, 255, 0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 212, 255, 0.2);">
+                        <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传项目文件</h4>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
+                            支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
+                        </p>
+                        <input type="file" id="project-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
+                        <button onclick="document.getElementById('project-file-input').click()" style="
+                            background: linear-gradient(135deg, #00d4ff, #0099cc);
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 8px;
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+                        ">选择文件</button>
+                    </div>
+                    <div id="project-file-list" style="margin-top: 1rem;"></div>
                 </div>
             </div>
         </section>
@@ -931,6 +998,135 @@
     </main>
 
     <script>
+        // ===== GitHub 同步功能 =====
+        const GITHUB_CONFIG = {
+            owner: 'NexMaker-Fab',
+            repo: 'ZWU-2026-2-001',
+            branch: 'main',  // 改为 main 分支直接同步
+            filePath: 'data/homework.json'
+        };
+
+        // 获取存储的 GitHub Token
+        function getGitHubToken() {
+            const token = localStorage.getItem('github_token');
+            if (!token) return null;
+            try {
+                return atob(token);
+            } catch (e) {
+                console.error('Token decode error:', e);
+                return null;
+            }
+        }
+
+        // 保存 GitHub Token
+        function saveGitHubToken(token) {
+            if (token) {
+                localStorage.setItem('github_token', btoa(token));
+            }
+        }
+
+        // 检查是否有仓库写入权限
+        async function checkWritePermission(token) {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (!response.ok) return false;
+                
+                const repoData = await response.json();
+                return repoData.permissions && repoData.permissions.push;
+            } catch (error) {
+                console.error('检查权限失败:', error);
+                return false;
+            }
+        }
+
+        // 从 GitHub 加载作业数据
+        async function loadHomeworkFromGitHub() {
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
+                const response = await fetch(url, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                });
+
+                if (!response.ok) {
+                    console.log('⚠️ 从 GitHub 加载失败，使用 localStorage');
+                    return null;
+                }
+
+                const data = await response.json();
+                const content = atob(data.content);
+                return JSON.parse(content);
+            } catch (error) {
+                console.error('从 GitHub 加载失败:', error);
+                return null;
+            }
+        }
+
+        // 保存作业数据到 GitHub（实时同步）
+        async function saveHomeworkToGitHub(homeworkData, exerciseId) {
+            const token = getGitHubToken();
+            if (!token) {
+                console.warn('⚠️ 未配置 GitHub Token，无法同步到 GitHub');
+                return false;
+            }
+
+            try {
+                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
+                
+                // 获取当前文件的 SHA
+                const getResponse = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!getResponse.ok) {
+                    console.error('❌ 无法获取文件 SHA');
+                    return false;
+                }
+
+                const fileData = await getResponse.json();
+                const sha = fileData.sha;
+
+                // 更新文件
+                const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(homeworkData, null, 2))));
+
+                const putResponse = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: `🔄 Update exercise ${exerciseId + 1} content`,
+                        content: encodedContent,
+                        sha: sha,
+                        branch: GITHUB_CONFIG.branch
+                    })
+                });
+
+                if (!putResponse.ok) {
+                    const error = await putResponse.json();
+                    console.error('❌ 保存到 GitHub 失败:', error.message);
+                    return false;
+                }
+
+                console.log('✅ 已实时同步到 GitHub！');
+                return true;
+            } catch (error) {
+                console.error('❌ GitHub 同步异常:', error);
+                return false;
+            }
+        }
+
         // ===== 团队成员数据 =====
         const members = [
             {
@@ -961,13 +1157,13 @@
                 id: 2,
                 name: 'Howie',
                 role: 'Backend Developer',
-                bio: 'Skilled in data processing and server-side development. Responsible for data storage and business logic implementation in our projects.',
+                bio: 'Passionate backend developer with expertise in server-side development and database management. Focused on building robust APIs and scalable systems. Experienced in Python, Node.js, and database optimization to deliver high-performance solutions.',
                 skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
                 email: 'howie@example.com',
-                github: 'https://github.com/howie',
-                avatar: './assets/image/avatars/default-avatar.png',
-                hobby: [],
-                assignment: []
+                github: 'https://github.com/Howie-jbg',
+                avatar: './assets/image/avatars/howie-avatar.jpg',
+                hobby: ['Coding', 'Reading', 'Music'],
+                assignment: ['Software Building', 'Web Building']
             },
             {
                 id: 3,
@@ -1123,7 +1319,9 @@
                 <div class="exercise-card">
                     <h3>练习 ${exercise.id + 1}: ${exercise.title}</h3>
                     <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
-                    <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
+                    </div>
                 </div>
             `).join('');
         }
@@ -1131,13 +1329,23 @@
         // ===== 显示练习详情 =====
         function showExerciseDetail(id) {
             const exercise = exercises.find(e => e.id === id);
-            if (!exercise) return;
+            if (!exercise) {
+                console.error('Exercise not found:', id);
+                return;
+            }
 
-            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
+            console.log('显示练习详情:', exercise.title);
+            const exerciseContentWithBreaks = exercise.content.replace(/\n/g, '<br>');
 
             const detailContent = document.getElementById('exercise-detail-content');
+            if (!detailContent) {
+                console.error('exercise-detail-content element not found');
+                return;
+            }
+
+            // 使用 innerHTML 插入内容
             detailContent.innerHTML = `
-                <div class="exercise-detail">
+                <div style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
                     <div style="margin-bottom: 2rem;">
                         <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
                     </div>
@@ -1145,24 +1353,66 @@
                     <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
                     <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
                     
-                    <div class="exercise-content-section">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
-                            ${contentWithBreaks}
+                    <!-- 练习内容（只读，不可编辑） -->
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            ${exerciseContentWithBreaks}
                         </div>
+                    </div>
+
+                    <!-- 练习文件上传区域 -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习文件</h3>
+                        <div id="exercise-${id}-file-upload" style="background: rgba(0, 212, 255, 0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 212, 255, 0.2);">
+                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传作业文件</h4>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
+                                支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
+                            </p>
+                            <input type="file" id="exercise-${id}-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
+                            <button onclick="document.getElementById('exercise-${id}-file-input').click()" style="
+                                background: linear-gradient(135deg, #00d4ff, #0099cc);
+                                color: white;
+                                border: none;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 8px;
+                                font-size: 0.9rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+                            ">选择文件</button>
+                        </div>
+                        <div id="exercise-${id}-file-list" style="margin-top: 1rem;"></div>
                     </div>
                 </div>
             `;
 
+            console.log('✅ 练习详情页已渲染');
+            console.log('DOM 内容长度:', detailContent.innerHTML.length);
+            
+            // 初始化练习文件上传功能
+            setTimeout(() => {
+                initExerciseFileUpload(id);
+            }, 100);
+            
+            // 激活练习详情页 section
+            document.getElementById('exercise-detail').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#exercises') {
+                    link.classList.add('active');
+                }
+            });
+            
             window.location.hash = `#exercise-${id}`;
+            window.scrollTo(0, 0);
         }
 
         // ===== 显示练习列表 =====
         function showExercisesList() {
             window.location.hash = '#exercises';
         }
-
-
 
         // ===== 路由管理 =====
         function handleRoute() {
@@ -1181,6 +1431,12 @@
                     link.classList.add('active');
                 }
             });
+
+            // 控制编辑模式按钮显示/隐藏（已移除导航栏按钮，此逻辑保留用于其他功能）
+            const editButton = document.getElementById('edit-mode-toggle');
+            if (editButton) {
+                editButton.style.display = 'none';
+            }
 
             // 处理成员详情页
             if (hash.startsWith('#member-')) {
@@ -1277,39 +1533,8 @@
 
         // ===== 从 Hash 显示练习详情 =====
         function showExerciseDetailFromHash(id) {
-            const exercise = exercises.find(e => e.id === id);
-            if (!exercise) return;
-
-            const contentWithBreaks = exercise.content.replace(/\n/g, '<br>');
-
-            const detailContent = document.getElementById('exercise-detail-content');
-            detailContent.innerHTML = `
-                <div class="exercise-detail">
-                    <div style="margin-bottom: 2rem;">
-                        <a href="#exercises" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
-                    </div>
-                    
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
-                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
-                    
-                    <div class="exercise-content-section">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
-                            ${contentWithBreaks}
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('exercise-detail').classList.add('active');
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#exercises') {
-                    link.classList.add('active');
-                }
-            });
-
-            window.scrollTo(0, 0);
+            // 调用更新后的 showExerciseDetail 函数
+            showExerciseDetail(id);
         }
 
         // ===== 初始化 =====
@@ -1325,7 +1550,219 @@
             if (!window.location.hash || window.location.hash === '#') {
                 window.location.hash = '#home';
             }
+
+            // 初始化文件上传功能
+            initProjectFileUpload();
         });
+
+        // ===== 文件上传功能 =====
+        const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+        // 从 localStorage 加载文件列表
+        function loadFiles(context) {
+            try {
+                const files = localStorage.getItem(`${context}_files`);
+                return files ? JSON.parse(files) : [];
+            } catch (e) {
+                console.error('加载文件列表失败:', e);
+                return [];
+            }
+        }
+
+        // 保存文件列表到 localStorage
+        function saveFiles(context, files) {
+            try {
+                localStorage.setItem(`${context}_files`, JSON.stringify(files));
+            } catch (e) {
+                console.error('保存文件列表失败:', e);
+                showNotification('存储空间不足，无法保存文件', 'error');
+            }
+        }
+
+        // 显示文件列表
+        function renderFileList(context, containerId) {
+            const files = loadFiles(context);
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            if (files.length === 0) {
+                container.innerHTML = '<p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">暂无文件</p>';
+                return;
+            }
+
+            container.innerHTML = files.map((file, index) => {
+                const fileIcon = getFileIcon(file.type);
+                const fileSize = formatFileSize(file.size);
+                return `
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0.75rem 1rem;
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 8px;
+                        margin-bottom: 0.5rem;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1;">
+                            <span style="font-size: 1.5rem;">${fileIcon}</span>
+                            <div style="flex: 1;">
+                                <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">${file.name}</div>
+                                <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">${fileSize}</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button onclick="downloadFile('${context}', ${index})" style="
+                                background: rgba(0, 212, 255, 0.2);
+                                color: #00d4ff;
+                                border: none;
+                                padding: 0.5rem 1rem;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                font-size: 0.85rem;
+                                transition: all 0.3s ease;
+                            ">下载</button>
+                            <button onclick="deleteFile('${context}', ${index})" style="
+                                background: rgba(255, 68, 68, 0.2);
+                                color: #ff4444;
+                                border: none;
+                                padding: 0.5rem 1rem;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                font-size: 0.85rem;
+                                transition: all 0.3s ease;
+                            ">删除</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 获取文件图标
+        function getFileIcon(type) {
+            if (type.includes('pdf')) return '📄';
+            if (type.includes('image')) return '🖼️';
+            if (type.includes('word') || type.includes('document')) return '📝';
+            if (type.includes('video')) return '🎬';
+            if (type.includes('audio')) return '🎵';
+            if (type.includes('presentation') || type.includes('powerpoint')) return '📊';
+            if (type.includes('spreadsheet') || type.includes('excel')) return '📈';
+            return '📁';
+        }
+
+        // 格式化文件大小
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // 处理文件上传
+        function handleFileUpload(context, inputId, listId) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+
+            input.addEventListener('change', async (e) => {
+                const files = Array.from(e.target.files);
+                if (files.length === 0) return;
+
+                const currentFiles = loadFiles(context);
+
+                for (const file of files) {
+                    // 检查文件大小
+                    if (file.size > MAX_FILE_SIZE) {
+                        showNotification(`文件 ${file.name} 超过 50MB 限制`, 'error');
+                        continue;
+                    }
+
+                    try {
+                        // 读取文件为 base64
+                        const base64 = await readFileAsBase64(file);
+                        
+                        currentFiles.push({
+                            name: file.name,
+                            type: file.type,
+                            size: file.size,
+                            data: base64,
+                            uploadTime: new Date().toISOString()
+                        });
+
+                        showNotification(`已上传: ${file.name}`, 'success');
+                    } catch (error) {
+                        console.error('读取文件失败:', error);
+                        showNotification(`读取文件 ${file.name} 失败`, 'error');
+                    }
+                }
+
+                // 保存到 localStorage
+                saveFiles(context, currentFiles);
+                
+                // 刷新文件列表
+                renderFileList(context, listId);
+                
+                // 清空 input
+                input.value = '';
+            });
+        }
+
+        // 读取文件为 base64
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // 下载文件
+        function downloadFile(context, index) {
+            const files = loadFiles(context);
+            if (!files[index]) return;
+
+            const file = files[index];
+            const link = document.createElement('a');
+            link.href = file.data;
+            link.download = file.name;
+            link.click();
+        }
+
+        // 删除文件
+        function deleteFile(context, index) {
+            if (!confirm('确定要删除这个文件吗？')) return;
+
+            const files = loadFiles(context);
+            files.splice(index, 1);
+            saveFiles(context, files);
+
+            // 根据 context 刷新对应的文件列表
+            if (context === 'project') {
+                renderFileList('project', 'project-file-list');
+            } else if (context.startsWith('exercise_')) {
+                const exerciseId = context.split('_')[1];
+                renderFileList(context, `exercise-${exerciseId}-file-list`);
+            }
+
+            showNotification('文件已删除', 'success');
+        }
+
+        // 初始化项目文件上传
+        function initProjectFileUpload() {
+            handleFileUpload('project', 'project-file-input', 'project-file-list');
+            renderFileList('project', 'project-file-list');
+        }
+
+        // 初始化练习文件上传
+        function initExerciseFileUpload(exerciseId) {
+            const context = `exercise_${exerciseId}`;
+            const inputId = `exercise-${exerciseId}-file-input`;
+            const listId = `exercise-${exerciseId}-file-list`;
+            
+            handleFileUpload(context, inputId, listId);
+            renderFileList(context, listId);
+        }
 
         // ===== 切换图片显示 =====
         function toggleImage() {
@@ -1356,6 +1793,396 @@
                 }, 500);
             }
         }
+
+        // ===== 编辑模式功能 =====
+        let editMode = false;
+        const ADMIN_PASSWORD = 'zwu20262001'; // 管理员密码（可以修改）
+
+        // 显示密码输入对话框
+        function showPasswordDialog() {
+            return new Promise((resolve) => {
+                // 创建遮罩层
+                const overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    backdrop-filter: blur(10px);
+                    z-index: 99999;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    animation: fadeIn 0.3s ease;
+                `;
+
+                // 创建对话框
+                const dialog = document.createElement('div');
+                dialog.style.cssText = `
+                    background: linear-gradient(135deg, #1a1a2e, #16213e);
+                    padding: 2.5rem;
+                    border-radius: 20px;
+                    border: 1px solid rgba(0, 212, 255, 0.3);
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    max-width: 400px;
+                    width: 90%;
+                    animation: slideUp 0.3s ease;
+                `;
+
+                dialog.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔐</div>
+                        <h3 style="color: #ffffff; margin-bottom: 0.5rem; font-size: 1.5rem;">Admin Access Required</h3>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Please enter the admin password to enable edit mode</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="password" id="admin-password-input" placeholder="Enter password..." 
+                            style="width: 100%; padding: 0.875rem 1rem; background: rgba(255, 255, 255, 0.05); 
+                            border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: #ffffff; 
+                            font-size: 1rem; outline: none; transition: all 0.3s ease;"
+                            onfocus="this.style.borderColor='rgba(0, 212, 255, 0.5)'" 
+                            onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'">
+                    </div>
+                    
+                    <div id="password-error" style="color: #ff6b6b; font-size: 0.875rem; margin-bottom: 1rem; display: none; text-align: center;">
+                        ❌ Incorrect password. Please try again.
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="cancel-btn" style="flex: 1; padding: 0.75rem; background: rgba(255, 255, 255, 0.1); 
+                            color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; transition: all 0.3s ease;">
+                            Cancel
+                        </button>
+                        <button id="submit-btn" style="flex: 1; padding: 0.75rem; 
+                            background: linear-gradient(135deg, #00d4ff, #ff00d4); 
+                            color: #ffffff; border: none; border-radius: 10px; 
+                            cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease;">
+                            Unlock
+                        </button>
+                    </div>
+                `;
+
+                overlay.appendChild(dialog);
+                document.body.appendChild(overlay);
+
+                // 自动聚焦输入框
+                setTimeout(() => {
+                    document.getElementById('admin-password-input').focus();
+                }, 100);
+
+                // 提交按钮事件
+                const submitBtn = document.getElementById('submit-btn');
+                const cancelBtn = document.getElementById('cancel-btn');
+                const passwordInput = document.getElementById('admin-password-input');
+                const errorDiv = document.getElementById('password-error');
+
+                const handleSubmit = () => {
+                    const password = passwordInput.value;
+                    if (password === ADMIN_PASSWORD) {
+                        // 密码正确，关闭对话框并返回 true
+                        overlay.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(overlay);
+                        }, 300);
+                        resolve(true);
+                    } else {
+                        // 密码错误，显示错误信息
+                        errorDiv.style.display = 'block';
+                        passwordInput.value = '';
+                        passwordInput.style.borderColor = '#ff6b6b';
+                        setTimeout(() => {
+                            passwordInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        }, 1000);
+                        passwordInput.focus();
+                    }
+                };
+
+                const handleCancel = () => {
+                    overlay.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(overlay);
+                    }, 300);
+                    resolve(false);
+                };
+
+                submitBtn.addEventListener('click', handleSubmit);
+                cancelBtn.addEventListener('click', handleCancel);
+
+                // Enter 键提交
+                passwordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSubmit();
+                    }
+                });
+
+                // ESC 键取消
+                overlay.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        handleCancel();
+                    }
+                });
+            });
+        }
+
+        // 切换编辑模式
+        async function toggleEditMode() {
+            const button = document.getElementById('edit-mode-toggle');
+            
+            if (!editMode) {
+                // 尝试进入编辑模式，先验证密码
+                const authenticated = await showPasswordDialog();
+                
+                if (!authenticated) {
+                    // 用户取消或密码错误
+                    showNotification('❌ Authentication failed or cancelled.', 'error');
+                    return;
+                }
+                
+                // 密码验证通过，进入编辑模式
+                editMode = true;
+                button.textContent = '💾 Save Changes';
+                button.style.background = 'linear-gradient(135deg, #00d4ff, #ff00d4)';
+                button.style.border = 'none';
+                
+                // 只启用特定区域的编辑功能（.editable-area 内的元素）
+                const editableAreas = document.querySelectorAll('.editable-area');
+                editableAreas.forEach(area => {
+                    area.classList.add('editing');
+                    const contentElements = area.querySelectorAll('[contenteditable]');
+                    contentElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'true');
+                    });
+                    // 显示编辑工具栏
+                    const toolbar = area.querySelector('.edit-toolbar');
+                    if (toolbar) toolbar.style.display = 'flex';
+                });
+                
+                // 添加编辑提示
+                showNotification('✏️ Edit mode enabled.', 'info');
+            } else {
+                // 退出编辑模式并保存
+                editMode = false;
+                button.textContent = '✏️ Edit Mode';
+                button.style.background = 'rgba(255, 255, 255, 0.1)';
+                button.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+                
+                // 禁用所有可编辑区域
+                const editableAreas = document.querySelectorAll('.editable-area');
+                editableAreas.forEach(area => {
+                    area.classList.remove('editing');
+                    const contentElements = area.querySelectorAll('[contenteditable]');
+                    contentElements.forEach(el => {
+                        el.setAttribute('contenteditable', 'false');
+                    });
+                    // 隐藏编辑工具栏
+                    const toolbar = area.querySelector('.edit-toolbar');
+                    if (toolbar) toolbar.style.display = 'none';
+                });
+                
+                // 保存其他数据
+                saveAllData();
+                showNotification('✅ Changes saved!', 'success');
+            }
+        }
+
+        // 保存所有数据
+        function saveAllData() {
+            // 保存项目数据
+            const projectData = {
+                title: document.querySelector('[data-field="project.title"] h2')?.textContent || '',
+                description: document.querySelector('[data-field="project.description"] p')?.innerHTML || '',
+                progress: document.querySelector('[data-field="project.progress"] p')?.textContent || '',
+                progressPercent: parseInt(document.querySelector('[data-field="project.progress"] .progress-fill')?.style.width || '75'),
+                achievements: document.querySelector('[data-field="project.achievements"] ul')?.innerHTML || ''
+            };
+            
+            // 保存到 localStorage
+            const dataToSave = {
+                exercises: exercises,
+                project: projectData,
+                lastModified: new Date().toISOString()
+            };
+            
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+            console.log('Data saved to localStorage:', dataToSave);
+        }
+
+        // 保存到 localStorage
+        function saveToLocalStorage() {
+            const dataToSave = {
+                exercises: exercises,
+                lastModified: new Date().toISOString()
+            };
+            localStorage.setItem('teamWebsiteData', JSON.stringify(dataToSave));
+        }
+
+        // 导出所有数据为 JSON 文件
+        function exportAllData() {
+            saveAllData();
+            
+            const dataStr = localStorage.getItem('teamWebsiteData');
+            if (!dataStr) {
+                showNotification('❌ No data to export.', 'error');
+                return;
+            }
+            
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `team-website-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('📥 Data exported! Check your downloads folder.', 'success');
+        }
+
+        // 显示通知
+        function showNotification(message, type = 'info') {
+            // 移除现有通知
+            const existing = document.querySelector('.notification-toast');
+            if (existing) existing.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            
+            const colors = {
+                success: '#00ff88',
+                error: '#ff6b6b',
+                warning: '#ffa500',
+                info: '#00d4ff'
+            };
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: ${colors[type]};
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                border: 1px solid ${colors[type]};
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+                font-size: 0.95rem;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // 添加 CSS 动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化编辑数据
+        function initEditData() {
+            // 从 localStorage 加载已保存的数据
+            const savedData = localStorage.getItem('teamWebsiteData');
+            if (savedData) {
+                try {
+                    const parsed = JSON.parse(savedData);
+                    if (parsed.exercises && parsed.exercises.length > 0) {
+                        exercises = parsed.exercises;
+                        renderExercises();
+                    }
+                    if (parsed.project && Object.keys(parsed.project).length > 0) {
+                        loadProjectData(parsed.project);
+                    }
+                } catch (e) {
+                    console.error('Failed to load saved data:', e);
+                }
+            }
+        }
+
+        // 加载项目数据到页面
+        function loadProjectData(projectData) {
+            if (projectData.title) {
+                const titleEl = document.querySelector('[data-field="project.title"] h2');
+                if (titleEl) titleEl.textContent = projectData.title;
+            }
+            if (projectData.description) {
+                const descEl = document.querySelector('[data-field="project.description"] p');
+                if (descEl) descEl.innerHTML = projectData.description;
+            }
+            if (projectData.progress) {
+                const progressEl = document.querySelector('[data-field="project.progress"] p');
+                if (progressEl) progressEl.textContent = projectData.progress;
+                const fillEl = document.querySelector('[data-field="project.progress"] .progress-fill');
+                if (fillEl && projectData.progressPercent) {
+                    fillEl.style.width = projectData.progressPercent + '%';
+                }
+            }
+            if (projectData.achievements) {
+                const achievementsEl = document.querySelector('[data-field="project.achievements"] ul');
+                if (achievementsEl) achievementsEl.innerHTML = projectData.achievements;
+            }
+        }
+
+        // 页面加载时初始化编辑数据
+        window.addEventListener('load', initEditData);
     </script>
 </body>
 </html>
