@@ -1344,6 +1344,129 @@
             }
 
             // 使用 innerHTML 插入内容
+            let homeworkContentHTML = '';
+            
+            // Week 1 特殊作业内容
+            if (id === 0) {
+                homeworkContentHTML = `
+                    <!-- 作业内容 -->
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 自动驾驶交互式信号系统研究资料</h4>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h5 style="color: #ff00d4; margin-bottom: 0.5rem;">研究主题</h5>
+                                <p>自动驾驶交互式信号系统 (Autonomous Driving Interactive Signaling System)<br>
+                                目标：为特殊人群（老人、视障、听障等）设计清晰、易懂的车辆外部信号系统</p>
+                            </div>
+
+                            <div style="margin-bottom: 2rem;">
+                                <h5 style="color: #ff00d4; margin-bottom: 1rem;">开源项目分析</h5>
+                                
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">A. Autoware - 自动驾驶软件栈</h6>
+                                    <p><strong>定位：</strong>基于 ROS 的开源自动驾驶软件栈</p>
+                                    <p><strong>优势：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>自动驾驶链路完整（感知、定位、规划、控制）</li>
+                                        <li>社区成熟，工程水平高</li>
+                                    </ul>
+                                    <p><strong>劣势：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>太重，不适合 Arduino 初学者</li>
+                                        <li>偏向"车能否开"，不专门解决"特殊人群能否理解车的意图"</li>
+                                    </ul>
+                                    <p><strong>💡 启发：</strong>参考车辆状态界面，转化为简洁的外部信号</p>
+                                </div>
+
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">B. Autonomous Vehicle eHMI Prototype - 车辆-行人外部人机界面</h6>
+                                    <p><strong>定位：</strong>车辆-行人外部通信界面</p>
+                                    <p><strong>优势：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>直接研究"如何在车外表达意图"</li>
+                                        <li>适合界面语义验证（文字、颜色、箭头、动画）</li>
+                                    </ul>
+                                    <p><strong>劣势：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>偏向交互原型，非成熟硬件系统</li>
+                                        <li>对老人、视障、听障人群的多模态适配不足</li>
+                                    </ul>
+                                    <p><strong>💡 启发：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>高对比度大图标</li>
+                                        <li>短文本</li>
+                                        <li>节奏灯光</li>
+                                        <li>蜂鸣器/语音</li>
+                                        <li>近距离振动警报</li>
+                                    </ul>
+                                </div>
+
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">C. Harmoware-HMI - 车内人机交互</h6>
+                                    <p><strong>定位：</strong>语音、点头/摇头确认、速度语音控制等</p>
+                                    <p><strong>优势：</strong>强调人机交互而非算法，多模态交互思路</p>
+                                    <p><strong>劣势：</strong>偏向车内场景，非车外交互</p>
+                                    <p><strong>💡 启发：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>不要依赖单一信号通道</li>
+                                        <li>视觉 + 听觉双通道</li>
+                                        <li>对老人来说，冗余提示比单一提示更可靠</li>
+                                    </ul>
+                                </div>
+
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">D. Smart Cane - 智能手杖</h6>
+                                    <p><strong>定位：</strong>视障/老人辅助交互（超声波传感器 + 蜂鸣器）</p>
+                                    <p><strong>优势：</strong>低成本，易复制，适合研究"提示方法是否清晰"</p>
+                                    <p><strong>劣势：</strong>单人近距离避障，媒介单一（主要是声音）</p>
+                                    <p><strong>💡 启发：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>多模态警报（声音、振动、光）</li>
+                                        <li>老人交互简化：少而清晰</li>
+                                    </ul>
+                                </div>
+
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">E. OpenHapticGlove - 触觉手套</h6>
+                                    <p><strong>定位：</strong>视障人群触觉导航（ToF 距离传感 + 振动反馈）</p>
+                                    <p><strong>优势：</strong>触觉反馈天然适合难以看屏幕/灯光的人，比蜂鸣器更私密</p>
+                                    <p><strong>劣势：</strong>需要佩戴设备，成本、舒适度需考虑</p>
+                                    <p><strong>💡 启发：</strong></p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>不仅可以"车发信号"，也可设计"人端接收器"</li>
+                                        <li>特殊人群项目不要赌单一通道</li>
+                                    </ul>
+                                </div>
+
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <h6 style="color: #00d4ff; margin-bottom: 0.5rem;">F. Smartpole-VR-AWSIM - VR 模拟平台</h6>
+                                    <p><strong>定位：</strong>基础设施 eHMI 仿真评估平台</p>
+                                    <p><strong>优势：</strong>可快速测试不同信号设计，可进行 VR 人机因素实验</p>
+                                    <p><strong>劣势：</strong>技术栈重，门槛高，偏向设计验证</p>
+                                    <p><strong>💡 启发：</strong>分两阶段开发：</p>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li>第一阶段：Arduino 低成本交互原型</li>
+                                        <li>第二阶段：CARLA/AWSIM/Unity 人机因素验证</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(255, 0, 212, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #ff00d4;">
+                                <h5 style="color: #ff00d4; margin-bottom: 0.5rem;">🔑 关键设计原则</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0;">
+                                    <li><strong>多模态信号：</strong>视觉 + 听觉 + 触觉，不依赖单一通道</li>
+                                    <li><strong>适老化设计：</strong>大图标、短文本、高对比度</li>
+                                    <li><strong>冗余提示：</strong>对特殊人群，冗余比单一更可靠</li>
+                                    <li><strong>两阶段开发：</strong>Arduino 原型 → VR 仿真验证</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
             detailContent.innerHTML = `
                 <div style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
                     <div style="margin-bottom: 2rem;">
@@ -1360,6 +1483,8 @@
                             ${exerciseContentWithBreaks}
                         </div>
                     </div>
+
+                    ${homeworkContentHTML}
 
                     <!-- 练习文件上传区域 -->
                     <div style="margin-bottom: 2rem;">
