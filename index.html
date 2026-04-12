@@ -1691,9 +1691,27 @@
         }
 
         // 动态加载 DOCX 文件
+        let docxCache = null; // 缓存已解析的 DOCX 内容
+        let docxLoading = false; // 防止重复加载
+
         async function loadDocxFile() {
             const contentDiv = document.getElementById('docx-content');
             if (!contentDiv) return;
+
+            // 如果已经缓存，直接显示
+            if (docxCache) {
+                console.log('✅ 使用缓存的 DOCX 内容');
+                contentDiv.innerHTML = docxCache;
+                return;
+            }
+
+            // 如果正在加载，等待
+            if (docxLoading) {
+                console.log('⏳ DOCX 正在加载中...');
+                return;
+            }
+
+            docxLoading = true;
 
             try {
                 // 显示加载状态
@@ -1717,8 +1735,10 @@
                     document.head.appendChild(style);
                 }
 
-                // 使用 fetch 加载 DOCX 文件
-                const response = await fetch('./data/assignment%201.docx');
+                // 使用 fetch 加载 DOCX 文件（带缓存控制）
+                const response = await fetch('./data/assignment%201.docx', {
+                    cache: 'force-cache' // 强制使用浏览器缓存
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -1736,8 +1756,8 @@
                     })
                 });
 
-                // 显示转换后的 HTML
-                contentDiv.innerHTML = `
+                // 生成带样式的 HTML
+                const styledHTML = `
                     <style>
                         #docx-content h1, #docx-content h2, #docx-content h3, #docx-content h4, #docx-content h5, #docx-content h6 {
                             color: #00d4ff;
@@ -1814,13 +1834,23 @@
                     ${result.value}
                 `;
 
+                // 缓存结果
+                docxCache = styledHTML;
+                docxLoading = false;
+
+                // 显示转换后的 HTML
+                contentDiv.innerHTML = styledHTML;
+
                 // 如果有警告信息，显示在控制台
                 if (result.messages.length > 0) {
                     console.log('DOCX 转换警告:', result.messages);
                 }
 
+                console.log('✅ DOCX 加载并缓存成功');
+
             } catch (error) {
                 console.error('加载 DOCX 文件失败:', error);
+                docxLoading = false;
                 
                 // 备用方案：直接嵌入 DOCX 文件或提供下载链接
                 contentDiv.innerHTML = `
@@ -1837,7 +1867,7 @@
                             <iframe 
                                 src="./data/assignment%201.docx" 
                                 style="width: 100%; height: 600px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; background: white;"
-                                title="ZILIAO.docx"
+                                title="assignment 1.docx"
                             ></iframe>
                         </div>
                         
@@ -1862,6 +1892,119 @@
                     </div>
                 `;
             }
+        }
+
+        // 预加载 DOCX 文件（页面加载时自动执行）
+        function preloadDocxFile() {
+            if (docxCache || docxLoading) return; // 已缓存或正在加载则跳过
+            
+            console.log('🔄 开始预加载 DOCX 文件...');
+            docxLoading = true;
+
+            fetch('./data/assignment%201.docx', {
+                cache: 'force-cache'
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.arrayBuffer();
+            })
+            .then(arrayBuffer => {
+                return mammoth.convertToHtml({ arrayBuffer }, {
+                    convertImage: mammoth.images.imgElement(function(image) {
+                        return image.read("base64").then(function(imageBuffer) {
+                            return {
+                                src: "data:" + image.contentType + ";base64," + imageBuffer
+                            };
+                        });
+                    })
+                });
+            })
+            .then(result => {
+                const styledHTML = `
+                    <style>
+                        #docx-content h1, #docx-content h2, #docx-content h3, #docx-content h4, #docx-content h5, #docx-content h6 {
+                            color: #00d4ff;
+                            margin: 1.5rem 0 0.75rem 0;
+                            font-weight: 600;
+                        }
+                        #docx-content h1 { font-size: 1.8rem; }
+                        #docx-content h2 { font-size: 1.5rem; }
+                        #docx-content h3 { font-size: 1.3rem; }
+                        #docx-content h4 { font-size: 1.1rem; }
+                        #docx-content p {
+                            color: rgba(255, 255, 255, 0.85);
+                            line-height: 1.8;
+                            margin-bottom: 1rem;
+                        }
+                        #docx-content ul, #docx-content ol {
+                            padding-left: 1.5rem;
+                            margin-bottom: 1rem;
+                            color: rgba(255, 255, 255, 0.85);
+                            line-height: 1.8;
+                        }
+                        #docx-content li {
+                            margin-bottom: 0.5rem;
+                        }
+                        #docx-content strong {
+                            color: #ffffff;
+                            font-weight: 600;
+                        }
+                        #docx-content em {
+                            color: #ff00d4;
+                            font-style: italic;
+                        }
+                        #docx-content img {
+                            max-width: 100%;
+                            height: auto;
+                            margin: 1rem 0;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                        }
+                        #docx-content table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin: 1rem 0;
+                            background: rgba(0, 212, 255, 0.05);
+                            border-radius: 8px;
+                            overflow: hidden;
+                        }
+                        #docx-content table td, #docx-content table th {
+                            padding: 0.75rem;
+                            border: 1px solid rgba(0, 212, 255, 0.2);
+                            color: rgba(255, 255, 255, 0.85);
+                        }
+                        #docx-content table th {
+                            background: rgba(0, 212, 255, 0.1);
+                            font-weight: 600;
+                        }
+                        #docx-content blockquote {
+                            border-left: 3px solid #ff00d4;
+                            padding-left: 1rem;
+                            margin: 1rem 0;
+                            color: rgba(255, 255, 255, 0.7);
+                            font-style: italic;
+                        }
+                        #docx-content a {
+                            color: #00d4ff;
+                            text-decoration: underline;
+                        }
+                        #docx-content hr {
+                            border: none;
+                            border-top: 1px solid rgba(255, 255, 255, 0.1);
+                            margin: 2rem 0;
+                        }
+                    </style>
+                    ${result.value}
+                `;
+                
+                docxCache = styledHTML;
+                docxLoading = false;
+                console.log('✅ DOCX 预加载完成并已缓存');
+            })
+            .catch(error => {
+                console.error('❌ DOCX 预加载失败:', error);
+                docxLoading = false;
+            });
         }
 
         // 处理文件上传
@@ -2387,7 +2530,13 @@
         }
 
         // 页面加载时初始化编辑数据
-        window.addEventListener('load', initEditData);
+        window.addEventListener('load', () => {
+            initEditData();
+            // 预加载 DOCX 文件，加快首次访问速度
+            setTimeout(() => {
+                preloadDocxFile();
+            }, 1000); // 延迟 1 秒，避免影响页面初始加载
+        });
     </script>
 </body>
 </html>
