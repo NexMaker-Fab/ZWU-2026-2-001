@@ -35,7 +35,7 @@ Welcome to the what the dog doing team! We are a group of passionate and determi
 - **Member Detail Pages** – Individual profiles with Bio, Email, Hobbies, and Assignments
 - **Exercise Detail Pages** – Local hash routing with detailed content for each exercise
 - **Transparent Navbar** – Optimized opacity for seamless gradient background integration
-- **Dynamic DOCX Loading** – Automatically parse and render DOCX files with images using mammoth.js library
+- **Hardcoded Assignment Content** – Exercise 1 includes complete Arduino documentation with 30 embedded images for instant loading
 - **File Upload System** – Upload and manage files (PDF, JPG, PNG, DOC, DOCX, MP4, MP3, etc.) in Homework and Final Project pages with local storage
 
 ## Project Structure
@@ -61,28 +61,35 @@ ZWU-2026-2-001/
 │           └── what-the-dog-doing.gif  # Team branding GIF
 ```
 
-## Dynamic DOCX Loading
+## Hardcoded Assignment Content
 
-### Technology
-- **mammoth.js** – Client-side DOCX to HTML converter
-- **Fetch API** – Asynchronous file loading
-- **Base64 Image Encoding** – Embedded images from DOCX files
+### Overview
+Exercise 1 ("Arduino OUTPUT") contains complete assignment documentation directly embedded in HTML, eliminating the need for dynamic file loading.
 
 ### Features
-- 📄 **Automatic Parsing** – DOCX files are automatically converted to HTML when viewing Exercise 1
-- 🖼️ **Image Support** – Images embedded in DOCX are rendered as Base64 data URIs
-- 🎨 **Styled Content** – Custom dark theme styling for headings, paragraphs, lists, tables, and images
-- ⚠️ **Fallback Mechanism** – If parsing fails, provides iframe embed and download options
-- 🔄 **Error Handling** – Graceful error messages with retry functionality
+- ⚡ **Instant Loading** – No network requests or parsing delays
+- 🖼️ **30 Embedded Images** – Including 29 PNG images and 1 GIF animation
+- 📝 **Complete Documentation** – Covers Arduino hardware, IDE usage, coding methods, and open-source project analysis
+- 🎨 **Styled Content** – Dark theme with cyan headings (#00d4ff) and pink accents (#ff00d4)
 
-### Usage
-The DOCX file (`data/assignment 1.docx`) is dynamically loaded when users navigate to "Exercise 1: Arduino OUTPUT". The content is parsed and rendered with proper formatting including:
-- Headings (H1-H6) with cyan color (#00d4ff)
-- Paragraphs with proper line height
-- Unordered and ordered lists
-- Tables with styled borders
-- Images with responsive sizing and shadows
-- Blockquotes with pink left border (#ff00d4)
+### Content Structure
+The assignment includes:
+- **Hardware Introduction**: Arduino UNO R4 WiFi specifications and features
+- **Arduino IDE Guide**: Interface overview, setup process, and basic coding structure
+- **Hardware Connection**: LED, resistors, buttons, buzzers, sensors, and relay modules
+- **Open Source Project Analysis**: 
+  - A. Autoware (Autonomous driving software stack)
+  - B. Autonomous Vehicle eHMI Prototype
+  - C. Harmoware-HMI (Human-computer interaction)
+  - D. Smart Cane (Assistive device for visually impaired)
+  - E. OpenHapticGlove (Haptic navigation glove)
+  - F. Smartpole-VR-AWSIM (VR simulation platform)
+- **MIT License Explanation**: Legal terms and usage rights
+
+### Image Location
+All images are stored in `images/assignment 1/` folder:
+- `1.png` to `30.png` (static images)
+- `20.gif` (animated GIF for Autoware section)
 
 ## File Upload Feature
 

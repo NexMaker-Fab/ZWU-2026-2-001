@@ -1347,19 +1347,331 @@
             // 使用 innerHTML 插入内容
             let homeworkContentHTML = '';
             
-            // Week 1 特殊作业内容 - 动态加载 DOCX 文件
+            // Week 1 特殊作业内容 - 硬编码文档内容
             if (id === 0) {
                 homeworkContentHTML = `
                     <!-- 作业内容 -->
                     <div style="margin-bottom: 3rem;">
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
-                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 自动驾驶交互式信号系统研究资料</h4>
-                            <div id="docx-content" style="margin-top: 1rem;">
-                                <div style="text-align: center; padding: 2rem; color: rgba(255, 255, 255, 0.5);">
-                                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏳</div>
-                                    <p>正在加载文档...</p>
+                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
+                            
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">Hardware</h4>
+                                <p><strong>Arduino UNO R4 WiFi</strong></p>
+                                <img src="./assets/image/assignment%201/1.png" alt="Hardware Image 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/2.png" alt="Hardware Image 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/3.png" alt="Hardware Image 3" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <p>It retains the classic UNO appearance, the main controller is a Renesas RA4M1 32-bit MCU, and the board also comes with an ESP32 module, supporting Wi-Fi / Bluetooth, and there is also a 12×8 LED Matrix that is very suitable for making 'interactive signals'.</p>
+                                
+                                <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">Advantage</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>There are plenty of beginner resources, and the Arduino ecosystem is well-established.</li>
+                                    <li>Can quickly connect sensors, buzzers, buttons, LEDs, and ultrasonic modules. Easy to get started with in the Arduino IDE.</li>
+                                    <li>Comes with built-in wireless capability, making it convenient later for 'vehicle status broadcasting,' 'mobile client auxiliary reminders,' and 'remote debugging'.</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">Case: LED / Buzzer Prompt</h5>
+                                <p><a href="#" style="color: #00d4ff;">Link → Blink | Arduino Documentation</a></p>
+                                <p>Blink is an official built-in Arduino example, and its core is to make the LED turn on and off periodically; it is very suitable for learning digital output, delay, pin control, and the most basic debugging process.</p>
+                                <img src="./assets/image/assignment%201/4.png" alt="LED Case 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/5.png" alt="LED Case 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Overview of the Arduino IDE</h4>
+                                <img src="./assets/image/assignment%201/6.png" alt="Arduino IDE Overview" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Definition and Features</h5>
+                                <p>Arduino IDE is a lightweight development environment based on C/C++, mainly used for:</p>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Writing Arduino programs (called Sketches)</li>
+                                    <li>Compiling code</li>
+                                    <li>Uploading programs to development boards (such as Arduino Uno, Nano, Mega, etc.)</li>
+                                </ol>
+                                <p>Its core features include:</p>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Simplified syntax: Encapsulates standard C/C++ (e.g., automatically generates the main function)</li>
+                                    <li>Cross-platform: Supports Windows / macOS / Linux</li>
+                                    <li>Open source: Both the IDE and core libraries are open source</li>
+                                    <li>Rich library ecosystem: Supports a large number of third-party sensors and modules</li>
+                                </ul>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Arduino IDE Interface Diagram</h5>
+                                <img src="./assets/image/assignment%201/7.png" alt="Arduino IDE Interface" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Basic flowchart for using the Arduino IDE</h5>
+                                <p>Write code ↓ Verify code ↓ Connect Arduino development board ↓ Select development board model ↓ Select serial port ↓ Upload program ↓ Observe running effect</p>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Must be set before use</h5>
+                                <p><strong>1. Development board model</strong></p>
+                                <img src="./assets/image/assignment%201/8.png" alt="Development Board Model" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>2. Serial port</strong></p>
+                                <img src="./assets/image/assignment%201/9.png" alt="Serial Port" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Arduino Coding Methods</h4>
+                                <p>Almost every program has two core functions:</p>
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace;">
+                                    <code style="color: rgba(255, 255, 255, 0.9);">
+                                        void setup() {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// 这里只运行一次<br>
+                                        }<br><br>
+                                        void loop() {<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// 这里会反复循环执行<br>
+                                        }
+                                    </code>
                                 </div>
+                                <img src="./assets/image/assignment%201/10.png" alt="Coding Methods" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">What do they mean respectively?</h5>
+                                <p><strong>1. setup()</strong></p>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Execute first after powering on</li>
+                                    <li>Execute only once</li>
+                                    <li>Commonly used for 'initialization'</li>
+                                    <li>For example: Set a certain pin as output, Open the serial port</li>
+                                </ul>
+                                
+                                <p><strong>2. loop()</strong></p>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Repeatedly executing</li>
+                                    <li>is the main body of the program</li>
+                                    <li>For example: Turn on the light → Wait for one second → Turn off the light → Wait for another second → Repeat continuously</li>
+                                </ul>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Program execution process</h5>
+                                <p>Power on ↓ setup() executes once ↓ loop() 1st time ↓ loop() 2nd time ↓ loop() 3rd time ↓ keeps looping...</p>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Hardware connection</h4>
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Principles of Arduino Hardware Connection:</h5>
+                                <p>When performing hardware connections, the following principles need to be followed:</p>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>First, check the working voltage of the module to confirm whether it is 5V or 3.3V;</li>
+                                    <li>First connect the power and ground lines to ensure all modules share the same ground;</li>
+                                    <li>Then connect the signal lines, and connect them to digital or analog pins according to the signal type;</li>
+                                    <li>Finally, check whether the connections are correct to avoid short circuits or reversing connections.</li>
+                                </ul>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Common Connection Objects</h5>
+                                <p><strong>LED lights</strong></p>
+                                <img src="./assets/image/assignment%201/11.png" alt="LED Lights" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Resistors</strong></p>
+                                <img src="./assets/image/assignment%201/12.png" alt="Resistors" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Buttons</strong></p>
+                                <img src="./assets/image/assignment%201/13.png" alt="Buttons" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Buzzers</strong></p>
+                                <img src="./assets/image/assignment%201/14.png" alt="Buzzers" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Ultrasonic modules</strong></p>
+                                <img src="./assets/image/assignment%201/15.png" alt="Ultrasonic Modules" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Temperature and humidity sensors</strong></p>
+                                <img src="./assets/image/assignment%201/16.png" alt="Temperature Sensors" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Soil moisture sensors</strong></p>
+                                <img src="./assets/image/assignment%201/17.png" alt="Soil Moisture Sensors" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <p><strong>Relay modules</strong></p>
+                                <img src="./assets/image/assignment%201/18.png" alt="Relay Modules" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Running an example project for Arduino IDE</h5>
+                                <p><strong>Example project: AnalogReadSerial</strong></p>
+                                <img src="./assets/image/assignment%201/19.png" alt="AnalogReadSerial Example" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
+                                <p>Autoware is currently one of the most representative open-source autonomous driving software stacks, based on ROS, and its goal is a software system for autonomous vehicles. Both the official site and GitHub clearly position it as an open-source project for autonomous driving. The repository currently uses the Apache-2.0 license.</p>
+                                <img src="./assets/image/assignment%201/20.gif" alt="Autoware Animation" loading="eager" decoding="async" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>The main autonomous driving link is complete and has the highest reference value.</li>
+                                    <li>The community is mature, and the level of engineering is much higher than that of typical student projects.</li>
+                                    <li>Suitable for your reference 'Where does vehicle status come from': Perception, Localization, Planning, Control</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Too big and too heavy, not suitable for you to use directly for Arduino beginners</li>
+                                    <li>It leans more towards 'whether the car can drive,' rather than specifically addressing 'whether elderly or special groups can understand the car's intentions.'</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration</h5>
+                                <p>Refer to its 'vehicle status interface' and then translate these statuses into concise, perceptible external signals</p>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">B. Autonomous Vehicle eHMI Prototype</h4>
+                                <p>This GitHub project explicitly states that it is about external Human-Machine Interfaces (eHMIs) for autonomous vehicle-to-pedestrian communication, that is, 'external human-machine interfaces for communication between autonomous vehicles and pedestrians'</p>
+                                <img src="./assets/image/assignment%201/21.png" alt="eHMI Prototype 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/22.png" alt="eHMI Prototype 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Directly study 'how to express intentions outside the car'</li>
+                                    <li>It is suitable to first conduct interface semantic verification, such as which is easier to understand: text, color, arrows, or animations.</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>More like an interactive prototype or simulation, not a mature hardware system</li>
+                                    <li>Multimodal adaptation for the elderly, visually impaired, and hearing-impaired groups is not obvious enough</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>High-contrast large icons</li>
+                                    <li>Short text</li>
+                                    <li>Rhythmic lighting</li>
+                                    <li>Buzzer/voice</li>
+                                    <li>Close-range vibration alert</li>
+                                </ol>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">C. Harmoware-HMI</h4>
+                                <p>This project leans more towards 'human-computer interaction in autonomous driving,' including voice interaction, nod/shake confirmation, speed voice control, etc. It is focused on in-car scenarios, but it can give you strong inspiration for 'user-friendly interaction for special groups'.</p>
+                                <img src="./assets/image/assignment%201/23.png" alt="Harmoware-HMI 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/24.png" alt="Harmoware-HMI 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Clearly emphasize human-computer interaction, not just algorithms</li>
+                                    <li>Strong multimodal interaction ideas, suitable for reference in elderly scenarios</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Biased towards in-vehicle HMI, not the main scenario for communication between pedestrians and vehicles outside the car</li>
+                                    <li>Design of external signal lights and external prompts provides limited help</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>You can learn 'do not rely on only one channel for a signal'; it's best to use both visual and auditory channels.</li>
+                                    <li>For the elderly, redundant cues are usually more reliable than single cues.</li>
+                                </ol>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">D. Smart Cane</h4>
+                                <p>The Smart-cane project on GitHub is aimed at visually impaired and elderly users. Its core approach is to use multiple ultrasonic sensors and buzzers for real-time obstacle alerts. The project description explicitly states that its target users are visually impaired and elderly people, and it plans to further add features such as Bluetooth, GPS, and vibration feedback.</p>
+                                <img src="./assets/image/assignment%201/25.png" alt="Smart Cane 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/26.png" alt="Smart Cane 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Very close to 'special group assisted interaction'</li>
+                                    <li>Low cost, easy to replicate</li>
+                                    <li>It is suitable to first study 'whether the prompt method is clear and whether it is overloaded'</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>It is mainly for single-person close-range obstacle avoidance, not vehicle-person interaction.</li>
+                                    <li>The medium is somewhat single in type, mainly focused on sound</li>
+                                    <li>Limited capability in noisy environments and complex road scenarios</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>You can refer to the 'multimodal alert' approach: sound, vibration, light</li>
+                                    <li>You can refer to 'simplified interactions for elderly users': few and clear, do not give too many signals at the same time.</li>
+                                </ol>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">E. OpenHapticGlove</h4>
+                                <p>OpenHapticGlove is an open-source haptic glove designed for navigation for the visually impaired, using ToF distance sensing and vibration feedback. It is not an in-vehicle system, but it is well suited for your research on 'non-visual interaction.' This approach is valuable for the elderly, low-vision users, or users in bright light environments.</p>
+                                <img src="./assets/image/assignment%201/27.png" alt="OpenHapticGlove 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%201/28.png" alt="OpenHapticGlove 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Haptic feedback is naturally suitable for people who have difficulty looking at screens or lights.</li>
+                                    <li>More private than a simple buzzer, and not easily drowned out by environmental noise</li>
+                                    <li>Very suitable to complement visual signals outside the vehicle</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Users need to wear the device</li>
+                                    <li>Cost, comfort, and range all need to be considered additionally</li>
+                                    <li>May require training for first-time users</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>It doesn't necessarily have to only make the 'car send signal'; it can also design a 'human-end receiver'.</li>
+                                    <li>It's best not to bet on a single channel for special group projects; tactile sense is worth preserving.</li>
+                                </ol>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">F. Smartpole-VR-AWSIM</h4>
+                                <p>This project combines AWSIM/Autoware/ROS 2/Unity/VR to simulate the impact of infrastructure eHMI (external human-machine interface) on pedestrians, aiming to assess the safety, clarity, and timing of signals. Its research path is very close to your 'autonomous driving interactive signaling system,' except that it is more oriented towards a simulation evaluation platform.</p>
+                                <img src="./assets/image/assignment%201/29.png" alt="Smartpole-VR-AWSIM" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Very close to the autonomous driving interaction signal research scenario</li>
+                                    <li>Able to quickly test different signal designs without actually being on the road</li>
+                                    <li>Can conduct VR human factors experiments, suitable for comparing 'GO/STOP/path projection' and other schemes</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>The tech stack is heavier, and the threshold is much higher than Arduino.</li>
+                                    <li>More suitable for 'design verification' rather than 'rapid hardware prototyping'</li>
+                                    <li>High requirements for the team's software/simulation capabilities</li>
+                                </ol>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                                <p>It can be divided into two stages:</p>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>The first stage: Arduino for low-cost interactive prototyping;</li>
+                                    <li>The second stage: CARLA/AWSIM/Unity for human factor validation and scenario simulation</li>
+                                </ul>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Introduction and Legal Explanation of MIT License</h4>
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Definition</h5>
+                                <p>The MIT License is a permissive open source license derived from the Massachusetts Institute of Technology (MIT), and is one of the shortest, most popular, and business friendly open source licenses in the world.</p>
+                                <img src="./assets/image/assignment%201/30.png" alt="MIT License" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Core authorization (what can be done)</h5>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li><strong>Free use:</strong> Personal, internal, and commercial closed source projects can all be used</li>
+                                    <li><strong>Free modification:</strong> freely modify the source code</li>
+                                    <li><strong>Free distribution:</strong> publish, copy, sublicense, sell</li>
+                                    <li><strong>Free closed source:</strong> The modified version can be closed source without the need for open-source derivative code</li>
+                                </ul>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3. Sole legal obligation</h5>
+                                <p>The original copyright statement and full MIT license must be retained in all copies and important parts of the software.</p>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Full text of the standard (in English)</h5>
+                                <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem;">
+                                    <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap;">
+Copyright (c) &lt;年份&gt; &lt;版权持有人&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+                                    </code>
+                                </div>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5. Key Legal Points</h5>
+                                <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li><strong>No 'Copyleft' (contagious):</strong> Unlike GPL, which forces derivative works to be open sourced</li>
+                                    <li><strong>Strong disclaimer:</strong> 'AS IS provided as is', the author assumes no responsibility for any use risks, defects, or losses</li>
+                                    <li><strong>Patent ambiguity:</strong> No clear patent authorization granted (compared to Apache 2.0)</li>
+                                    <li><strong>Highly compatible:</strong> can be mixed with most protocol codes such as GPL</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1419,13 +1731,6 @@
             setTimeout(() => {
                 initExerciseFileUpload(id);
             }, 100);
-            
-            // 如果是练习0，动态加载 DOCX 文件
-            if (id === 0) {
-                setTimeout(() => {
-                    loadDocxFile();
-                }, 200);
-            }
             
             // 激活练习详情页 section
             document.getElementById('exercise-detail').classList.add('active');
@@ -1688,323 +1993,6 @@
             const sizes = ['Bytes', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
-        }
-
-        // 动态加载 DOCX 文件
-        let docxCache = null; // 缓存已解析的 DOCX 内容
-        let docxLoading = false; // 防止重复加载
-
-        async function loadDocxFile() {
-            const contentDiv = document.getElementById('docx-content');
-            if (!contentDiv) return;
-
-            // 如果已经缓存，直接显示
-            if (docxCache) {
-                console.log('✅ 使用缓存的 DOCX 内容');
-                contentDiv.innerHTML = docxCache;
-                return;
-            }
-
-            // 如果正在加载，等待
-            if (docxLoading) {
-                console.log('⏳ DOCX 正在加载中...');
-                return;
-            }
-
-            docxLoading = true;
-
-            try {
-                // 显示加载状态
-                contentDiv.innerHTML = `
-                    <div style="text-align: center; padding: 2rem; color: rgba(255, 255, 255, 0.5);">
-                        <div style="font-size: 2rem; margin-bottom: 1rem; animation: spin 1s linear infinite;">⏳</div>
-                        <p>正在加载文档...</p>
-                    </div>
-                `;
-
-                // 添加旋转动画
-                if (!document.getElementById('spin-animation')) {
-                    const style = document.createElement('style');
-                    style.id = 'spin-animation';
-                    style.textContent = `
-                        @keyframes spin {
-                            from { transform: rotate(0deg); }
-                            to { transform: rotate(360deg); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-
-                // 使用 fetch 加载 DOCX 文件（带缓存控制）
-                const response = await fetch('./data/assignment%201.docx', {
-                    cache: 'force-cache' // 强制使用浏览器缓存
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const arrayBuffer = await response.arrayBuffer();
-
-                // 使用 mammoth.js 将 DOCX 转换为 HTML
-                const result = await mammoth.convertToHtml({ arrayBuffer }, {
-                    convertImage: mammoth.images.imgElement(function(image) {
-                        return image.read("base64").then(function(imageBuffer) {
-                            return {
-                                src: "data:" + image.contentType + ";base64," + imageBuffer
-                            };
-                        });
-                    })
-                });
-
-                // 生成带样式的 HTML
-                const styledHTML = `
-                    <style>
-                        #docx-content h1, #docx-content h2, #docx-content h3, #docx-content h4, #docx-content h5, #docx-content h6 {
-                            color: #00d4ff;
-                            margin: 1.5rem 0 0.75rem 0;
-                            font-weight: 600;
-                        }
-                        #docx-content h1 { font-size: 1.8rem; }
-                        #docx-content h2 { font-size: 1.5rem; }
-                        #docx-content h3 { font-size: 1.3rem; }
-                        #docx-content h4 { font-size: 1.1rem; }
-                        #docx-content p {
-                            color: rgba(255, 255, 255, 0.85);
-                            line-height: 1.8;
-                            margin-bottom: 1rem;
-                        }
-                        #docx-content ul, #docx-content ol {
-                            padding-left: 1.5rem;
-                            margin-bottom: 1rem;
-                            color: rgba(255, 255, 255, 0.85);
-                            line-height: 1.8;
-                        }
-                        #docx-content li {
-                            margin-bottom: 0.5rem;
-                        }
-                        #docx-content strong {
-                            color: #ffffff;
-                            font-weight: 600;
-                        }
-                        #docx-content em {
-                            color: #ff00d4;
-                            font-style: italic;
-                        }
-                        #docx-content img {
-                            max-width: 100%;
-                            height: auto;
-                            margin: 1rem 0;
-                            border-radius: 8px;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                        }
-                        #docx-content table {
-                            width: 100%;
-                            border-collapse: collapse;
-                            margin: 1rem 0;
-                            background: rgba(0, 212, 255, 0.05);
-                            border-radius: 8px;
-                            overflow: hidden;
-                        }
-                        #docx-content table td, #docx-content table th {
-                            padding: 0.75rem;
-                            border: 1px solid rgba(0, 212, 255, 0.2);
-                            color: rgba(255, 255, 255, 0.85);
-                        }
-                        #docx-content table th {
-                            background: rgba(0, 212, 255, 0.1);
-                            font-weight: 600;
-                        }
-                        #docx-content blockquote {
-                            border-left: 3px solid #ff00d4;
-                            padding-left: 1rem;
-                            margin: 1rem 0;
-                            color: rgba(255, 255, 255, 0.7);
-                            font-style: italic;
-                        }
-                        #docx-content a {
-                            color: #00d4ff;
-                            text-decoration: underline;
-                        }
-                        #docx-content hr {
-                            border: none;
-                            border-top: 1px solid rgba(255, 255, 255, 0.1);
-                            margin: 2rem 0;
-                        }
-                    </style>
-                    ${result.value}
-                `;
-
-                // 缓存结果
-                docxCache = styledHTML;
-                docxLoading = false;
-
-                // 显示转换后的 HTML
-                contentDiv.innerHTML = styledHTML;
-
-                // 如果有警告信息，显示在控制台
-                if (result.messages.length > 0) {
-                    console.log('DOCX 转换警告:', result.messages);
-                }
-
-                console.log('✅ DOCX 加载并缓存成功');
-
-            } catch (error) {
-                console.error('加载 DOCX 文件失败:', error);
-                docxLoading = false;
-                
-                // 备用方案：直接嵌入 DOCX 文件或提供下载链接
-                contentDiv.innerHTML = `
-                    <div style="text-align: center; padding: 2rem;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
-                        <h4 style="color: #00d4ff; margin-bottom: 1rem;">assignment 1.docx</h4>
-                        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 1.5rem;">
-                            由于浏览器安全限制，无法直接解析 DOCX 文件。<br>
-                            请选择以下方式查看文档：
-                        </p>
-                        
-                        <!-- 方案1: 使用 iframe 嵌入（部分浏览器支持） -->
-                        <div style="margin-bottom: 1.5rem;">
-                            <iframe 
-                                src="./data/assignment%201.docx" 
-                                style="width: 100%; height: 600px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; background: white;"
-                                title="assignment 1.docx"
-                            ></iframe>
-                        </div>
-                        
-                        <!-- 方案2: 下载按钮 -->
-                        <a href="./data/assignment%201.docx" download style="
-                            display: inline-block;
-                            background: linear-gradient(135deg, #00d4ff, #0099cc);
-                            color: white;
-                            text-decoration: none;
-                            padding: 0.75rem 1.5rem;
-                            border-radius: 8px;
-                            font-weight: 600;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
-                        ">
-                            📥 下载文档
-                        </a>
-                        
-                        <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; margin-top: 1rem;">
-                            提示：建议使用 Microsoft Word 或 WPS 打开此文档以获得最佳体验
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        // 预加载 DOCX 文件（页面加载时自动执行）
-        function preloadDocxFile() {
-            if (docxCache || docxLoading) return; // 已缓存或正在加载则跳过
-            
-            console.log('🔄 开始预加载 DOCX 文件...');
-            docxLoading = true;
-
-            fetch('./data/assignment%201.docx', {
-                cache: 'force-cache'
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.arrayBuffer();
-            })
-            .then(arrayBuffer => {
-                return mammoth.convertToHtml({ arrayBuffer }, {
-                    convertImage: mammoth.images.imgElement(function(image) {
-                        return image.read("base64").then(function(imageBuffer) {
-                            return {
-                                src: "data:" + image.contentType + ";base64," + imageBuffer
-                            };
-                        });
-                    })
-                });
-            })
-            .then(result => {
-                const styledHTML = `
-                    <style>
-                        #docx-content h1, #docx-content h2, #docx-content h3, #docx-content h4, #docx-content h5, #docx-content h6 {
-                            color: #00d4ff;
-                            margin: 1.5rem 0 0.75rem 0;
-                            font-weight: 600;
-                        }
-                        #docx-content h1 { font-size: 1.8rem; }
-                        #docx-content h2 { font-size: 1.5rem; }
-                        #docx-content h3 { font-size: 1.3rem; }
-                        #docx-content h4 { font-size: 1.1rem; }
-                        #docx-content p {
-                            color: rgba(255, 255, 255, 0.85);
-                            line-height: 1.8;
-                            margin-bottom: 1rem;
-                        }
-                        #docx-content ul, #docx-content ol {
-                            padding-left: 1.5rem;
-                            margin-bottom: 1rem;
-                            color: rgba(255, 255, 255, 0.85);
-                            line-height: 1.8;
-                        }
-                        #docx-content li {
-                            margin-bottom: 0.5rem;
-                        }
-                        #docx-content strong {
-                            color: #ffffff;
-                            font-weight: 600;
-                        }
-                        #docx-content em {
-                            color: #ff00d4;
-                            font-style: italic;
-                        }
-                        #docx-content img {
-                            max-width: 100%;
-                            height: auto;
-                            margin: 1rem 0;
-                            border-radius: 8px;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                        }
-                        #docx-content table {
-                            width: 100%;
-                            border-collapse: collapse;
-                            margin: 1rem 0;
-                            background: rgba(0, 212, 255, 0.05);
-                            border-radius: 8px;
-                            overflow: hidden;
-                        }
-                        #docx-content table td, #docx-content table th {
-                            padding: 0.75rem;
-                            border: 1px solid rgba(0, 212, 255, 0.2);
-                            color: rgba(255, 255, 255, 0.85);
-                        }
-                        #docx-content table th {
-                            background: rgba(0, 212, 255, 0.1);
-                            font-weight: 600;
-                        }
-                        #docx-content blockquote {
-                            border-left: 3px solid #ff00d4;
-                            padding-left: 1rem;
-                            margin: 1rem 0;
-                            color: rgba(255, 255, 255, 0.7);
-                            font-style: italic;
-                        }
-                        #docx-content a {
-                            color: #00d4ff;
-                            text-decoration: underline;
-                        }
-                        #docx-content hr {
-                            border: none;
-                            border-top: 1px solid rgba(255, 255, 255, 0.1);
-                            margin: 2rem 0;
-                        }
-                    </style>
-                    ${result.value}
-                `;
-                
-                docxCache = styledHTML;
-                docxLoading = false;
-                console.log('✅ DOCX 预加载完成并已缓存');
-            })
-            .catch(error => {
-                console.error('❌ DOCX 预加载失败:', error);
-                docxLoading = false;
-            });
         }
 
         // 处理文件上传
@@ -2530,13 +2518,7 @@
         }
 
         // 页面加载时初始化编辑数据
-        window.addEventListener('load', () => {
-            initEditData();
-            // 预加载 DOCX 文件，加快首次访问速度
-            setTimeout(() => {
-                preloadDocxFile();
-            }, 1000); // 延迟 1 秒，避免影响页面初始加载
-        });
+        window.addEventListener('load', initEditData);
     </script>
 </body>
 </html>
