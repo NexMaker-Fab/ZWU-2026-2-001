@@ -1214,28 +1214,10 @@
             },
             {
                 id: 1,
-                title: 'Sensor Data Collection',
+                title: 'Arduino Input',
                 description: 'Use various sensors to collect environmental data and perform initial processing.',
-                content: 'This exercise focused on interfacing various sensors with Arduino to collect real-world data. We worked with:\n\n• Temperature sensor (DHT11/DHT22)\n• Humidity sensor\n• Light sensor (LDR)\n• Ultrasonic distance sensor (HC-SR04)\n• Soil moisture sensor\n\nData was collected and displayed via Serial Monitor, forming the foundation for our health monitoring project.'
+                content: 'Do one project which contain switch, sensor(photosensitive sensor, temperature ,etc);\nBuild one environment monitoring device'
             },
-            {
-                id: 2,
-                title: 'Web Interface Design',
-                description: 'Design and implement responsive web interfaces to optimize user experience.',
-                content: 'In this exercise, we designed and built responsive web interfaces using HTML5, CSS3, and JavaScript. Topics covered:\n\n• Semantic HTML5 structure\n• CSS Grid and Flexbox layouts\n• Responsive design with media queries\n• CSS animations and transitions\n• Form validation\n• Accessibility best practices\n\nThis exercise directly contributed to building our team showcase website.'
-            },
-            {
-                id: 3,
-                title: 'Data Visualization Practice',
-                description: 'Implement data visualization displays using JavaScript libraries.',
-                content: 'We explored various JavaScript libraries for creating interactive data visualizations:\n\n• Chart.js for basic charts (line, bar, pie)\n• D3.js for custom visualizations\n• Real-time data updating\n• Interactive tooltips and legends\n• Export functionality\n\nApplied these skills to visualize sensor data from our Arduino projects in the browser.'
-            },
-            {
-                id: 4,
-                title: 'Team Collaboration Project',
-                description: 'Complete a comprehensive project as a team to enhance teamwork skills.',
-                content: 'Our team collaboration exercise involved planning, executing, and presenting a complete project from concept to delivery:\n\n• Project planning and requirement analysis\n• Task division and timeline management\n• Git version control and branch management\n• Code review and integration\n• Testing and debugging\n• Final presentation and documentation\n\nThis exercise prepared us for our final Health Monitoring System project.'
-            }
         ];
 
         // ===== 渲染成员卡片 =====
@@ -1672,6 +1654,40 @@ SOFTWARE.
                                     <li><strong>Patent ambiguity:</strong> No clear patent authorization granted (compared to Apache 2.0)</li>
                                     <li><strong>Highly compatible:</strong> can be mixed with most protocol codes such as GPL</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Week 2 特殊作业内容 - 硬编码文档内容
+            if (id === 1) {
+                homeworkContentHTML = `
+                    <!-- 作业内容 -->
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Input - Interactive Visualization Project</h4>
+                            
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">1. Project Introduction</h4>
+                                <p>Implemented by Arduino R4 WiFi board, HS05b sensor, and WS2812 LED ring. The program can recognize level information of different lengths. Therefore, it is possible to clap, turn on the lights, blow air, and turn off the lights.</p>
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Code</h4>
+                                <img src="./assets/image/assignment%202/1.png" alt="Code Image 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%202/2.png" alt="Code Image 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%202/3.png" alt="Code Image 3" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%202/4.png" alt="Code Image 4" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">3. Circuit diagram</h4>
+                                <img src="./assets/image/assignment%202/5.png" alt="Circuit Diagram 1" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                <img src="./assets/image/assignment%202/6.png" alt="Circuit Diagram 2" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">4. Physical connection mode</h4>
+                                <img src="./assets/image/assignment%202/7.png" alt="Physical Connection" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                                
+                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">5. Effect display</h4>
+                                <img src="./assets/image/assignment%202/8.gif" alt="Effect Display GIF" loading="eager" decoding="async" style="max-width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
                             </div>
                         </div>
                     </div>
