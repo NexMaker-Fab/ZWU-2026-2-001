@@ -41,6 +41,29 @@
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 导航栏隐藏状态 */
+        .navbar.hidden {
+            transform: translateX(-50%) translateY(-150%);
+        }
+
+        /* 导航栏缩小样式 */
+        .navbar.compact {
+            top: 0.75rem;
+            width: calc(100% - 4rem);
+            max-width: 1600px;
+            padding: 0.625rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .navbar.compact .logo {
+            font-size: 1.25rem;
+        }
+
+        .navbar.compact .nav-links a {
+            font-size: 13px;
         }
 
         .navbar-content {
@@ -239,6 +262,27 @@
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .card .chinese-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card .name-separator {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
+
+        .card .english-name {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
         }
 
         .card .role {
@@ -282,6 +326,28 @@
         .member-detail h2 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .member-detail .chinese-name {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .member-detail .name-separator {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 0 0.5rem;
+            font-weight: 300;
+        }
+
+        .member-detail .english-name {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
         }
 
         .member-detail .role {
@@ -340,6 +406,45 @@
 
         .contact-link:hover {
             background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* ===== 置顶按钮 ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .back-to-top:active {
+            transform: translateY(0);
         }
 
         /* ===== 项目页面 ===== */
@@ -413,6 +518,130 @@
 
         .exercise-card a:hover {
             text-decoration: underline;
+        }
+
+        /* ===== 练习详情页 - 左右布局 ===== */
+        .exercise-detail-layout {
+            display: flex;
+            gap: 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 6rem 3rem 2rem 1rem;
+        }
+
+        /* 左侧目录导航 */
+        .exercise-toc {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+
+        .exercise-toc::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .exercise-toc::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        .exercise-toc::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .exercise-toc h4 {
+            color: #00d4ff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: block;
+            padding: 0.375rem 0;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            line-height: 1.5;
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: #00d4ff;
+            background: transparent;
+            padding-left: 0.5rem;
+        }
+
+        .toc-list .toc-sub {
+            padding-left: 1.25rem;
+            font-size: 0.8125rem;
+        }
+
+        .toc-list .toc-sub a {
+            font-size: 0.8125rem;
+            padding: 0.25rem 0;
+        }
+
+        /* 右侧内容区 */
+        .exercise-content-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 增大作业内容字体 */
+        .homework-content-section h4 {
+            font-size: 2rem !important;
+            margin-bottom: 1.5rem !important;
+            color: #00e5ff !important;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .homework-content-section h5 {
+            font-size: 1.5rem !important;
+            margin-top: 2.5rem !important;
+            margin-bottom: 1.25rem !important;
+            color: #ff4081 !important;
+            text-shadow: 0 0 15px rgba(255, 64, 129, 0.2);
+        }
+
+        .homework-content-section h6 {
+            font-size: 1.25rem !important;
+            margin-bottom: 1rem !important;
+            color: #ffd740 !important;
+        }
+
+        .homework-content-section p {
+            font-size: 1.125rem !important;
+            line-height: 1.9 !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .homework-content-section li {
+            font-size: 1.125rem !important;
+            line-height: 1.8 !important;
+        }
+
+        .homework-content-section strong {
+            font-size: 1.125rem !important;
+            color: #ffffff;
         }
 
         /* ===== 响应式设计 ===== */
@@ -493,6 +722,12 @@
             }
 
             .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .card h3 .chinese-name,
+            .card h3 .name-separator,
+            .card h3 .english-name {
                 font-size: 1.25rem;
             }
 
@@ -837,6 +1072,11 @@
         </div>
     </nav>
 
+    <!-- 置顶按钮 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="回到顶部">
+        ↑
+    </button>
+
     <!-- 主内容区 -->
     <main class="main-content">
         <!-- 首页 -->
@@ -1133,6 +1373,7 @@
             {
                 id: 0,
                 name: 'Ash',
+                chineseName: '范洲豪',
                 role: 'Frontend Developer',
                 bio: 'Specialized in modern web technologies with expertise in HTML, CSS, and JavaScript. Passionate about user experience design and dedicated to creating beautiful and functional interfaces.',
                 skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'UI/UX'],
@@ -1145,6 +1386,7 @@
             {
                 id: 1,
                 name: 'Felix',
+                chineseName: '徐克丰',
                 role: 'Hardware Engineer',
                 bio: 'College student passionate about interactive hardware systems and web development. Leveraging AI tools to accelerate learning and exploring the intersection of hardware and software. Dedicated to building innovative projects that bridge the physical and digital worlds.',
                 skills: ['Arduino', 'Sensor Technology', 'Circuit Design', 'Prototyping', 'Interactive Systems'],
@@ -1157,6 +1399,7 @@
             {
                 id: 2,
                 name: 'Howie',
+                chineseName: '吴浩瑜',
                 role: 'Backend Developer',
                 bio: 'Passionate backend developer with expertise in server-side development and database management. Focused on building robust APIs and scalable systems. Experienced in Python, Node.js, and database optimization to deliver high-performance solutions.',
                 skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
@@ -1169,6 +1412,7 @@
             {
                 id: 3,
                 name: 'Max',
+                chineseName: '韩明哲',
                 role: 'Project Manager',
                 bio: 'College student currently studying Interactive Application Systems. Experienced in project planning, team coordination, and progress tracking. Skilled at breaking down complex tasks, facilitating team communication, and ensuring timely delivery of high-quality results.',
                 skills: ['Project Planning', 'Team Coordination', 'Progress Tracking', 'Risk Management', 'Stakeholder Communication'],
@@ -1181,6 +1425,7 @@
             {
                 id: 4,
                 name: 'Joe',
+                chineseName: '张敏强',
                 role: 'UI/UX Designer',
                 bio: '20岁99新一手大学生',
                 skills: ['平面设计', '美术美工'],
@@ -1193,6 +1438,7 @@
             {
                 id: 5,
                 name: 'David',
+                chineseName: '叶骁纬',
                 role: 'Full Stack Developer',
                 bio: '神秘的大二新生',
                 skills: ['平面设计'],
@@ -1228,9 +1474,13 @@
                 return `
                     <div class="card" onclick="showMemberDetail(${member.id})">
                         <div class="card-avatar">
-                            <img src="${avatarSrc}" alt="${member.name}">
+                            <img src="${avatarSrc}" alt="${member.chineseName}">
                         </div>
-                        <h3>${member.name}</h3>
+                        <h3>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h3>
                         <p class="role">${member.role}</p>
                     </div>
                 `;
@@ -1243,15 +1493,19 @@
             if (!member) return;
 
             const avatarContent = member.avatar 
-                ? `<img src="${member.avatar}" alt="${member.name}">`
-                : `${member.name[0]}`;
+                ? `<img src="${member.avatar}" alt="${member.chineseName}">`
+                : `${member.chineseName[0]}`;
 
             // 构建详细信息
             let detailsHTML = `
                 <div class="member-detail">
                     <div class="member-header">
                         <div class="member-avatar-large">${avatarContent}</div>
-                        <h2>${member.name}</h2>
+                        <h2>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h2>
                         <p class="role">${member.role}</p>
                     </div>
                     
@@ -1300,10 +1554,10 @@
             const list = document.getElementById('exercises-list');
             list.innerHTML = exercises.map((exercise) => `
                 <div class="exercise-card">
-                    <h3>练习 ${exercise.id + 1}: ${exercise.title}</h3>
+                    <h3>Exercise ${exercise.id + 1}: ${exercise.title}</h3>
                     <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">查看练习详情 →</a>
+                        <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">View Details →</a>
                     </div>
                 </div>
             `).join('');
@@ -1326,43 +1580,49 @@
                 return;
             }
 
-            // 使用 innerHTML 插入内容
+            // 激活导航栏紧凑模式
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.classList.add('compact');
+            }
+
+            // 生成作业内容HTML（用于提取目录）
             let homeworkContentHTML = '';
             
             // Week 1 特殊作业内容 - 硬编码文档内容
             if (id === 0) {
                 homeworkContentHTML = `
                     <!-- 作业内容 -->
-                    <div style="margin-bottom: 3rem;">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
-                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
                             
                             <div style="margin-top: 2rem;">
-                                <h4 style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">Hardware</h4>
+                                <h4 id="section-hardware">Hardware</h4>
                                 <p><strong>Arduino UNO R4 WiFi</strong></p>
                                 <img src="./assets/image/assignment%201/1.png" alt="Hardware Image 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/2.png" alt="Hardware Image 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/3.png" alt="Hardware Image 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <p>It retains the classic UNO appearance, the main controller is a Renesas RA4M1 32-bit MCU, and the board also comes with an ESP32 module, supporting Wi-Fi / Bluetooth, and there is also a 12×8 LED Matrix that is very suitable for making 'interactive signals'.</p>
                                 
-                                <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">Advantage</h5>
+                                <h5 id="section-hardware-advantage" style="color: #ff00d4; margin: 2rem 0 1rem 0;">Advantage</h5>
                                 <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li>There are plenty of beginner resources, and the Arduino ecosystem is well-established.</li>
                                     <li>Can quickly connect sensors, buzzers, buttons, LEDs, and ultrasonic modules. Easy to get started with in the Arduino IDE.</li>
                                     <li>Comes with built-in wireless capability, making it convenient later for 'vehicle status broadcasting,' 'mobile client auxiliary reminders,' and 'remote debugging'.</li>
                                 </ol>
                                 
-                                <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">Case: LED / Buzzer Prompt</h5>
+                                <h5 id="section-hardware-case" style="color: #ff00d4; margin: 2rem 0 1rem 0;">Case: LED / Buzzer Prompt</h5>
                                 <p><a href="#" style="color: #00d4ff;">Link → Blink | Arduino Documentation</a></p>
                                 <p>Blink is an official built-in Arduino example, and its core is to make the LED turn on and off periodically; it is very suitable for learning digital output, delay, pin control, and the most basic debugging process.</p>
                                 <img src="./assets/image/assignment%201/4.png" alt="LED Case 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/5.png" alt="LED Case 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Overview of the Arduino IDE</h4>
+                                <h4 id="section-ide-overview" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Overview of the Arduino IDE</h4>
                                 <img src="./assets/image/assignment%201/6.png" alt="Arduino IDE Overview" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Definition and Features</h5>
+                                <h5 id="section-ide-definition" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Definition and Features</h5>
                                 <p>Arduino IDE is a lightweight development environment based on C/C++, mainly used for:</p>
                                 <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li>Writing Arduino programs (called Sketches)</li>
@@ -1377,20 +1637,20 @@
                                     <li>Rich library ecosystem: Supports a large number of third-party sensors and modules</li>
                                 </ul>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Arduino IDE Interface Diagram</h5>
+                                <h5 id="section-ide-interface" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Arduino IDE Interface Diagram</h5>
                                 <img src="./assets/image/assignment%201/7.png" alt="Arduino IDE Interface" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Basic flowchart for using the Arduino IDE</h5>
+                                <h5 id="section-ide-flowchart" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Basic flowchart for using the Arduino IDE</h5>
                                 <p>Write code ↓ Verify code ↓ Connect Arduino development board ↓ Select development board model ↓ Select serial port ↓ Upload program ↓ Observe running effect</p>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Must be set before use</h5>
+                                <h5 id="section-ide-settings" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Must be set before use</h5>
                                 <p><strong>1. Development board model</strong></p>
                                 <img src="./assets/image/assignment%201/8.png" alt="Development Board Model" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <p><strong>2. Serial port</strong></p>
                                 <img src="./assets/image/assignment%201/9.png" alt="Serial Port" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Arduino Coding Methods</h4>
+                                <h4 id="section-coding-methods" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Arduino Coding Methods</h4>
                                 <p>Almost every program has two core functions:</p>
                                 <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace;">
                                     <code style="color: rgba(255, 255, 255, 0.9);">
@@ -1404,7 +1664,7 @@
                                 </div>
                                 <img src="./assets/image/assignment%201/10.png" alt="Coding Methods" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">What do they mean respectively?</h5>
+                                <h5 id="section-coding-meaning" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">What do they mean respectively?</h5>
                                 <p><strong>1. setup()</strong></p>
                                 <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li>Execute first after powering on</li>
@@ -1420,11 +1680,11 @@
                                     <li>For example: Turn on the light → Wait for one second → Turn off the light → Wait for another second → Repeat continuously</li>
                                 </ul>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Program execution process</h5>
+                                <h5 id="section-coding-process" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Program execution process</h5>
                                 <p>Power on ↓ setup() executes once ↓ loop() 1st time ↓ loop() 2nd time ↓ loop() 3rd time ↓ keeps looping...</p>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Hardware connection</h4>
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Principles of Arduino Hardware Connection:</h5>
+                                <h4 id="section-hardware-connection" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Hardware connection</h4>
+                                <h5 id="section-hw-basic-principles" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Principles of Arduino Hardware Connection:</h5>
                                 <p>When performing hardware connections, the following principles need to be followed:</p>
                                 <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li>First, check the working voltage of the module to confirm whether it is 5V or 3.3V;</li>
@@ -1433,7 +1693,7 @@
                                     <li>Finally, check whether the connections are correct to avoid short circuits or reversing connections.</li>
                                 </ul>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Common Connection Objects</h5>
+                                <h5 id="section-hw-objects" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Common Connection Objects</h5>
                                 <p><strong>LED lights</strong></p>
                                 <img src="./assets/image/assignment%201/11.png" alt="LED Lights" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1458,11 +1718,11 @@
                                 <p><strong>Relay modules</strong></p>
                                 <img src="./assets/image/assignment%201/18.png" alt="Relay Modules" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Running an example project for Arduino IDE</h5>
+                                <h5 id="section-hw-example" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Running an example project for Arduino IDE</h5>
                                 <p><strong>Example project: AnalogReadSerial</strong></p>
                                 <img src="./assets/image/assignment%201/19.gif" alt="AnalogReadSerial Example" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
+                                <h4 id="section-autoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
                                 <p>Autoware is currently one of the most representative open-source autonomous driving software stacks, based on ROS, and its goal is a software system for autonomous vehicles. Both the official site and GitHub clearly position it as an open-source project for autonomous driving. The repository currently uses the Apache-2.0 license.</p>
                                 <img src="./assets/image/assignment%201/20.png" alt="Autoware" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1479,10 +1739,10 @@
                                     <li>It leans more towards 'whether the car can drive,' rather than specifically addressing 'whether elderly or special groups can understand the car's intentions.'</li>
                                 </ol>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration</h5>
+                                <h5 id="section-autoware-inspiration" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration</h5>
                                 <p>Refer to its 'vehicle status interface' and then translate these statuses into concise, perceptible external signals</p>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">B. Autonomous Vehicle eHMI Prototype</h4>
+                                <h4 id="section-ehmi" style="color: #00d4ff; margin: 2rem 0 1rem 0;">B. Autonomous Vehicle eHMI Prototype</h4>
                                 <p>This GitHub project explicitly states that it is about external Human-Machine Interfaces (eHMIs) for autonomous vehicle-to-pedestrian communication, that is, 'external human-machine interfaces for communication between autonomous vehicles and pedestrians'</p>
                                 <img src="./assets/image/assignment%201/21.png" alt="eHMI Prototype 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/22.png" alt="eHMI Prototype 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1508,7 +1768,7 @@
                                     <li>Close-range vibration alert</li>
                                 </ol>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">C. Harmoware-HMI</h4>
+                                <h4 id="section-harmoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">C. Harmoware-HMI</h4>
                                 <p>This project leans more towards 'human-computer interaction in autonomous driving,' including voice interaction, nod/shake confirmation, speed voice control, etc. It is focused on in-car scenarios, but it can give you strong inspiration for 'user-friendly interaction for special groups'.</p>
                                 <img src="./assets/image/assignment%201/23.png" alt="Harmoware-HMI" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1530,7 +1790,7 @@
                                     <li>For the elderly, redundant cues are usually more reliable than single cues.</li>
                                 </ol>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">D. Smart Cane</h4>
+                                <h4 id="section-smartcane" style="color: #00d4ff; margin: 2rem 0 1rem 0;">D. Smart Cane</h4>
                                 <p>The Smart-cane project on GitHub is aimed at visually impaired and elderly users. Its core approach is to use multiple ultrasonic sensors and buzzers for real-time obstacle alerts. The project description explicitly states that its target users are visually impaired and elderly people, and it plans to further add features such as Bluetooth, GPS, and vibration feedback.</p>
                                 <img src="./assets/image/assignment%201/24.png" alt="Smart Cane 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/25.png" alt="Smart Cane 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1555,7 +1815,7 @@
                                     <li>You can refer to 'simplified interactions for elderly users': few and clear, do not give too many signals at the same time.</li>
                                 </ol>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">E. OpenHapticGlove</h4>
+                                <h4 id="section-hapticglove" style="color: #00d4ff; margin: 2rem 0 1rem 0;">E. OpenHapticGlove</h4>
                                 <p>OpenHapticGlove is an open-source haptic glove designed for navigation for the visually impaired, using ToF distance sensing and vibration feedback. It is not an in-vehicle system, but it is well suited for your research on 'non-visual interaction.' This approach is valuable for the elderly, low-vision users, or users in bright light environments.</p>
                                 <img src="./assets/image/assignment%201/26.png" alt="OpenHapticGlove 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/27.png" alt="OpenHapticGlove 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1580,7 +1840,7 @@
                                     <li>It's best not to bet on a single channel for special group projects; tactile sense is worth preserving.</li>
                                 </ol>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">F. Smartpole-VR-AWSIM</h4>
+                                <h4 id="section-smartpole" style="color: #00d4ff; margin: 2rem 0 1rem 0;">F. Smartpole-VR-AWSIM</h4>
                                 <p>This project combines AWSIM/Autoware/ROS 2/Unity/VR to simulate the impact of infrastructure eHMI (external human-machine interface) on pedestrians, aiming to assess the safety, clarity, and timing of signals. Its research path is very close to your 'autonomous driving interactive signaling system,' except that it is more oriented towards a simulation evaluation platform.</p>
                                 <img src="./assets/image/assignment%201/28.png" alt="Smartpole-VR-AWSIM" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1605,12 +1865,12 @@
                                     <li>The second stage: CARLA/AWSIM/Unity for human factor validation and scenario simulation</li>
                                 </ul>
                                 
-                                <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">Introduction and Legal Explanation of MIT License</h4>
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Definition</h5>
+                                <h4 id="section-mit-license" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Introduction and Legal Explanation of MIT License</h4>
+                                <h5 id="section-mit-definition" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Definition</h5>
                                 <p>The MIT License is a permissive open source license derived from the Massachusetts Institute of Technology (MIT), and is one of the shortest, most popular, and business friendly open source licenses in the world.</p>
                                 <img src="./assets/image/assignment%201/29.png" alt="MIT License" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Core authorization (what can be done)</h5>
+                                <h5 id="section-mit-auth" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Core authorization (what can be done)</h5>
                                 <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li><strong>Free use:</strong> Personal, internal, and commercial closed source projects can all be used</li>
                                     <li><strong>Free modification:</strong> freely modify the source code</li>
@@ -1618,10 +1878,10 @@
                                     <li><strong>Free closed source:</strong> The modified version can be closed source without the need for open-source derivative code</li>
                                 </ul>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3. Sole legal obligation</h5>
+                                <h5 id="section-mit-obligation" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3. Sole legal obligation</h5>
                                 <p>The original copyright statement and full MIT license must be retained in all copies and important parts of the software.</p>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Full text of the standard (in English)</h5>
+                                <h5 id="section-mit-fulltext" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Full text of the standard (in English)</h5>
                                 <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem;">
                                     <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap;">
 Copyright (c) &lt;年份&gt; &lt;版权持有人&gt;
@@ -1646,7 +1906,7 @@ SOFTWARE.
                                     </code>
                                 </div>
                                 
-                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5. Key Legal Points</h5>
+                                <h5 id="section-mit-keypoints" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5. Key Legal Points</h5>
                                 <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li><strong>No 'Copyleft' (contagious):</strong> Unlike GPL, which forces derivative works to be open sourced</li>
                                     <li><strong>Strong disclaimer:</strong> 'AS IS provided as is', the author assumes no responsibility for any use risks, defects, or losses</li>
@@ -1694,48 +1954,62 @@ SOFTWARE.
             }
             
             detailContent.innerHTML = `
-                <div style="max-width: 1000px; margin: 0 auto; padding: 2rem;">
-                    <div style="margin-bottom: 2rem;">
-                        <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← 返回列表</a>
-                    </div>
+                <div class="exercise-detail-layout">
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 目录</h4>
+                        <ul class="toc-list" id="toc-list-${id}">
+                            <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exercise.id + 1}: ${exercise.title}</a></li>
+                            <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">练习内容</a></li>
+                            ${homeworkContentHTML ? '<li><a href="#section-homework" onclick="scrollToSection(event, \'section-homework\')">作业内容</a></li>' : ''}
+                            <li><a href="#section-files" onclick="scrollToSection(event, 'section-files')">练习文件</a></li>
+                        </ul>
+                    </aside>
                     
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">练习 ${exercise.id + 1}: ${exercise.title}</h2>
-                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
-                    
-                    <!-- 练习内容（只读，不可编辑） -->
-                    <div style="margin-bottom: 3rem;">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
-                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
-                            ${exerciseContentWithBreaks}
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="#exercises" onclick="showExercisesList()" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
                         </div>
-                    </div>
-
-                    ${homeworkContentHTML}
-
-                    <!-- 练习文件上传区域 -->
-                    <div style="margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习文件</h3>
-                        <div id="exercise-${id}-file-upload" style="background: rgba(0, 212, 255, 0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 212, 255, 0.2);">
-                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传作业文件</h4>
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
-                                支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
-                            </p>
-                            <input type="file" id="exercise-${id}-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
-                            <button onclick="document.getElementById('exercise-${id}-file-input').click()" style="
-                                background: linear-gradient(135deg, #00d4ff, #0099cc);
-                                color: white;
-                                border: none;
-                                padding: 0.75rem 1.5rem;
-                                border-radius: 8px;
-                                font-size: 0.9rem;
-                                font-weight: 600;
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                                box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-                            ">选择文件</button>
+                        
+                        <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise ${exercise.id + 1}: ${exercise.title}</h2>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
+                        
+                        <!-- 练习内容（只读，不可编辑） -->
+                        <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
+                            <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                                ${exerciseContentWithBreaks}
+                            </div>
                         </div>
-                        <div id="exercise-${id}-file-list" style="margin-top: 1rem;"></div>
-                    </div>
+
+                        ${homeworkContentHTML}
+
+                        <!-- 练习文件上传区域 -->
+                        <div id="section-files" style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习文件</h3>
+                            <div id="exercise-${id}-file-upload" style="padding: 1.5rem 0;">
+                                <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传作业文件</h4>
+                                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
+                                    支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
+                                </p>
+                                <input type="file" id="exercise-${id}-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
+                                <button onclick="document.getElementById('exercise-${id}-file-input').click()" style="
+                                    background: linear-gradient(135deg, #00d4ff, #0099cc);
+                                    color: white;
+                                    border: none;
+                                    padding: 0.75rem 1.5rem;
+                                    border-radius: 8px;
+                                    font-size: 0.9rem;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+                                ">选择文件</button>
+                            </div>
+                            <div id="exercise-${id}-file-list" style="margin-top: 1rem;"></div>
+                        </div>
+                    </main>
                 </div>
             `;
 
@@ -1745,6 +2019,11 @@ SOFTWARE.
             // 初始化练习文件上传功能
             setTimeout(() => {
                 initExerciseFileUpload(id);
+                
+                // 动态生成详细目录（仅针对 Week 1）
+                if (id === 0) {
+                    generateDetailedTOC(id);
+                }
             }, 100);
             
             // 激活练习详情页 section
@@ -1762,7 +2041,88 @@ SOFTWARE.
 
         // ===== 显示练习列表 =====
         function showExercisesList() {
+            // 重置导航栏为正常模式
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.classList.remove('compact');
+            }
             window.location.hash = '#exercises';
+        }
+
+        // ===== 动态生成详细目录（Week 1） =====
+        function generateDetailedTOC(exerciseId) {
+            const tocList = document.getElementById(`toc-list-${exerciseId}`);
+            if (!tocList) return;
+
+            // 获取作业内容区域的所有标题
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exerciseId + 1}</a></li>
+                <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">练习内容</a></li>
+                <li><a href="#section-homework" class="active" onclick="scrollToSection(event, 'section-homework')">作业内容</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                // 如果标题没有ID，设置一个
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}"><a href="#${id}" onclick="scrollToSection(event, '${id}')">${text}</a></li>`;
+            });
+
+            tocHTML += '<li><a href="#section-files" onclick="scrollToSection(event, \'section-files\')">练习文件</a></li>';
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
         }
 
         // ===== 路由管理 =====
@@ -1826,15 +2186,19 @@ SOFTWARE.
             if (!member) return;
 
             const avatarContent = member.avatar 
-                ? `<img src="${member.avatar}" alt="${member.name}">`
-                : `${member.name[0]}`;
+                ? `<img src="${member.avatar}" alt="${member.chineseName}">`
+                : `${member.chineseName[0]}`;
 
             const detailContent = document.getElementById('member-detail-content');
             detailContent.innerHTML = `
                 <div class="member-detail">
                     <div class="member-header">
                         <div class="member-avatar-large">${avatarContent}</div>
-                        <h2>${member.name}</h2>
+                        <h2>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h2>
                         <p class="role">${member.role}</p>
                     </div>
                     
@@ -1904,7 +2268,61 @@ SOFTWARE.
 
             // 初始化文件上传功能
             initProjectFileUpload();
+            
+            // 初始化滚动监听（导航栏隐藏 + 置顶按钮）
+            initScrollHandlers();
         });
+
+        // ===== 滚动处理（导航栏隐藏 + 置顶按钮） =====
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function initScrollHandlers() {
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleScroll(navbar, backToTopBtn);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        }
+
+        function handleScroll(navbar, backToTopBtn) {
+            const currentScrollY = window.scrollY;
+            
+            // 导航栏隐藏/显示逻辑
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // 向下滚动且超过 100px，隐藏导航栏
+                navbar.classList.add('hidden');
+            } else {
+                // 向上滚动或在顶部，显示导航栏
+                navbar.classList.remove('hidden');
+            }
+            
+            // 置顶按钮显示/隐藏逻辑
+            if (currentScrollY > 300) {
+                // 滚动超过 300px，显示置顶按钮
+                backToTopBtn.classList.add('visible');
+            } else {
+                // 在顶部附近，隐藏置顶按钮
+                backToTopBtn.classList.remove('visible');
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+
+        // ===== 平滑滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
         // ===== 文件上传功能 =====
         const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
