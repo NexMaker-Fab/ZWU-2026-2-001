@@ -1195,9 +1195,9 @@
                 <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">项目文件</h3>
                 <div id="project-file-upload" style="margin-bottom: 2rem;">
                     <div style="background: rgba(0, 212, 255, 0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 212, 255, 0.2);">
-                        <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传项目文件</h4>
+                        <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 Upload Project Files</h4>
                         <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
-                            支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
+                            Supports PDF, JPG, PNG, DOC, DOCX, MP4, MP3, and more
                         </p>
                         <input type="file" id="project-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
                         <button onclick="document.getElementById('project-file-input').click()" style="
@@ -1211,7 +1211,7 @@
                             cursor: pointer;
                             transition: all 0.3s ease;
                             box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-                        ">选择文件</button>
+                        ">Select Files</button>
                     </div>
                     <div id="project-file-list" style="margin-top: 1rem;"></div>
                 </div>
@@ -1957,12 +1957,12 @@ SOFTWARE.
                 <div class="exercise-detail-layout">
                     <!-- 左侧目录导航 -->
                     <aside class="exercise-toc">
-                        <h4>📑 目录</h4>
+                        <h4>📑 Contents</h4>
                         <ul class="toc-list" id="toc-list-${id}">
                             <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exercise.id + 1}: ${exercise.title}</a></li>
-                            <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">练习内容</a></li>
-                            ${homeworkContentHTML ? '<li><a href="#section-homework" onclick="scrollToSection(event, \'section-homework\')">作业内容</a></li>' : ''}
-                            <li><a href="#section-files" onclick="scrollToSection(event, 'section-files')">练习文件</a></li>
+                            <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">Exercise Content</a></li>
+                            ${homeworkContentHTML ? '<li><a href="#section-homework" onclick="scrollToSection(event, \'section-homework\')">Assignment Content</a></li>' : ''}
+                            <li><a href="#section-files" onclick="scrollToSection(event, 'section-files')">Exercise Files</a></li>
                         </ul>
                     </aside>
                     
@@ -1975,9 +1975,9 @@ SOFTWARE.
                         <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise ${exercise.id + 1}: ${exercise.title}</h2>
                         <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">${exercise.description}</p>
                         
-                        <!-- 练习内容（只读，不可编辑） -->
+                        <!-- Exercise Content (Read-only) -->
                         <div id="section-exercise-content" style="margin-bottom: 3rem;">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">练习内容</h3>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Exercise Content</h3>
                             <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
                                 ${exerciseContentWithBreaks}
                             </div>
@@ -1985,13 +1985,13 @@ SOFTWARE.
 
                         ${homeworkContentHTML}
 
-                        <!-- 练习文件上传区域 -->
+                        <!-- Exercise Files Upload -->
                         <div id="section-files" style="margin-bottom: 2rem;">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">练习文件</h3>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Files</h3>
                             <div id="exercise-${id}-file-upload" style="padding: 1.5rem 0;">
-                                <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 上传作业文件</h4>
+                                <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 Upload Assignment Files</h4>
                                 <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
-                                    支持 PDF, JPG, PNG, DOC, DOCX, MP4, MP3 等格式
+                                    Supports PDF, JPG, PNG, DOC, DOCX, MP4, MP3, and more
                                 </p>
                                 <input type="file" id="exercise-${id}-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
                                 <button onclick="document.getElementById('exercise-${id}-file-input').click()" style="
@@ -2005,7 +2005,7 @@ SOFTWARE.
                                     cursor: pointer;
                                     transition: all 0.3s ease;
                                     box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-                                ">选择文件</button>
+                                ">Select Files</button>
                             </div>
                             <div id="exercise-${id}-file-list" style="margin-top: 1rem;"></div>
                         </div>
@@ -2061,8 +2061,8 @@ SOFTWARE.
             const headings = homeworkSection.querySelectorAll('h4, h5');
             let tocHTML = `
                 <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exerciseId + 1}</a></li>
-                <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">练习内容</a></li>
-                <li><a href="#section-homework" class="active" onclick="scrollToSection(event, 'section-homework')">作业内容</a></li>
+                <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">Exercise Content</a></li>
+                <li><a href="#section-homework" class="active" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
             `;
 
             headings.forEach((heading, index) => {
@@ -2078,7 +2078,7 @@ SOFTWARE.
                 tocHTML += `<li class="${level}"><a href="#${id}" onclick="scrollToSection(event, '${id}')">${text}</a></li>`;
             });
 
-            tocHTML += '<li><a href="#section-files" onclick="scrollToSection(event, \'section-files\')">练习文件</a></li>';
+            tocHTML += '<li><a href="#section-files" onclick="scrollToSection(event, \'section-files\')">Exercise Files</a></li>';
             tocList.innerHTML = tocHTML;
 
             // 添加滚动监听以高亮当前章节
