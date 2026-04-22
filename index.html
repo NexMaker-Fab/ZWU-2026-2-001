@@ -7,10 +7,10 @@
     <title>what the dog doing - Team Showcase Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
     <script>
-        // GitHub 同步功能已移至底部的 script 标签中
+        // GitHub synchronization function moved to the script tag at the bottom
     </script>
     <style>
-        /* ===== 基础样式重置 ===== */
+        /* ===== Base Styles Reset ===== */
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== 导航栏 - Apple 风格毛玻璃效果 ===== */
+        /* ===== Navigation Bar - Apple Style Frosted Glass ===== */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -44,12 +44,12 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* 导航栏隐藏状态 */
+        /* Navigation Bar Hidden State */
         .navbar.hidden {
             transform: translateX(-50%) translateY(-150%);
         }
 
-        /* 导航栏缩小样式 */
+        /* Navigation Bar Compact Style */
         .navbar.compact {
             top: 0.75rem;
             width: calc(100% - 4rem);
@@ -101,7 +101,7 @@
             opacity: 0.7;
         }
 
-        /* ===== 主内容区 ===== */
+        /* ===== Main Content Area ===== */
         .main-content {
             min-height: 100vh;
         }
@@ -133,7 +133,7 @@
             }
         }
 
-        /* ===== 首页 ===== */
+        /* ===== Home Page ===== */
         .hero {
             display: none;
             text-align: center;
@@ -203,7 +203,7 @@
             overflow: visible;
         }
 
-        /* ===== 卡片样式 - Apple 风格 ===== */
+        /* ===== Card Styles - Apple Style ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -291,7 +291,7 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== 成员详情页 ===== */
+        /* ===== Member Detail Page ===== */
         .member-detail {
             padding: 4rem 2rem;
         }
@@ -408,7 +408,7 @@
             background: rgba(0, 212, 255, 0.1);
         }
 
-        /* ===== 置顶按钮 ===== */
+        /* ===== Scroll to Top Button ===== */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -447,7 +447,7 @@
             transform: translateY(0);
         }
 
-        /* ===== 项目页面 ===== */
+        /* ===== Project Page ===== */
         .project-showcase {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 18px;
@@ -491,7 +491,7 @@
             transition: width 0.5s ease;
         }
 
-        /* ===== 练习列表 ===== */
+        /* ===== Exercise List ===== */
         .exercise-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
@@ -520,7 +520,7 @@
             text-decoration: underline;
         }
 
-        /* ===== 练习详情页 - 左右布局 ===== */
+        /* ===== Exercise Detail Page - Left-Right Layout ===== */
         .exercise-detail-layout {
             display: flex;
             gap: 3rem;
@@ -529,7 +529,7 @@
             padding: 6rem 3rem 2rem 1rem;
         }
 
-        /* 左侧目录导航 */
+        /* Left Sidebar TOC Navigation */
         .exercise-toc {
             width: 260px;
             flex-shrink: 0;
@@ -600,13 +600,13 @@
             padding: 0.25rem 0;
         }
 
-        /* 右侧内容区 */
+        /* Right Content Area */
         .exercise-content-main {
             flex: 1;
             min-width: 0;
         }
 
-        /* 增大作业内容字体 */
+        /* Enlarge assignment content font size */
         .homework-content-section h4 {
             font-size: 2rem !important;
             margin-bottom: 1.5rem !important;
@@ -644,7 +644,7 @@
             color: #ffffff;
         }
 
-        /* ===== 响应式设计 ===== */
+        /* ===== Responsive Design ===== */
         @media (max-width: 1024px) {
             .hero .team-name {
                 font-size: 5rem;
@@ -951,7 +951,7 @@
             }
         }
 
-        /* 超小屏幕优化 */
+        /* Extra Small Screen Optimization */
         @media (max-width: 360px) {
             .hero .team-name {
                 font-size: 2rem;
@@ -970,7 +970,7 @@
             }
         }
 
-        /* ===== 页面标题 ===== */
+        /* ===== Page Title ===== */
         .page-title {
             font-size: 3rem;
             font-weight: 700;
@@ -991,7 +991,7 @@
             line-height: 1.8;
         }
 
-        /* ===== 可编辑区域样式 ===== */
+        /* ===== Editable Area Styles ===== */
         .editable-area {
             position: relative;
         }
@@ -1009,7 +1009,7 @@
             transition: all 0.3s ease;
         }
 
-        /* 图片样式 */
+        /* Image Styles */
         .editable-content img {
             max-width: 100%;
             border-radius: 8px;
@@ -1023,7 +1023,7 @@
             margin: 1rem 0;
         }
 
-        /* ===== 团队介绍页面 ===== */
+        /* ===== Team Introduction Page ===== */
         .intro-section {
             max-width: 800px;
             margin: 0 auto 3rem;
@@ -1058,7 +1058,7 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-content">
             <a href="#home" class="logo">what the dog doing</a>
@@ -1072,14 +1072,14 @@
         </div>
     </nav>
 
-    <!-- 置顶按钮 -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="回到顶部">
+    <!-- Scroll to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">
         ↑
     </button>
 
-    <!-- 主内容区 -->
+    <!-- Main Content Area -->
     <main class="main-content">
-        <!-- 首页 -->
+        <!-- Home Page -->
         <section id="home" class="page-section hero">
             <div class="hero-content">
                 <h1>Welcome to our team's web page!</h1>
@@ -1087,7 +1087,7 @@
             </div>
         </section>
 
-        <!-- 团队介绍 -->
+        <!-- Team Introduction -->
         <section id="intro" class="page-section">
             <h2 class="page-title">About Us</h2>
             <div class="page-description">
@@ -1129,21 +1129,21 @@
             </div>
         </section>
 
-        <!-- 团队成员列表 -->
+        <!-- Team Members List -->
         <section id="members" class="page-section">
             <h2 class="page-title">Our Team Members</h2>
             <div class="page-description">
                 Meet our amazing team members. Each member brings unique skills and perspectives to our projects.
             </div>
             <div class="card-grid" id="members-grid">
-                <!-- 成员卡片将通过 JavaScript 动态生成 -->
+                <!-- Member cards will be dynamically generated by JavaScript -->
             </div>
         </section>
 
-        <!-- 成员详情页（动态生成） -->
+        <!-- Member Detail Page (Dynamically Generated) -->
         <section id="member-detail" class="page-section">
             <div id="member-detail-content">
-                <!-- 成员详情将通过 JavaScript 动态生成 -->
+                <!-- Member details will be dynamically generated by JavaScript -->
             </div>
         </section>
 
@@ -1191,34 +1191,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">项目文件</h3>
-                <div id="project-file-upload" style="margin-bottom: 2rem;">
-                    <div style="background: rgba(0, 212, 255, 0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(0, 212, 255, 0.2);">
-                        <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 Upload Project Files</h4>
-                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
-                            Supports PDF, JPG, PNG, DOC, DOCX, MP4, MP3, and more
-                        </p>
-                        <input type="file" id="project-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
-                        <button onclick="document.getElementById('project-file-input').click()" style="
-                            background: linear-gradient(135deg, #00d4ff, #0099cc);
-                            color: white;
-                            border: none;
-                            padding: 0.75rem 1.5rem;
-                            border-radius: 8px;
-                            font-size: 0.9rem;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-                        ">Select Files</button>
-                    </div>
-                    <div id="project-file-list" style="margin-top: 1rem;"></div>
-                </div>
             </div>
         </section>
 
-        <!-- 课程练习 -->
+        <!-- Course Exercises -->
         <section id="exercises" class="page-section">
             <h2 class="page-title">Daily Homework</h2>
             <div class="page-description">
@@ -1226,14 +1202,14 @@
             </div>
 
             <div id="exercises-list">
-                <!-- 练习列表将通过 JavaScript 动态生成 -->
+                <!-- Exercise list will be dynamically generated by JavaScript -->
             </div>
         </section>
 
-        <!-- 练习详情页 -->
+        <!-- Exercise Detail Page -->
         <section id="exercise-detail" class="page-section">
             <div id="exercise-detail-content">
-                <!-- 练习详情将通过 JavaScript 动态生成 -->
+                <!-- Exercise details will be dynamically generated by JavaScript -->
             </div>
         </section>
     </main>
@@ -1287,7 +1263,7 @@
             }
         }
 
-        // 从 GitHub 加载作业数据
+        // Load assignment data from GitHub
         async function loadHomeworkFromGitHub() {
             try {
                 const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
@@ -1309,7 +1285,7 @@
             }
         }
 
-        // 保存作业数据到 GitHub（实时同步）
+        // Save assignment data to GitHub (real-time sync)
         async function saveHomeworkToGitHub(homeworkData, exerciseId) {
             const token = getGitHubToken();
             if (!token) {
@@ -1320,7 +1296,7 @@
             try {
                 const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filePath}?ref=${GITHUB_CONFIG.branch}`;
                 
-                // 获取当前文件的 SHA
+                // Get current file SHA
                 const getResponse = await fetch(url, {
                     headers: {
                         'Authorization': `token ${token}`,
@@ -1329,14 +1305,14 @@
                 });
 
                 if (!getResponse.ok) {
-                    console.error('❌ 无法获取文件 SHA');
+                    console.error('❌ Unable to get file SHA');
                     return false;
                 }
 
                 const fileData = await getResponse.json();
                 const sha = fileData.sha;
 
-                // 更新文件
+                // Update file
                 const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(homeworkData, null, 2))));
 
                 const putResponse = await fetch(url, {
@@ -1450,7 +1426,7 @@
             }
         ];
 
-        // ===== 课程练习数据 =====
+        // ===== Course Exercise Data =====
         const exercises = [
             {
                 id: 0,
@@ -1589,12 +1565,12 @@
             // 生成作业内容HTML（用于提取目录）
             let homeworkContentHTML = '';
             
-            // Week 1 特殊作业内容 - 硬编码文档内容
+            // Week 1 Special Assignment Content - Hardcoded Document Content
             if (id === 0) {
                 homeworkContentHTML = `
-                    <!-- 作业内容 -->
+                    <!-- Assignment Content -->
                     <div class="homework-content-section" style="margin-bottom: 3rem;">
-                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
                             <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
                             
@@ -1655,10 +1631,10 @@
                                 <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace;">
                                     <code style="color: rgba(255, 255, 255, 0.9);">
                                         void setup() {<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;// 这里只运行一次<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// Runs only once here<br>
                                         }<br><br>
                                         void loop() {<br>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;// 这里会反复循环执行<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;// Loops repeatedly here<br>
                                         }
                                     </code>
                                 </div>
@@ -1884,7 +1860,7 @@
                                 <h5 id="section-mit-fulltext" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Full text of the standard (in English)</h5>
                                 <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem;">
                                     <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap;">
-Copyright (c) &lt;年份&gt; &lt;版权持有人&gt;
+Copyright (c) &lt;year&gt; &lt;copyright holder&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1919,12 +1895,12 @@ SOFTWARE.
                 `;
             }
             
-            // Week 2 特殊作业内容 - 硬编码文档内容
+            // Week 2 Special Assignment Content - Hardcoded Document Content
             if (id === 1) {
                 homeworkContentHTML = `
-                    <!-- 作业内容 -->
+                    <!-- Assignment Content -->
                     <div style="margin-bottom: 3rem;">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">作业内容</h3>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
                             <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Input - Interactive Visualization Project</h4>
                             
@@ -1962,7 +1938,6 @@ SOFTWARE.
                             <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exercise.id + 1}: ${exercise.title}</a></li>
                             <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">Exercise Content</a></li>
                             ${homeworkContentHTML ? '<li><a href="#section-homework" onclick="scrollToSection(event, \'section-homework\')">Assignment Content</a></li>' : ''}
-                            <li><a href="#section-files" onclick="scrollToSection(event, 'section-files')">Exercise Files</a></li>
                         </ul>
                     </aside>
                     
@@ -1985,30 +1960,6 @@ SOFTWARE.
 
                         ${homeworkContentHTML}
 
-                        <!-- Exercise Files Upload -->
-                        <div id="section-files" style="margin-bottom: 2rem;">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Files</h3>
-                            <div id="exercise-${id}-file-upload" style="padding: 1.5rem 0;">
-                                <h4 style="color: #00d4ff; margin-bottom: 1rem;">📁 Upload Assignment Files</h4>
-                                <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 1rem;">
-                                    Supports PDF, JPG, PNG, DOC, DOCX, MP4, MP3, and more
-                                </p>
-                                <input type="file" id="exercise-${id}-file-input" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.mp4,.mp3,.ppt,.pptx,.xls,.xlsx" multiple style="display: none;">
-                                <button onclick="document.getElementById('exercise-${id}-file-input').click()" style="
-                                    background: linear-gradient(135deg, #00d4ff, #0099cc);
-                                    color: white;
-                                    border: none;
-                                    padding: 0.75rem 1.5rem;
-                                    border-radius: 8px;
-                                    font-size: 0.9rem;
-                                    font-weight: 600;
-                                    cursor: pointer;
-                                    transition: all 0.3s ease;
-                                    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-                                ">Select Files</button>
-                            </div>
-                            <div id="exercise-${id}-file-list" style="margin-top: 1rem;"></div>
-                        </div>
                     </main>
                 </div>
             `;
@@ -2016,15 +1967,10 @@ SOFTWARE.
             console.log('✅ 练习详情页已渲染');
             console.log('DOM 内容长度:', detailContent.innerHTML.length);
             
-            // 初始化练习文件上传功能
-            setTimeout(() => {
-                initExerciseFileUpload(id);
-                
-                // 动态生成详细目录（仅针对 Week 1）
-                if (id === 0) {
-                    generateDetailedTOC(id);
-                }
-            }, 100);
+            // 动态生成详细目录（仅针对 Week 1）
+            if (id === 0) {
+                generateDetailedTOC(id);
+            }
             
             // 激活练习详情页 section
             document.getElementById('exercise-detail').classList.add('active');
@@ -2070,7 +2016,6 @@ SOFTWARE.
                 const text = heading.textContent.trim();
                 const id = heading.id || `section-heading-${index}`;
                 
-                // 如果标题没有ID，设置一个
                 if (!heading.id) {
                     heading.id = id;
                 }
@@ -2078,7 +2023,6 @@ SOFTWARE.
                 tocHTML += `<li class="${level}"><a href="#${id}" onclick="scrollToSection(event, '${id}')">${text}</a></li>`;
             });
 
-            tocHTML += '<li><a href="#section-files" onclick="scrollToSection(event, \'section-files\')">Exercise Files</a></li>';
             tocList.innerHTML = tocHTML;
 
             // 添加滚动监听以高亮当前章节
@@ -2266,9 +2210,6 @@ SOFTWARE.
                 window.location.hash = '#home';
             }
 
-            // 初始化文件上传功能
-            initProjectFileUpload();
-            
             // 初始化滚动监听（导航栏隐藏 + 置顶按钮）
             initScrollHandlers();
         });
@@ -2322,215 +2263,6 @@ SOFTWARE.
                 top: 0,
                 behavior: 'smooth'
             });
-        }
-
-        // ===== 文件上传功能 =====
-        const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
-
-        // 从 localStorage 加载文件列表
-        function loadFiles(context) {
-            try {
-                const files = localStorage.getItem(`${context}_files`);
-                return files ? JSON.parse(files) : [];
-            } catch (e) {
-                console.error('加载文件列表失败:', e);
-                return [];
-            }
-        }
-
-        // 保存文件列表到 localStorage
-        function saveFiles(context, files) {
-            try {
-                localStorage.setItem(`${context}_files`, JSON.stringify(files));
-            } catch (e) {
-                console.error('保存文件列表失败:', e);
-                showNotification('存储空间不足，无法保存文件', 'error');
-            }
-        }
-
-        // 显示文件列表
-        function renderFileList(context, containerId) {
-            const files = loadFiles(context);
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            if (files.length === 0) {
-                container.innerHTML = '<p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">暂无文件</p>';
-                return;
-            }
-
-            container.innerHTML = files.map((file, index) => {
-                const fileIcon = getFileIcon(file.type);
-                const fileSize = formatFileSize(file.size);
-                return `
-                    <div style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        padding: 0.75rem 1rem;
-                        background: rgba(255, 255, 255, 0.05);
-                        border-radius: 8px;
-                        margin-bottom: 0.5rem;
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                    ">
-                        <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1;">
-                            <span style="font-size: 1.5rem;">${fileIcon}</span>
-                            <div style="flex: 1;">
-                                <div style="color: rgba(255, 255, 255, 0.9); font-weight: 500;">${file.name}</div>
-                                <div style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">${fileSize}</div>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 0.5rem;">
-                            <button onclick="downloadFile('${context}', ${index})" style="
-                                background: rgba(0, 212, 255, 0.2);
-                                color: #00d4ff;
-                                border: none;
-                                padding: 0.5rem 1rem;
-                                border-radius: 6px;
-                                cursor: pointer;
-                                font-size: 0.85rem;
-                                transition: all 0.3s ease;
-                            ">下载</button>
-                            <button onclick="deleteFile('${context}', ${index})" style="
-                                background: rgba(255, 68, 68, 0.2);
-                                color: #ff4444;
-                                border: none;
-                                padding: 0.5rem 1rem;
-                                border-radius: 6px;
-                                cursor: pointer;
-                                font-size: 0.85rem;
-                                transition: all 0.3s ease;
-                            ">删除</button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // 获取文件图标
-        function getFileIcon(type) {
-            if (type.includes('pdf')) return '📄';
-            if (type.includes('image')) return '🖼️';
-            if (type.includes('word') || type.includes('document')) return '📝';
-            if (type.includes('video')) return '🎬';
-            if (type.includes('audio')) return '🎵';
-            if (type.includes('presentation') || type.includes('powerpoint')) return '📊';
-            if (type.includes('spreadsheet') || type.includes('excel')) return '📈';
-            return '📁';
-        }
-
-        // 格式化文件大小
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
-        }
-
-        // 处理文件上传
-        function handleFileUpload(context, inputId, listId) {
-            const input = document.getElementById(inputId);
-            if (!input) return;
-
-            input.addEventListener('change', async (e) => {
-                const files = Array.from(e.target.files);
-                if (files.length === 0) return;
-
-                const currentFiles = loadFiles(context);
-
-                for (const file of files) {
-                    // 检查文件大小
-                    if (file.size > MAX_FILE_SIZE) {
-                        showNotification(`文件 ${file.name} 超过 50MB 限制`, 'error');
-                        continue;
-                    }
-
-                    try {
-                        // 读取文件为 base64
-                        const base64 = await readFileAsBase64(file);
-                        
-                        currentFiles.push({
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            data: base64,
-                            uploadTime: new Date().toISOString()
-                        });
-
-                        showNotification(`已上传: ${file.name}`, 'success');
-                    } catch (error) {
-                        console.error('读取文件失败:', error);
-                        showNotification(`读取文件 ${file.name} 失败`, 'error');
-                    }
-                }
-
-                // 保存到 localStorage
-                saveFiles(context, currentFiles);
-                
-                // 刷新文件列表
-                renderFileList(context, listId);
-                
-                // 清空 input
-                input.value = '';
-            });
-        }
-
-        // 读取文件为 base64
-        function readFileAsBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // 下载文件
-        function downloadFile(context, index) {
-            const files = loadFiles(context);
-            if (!files[index]) return;
-
-            const file = files[index];
-            const link = document.createElement('a');
-            link.href = file.data;
-            link.download = file.name;
-            link.click();
-        }
-
-        // 删除文件
-        function deleteFile(context, index) {
-            if (!confirm('确定要删除这个文件吗？')) return;
-
-            const files = loadFiles(context);
-            files.splice(index, 1);
-            saveFiles(context, files);
-
-            // 根据 context 刷新对应的文件列表
-            if (context === 'project') {
-                renderFileList('project', 'project-file-list');
-            } else if (context.startsWith('exercise_')) {
-                const exerciseId = context.split('_')[1];
-                renderFileList(context, `exercise-${exerciseId}-file-list`);
-            }
-
-            showNotification('文件已删除', 'success');
-        }
-
-        // 初始化项目文件上传
-        function initProjectFileUpload() {
-            handleFileUpload('project', 'project-file-input', 'project-file-list');
-            renderFileList('project', 'project-file-list');
-        }
-
-        // 初始化练习文件上传
-        function initExerciseFileUpload(exerciseId) {
-            const context = `exercise_${exerciseId}`;
-            const inputId = `exercise-${exerciseId}-file-input`;
-            const listId = `exercise-${exerciseId}-file-list`;
-            
-            handleFileUpload(context, inputId, listId);
-            renderFileList(context, listId);
         }
 
         // ===== 切换图片显示 =====
