@@ -1430,15 +1430,21 @@
         const exercises = [
             {
                 id: 0,
-                title: 'Arduino OUTPUT',
-                description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
-                content: 'In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:\n\n• Digital pin configuration (INPUT/OUTPUT)\n• Pull-up and pull-down resistors\n• Button debouncing\n• LED brightness control with PWM\n• Serial monitor for debugging\n\nComponents used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.'
+                title: 'Project Management',
+                description: 'Coming soon...',
+                content: ''
             },
             {
                 id: 1,
-                title: 'Arduino Input',
+                title: 'Arduino Output&Input',
                 description: 'Use various sensors to collect environmental data and perform initial processing.',
                 content: 'Do one project which contain switch, sensor(photosensitive sensor, temperature ,etc);\nBuild one environment monitoring device'
+            },
+            {
+                id: 2,
+                title: 'Arduino Basic',
+                description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
+                content: 'In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:\n\n• Digital pin configuration (INPUT/OUTPUT)\n• Pull-up and pull-down resistors\n• Button debouncing\n• LED brightness control with PWM\n• Serial monitor for debugging\n\nComponents used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.'
             },
         ];
 
@@ -1566,7 +1572,7 @@
             let homeworkContentHTML = '';
             
             // Week 1 Special Assignment Content - Hardcoded Document Content
-            if (id === 0) {
+            if (id === 2) {
                 homeworkContentHTML = `
                     <!-- Assignment Content -->
                     <div class="homework-content-section" style="margin-bottom: 3rem;">
@@ -1696,6 +1702,9 @@
                                 
                                 <h5 id="section-hw-example" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Running an example project for Arduino IDE</h5>
                                 <p><strong>Example project: AnalogReadSerial</strong></p>
+                                <h6 style="color: #00d4ff; margin: 1rem 0 0.5rem 0;">Code</h6>
+                                <img src="./assets/image/assignment%201/30.png" alt="AnalogReadSerial Code" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">Actual operation display</p>
                                 <img src="./assets/image/assignment%201/19.gif" alt="AnalogReadSerial Example" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <h4 id="section-autoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
@@ -1902,27 +1911,29 @@ SOFTWARE.
                     <div style="margin-bottom: 3rem;">
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
-                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Input - Interactive Visualization Project</h4>
+                            <h4 style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Output&Input - Interactive Visualization Project</h4>
                             
                             <div style="margin-top: 2rem;">
                                 <h4 style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">1. Project Introduction</h4>
-                                <p>Implemented by Arduino R4 WiFi board, HS05b sensor, and WS2812 LED ring. The program can recognize level information of different lengths. Therefore, it is possible to clap, turn on the lights, blow air, and turn off the lights.</p>
+                                <p>Implemented by Arduino R4 WiFi board, OLED screen, RFID RF module (MFRC522), and WS2812 LED strip. This program can recognize the UID of different cards and respond accordingly. Therefore, different feedback can be obtained by scanning different cards. As our final task is to design an autonomous driving interaction signal system for the elderly (or other special groups), we have currently created cards and interactions corresponding to the elderly</p>
                                 
                                 <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Code</h4>
                                 <img src="./assets/image/assignment%202/1.png" alt="Code Image 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%202/2.png" alt="Code Image 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%202/3.png" alt="Code Image 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%202/4.png" alt="Code Image 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/5.png" alt="Code Image 5" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/6.png" alt="Code Image 6" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">3. Circuit diagram</h4>
-                                <img src="./assets/image/assignment%202/5.png" alt="Circuit Diagram 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/6.png" alt="Circuit Diagram 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/7.png" alt="Circuit Diagram" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/10.png" alt="Circuit Diagram 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">4. Physical connection mode</h4>
-                                <img src="./assets/image/assignment%202/7.png" alt="Physical Connection" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/8.png" alt="Physical Connection" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">5. Effect display</h4>
-                                <img src="./assets/image/assignment%202/8.gif" alt="Effect Display GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./assets/image/assignment%202/9.gif" alt="Effect Display GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                             </div>
                         </div>
                     </div>
@@ -1968,7 +1979,7 @@ SOFTWARE.
             console.log('DOM 内容长度:', detailContent.innerHTML.length);
             
             // 动态生成详细目录（仅针对 Week 1）
-            if (id === 0) {
+            if (id === 2) {
                 generateDetailedTOC(id);
             }
             
