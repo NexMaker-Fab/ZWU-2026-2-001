@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>what the dog doing - Team Showcase Website</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script>
+        // GitHub synchronization function moved to the script tag at the bottom
+    </script>
+    <style>
+        /* ===== Base Styles Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation Bar - Apple Style Frosted Glass ===== */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 3rem);
+            max-width: 1400px;
+            z-index: 1000;
+            padding: 0.875rem 2rem;
+            background: rgba(20, 20, 30, 0.3);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Navigation Bar Hidden State */
+        .navbar.hidden {
+            transform: translateX(-50%) translateY(-150%);
+        }
+
+        /* Navigation Bar Compact Style */
+        .navbar.compact {
+            top: 0.75rem;
+            width: calc(100% - 4rem);
+            max-width: 1600px;
+            padding: 0.625rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .navbar.compact .logo {
+            font-size: 1.25rem;
+        }
+
+        .navbar.compact .nav-links a {
+            font-size: 13px;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 0.7;
+        }
+
+        /* ===== Main Content ===== */
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .page-section {
+            display: none;
+            padding: 2rem;
+            max-width: 1800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-section.active:not(.hero) {
+            background: #000000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Home Page ===== */
+        .hero {
+            display: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            min-height: 100vh;
+            max-width: 100vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hero.active {
+            display: flex;
+            background: linear-gradient(-45deg, #0a1628, #0d3b5a, #1a2a52, #2d1a52, #1a3a6a, #2d1a52);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .team-name {
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== Page Title ===== */
+        .page-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* ===== Card Grid ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .card-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid rgba(0, 212, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            color: #ffffff;
+        }
+
+        .card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .card h3 .chinese-name,
+        .card h3 .name-separator,
+        .card h3 .english-name {
+            font-size: 1.5rem;
+        }
+
+        .card .role {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== Exercise Card ===== */
+        .exercise-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .exercise-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
+        }
+
+        .exercise-card:active {
+            transform: translateX(4px) scale(0.98);
+        }
+
+        .exercise-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exercise-card a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .exercise-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Exercise Detail Page - Left-Right Layout ===== */
+        .exercise-detail-layout {
+            display: flex;
+            gap: 2rem;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
+        }
+
+        /* Left Sidebar TOC Navigation */
+        .exercise-toc {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding: 1rem 0;
+        }
+
+        .exercise-toc::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .exercise-toc::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        .exercise-toc::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .exercise-toc h4 {
+            color: #00d4ff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-list a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: block;
+            padding: 0.375rem 0;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            line-height: 1.5;
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: #00d4ff;
+            background: transparent;
+            padding-left: 0.5rem;
+        }
+
+        .toc-list .toc-sub {
+            padding-left: 1.25rem;
+            font-size: 0.8125rem;
+        }
+
+        .toc-list .toc-sub a {
+            font-size: 0.8125rem;
+            padding: 0.25rem 0;
+        }
+
+        .toc-list .toc-sub-item {
+            padding-left: 2rem;
+            font-size: 0.75rem;
+        }
+
+        .toc-list .toc-sub-item a {
+            font-size: 0.75rem;
+            padding: 0.2rem 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .toc-list .toc-sub-item a:hover {
+            color: #ff00d4;
+        }
+
+        /* Right Content Area */
+        .exercise-content-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Enlarge assignment content font size */
+        .homework-content-section h4 {
+            font-size: 2rem !important;
+            margin-bottom: 1.5rem !important;
+            color: #00e5ff !important;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .homework-content-section h5 {
+            font-size: 1.5rem !important;
+            margin-top: 2.5rem !important;
+            margin-bottom: 1.25rem !important;
+            color: #ff4081 !important;
+            text-shadow: 0 0 15px rgba(255, 64, 129, 0.2);
+        }
+
+        .homework-content-section h6 {
+            font-size: 1.25rem !important;
+            margin-bottom: 1rem !important;
+            color: #ffd740 !important;
+        }
+
+        .homework-content-section p {
+            font-size: 1.125rem !important;
+            line-height: 1.9 !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .homework-content-section li {
+            font-size: 1.125rem !important;
+            line-height: 1.8 !important;
+        }
+
+        .homework-content-section strong {
+            font-size: 1.125rem !important;
+            color: #ffffff;
+        }
+
+        .exercise-content-section img {
+            width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            object-fit: contain;
+        }
+
+        /* ===== Member Detail Page ===== */
+        .member-detail {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .member-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .member-avatar-large {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 4px solid rgba(0, 212, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00d4ff, #ff00d4);
+            color: #ffffff;
+        }
+
+        .member-avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-header h2 .chinese-name,
+        .member-header h2 .name-separator,
+        .member-header h2 .english-name {
+            font-size: 2.5rem;
+        }
+
+        .member-header .role {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .member-section {
+            margin-bottom: 2rem;
+        }
+
+        .member-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .member-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Project Showcase ===== */
+        .project-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-item {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #ff00d4);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* ===== Back to Top Button ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            border-radius: 50%;
+            color: #00d4ff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: rgba(0, 212, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 1024px) {
+            .hero .team-name {
+                font-size: 5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                margin-top: 90px;
+                min-height: calc(100vh - 90px);
+            }
+
+            .hero {
+                padding: 5rem 2rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .team-name {
+                font-size: 4rem;
+            }
+
+            .page-title {
+                font-size: 2.25rem;
+                margin: 2rem 0 1.5rem;
+            }
+
+            .page-description {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .card h3 .chinese-name,
+            .card h3 .name-separator,
+            .card h3 .english-name {
+                font-size: 1.25rem;
+            }
+
+            .member-avatar-large {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .member-header h2 {
+                font-size: 2rem;
+            }
+
+            .member-header h2 .chinese-name,
+            .member-header h2 .name-separator,
+            .member-header h2 .english-name {
+                font-size: 2rem;
+            }
+
+            .exercise-detail-layout {
+                flex-direction: column;
+                padding: 5rem 1rem 1rem;
+            }
+
+            .exercise-toc {
+                width: 100%;
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .exercise-card {
+                padding: 1rem;
+            }
+
+            .exercise-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .team-name {
+                font-size: 3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#home" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-nav>Home</a></li>
+                <li><a href="#intro" data-nav>About us</a></li>
+                <li><a href="#members" data-nav>Team members</a></li>
+                <li><a href="#exercises" data-nav>Daily Homework</a></li>
+                <li><a href="#project" data-nav>Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Scroll to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">
+        ↑
+    </button>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page-section hero">
+            <div class="hero-content">
+                <h1>Welcome to our team's web page!</h1>
+                <div class="team-name">what the dog doing</div>
+            </div>
+        </section>
+
+        <!-- Team Introduction -->
+        <section id="intro" class="page-section">
+            <h2 class="page-title">About Us</h2>
+            <div class="page-description">
+                Welcome to the what the dog doing team! We are a group of passionate and determined heroes, dedicated to paving the way with knives and shields in our hands. Our name comes from an image that we particularly like. Click the button below to view this image.
+            </div>
+            
+            <div style="text-align: center; margin: 3rem 0;">
+                <button class="show-image-btn" onclick="toggleImage()" style="
+                    background: linear-gradient(135deg, #00d4ff, #ff00d4);
+                    color: #ffffff;
+                    border: none;
+                    padding: 1rem 2.5rem;
+                    border-radius: 30px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+                ">Show Image</button>
+            </div>
+
+            <div id="image-container" style="display: none; max-width: 800px; margin: 2rem auto;">
+                <div style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 18px;
+                    padding: 2rem;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(10px);
+                ">
+                    <img id="team-image" src="" alt="Team Image" style="
+                        width: 100%;
+                        max-width: 600px;
+                        height: auto;
+                        border-radius: 12px;
+                        display: block;
+                        margin: 0 auto;
+                    ">
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Members List -->
+        <section id="members" class="page-section">
+            <h2 class="page-title">Our Team Members</h2>
+            <div class="page-description">
+                Meet our amazing team members. Each member brings unique skills and perspectives to our projects.
+            </div>
+            <div class="card-grid" id="members-grid">
+                <!-- Member cards will be dynamically generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Member Detail Page (Dynamically Generated) -->
+        <section id="member-detail" class="page-section">
+            <div id="member-detail-content">
+                <!-- Member details will be dynamically generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- 期末项目 -->
+        <section id="project" class="page-section">
+            <h2 class="page-title">Final Project</h2>
+            <div class="project-showcase" id="project-content">
+                <div class="editable-area" data-field="project.title">
+                    <h2>Health Monitoring System</h2>
+                </div>
+                <div class="editable-area" data-field="project.description">
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
+                        Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
+                        and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
+                        providing users with comprehensive health data monitoring services.
+                    </p>
+                </div>
+
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #67e8f9;">Technology Stack</h3>
+                <div class="tech-stack" id="project-tech-stack">
+                    <span class="tech-item">Arduino</span>
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">Sensor Technology</span>
+                    <span class="tech-item">Data Visualization</span>
+                </div>
+
+                <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #67e8f9;">Project Progress</h3>
+                <div class="editable-area" data-field="project.progress">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;" contenteditable="false">Development Progress: 75%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
+                    <div class="editable-area" data-field="project.achievements">
+                        <h4 style="margin-bottom: 0.5rem;" contenteditable="false">Key Achievements</h4>
+                        <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;" contenteditable="false">
+                            <li>Completed hardware prototype design and assembly</li>
+                            <li>Implemented data collection and transmission functionality</li>
+                            <li>Developed web visualization interface</li>
+                            <li>Optimized user interaction experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Exercises -->
+        <section id="exercises" class="page-section">
+            <h2 class="page-title">Daily Homework</h2>
+            <div class="page-description">
+                A series of exercise projects we completed during the course, showcasing our learning outcomes and technical practices.
+            </div>
+
+            <div id="exercises-list">
+                <!-- Exercise list will be dynamically generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Exercise Detail Page -->
+        <section id="exercise-detail" class="page-section">
+            <div id="exercise-detail-content">
+                <!-- Exercise details will be dynamically generated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ===== 团队成员数据 =====
+        const members = [
+            {
+                id: 0,
+                name: 'Ash',
+                chineseName: '范洲豪',
+                role: 'Frontend Developer',
+                bio: 'Specialized in modern web technologies with expertise in HTML, CSS, and JavaScript. Passionate about user experience design and dedicated to creating beautiful and functional interfaces.',
+                skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'UI/UX'],
+                email: '1059436880@qq.com',
+                github: 'https://github.com/17poi',
+                avatar: './assets/image/avatars/Ash.jpg',
+                hobby: ['Game', 'Music', 'Sleep'],
+                assignment: ['Software Building', 'Web Building']
+            },
+            {
+                id: 1,
+                name: 'Felix',
+                chineseName: '徐克丰',
+                role: 'Hardware Engineer',
+                bio: 'College student passionate about interactive hardware systems and web development. Leveraging AI tools to accelerate learning and exploring the intersection of hardware and software. Dedicated to building innovative projects that bridge the physical and digital worlds.',
+                skills: ['Arduino', 'Sensor Technology', 'Circuit Design', 'Prototyping', 'Interactive Systems'],
+                email: '2301618056@qq.com',
+                github: 'https://github.com/WanShang2026',
+                avatar: './assets/image/avatars/Felix.jpg',
+                hobby: ['Electronics', 'Coding', 'Gaming'],
+                assignment: ['Software Building', 'Web Building']
+            },
+            {
+                id: 2,
+                name: 'Howie',
+                chineseName: '吴浩瑜',
+                role: 'Backend Developer',
+                bio: 'Passionate backend developer with expertise in server-side development and database management. Focused on building robust APIs and scalable systems. Experienced in Python, Node.js, and database optimization to deliver high-performance solutions.',
+                skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
+                email: 'howie@example.com',
+                github: 'https://github.com/Howie-jbg',
+                avatar: './assets/image/avatars/howie-avatar.jpg',
+                hobby: ['Coding', 'Reading', 'Music'],
+                assignment: ['Software Building', 'Web Building']
+            },
+            {
+                id: 3,
+                name: 'Max',
+                chineseName: '韩明哲',
+                role: 'Project Manager',
+                bio: 'College student currently studying Interactive Application Systems. Experienced in project planning, team coordination, and progress tracking. Skilled at breaking down complex tasks, facilitating team communication, and ensuring timely delivery of high-quality results.',
+                skills: ['Project Planning', 'Team Coordination', 'Progress Tracking', 'Risk Management', 'Stakeholder Communication'],
+                email: '2500401537@qq.com',
+                github: 'https://github.com/HMZ766',
+                avatar: './assets/image/avatars/Max.jpg',
+                hobby: ['Coding', 'Gaming', 'Reading'],
+                assignment: ['Software Building', 'Web Building']
+            },
+            {
+                id: 4,
+                name: 'Joe',
+                chineseName: '张敏强',
+                role: 'UI/UX Designer',
+                bio: '20岁99新一手大学生',
+                skills: ['平面设计', '美术美工'],
+                email: '2012362350@QQ.COM',
+                github: 'https://github.com/SONATA360',
+                avatar: './assets/image/avatars/Joe.jpg',
+                hobby: ['电子游戏', '手绘'],
+                assignment: []
+            },
+            {
+                id: 5,
+                name: 'David',
+                chineseName: '叶骁纬',
+                role: 'Full Stack Developer',
+                bio: '神秘的大二新生',
+                skills: ['平面设计'],
+                email: '2417857974@qq.com',
+                github: 'https://github.com/Excalibuuuuur',
+                avatar: './assets/image/avatars/Excalibuuuuur.jpg',
+                hobby: ['电子游戏', '绘画'],
+                assignment: []
+            }
+        ];
+
+        // ===== Course Exercise Data =====
+        const exercises = [
+            {
+                id: 0,
+                title: 'Project Management',
+                description: 'We have created a webpage for storing daily and final assignments',
+                content: ''
+            },
+            {
+                id: 1,
+                title: 'Arduino Output&Input',
+                description: 'Use various sensors to collect environmental data and perform initial processing.',
+                content: 'Do one project which contain switch, sensor(photosensitive sensor, temperature ,etc);\nBuild one environment monitoring device'
+            },
+            {
+                id: 2,
+                title: 'Arduino Basic',
+                description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
+                content: 'In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:\n\n• Digital pin configuration (INPUT/OUTPUT)\n• Pull-up and pull-down resistors\n• Button debouncing\n• LED brightness control with PWM\n• Serial monitor for debugging\n\nComponents used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.'
+            },
+            {
+                id: 3,
+                title: 'CAD Design',
+                description: 'Learning about model design through CAD design',
+                content: 'Further design the existing model through AI and fusion360.'
+            },
+        ];
+
+        // ===== 渲染成员卡片 =====
+        function renderMembers() {
+            const grid = document.getElementById('members-grid');
+            grid.innerHTML = members.map(member => {
+                const avatarSrc = member.avatar || './assets/image/avatars/default-avatar.png';
+                return `
+                    <div class="card" onclick="showMemberDetail(${member.id})">
+                        <div class="card-avatar">
+                            <img src="${avatarSrc}" alt="${member.chineseName}">
+                        </div>
+                        <h3>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h3>
+                        <p class="role">${member.role}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ===== 显示成员详情 =====
+        function showMemberDetail(id) {
+            const member = members.find(m => m.id === id);
+            if (!member) return;
+
+            const avatarContent = member.avatar 
+                ? `<img src="${member.avatar}" alt="${member.chineseName}">`
+                : `${member.chineseName[0]}`;
+
+            const detailContent = document.getElementById('member-detail-content');
+            detailContent.innerHTML = `
+                <div class="member-detail">
+                    <div class="member-header">
+                        <div class="member-avatar-large">${avatarContent}</div>
+                        <h2>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h2>
+                        <p class="role">${member.role}</p>
+                    </div>
+                    
+                    <div class="member-section">
+                        <h3>Bio</h3>
+                        <p>${member.bio}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Hobbies</h3>
+                        <div class="skills">
+                            ${member.hobby ? member.hobby.map(h => `<span class="skill-tag">${h}</span>`).join('') : '<p>No hobbies listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Assignment</h3>
+                        <div class="skills">
+                            ${member.assignment ? member.assignment.map(a => `<span class="skill-tag">${a}</span>`).join('') : '<p>No assignments listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Skills</h3>
+                        <div class="skills">
+                            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:${member.email}" class="contact-link">Send Email</a>
+                        <a href="${member.github}" target="_blank" class="contact-link">GitHub</a>
+                    </div>
+                </div>
+            `;
+
+            window.location.hash = `#member-${id}`;
+        }
+
+        // ===== 渲染练习列表 =====
+        function renderExercises() {
+            const list = document.getElementById('exercises-list');
+            list.innerHTML = exercises.map((exercise) => `
+                <div class="exercise-card" onclick="showExerciseDetail(${exercise.id}); window.location.hash = '#exercise-${exercise.id}';">
+                    <h3>Exercise ${exercise.id + 1}: ${exercise.title}</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <span style="color: #00d4ff; font-size: 0.875rem;">Click to view details →</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== 显示练习详情 =====
+        function showExerciseDetail(id) {
+            const exercise = exercises.find(e => e.id === id);
+            if (!exercise) {
+                console.error('Exercise not found:', id);
+                return;
+            }
+
+            const exerciseContentWithBreaks = exercise.content.replace(/\n/g, '<br>');
+
+            const detailContent = document.getElementById('exercise-detail-content');
+            if (!detailContent) {
+                console.error('exercise-detail-content element not found');
+                return;
+            }
+
+            // 激活导航栏紧凑模式
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                navbar.classList.add('compact');
+            }
+
+            detailContent.innerHTML = `
+                <div class="exercise-detail-layout">
+                    <!-- Left Sidebar: Table of Contents -->
+                    <aside class="exercise-toc">
+                        <h4>📋 Contents</h4>
+                        <ul class="toc-list" id="toc-list">
+                            <!-- TOC items will be dynamically generated -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- Right Content Area -->
+                    <div class="exercise-content-main">
+                        <a href="#exercises" style="color: #00d4ff; text-decoration: none; margin-bottom: 2rem; display: inline-block;">← Back to List</a>
+                        
+                        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise ${exercise.id + 1}: ${exercise.title}</h1>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem; font-size: 1.125rem;">${exercise.description}</p>
+                        
+                        <!-- Exercise Content -->
+                        <div class="homework-content-section" style="margin-bottom: 3rem;">
+                            <h3 id="section-exercise" style="font-size: 1.5rem; margin-bottom: 1rem; color: #7dd3fc;">Exercise Content</h3>
+                            <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                                <p>${exerciseContentWithBreaks}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // 生成详细目录
+            setTimeout(() => {
+                generateDetailedTOC();
+            }, 100);
+
+            document.getElementById('exercise-detail').classList.add('active');
+        }
+
+        // ===== 生成详细目录 =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list');
+            if (!tocList) return;
+
+            const contentArea = document.querySelector('.exercise-content-main');
+            if (!contentArea) return;
+
+            // 查找所有带 id 的标题元素
+            const headings = contentArea.querySelectorAll('h3, h4, h5, h6');
+            
+            let tocHTML = '';
+            headings.forEach((heading, index) => {
+                const level = heading.tagName.toLowerCase();
+                const text = heading.textContent;
+                
+                // 确保每个标题都有 id
+                let id = heading.id;
+                if (!id) {
+                    id = `section-${level}-${index}`;
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}"><a href="#${id}" onclick="scrollToSection(event, '${id}')">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+
+        // ===== 路由管理 =====
+        function handleRoute() {
+            const hash = window.location.hash || '#home';
+            
+            // 隐藏所有页面
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 更新导航栏激活状态
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === hash || 
+                    (hash.startsWith('#member-') && link.getAttribute('href') === '#members')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 处理成员详情页
+            if (hash.startsWith('#member-')) {
+                const memberId = parseInt(hash.split('-')[1]);
+                if (!isNaN(memberId) && memberId >= 0 && memberId < members.length) {
+                    showMemberDetailFromHash(memberId);
+                    return;
+                }
+            }
+
+            // 处理练习详情页
+            if (hash.startsWith('#exercise-')) {
+                const exerciseId = parseInt(hash.split('-')[1]);
+                if (!isNaN(exerciseId) && exerciseId >= 0 && exerciseId < exercises.length) {
+                    showExerciseDetailFromHash(exerciseId);
+                    return;
+                }
+            }
+
+            // 显示对应页面
+            const targetSection = document.querySelector(hash);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            } else {
+                // 无效路由重定向到首页
+                window.location.hash = '#home';
+            }
+
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+
+        // ===== 从 Hash 显示成员详情 =====
+        function showMemberDetailFromHash(id) {
+            const member = members.find(m => m.id === id);
+            if (!member) return;
+
+            const avatarContent = member.avatar 
+                ? `<img src="${member.avatar}" alt="${member.chineseName}">`
+                : `${member.chineseName[0]}`;
+
+            const detailContent = document.getElementById('member-detail-content');
+            detailContent.innerHTML = `
+                <div class="member-detail">
+                    <div class="member-header">
+                        <div class="member-avatar-large">${avatarContent}</div>
+                        <h2>
+                            <span class="chinese-name">${member.chineseName}</span>
+                            <span class="name-separator">/</span>
+                            <span class="english-name">${member.name}</span>
+                        </h2>
+                        <p class="role">${member.role}</p>
+                    </div>
+                    
+                    <div class="member-section">
+                        <h3>Bio</h3>
+                        <p>${member.bio}</p>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Hobbies</h3>
+                        <div class="skills">
+                            ${member.hobby ? member.hobby.map(h => `<span class="skill-tag">${h}</span>`).join('') : '<p>No hobbies listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Assignment</h3>
+                        <div class="skills">
+                            ${member.assignment ? member.assignment.map(a => `<span class="skill-tag">${a}</span>`).join('') : '<p>No assignments listed</p>'}
+                        </div>
+                    </div>
+
+                    <div class="member-section">
+                        <h3>Skills</h3>
+                        <div class="skills">
+                            ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <a href="mailto:${member.email}" class="contact-link">Send Email</a>
+                        <a href="${member.github}" target="_blank" class="contact-link">GitHub</a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('member-detail').classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#members') {
+                    link.classList.add('active');
+                }
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        // ===== 从 Hash 显示练习详情 =====
+        function showExerciseDetailFromHash(id) {
+            // 调用更新后的 showExerciseDetail 函数
+            showExerciseDetail(id);
+        }
+
+        // ===== 初始化 =====
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMembers();
+            renderExercises();
+            handleRoute();
+
+            // 监听路由变化
+            window.addEventListener('hashchange', handleRoute);
+            
+            // 默认导航到首页
+            if (!window.location.hash || window.location.hash === '#') {
+                window.location.hash = '#home';
+            }
+
+            // 初始化滚动监听（导航栏隐藏 + 置顶按钮）
+            initScrollHandlers();
+        });
+
+        // ===== 滚动处理（导航栏隐藏 + 置顶按钮） =====
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function initScrollHandlers() {
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleScroll(navbar, backToTopBtn);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        }
+
+        function handleScroll(navbar, backToTopBtn) {
+            const currentScrollY = window.scrollY;
+            
+            // 导航栏隐藏/显示逻辑
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // 向下滚动且超过 100px，隐藏导航栏
+                navbar.classList.add('hidden');
+            } else {
+                // 向上滚动或在顶部，显示导航栏
+                navbar.classList.remove('hidden');
+            }
+            
+            // 置顶按钮显示/隐藏逻辑
+            if (currentScrollY > 300) {
+                // 滚动超过 300px，显示置顶按钮
+                backToTopBtn.classList.add('visible');
+            } else {
+                // 在顶部附近，隐藏置顶按钮
+                backToTopBtn.classList.remove('visible');
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+
+        // ===== 平滑滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ===== 切换图片显示 =====
+        function toggleImage() {
+            const container = document.getElementById('image-container');
+            const image = document.getElementById('team-image');
+            const button = document.querySelector('.show-image-btn');
+            
+            if (container.style.display === 'none') {
+                // 显示图片
+                image.src = './assets/image/eggs/what-the-dog-doing.gif';
+                container.style.display = 'block';
+                button.textContent = 'Hide Image';
+                
+                // 添加淡入动画
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.style.transition = 'opacity 0.5s ease';
+                    container.style.opacity = '1';
+                }, 10);
+            } else {
+                // 隐藏图片
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    button.textContent = 'Show Image';
+                }, 500);
+            }
+        }
+
+        // 添加 CSS 动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -109,7 +109,7 @@
         .page-section {
             display: none;
             padding: 2rem;
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 0 auto;
             animation: fadeIn 0.5s ease;
         }
@@ -206,7 +206,7 @@
         /* ===== Card Styles - Apple Style ===== */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -523,10 +523,10 @@
         /* ===== Exercise Detail Page - Left-Right Layout ===== */
         .exercise-detail-layout {
             display: flex;
-            gap: 3rem;
-            max-width: 1600px;
+            gap: 2rem;
+            max-width: 1800px;
             margin: 0 auto;
-            padding: 6rem 3rem 2rem 1rem;
+            padding: 6rem 2rem 2rem 2rem;
         }
 
         /* Left Sidebar TOC Navigation */
@@ -670,7 +670,7 @@
             }
 
             .card-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -722,7 +722,7 @@
             }
 
             .card-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
 
@@ -1461,6 +1461,12 @@
                 description: 'Learn basic Arduino input and output operations, including button detection and LED control.',
                 content: 'In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:\n\n• Digital pin configuration (INPUT/OUTPUT)\n• Pull-up and pull-down resistors\n• Button debouncing\n• LED brightness control with PWM\n• Serial monitor for debugging\n\nComponents used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.'
             },
+            {
+                id: 3,
+                title: 'CAD Design',
+                description: 'Learning about model design through CAD design',
+                content: 'Further design the existing model through AI and fusion360.'
+            },
         ];
 
         // ===== 渲染成员卡片 =====
@@ -1550,11 +1556,11 @@
         function renderExercises() {
             const list = document.getElementById('exercises-list');
             list.innerHTML = exercises.map((exercise) => `
-                <div class="exercise-card">
+                <div class="exercise-card" onclick="showExerciseDetail(${exercise.id})" style="cursor: pointer; transition: all 0.3s ease;">
                     <h3>Exercise ${exercise.id + 1}: ${exercise.title}</h3>
                     <p style="color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">${exercise.description}</p>
                     <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <a href="#exercise-${exercise.id}" style="color: #00d4ff; text-decoration: none;" onclick="showExerciseDetail(${exercise.id})">View Details →</a>
+                        <span style="color: #00d4ff; text-decoration: none;">Click to view details →</span>
                     </div>
                 </div>
             `).join('');
@@ -1591,12 +1597,12 @@
                 homeworkContentHTML = `
                     <!-- Assignment Content -->
                     <div class="homework-content-section" style="margin-bottom: 3rem;">
-                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7); font-style: italic; margin-bottom: 1.5rem;">Please note that the images displayed in the homework file are supplementary screenshots taken after the completion of the webpage. So there may be situations where the GitHub repository already exists in the picture and the cloud repository has already been downloaded locally</p>
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
                             <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Project Management - Website Development Guide</h4>
                             
                             <div style="margin-top: 2rem;">
-                                <h4 id="section-preparation" style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">Project Management</h4>
                                 <p>Prepare tool for website.</p>
                                 <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
                                     <li><strong>Github:</strong> Our website will be placed here.</li>
@@ -1677,9 +1683,118 @@
                                 </ol>
                                 <img src="./assets/image/assignment%200/19.png" alt="Upload to GitHub 6" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
-                                <h4 id="section-code" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Main part code of webpage</h4>
                                 <img src="./assets/image/assignment%200/20.png" alt="Main Code" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%200/21.png" alt="Main Code 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <h4 id="section-code" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Main part code of webpage</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-style: italic; margin-bottom: 1.5rem;">Due to the length of the original code, only a portion of it will be displayed here</p>
+                                
+                                <!-- Key Code Snippets -->
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2);">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">1. Navigation Bar - Frosted Glass Effect</h5>
+                                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>.navbar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3rem);
+    max-width: 1400px;
+    z-index: 1000;
+    padding: 0.875rem 2rem;
+    background: rgba(20, 20, 30, 0.3);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.hidden {
+    transform: translateX(-50%) translateY(-150%);
+}
+
+.navbar.compact {
+    top: 0.75rem;
+    width: calc(100% - 4rem);
+    max-width: 1600px;
+    padding: 0.625rem 1.5rem;
+    border-radius: 12px;
+}</code></pre>
+                                </div>
+                                
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2);">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">2. Home Page - Animated Gradient Background</h5>
+                                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>.hero {
+    display: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+}
+
+.hero.active {
+    display: flex;
+    background: linear-gradient(-45deg, #0a1628, #0d3b5a, #1a2a52, #2d1a52, #1a3a6a, #2d1a52);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.team-name {
+    font-size: 6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4ff, #ff00d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+}</code></pre>
+                                </div>
+                                
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2);">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">3. Five Main Pages Structure</h5>
+                                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>&lt;!-- Home Page --&gt;
+&lt;section id="home" class="page-section hero"&gt;
+    &lt;div class="hero-content"&gt;
+        &lt;h1&gt;Welcome to our team's web page!&lt;/h1&gt;
+        &lt;div class="team-name"&gt;what the dog doing&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Team Introduction --&gt;
+&lt;section id="intro" class="page-section"&gt;
+    &lt;h2 class="page-title"&gt;About Us&lt;/h2&gt;
+    &lt;div class="page-description"&gt;...&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Team Members List --&gt;
+&lt;section id="members" class="page-section"&gt;
+    &lt;h2 class="page-title"&gt;Our Team Members&lt;/h2&gt;
+    &lt;div class="card-grid" id="members-grid"&gt;&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Course Exercises --&gt;
+&lt;section id="exercises" class="page-section"&gt;
+    &lt;h2 class="page-title"&gt;Daily Homework&lt;/h2&gt;
+    &lt;div id="exercises-list"&gt;&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Final Project --&gt;
+&lt;section id="project" class="page-section"&gt;
+    &lt;h2 class="page-title"&gt;Final Project&lt;/h2&gt;
+    &lt;div class="project-showcase" id="project-content"&gt;...&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1691,7 +1806,7 @@
                 homeworkContentHTML = `
                     <!-- Assignment Content -->
                     <div class="homework-content-section" style="margin-bottom: 3rem;">
-                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
                             <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
                             
@@ -1823,6 +1938,7 @@
                                 <img src="./assets/image/assignment%201/19.gif" alt="AnalogReadSerial Example" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
                                 <h4 id="section-autoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
+                                <p><a href="https://autoware.org/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://autoware.org/</a></p>
                                 <p>Autoware is currently one of the most representative open-source autonomous driving software stacks, based on ROS, and its goal is a software system for autonomous vehicles. Both the official site and GitHub clearly position it as an open-source project for autonomous driving. The repository currently uses the Apache-2.0 license.</p>
                                 <img src="./assets/image/assignment%201/20.png" alt="Autoware" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1843,6 +1959,7 @@
                                 <p>Refer to its 'vehicle status interface' and then translate these statuses into concise, perceptible external signals</p>
                                 
                                 <h4 id="section-ehmi" style="color: #00d4ff; margin: 2rem 0 1rem 0;">B. Autonomous Vehicle eHMI Prototype</h4>
+                                <p><a href="https://www.mdpi.com/1424-8220/21/9/2912" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.mdpi.com/1424-8220/21/9/2912</a></p>
                                 <p>This GitHub project explicitly states that it is about external Human-Machine Interfaces (eHMIs) for autonomous vehicle-to-pedestrian communication, that is, 'external human-machine interfaces for communication between autonomous vehicles and pedestrians'</p>
                                 <img src="./assets/image/assignment%201/21.png" alt="eHMI Prototype 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/22.png" alt="eHMI Prototype 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1869,6 +1986,7 @@
                                 </ol>
                                 
                                 <h4 id="section-harmoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">C. Harmoware-HMI</h4>
+                                <p><a href="https://github.com/Harmoware/Harmoware-HMI" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/Harmoware/Harmoware-HMI</a></p>
                                 <p>This project leans more towards 'human-computer interaction in autonomous driving,' including voice interaction, nod/shake confirmation, speed voice control, etc. It is focused on in-car scenarios, but it can give you strong inspiration for 'user-friendly interaction for special groups'.</p>
                                 <img src="./assets/image/assignment%201/23.png" alt="Harmoware-HMI" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -1891,6 +2009,7 @@
                                 </ol>
                                 
                                 <h4 id="section-smartcane" style="color: #00d4ff; margin: 2rem 0 1rem 0;">D. Smart Cane</h4>
+                                <p><a href="https://wewalk.io/en/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://wewalk.io/en/</a></p>
                                 <p>The Smart-cane project on GitHub is aimed at visually impaired and elderly users. Its core approach is to use multiple ultrasonic sensors and buzzers for real-time obstacle alerts. The project description explicitly states that its target users are visually impaired and elderly people, and it plans to further add features such as Bluetooth, GPS, and vibration feedback.</p>
                                 <img src="./assets/image/assignment%201/24.png" alt="Smart Cane 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/25.png" alt="Smart Cane 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1916,6 +2035,7 @@
                                 </ol>
                                 
                                 <h4 id="section-hapticglove" style="color: #00d4ff; margin: 2rem 0 1rem 0;">E. OpenHapticGlove</h4>
+                                <p><a href="https://github.com/vidklopcic/openhapticglove" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/vidklopcic/openhapticglove</a></p>
                                 <p>OpenHapticGlove is an open-source haptic glove designed for navigation for the visually impaired, using ToF distance sensing and vibration feedback. It is not an in-vehicle system, but it is well suited for your research on 'non-visual interaction.' This approach is valuable for the elderly, low-vision users, or users in bright light environments.</p>
                                 <img src="./assets/image/assignment%201/26.png" alt="OpenHapticGlove 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 <img src="./assets/image/assignment%201/27.png" alt="OpenHapticGlove 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -1941,6 +2061,7 @@
                                 </ol>
                                 
                                 <h4 id="section-smartpole" style="color: #00d4ff; margin: 2rem 0 1rem 0;">F. Smartpole-VR-AWSIM</h4>
+                                <p><a href="https://github.com/tlab-wide/Smartpole-VR-AWSIM" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/tlab-wide/Smartpole-VR-AWSIM</a></p>
                                 <p>This project combines AWSIM/Autoware/ROS 2/Unity/VR to simulate the impact of infrastructure eHMI (external human-machine interface) on pedestrians, aiming to assess the safety, clarity, and timing of signals. Its research path is very close to your 'autonomous driving interactive signaling system,' except that it is more oriented towards a simulation evaluation platform.</p>
                                 <img src="./assets/image/assignment%201/28.png" alt="Smartpole-VR-AWSIM" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                                 
@@ -2024,7 +2145,7 @@ SOFTWARE.
                 homeworkContentHTML = `
                     <!-- Assignment Content -->
                     <div class="homework-content-section" style="margin-bottom: 3rem;">
-                        <h3 id="section-assignment" style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Assignment Content</h3>
+                        <h3 id="section-assignment" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
                         <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
                             <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Output&Input - Interactive Visualization Project</h4>
                             
@@ -2033,12 +2154,273 @@ SOFTWARE.
                                 <p>Implemented by Arduino R4 WiFi board, OLED screen, RFID RF module (MFRC522), and WS2812 LED strip. This program can recognize the UID of different cards and respond accordingly. Therefore, different feedback can be obtained by scanning different cards. As our final task is to design an autonomous driving interaction signal system for the elderly (or other special groups), we have currently created cards and interactions corresponding to the elderly</p>
                                 
                                 <h4 id="section-code" style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Code</h4>
-                                <img src="./assets/image/assignment%202/1.png" alt="Code Image 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/2.png" alt="Code Image 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/3.png" alt="Code Image 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/4.png" alt="Code Image 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/5.png" alt="Code Image 5" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                                <img src="./assets/image/assignment%202/6.png" alt="Code Image 6" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2); max-height: 600px; overflow-y: auto;">
+                                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.8rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>// ==================== 老人卡专用代码 ====================
+// 功能：RFID识别老人卡 -&gt; OLED显示动画 + LED灯带红色旋转效果
+// 连线：
+//   OLED (I2C): SDA-&gt;A4, SCL-&gt;A5 (UNO)
+//   RFID:      SS-&gt;10, RST-&gt;9, MOSI-&gt;11, MISO-&gt;12, SCK-&gt;13
+//   LED灯带:   DATA-&gt;6
+
+#include &lt;Wire.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+#include &lt;SPI.h&gt;
+#include &lt;MFRC522.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+// ---------- OLED 配置 ----------
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
+
+// ---------- RFID 配置 ----------
+#define RST_PIN 9
+#define SS_PIN 10
+MFRC522 mfrc522(SS_PIN, RST_PIN);
+
+// ---------- LED灯带配置 ----------
+#define LED_PIN 6
+#define LED_COUNT 60
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// ---------- 老人卡UID ----------
+byte seniorCardUID[] = {0x32, 0x49, 0xCF, 0x06};
+
+// ---------- 状态与动画变量 ----------
+bool seniorCardDetected = false;      // 是否检测到老人卡
+unsigned long cardDetectedTime = 0;   // 检测到卡的时间
+unsigned long lastAnimationUpdate = 0;
+unsigned long lastLedUpdate = 0;
+const unsigned long ANIMATION_INTERVAL = 100;  // 动画更新间隔
+const unsigned long LED_INTERVAL = 50;         // LED更新间隔
+int animationFrame = 0;
+int rotatingPosition = 0;
+
+// ---------- 函数声明 ----------
+bool compareUID(byte* uid1, byte* uid2, int length);
+void updateAnimation();
+void drawSeniorCardAnimation();
+void drawSmallCard(int x, int y);
+void drawMiniSenior(int x, int y);
+void updateLEDs();
+void rotatingEffect(int r, int g, int b);
+
+// ==================== 初始化 ====================
+void setup() {
+  Serial.begin(115200);
+
+  // 初始化OLED
+  if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    Serial.println(F("OLED初始化失败"));
+    for(;;);
+  }
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.cp437(true);
+  display.display();
+
+  // 初始化RFID
+  SPI.begin();
+  mfrc522.PCD_Init();
+
+  // 初始化LED灯带
+  strip.begin();
+  strip.show();
+  strip.setBrightness(50);
+
+  Serial.println(F("老人卡系统就绪 - 请刷老人卡"));
+}
+
+// ==================== 主循环 ====================
+void loop() {
+  // 1. 检测老人卡
+  checkForSeniorCard();
+
+  // 2. 更新OLED动画（非阻塞）
+  if (millis() - lastAnimationUpdate &gt;= ANIMATION_INTERVAL) {
+    lastAnimationUpdate = millis();
+    updateAnimation();
+  }
+
+  // 3. 更新LED灯带效果（非阻塞）
+  if (millis() - lastLedUpdate &gt;= LED_INTERVAL) {
+    lastLedUpdate = millis();
+    updateLEDs();
+  }
+
+  // 4. 检测到老人卡后，5秒自动清除显示（超时可调）
+  if (seniorCardDetected &amp;&amp; (millis() - cardDetectedTime &gt; 5000)) {
+    seniorCardDetected = false;
+  }
+}
+
+// ==================== 老人卡检测 ====================
+void checkForSeniorCard() {
+  if (!mfrc522.PICC_IsNewCardPresent()) return;
+  if (!mfrc522.PICC_ReadCardSerial()) return;
+
+  // 比较是否为老人卡
+  if (compareUID(mfrc522.uid.uidByte, seniorCardUID, 4)) {
+    seniorCardDetected = true;
+    cardDetectedTime = millis();
+    Serial.println(F("检测到老人卡！"));
+  }
+
+  mfrc522.PICC_HaltA();
+}
+
+// ==================== UID比较 ====================
+bool compareUID(byte* uid1, byte* uid2, int length) {
+  for (int i = 0; i &lt; length; i++) {
+    if (uid1[i] != uid2[i]) return false;
+  }
+  return true;
+}
+
+// ==================== OLED动画更新 ====================
+void updateAnimation() {
+  display.clearDisplay();
+  if (seniorCardDetected) {
+    drawSeniorCardAnimation();   // 显示老人卡动画
+  } else {
+    drawNoCardAnimation();       // 待机动画：摆动卡片 + 提示
+  }
+  display.display();
+  animationFrame++;
+}
+
+// 待机动画（无卡片时）
+void drawNoCardAnimation() {
+  static int cardX = 44;
+  static int swingDir = 1;
+  cardX += swingDir * 2;
+  if (cardX &lt;= 30 || cardX &gt;= 60) swingDir *= -1;
+  drawSmallCard(cardX, 20);
+
+  display.setTextSize(1);
+  display.setCursor(20, 40);
+  display.print("Please swipe");
+  display.setCursor(35, 50);
+  display.print("Senior Card");
+}
+
+// 老人卡动画（卡片 + 老人图标 + 文字）
+void drawSeniorCardAnimation() {
+  drawSmallCard(44, 20);
+  drawMiniSenior(64, 5);
+
+  display.setTextSize(1);
+  display.setCursor(40, 45);
+  display.print("Senior Card");
+}
+
+// 小卡片绘制
+void drawSmallCard(int x, int y) {
+  display.drawRect(x, y, 40, 15, SSD1306_WHITE);
+  display.fillRect(x + 5, y + 5, 30, 7, SSD1306_WHITE);
+  display.drawRect(x + 30, y + 4, 6, 4, SSD1306_WHITE);
+}
+
+// 老人图标（带拐杖和行走动画）
+void drawMiniSenior(int x, int y) {
+  int animPhase = animationFrame % 20;
+  display.fillRect(x - 2, y - 2, 5, 2, SSD1306_WHITE);
+  display.fillCircle(x, y + 2, 3, SSD1306_WHITE);
+  display.fillRect(x - 1, y + 1, 1, 1, SSD1306_BLACK);
+  display.fillRect(x + 1, y + 1, 1, 1, SSD1306_BLACK);
+  display.drawLine(x - 1, y + 3, x + 1, y + 3, SSD1306_BLACK);
+  display.fillRect(x - 3, y + 5, 7, 8, SSD1306_WHITE);
+
+  // 手臂摆动
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 5, y + 6, 3, 2, SSD1306_WHITE);
+    display.fillRect(x + 3, y + 6, 3, 2, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 5, y + 8, 3, 2, SSD1306_WHITE);
+    display.fillRect(x + 3, y + 8, 3, 2, SSD1306_WHITE);
+  }
+  // 腿步
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 2, y + 13, 2, 4, SSD1306_WHITE);
+    display.fillRect(x + 1, y + 13, 2, 4, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 3, y + 13, 2, 4, SSD1306_WHITE);
+    display.fillRect(x + 2, y + 13, 2, 4, SSD1306_WHITE);
+  }
+  // 拐杖
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 6, y + 5, 2, 6, SSD1306_WHITE);
+    display.fillRect(x - 7, y + 10, 4, 2, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 7, y + 3, 2, 6, SSD1306_WHITE);
+    display.fillRect(x - 8, y + 8, 4, 2, SSD1306_WHITE);
+  }
+  display.drawLine(x - 1, y + 5, x + 1, y + 5, SSD1306_BLACK);
+}
+
+// ==================== LED灯带效果（老人卡 = 红色旋转） ====================
+void updateLEDs() {
+  if (seniorCardDetected) {
+    // 老人卡激活时：红色旋转效果
+    rotatingEffect(255, 0, 0);
+  } else {
+    // 待机：呼吸灯效果（柔和白色）
+    breathingEffect();
+  }
+  strip.show();
+}
+
+// 红色旋转效果（老人卡专用）
+void rotatingEffect(int r, int g, int b) {
+  rotatingPosition = (rotatingPosition + 2) % LED_COUNT;
+  // 清空所有LED
+  for (int i = 0; i &lt; LED_COUNT; i++) strip.setPixelColor(i, 0);
+  // 主光带
+  for (int i = 0; i &lt; 12; i++) {
+    int pos = (rotatingPosition - i + LED_COUNT) % LED_COUNT;
+    int brightness = 255 - (i * 20);
+    if (brightness &lt; 0) brightness = 0;
+    int currentR = (r * brightness) / 255;
+    int currentG = (g * brightness) / 255;
+    int currentB = (b * brightness) / 255;
+    strip.setPixelColor(pos, strip.Color(currentR, currentG, currentB));
+  }
+  // 对称光带（增加视觉丰富度）
+  int secondPos = (rotatingPosition + LED_COUNT/2) % LED_COUNT;
+  for (int i = 0; i &lt; 12; i++) {
+    int pos = (secondPos - i + LED_COUNT) % LED_COUNT;
+    int brightness = 255 - (i * 20);
+    if (brightness &lt; 0) brightness = 0;
+    int currentR = (r * brightness) / 255;
+    int currentG = (g * brightness) / 255;
+    int currentB = (b * brightness) / 255;
+    uint32_t existing = strip.getPixelColor(pos);
+    if (existing == 0) {
+      strip.setPixelColor(pos, strip.Color(currentR, currentG, currentB));
+    } else {
+      int er = (existing &gt;&gt; 16) &amp; 0xFF;
+      int eg = (existing &gt;&gt; 8) &amp; 0xFF;
+      int eb = existing &amp; 0xFF;
+      strip.setPixelColor(pos, strip.Color(max(er, currentR), max(eg, currentG), max(eb, currentB)));
+    }
+  }
+}
+
+// 呼吸灯效果（待机）
+void breathingEffect() {
+  static int brightness = 0;
+  static int direction = 1;
+  brightness += direction * 3;
+  if (brightness &gt;= 150) direction = -1;
+  if (brightness &lt;= 0) direction = 1;
+  for (int i = 0; i &lt; LED_COUNT; i++) {
+    strip.setPixelColor(i, strip.Color(brightness, brightness, brightness));
+  }
+}</code></pre>
+                                </div>
                                 
                                 <h4 id="section-circuit" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3. Circuit diagram</h4>
                                 <img src="./assets/image/assignment%202/7.png" alt="Circuit Diagram" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
@@ -2050,6 +2432,201 @@ SOFTWARE.
                                 <h4 id="section-effect" style="color: #00d4ff; margin: 2rem 0 1rem 0;">5. Effect display</h4>
                                 <img src="./assets/image/assignment%202/9.gif" alt="Effect Display GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                             </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Week 3 Special Assignment Content - Hardcoded Document Content (CAD Design)
+            if (id === 3) {
+                homeworkContentHTML = `
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <h4 id="section-tools" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Tools:Fusion360 Gemini</h4>
+                            
+                            <h4 id="section-fusion-intro" style="color: #00d4ff; margin: 2rem 0 1rem 0;">1. Fusion360 Introduction</h4>
+                            <p>Fusion 360 is an integrated cloud platform launched by Autodesk, aimed at integrating the entire process of product development from concept to manufacturing into one software.</p>
+                            <p>Unlike traditional design, engineering, and manufacturing software that operate independently, Fusion 360 breaks down these barriers and provides a unified collaborative environment for designers, engineers, and manufacturers.</p>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Core functions and positioning</h5>
+                            <p>Fusion 360 is not just a 3D modeling tool, its core value lies in integration.</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Integrated platform:</strong> It seamlessly integrates four functional modules: computer-aided design (CAD), computer-aided manufacturing (CAM), computer-aided engineering (CAE), and electronic design (PCB).</li>
+                                <li><strong>CAD (3D modeling):</strong> Provides various modeling methods such as parameterization, freeform surfaces (T-Splines), direct and mesh, etc., flexibly responding to different design needs.</li>
+                                <li><strong>CAM (Numerical Control Programming):</strong> Integrating machining strategies from 2-axis to 5-axis milling, turning, etc., it can directly generate G code executable by CNC (Computer Numerical Control) machine tools in the design environment.</li>
+                                <li><strong>CAE (Simulation Analysis):</strong> Built in Finite Element Analysis (FEA) function, which can perform structural, thermal, and modal simulation verification on designs to optimize product performance.</li>
+                                <li><strong>PCB (Electronic Design):</strong> Supports schematic capture and up to 16 layers of printed circuit board design, achieving mechatronics collaboration.</li>
+                                <li><strong>Cloud collaboration:</strong> All design data is stored in the cloud, supporting team members to view, comment, and collaborate on the same project in real-time across regions and devices, achieving efficient data management.</li>
+                            </ul>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Target audience and application areas</h5>
+                            <p>Due to its comprehensive functionality and flexible licensing model, Fusion 360 covers a very wide user base.</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Individuals, enthusiasts, and startup teams:</strong> Fusion 360 provides a free version for personal non-commercial use and students, while startups with less than 3 years of establishment and less than 10 employees can also apply for free authorization, greatly reducing the learning threshold.</li>
+                                <li><strong>Small and medium-sized manufacturing enterprises:</strong> For enterprises with limited budgets but requiring professional CAD/CAM tools, Fusion 360's integrated solution can significantly improve efficiency from design to manufacturing.</li>
+                                <li><strong>Product designers and engineers:</strong> Integrated workflow and data management capabilities enable professional designers and engineers to complete the entire process from concept to final product on one platform.</li>
+                            </ul>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Practical application case:</h5>
+                            <p>Fusion 360 is widely used in many fields. For example, Shanghai Jirui Industrial Design Company used its derivative design and simulation modules to develop one of the lightest commercial vehicle wheels in the world for international bearing giant Schaeffler, achieving a weight reduction of 25.2%; The Coalesse department of furniture brand Steelcase uses it to design modern office furniture; In addition, its presence can be seen in racing parts, smart locks, and even in the design of the European Space Agency's lunar training facilities.</p>
+                            
+                            <h4 id="section-download-model" style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Download the educational car model</h4>
+                            
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-sophicar" style="color: #ff00d4; margin: 0.5rem 0;">Open SophiCar and download the educational car model from the website</h5>
+                                    <p>SophiCar: <a href="http://www.sophicar.com/parametric-modeling" target="_blank" style="color: #00d4ff;">http://www.sophicar.com/parametric-modeling</a></p>
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-export-f3d" style="color: #ff00d4; margin: 0.5rem 0;">Export the F3D model</h5>
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-import-fusion" style="color: #ff00d4; margin: 0.5rem 0;">Import Fusion360</h5>
+                                </li>
+                            </ol>
+                            
+                            <h4 id="section-ai-tools" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3.Choose AI tools</h4>
+                            
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-team-choice" style="color: #ff00d4; margin: 0.5rem 0;">Our team chose Gemini and Fusion360 with built-in AI to jointly complete the car seat fabrication.</h5>
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-gemini-script" style="color: #ff00d4; margin: 0.5rem 0;">Using the STL file of the educational cart and screenshots of the cart model in Fusion360, gemini outputs basic scripts</h5>
+                                    <img src="./assets/image/assignment%203/1.png" alt="Gemini Script Generation 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                    <img src="./assets/image/assignment%203/3.png" alt="Gemini Script Generation 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                </li>
+                            </ol>
+                            
+                            <h5 id="section-script-code" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">script:</h5>
+                            <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem; overflow-x: auto;">
+                                <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap; display: block;">
+import adsk.core, adsk.fusion, adsk.cam, traceback
+
+
+def run(context):
+    ui = None
+    try:
+        app = adsk.core.Application.get()
+        ui  = app.userInterface
+        design = app.activeProduct
+        
+        # 获取根组件
+        rootComp = design.rootComponent
+        features = rootComp.features
+        extrudes = features.extrudeFeatures
+        
+        # ================= 配置参数（单位：厘米） =================
+        seat_w = 4.2      # 座椅总总宽
+        seat_d = 4.0      # 座垫总深
+        base_h = 0.8      # 座垫厚度
+        back_h = 5.5      # 靠背高度
+        wing_w = 0.5      # 赛车座椅两侧包裹侧翼的宽度
+        wing_h = 1.2      # 侧翼翘起高度
+        
+        # 座椅在小车中的中心坐标位置（可根据需要微调）
+        cx = 0.0
+        cy = 0.0
+        cz = 1.5 
+        # =========================================================
+
+        # 创建新组件
+        allOccs = rootComp.occurrences
+        newOcc = allOccs.addNewComponent(adsk.core.Matrix3D.create())
+        seatComp = newOcc.component
+        seatComp.name = "Racing_Bucket_Seat"
+        
+        sketches = seatComp.sketches
+        xyPlane = seatComp.xYConstructionPlane
+        xzPlane = seatComp.xZConstructionPlane
+        
+        # 1. 绘制带有两侧包围（桶椅底座）的草图
+        sketch_base = sketches.add(xyPlane)
+        lines = sketch_base.sketchCurves.sketchLines
+        
+        # 绘制主座垫矩形
+        lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2, cy - seat_d/2, cz),
+            adsk.core.Point3D.create(cx + seat_w/2, cy + seat_d/2, cz)
+        )
+        # 内部画两条线，用来区分"主体底座"和"两侧包裹翼"
+        lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2 + wing_w, cy - seat_d/2, cz),
+            adsk.core.Point3D.create(cx + seat_w/2 - wing_w, cy + seat_d/2, cz)
+        )
+        
+        # 拉伸主座垫
+        prof_main = sketch_base.profiles.item(0) # 对应中间主体部分
+        extInput1 = seatComp.features.extrudeFeatures.createInput(prof_main, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+        extInput1.setDistanceExtent(False, adsk.core.ValueInput.createByReal(base_h))
+        seatBodyFeat = extrudes.add(extInput1)
+        seatBody = seatBodyFeat.bodies.item(0)
+        
+        # 拉伸两侧的赛车防滚包裹侧翼（多拉伸出一点高度）
+        for i in range(sketch_base.profiles.count):
+            prof = sketch_base.profiles.item(i)
+            # 自动识别两侧区域进行加高拉伸
+            if prof.areaProperties().area < (seat_w * seat_d * 0.3):
+                extInput_wing = extrudes.createInput(prof, adsk.fusion.FeatureOperations.JoinFeatureOperation)
+                extInput_wing.setDistanceExtent(False, adsk.core.ValueInput.createByReal(base_h + wing_h))
+                extrudes.add(extInput_wing)
+
+        # 2. 绘制赛车椅靠背（侧面视角，带倾斜感）
+        sketch_back = sketches.add(xzPlane)
+        back_lines = sketch_back.sketchCurves.sketchLines
+        
+        # 靠背起点在座垫后部
+        back_start_y = cy - seat_d/2
+        
+        # 在 XZ 截面上绘制有动感线条的靠背厚度矩形
+        rec_back = back_lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2, cz + base_h),
+            adsk.core.Point3D.create(cx + seat_w/2, cz + base_h + back_h)
+        )
+        
+        # 将靠背向后拉伸（赛车椅厚度）
+        prof_back = sketch_back.profiles.item(0)
+        extInput2 = extrudes.createInput(prof_back, adsk.fusion.FeatureOperations.JoinFeatureOperation)
+        extInput2.setDistanceExtent(False, adsk.core.ValueInput.createByReal(0.8)) # 靠背厚度 8mm
+        extrudes.add(extInput2)
+        
+        # 3. 自动为赛车桶椅添加人体工学圆角（Fillet）
+        fillets = seatComp.features.filletFeatures
+        edgeCollection = adsk.core.ObjectCollection.create()
+        
+        # 选中座椅顶部的边缘使其圆润，模仿赛车头枕
+        for edge in seatBody.edges:
+            if abs(edge.startVertex.geometry.z - (cz + base_h + back_h)) < 0.1:
+                edgeCollection.add(edge)
+                
+        if edgeCollection.count > 0:
+            filletInput = fillets.createInput()
+            filletInput.addRadiusEdgeSet(edgeCollection, adsk.core.ValueInput.createByReal(0.6), True)
+            fillets.add(filletInput)
+            
+        ui.messageBox('赛车造型桶椅（Racing Bucket Seat）已成功组装到车舱中央！')
+        
+    except:
+        if ui:
+            ui.messageBox('运行失败:\n{}'.format(traceback.format_exc()))
+                                </code>
+                            </div>
+                            
+                            <h4 id="section-first-version" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3.Open the Fusion360 AI assistant, input a script, and produce the first version of the seat model (photo screenshot from the process).</h4>
+                            <img src="./assets/image/assignment%203/4.png" alt="First Version Seat Model" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-refine-model" style="color: #00d4ff; margin: 2rem 0 1rem 0;">4.Let the Fusion360 AI assistant refine the seat model</h4>
+                            <img src="./assets/image/assignment%203/5.png" alt="Refine Model Step 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%203/6.png" alt="Refine Model Step 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%203/7.png" alt="Refine Model Step 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-adjust-position" style="color: #00d4ff; margin: 2rem 0 1rem 0;">5.Adjust the seat model position</h4>
+                            <img src="./assets/image/assignment%203/8.png" alt="Adjust Position" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-finished" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Finished image display</h4>
+                            <img src="./assets/image/assignment%203/9.png" alt="Finished Image" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                         </div>
                     </div>
                 `;
@@ -2078,7 +2655,7 @@ SOFTWARE.
                         
                         <!-- Exercise Content (Read-only) -->
                         <div id="section-exercise-content" style="margin-bottom: 3rem;">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ff00d4;">Exercise Content</h3>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
                             <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
                                 ${exerciseContentWithBreaks}
                             </div>
@@ -2093,8 +2670,8 @@ SOFTWARE.
             console.log('✅ 练习详情页已渲染');
             console.log('DOM 内容长度:', detailContent.innerHTML.length);
             
-            // 动态生成详细目录（针对 Week 0, Week 1 和 Week 2）
-            if (id === 0 || id === 1 || id === 2) {
+            // 动态生成详细目录（针对 Week 0, Week 1, Week 2 和 Week 3）
+            if (id === 0 || id === 1 || id === 2 || id === 3) {
                 generateDetailedTOC(id);
             }
             
