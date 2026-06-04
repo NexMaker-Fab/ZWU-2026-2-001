@@ -1467,6 +1467,12 @@
                 description: 'Learning about model design through CAD design',
                 content: 'Further design the existing model through AI and fusion360.'
             },
+            {
+                id: 4,
+                title: '3D Printing',
+                description: 'Explore 3D printing technology and create physical models from digital designs.',
+                content: ''
+            },
         ];
 
         // ===== 渲染成员卡片 =====
@@ -2632,6 +2638,80 @@ def run(context):
                 `;
             }
             
+            // Week 4 Special Assignment Content - Hardcoded Document Content (3D Printing)
+            if (id === 4) {
+                homeworkContentHTML = `
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <h4 id="section-tech-intro" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.75rem;">Technical introduction</h4>
+                            <p>3D printing (additive manufacturing) is a technology that constructs three-dimensional objects by stacking materials layer by layer. Compared with traditional cutting, it has the advantages of high design freedom, less material waste, and the ability to form complex structures.</p>
+                            <p>The new generation of desktop level 3D printers, represented by Bambu Lab, significantly reduces the threshold for use and enhances the printing experience. Bambu's products (such as X1 series, P1 series, and the latest A2L) have the following core technical features:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>High speed printing:</strong> With the help of high flow hot end and active vibration compensation algorithm, the printing speed can reach several times that of ordinary machines, while maintaining excellent surface quality.</li>
+                                <li><strong>Intelligent and user-friendly:</strong> automatic leveling, first layer scanning, blockage detection, AI fault recognition and other functions, allowing users to go from unboxing to high-quality printing in just over ten minutes.</li>
+                                <li><strong>Multi color and multi material:</strong> The independently developed automatic feeding system (AMS) supports up to 16-19 color switching and can mix printing support materials or different materials. RFID automatically identifies the original consumable parameters.</li>
+                                <li><strong>Ecological Loop:</strong> Paired with a mobile app and cloud model library MakerWorld, users can remotely print, share, and download massive models with just one click.</li>
+                            </ul>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages in terms of materials:</h5>
+                            <p>Bambu is compatible with various FDM wires, including ordinary PLA, PETG, ABS, TPU, carbon fiber reinforced nylon, etc. The core advantage of its original consumables lies in:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Automatic recognition:</strong> Each roll of consumables is equipped with an RFID chip, and after being placed in AMS, the printer automatically reads the optimal temperature, flow rate, and pullback parameters, avoiding the trouble of manual parameter adjustment.</li>
+                                <li><strong>Stable quality:</strong> The wire diameter tolerance is controlled within ± 0.03mm, making it less prone to clogging, wire drawing, or edge curling, and providing stronger interlayer bonding.</li>
+                                <li><strong>Safety and Environmental Protection:</strong> We have launched the "Pure PLA" series, which has been reduced to 5 types of ingredients and all have passed EU food contact safety certification, suitable for families and educational settings.</li>
+                            </ul>
+                            <p>Overall, Bambu has brought industrial grade technology to the consumer market, transforming 3D printing from a "geek toy" into a truly reliable creative tool, while greatly reducing the learning cost for beginners through an intelligent consumables system.</p>
+                            
+                            <h4 id="section-operations" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">Operations section</h4>
+                            
+                            <h4 id="section-modeling" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.5rem;">1. Modeling</h4>
+                            <p>Use Blender for a simple, integrated modeling</p>
+                            <img src="./assets/image/assignment%204/1.png" alt="Modeling Step 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%204/2.png" alt="Modeling Step 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%204/3.png" alt="Modeling Step 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%204/4.png" alt="Modeling Step 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-print" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">2.Print</h4>
+                            
+                            <h5 id="section-open-bambu" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1.Open the .3mf file using Bambu Studio</h5>
+                            <img src="./assets/image/assignment%204/5.png" alt="Open Bambu Studio" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-connect-printer" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2.Connect the 3D printer via a mobile app</h5>
+                            <img src="./assets/image/assignment%204/6.png" alt="Connect Printer" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-import-file" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3.Import the modeling file into Bambu Studio</h5>
+                            <img src="./assets/image/assignment%204/7.png" alt="Import File" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-adjust-direction" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Adjust the modeling direction</h5>
+                            <img src="./assets/image/assignment%204/8.png" alt="Adjust Direction 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%204/9.png" alt="Adjust Direction 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-adjust-dimensions" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5.Adjust the modeling dimensions</h5>
+                            <img src="./assets/image/assignment%204/10.png" alt="Adjust Dimensions 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./assets/image/assignment%204/11.png" alt="Adjust Dimensions 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-slicing" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.Click the slicing button to slic a single piece</h5>
+                            <img src="./assets/image/assignment%204/12.png" alt="Slicing" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-click-print" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">7.Click to print a single disc</h5>
+                            <img src="./assets/image/assignment%204/13.png" alt="Click Print" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-start-printing" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">3.The 3D printer began printing</h4>
+                            
+                            <h5 id="section-actual-printing" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Actual printing and display</h5>
+                            <img src="./assets/image/assignment%204/14.gif" alt="Actual Printing GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-finish-printing" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">4.Finish printing and take the module</h4>
+                            
+                            <h5 id="section-finished-product" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Finished product display</h5>
+                            <img src="./assets/image/assignment%204/15.png" alt="Finished Product" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                        </div>
+                    </div>
+                `;
+            }
+            
             detailContent.innerHTML = `
                 <div class="exercise-detail-layout">
                     <!-- 左侧目录导航 -->
@@ -2670,8 +2750,8 @@ def run(context):
             console.log('✅ 练习详情页已渲染');
             console.log('DOM 内容长度:', detailContent.innerHTML.length);
             
-            // 动态生成详细目录（针对 Week 0, Week 1, Week 2 和 Week 3）
-            if (id === 0 || id === 1 || id === 2 || id === 3) {
+            // 动态生成详细目录（针对所有 Exercise）
+            if (id === 0 || id === 1 || id === 2 || id === 3 || id === 4) {
                 generateDetailedTOC(id);
             }
             
@@ -2703,8 +2783,11 @@ def run(context):
             const tocList = document.getElementById(`toc-list-${exerciseId}`);
             if (!tocList) return;
         
-            // 获取作业内容区域的所有标题
-            const homeworkSection = document.querySelector('.homework-content-section');
+            // 获取当前练习的作业内容区域
+            const exerciseDetailContent = document.getElementById('exercise-detail-content');
+            if (!exerciseDetailContent) return;
+            
+            const homeworkSection = exerciseDetailContent.querySelector('.homework-content-section');
             if (!homeworkSection) return;
         
             const headings = homeworkSection.querySelectorAll('h4, h5');
