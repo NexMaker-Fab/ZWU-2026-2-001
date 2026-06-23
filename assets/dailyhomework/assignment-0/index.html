@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 1 - Project Management - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script>
+        // GitHub synchronization function moved to the script tag at the bottom
+    </script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">
+        ↑
+    </button>
+    
+    <main class="main-content">
+        <section id="exercise-0" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-0">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                
+                <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 1: Project Management</h2>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">We have created a webpage for storing daily and final assignments</p>
+                
+                <!-- Exercise Content (Read-only) -->
+                <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                    <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <!-- Exercise content is empty for this exercise -->
+                    </div>
+                </div>
+                
+                <!-- Assignment Content -->
+                <div class="homework-content-section" style="margin-bottom: 3rem;">
+                    <p style="color: rgba(255, 255, 255, 0.7); font-style: italic; margin-bottom: 1.5rem;">Please note that the images displayed in the homework file are supplementary screenshots taken after the completion of the webpage. So there may be situations where the GitHub repository already exists in the picture and the cloud repository has already been downloaded locally</p>
+                    <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                    <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                        <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Project Management - Website Development Guide</h4>
+                        
+                        <div style="margin-top: 2rem;">
+                            <p>Prepare tool for website.</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong><a href="https://github.com" target="_blank" style="color: #00d4ff; text-decoration: none;">Github</a>:</strong> Our website will be placed here.</li>
+                                <li><strong><a href="https://desktop.github.com" target="_blank" style="color: #00d4ff; text-decoration: none;">GitHub Desktop</a>:</strong> Used for cloning libraries and uploading local files.</li>
+                                <li><strong>AI agent (<a href="https://tongyi.aliyun.com/lingma" target="_blank" style="color: #00d4ff; text-decoration: none;">TONGYI Lingma</a>):</strong> Used to write website code.</li>
+                                
+                                <h4 id="section-step1" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Step one: Create a new repository on GitHub to host your website.</h4>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Create a public repository where you can collaborate with your team to create web content.</li>
+                                </ol>
+                                <img src="./image/1.png" alt="Create Repository 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="2" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Name your repository, choose whether it's public or private. Add a README file to share your information, then click the "create repository" button.</li>
+                                </ol>
+                                <img src="./image/2.png" alt="Create Repository 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="3" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Set the page to be empty. Click on the settings of the repository and select "Pages" on the left. Choose "main" and "/root" and save. The link above allows you to view the page.</li>
+                                </ol>
+                                <img src="./image/3.png" alt="Create Repository 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="4" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Wait for Github to search and create pages, and once all projects are completed, the website will be initially established.</li>
+                                </ol>
+                                <img src="./image/4.png" alt="Create Repository 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="5" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>If you want to invite team members, click on "Settings", find "Collaborators" on the left, then click "Add people", enter their email addresses, and set their role (maintainer).</li>
+                                </ol>
+                                <img src="./image/5.png" alt="Create Repository 5" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-step2" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Step two: Clone the repository to GitHub.</h4>
+                                <p>Click on "Add", "Clone a resource", find the repository you want to clone. Finally, click "Clone".</p>
+                                <img src="./image/6.png" alt="Clone Repository 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/7.png" alt="Clone Repository 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-step3" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Step three: Design website with your team in AI agent</h4>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Use AI agents to design the functions and layout of web pages.</li>
+                                </ol>
+                                
+                                <!-- Integrated Q&A Bubble Chat -->
+                                <div style="margin: 1.5rem 0; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.2); max-height: 500px; overflow-y: auto;">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">💬 AI Agent Interaction - Complete Workflow</h5>
+                                    
+                                    <!-- First Question & Answer -->
+                                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            这是一个将要在github上部署的网页,我现在提供pdr文档,<br>
+                                            请你根据pdr文档来进行编程<br>
+                                            注:小组成员名字分别为Ash Felix Howie Max Joe David<br>
+                                            小组网页PDR报告<br>
+                                            可参考图片已提供
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                        <div style="max-width: 80%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            我理解了您的需求。这是一个团队展示网站项目,需要在<br>
+                                            GitHub上部署。根据PDR文档,我将为您创建一个现代、简<br>
+                                            洁、响应式的单页网站,采用Hash路由方式实现多页面效<br>
+                                            果。
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Second Answer (Completed Content) -->
+                                    <div style="display: flex; justify-content: flex-start;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant - Completed Work:</strong>
+                                            <div style="margin-top: 0.75rem;">
+                                                <strong style="color: #00d4ff;">已完成的内容</strong><br><br>
+                                                <strong>1.页面结构:</strong><br>
+                                                ○ 首页(#home)-带有渐变背景和团队名称<br>
+                                                ○ 团队介绍(#intro)-包含背景、研究方向、核心价值<br>
+                                                ○ 团队成员列表(#members)-卡片式展示6位成员<br>
+                                                ○ 成员详情页(#member-0到#member-5)-Ash,Felix,Howie,Max,Joe,David 各有独立页面<br>
+                                                ○ 期末项目(#project)-项目展示与技术栈<br>
+                                                ○ 课程练习(#exercises)-练习列表<br><br>
+                                                
+                                                <strong>2.设计特点:</strong><br>
+                                                ○ Apple 风格的毛玻璃导航栏(backdrop-filter: blur)<br>
+                                                ○ 深色主题,符合您提供的图片风格<br>
+                                                ○ 渐变色彩(蓝紫色系)<br>
+                                                ○ 响应式设计(适配手机、平板、桌面)<br>
+                                                ○ 流畅的页面切换动画<br><br>
+                                                
+                                                <strong>3.技术实现:</strong><br>
+                                                ○ 纯HTML+CSS+原生JavaScript<br>
+                                                ○ Hash 路由管理<br>
+                                                ○ 数据驱动的成员和练习信息<br>
+                                                ○ 错误路由自动重定向到首页
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Additional Q&A 1: Team Name Change -->
+                                    <div style="margin-top: 1.5rem; margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            团队名修改为what the dog doing
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            我已经将团队名称修改为 "what the dog doing"。修改包括以下位置：<br><br>
+                                            导航栏 Logo：已更新为 "what the dog doing"<br>
+                                            首页大标题：已更新为 "what the dog doing"<br>
+                                            团队介绍页面：背景介绍中的团队名称已更新<br>
+                                            网页标题和 SEO 元数据：已更新<br><br>
+                                            现在打开网页后，所有显示团队名称的地方都会显示 "what the dog doing"。
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Additional Q&A 2: Responsive Design -->
+                                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            请给网页做自适应能力，就是网页在不同大小屏幕上打开都能正常显示
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            <strong style="color: #00d4ff;">主要改进</strong><br><br>
+                                            <strong>导航栏自适应：</strong><br>
+                                            桌面端：横向排列<br>
+                                            移动端：纵向排列，链接居中换行<br>
+                                            小屏幕：字体缩小，间距紧凑<br><br>
+                                            
+                                            <strong>Hero 区域：</strong><br>
+                                            团队名称从 6rem 渐进缩小到 2rem<br>
+                                            欢迎语从 4rem 缩小到 1.5rem<br>
+                                            内边距自适应调整<br><br>
+                                            
+                                            <strong>卡片系统：</strong><br>
+                                            桌面：自动填充多列<br>
+                                            平板：2 列<br>
+                                            手机：单列<br>
+                                            头像和文字比例缩放<br><br>
+                                            
+                                            <strong>成员详情页：</strong><br>
+                                            头像从 200px 缩小到 120px<br>
+                                            联系方式按钮在手机上纵向排列<br>
+                                            技能标签自适应<br><br>
+                                            
+                                            <strong>项目展示：</strong><br>
+                                            内边距缩小<br>
+                                            技术栈标签自适应<br>
+                                            进度条正常显示<br><br>
+                                            
+                                            <strong>通用优化：</strong><br>
+                                            所有页面添加左右内边距<br>
+                                            文字大小逐层递减<br>
+                                            确保最小触摸目标尺寸 (44px)<br>
+                                            防止横向滚动<br><br>
+                                            
+                                            现在您的网页可以在从 320px 到 2560px 的任何屏幕尺寸上正常显示！
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Additional Q&A 3: Team Member Page Design -->
+                                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            现在给team member 的页面进行设计。我们小组一共六个人。你已经知道他们各自的名字，现在要求设计一个头像按钮，点击头像按钮之后跳转到该成员详细介绍页面，也就是上述所说的每个成员一个单独的url网页。我将会上传一个图片作为Ash的头像，其他未上传的头像以默认头像进行代替。默认头像就是我提交的这个图片。Ash的头像我已经放到了文件夹里面，并命名为Ash.jpg
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            我看到了您上传的 Ash.jpg 文件。关于默认头像图片，我需要您将其也保存到项目文件夹中。请您将默认头像（灰色人像图标）也拖拽到项目文件夹中，并命名为 default-avatar.jpg
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Additional Q&A 4: Complete Names & Animation -->
+                                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            我已经拖拽，同时我要求其他成员的名称显示完整<br>
+                                            同时制作网页动画，鼠标指针移动到头像上时头像会进行卡牌翻转动画一次
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            <strong style="color: #00d4ff;">所有成员显示完整名称</strong><br><br>
+                                            Ash ✓<br>
+                                            Felix ✓<br>
+                                            Howie ✓<br>
+                                            Max ✓<br>
+                                            Joe ✓<br>
+                                            David ✓<br><br>
+                                            
+                                            <strong>2. 头像系统</strong><br>
+                                            Ash：使用真实照片 Ash.jpg<br>
+                                            其他成员：使用默认头像 default-avatar.png<br><br>
+                                            
+                                            <strong>3. 卡牌翻转动画</strong><br>
+                                            鼠标悬停在头像上时，头像会进行 360度Y轴旋转翻转 动画，持续 0.6 秒，带有平滑过渡效果。
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Additional Q&A 5: Welcome Page CSS -->
+                                    <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                        <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                            <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                            这个欢迎页面是你自己形成的代码，请查询index中的代码并自行调整
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="display: flex; justify-content: flex-start;">
+                                        <div style="max-width: 90%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.8;">
+                                            <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 AI Assistant:</strong>
+                                            <strong style="color: #00d4ff;">已完成！</strong>我已经根据您提供的图片样式直接通过 CSS 代码实现了效果，不需要任何额外的图片文件。<br><br>
+                                            
+                                            <strong>🎨 调整内容：</strong><br>
+                                            <strong>背景渐变：</strong>使用纯 CSS 创建了类似图片中的深蓝到深紫色渐变背景<br>
+                                            <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px; display: inline-block; margin: 0.5rem 0;">background: linear-gradient(135deg, #0f1b3d 0%, #0d3b5a 25%, #1a2a52 50%, #2d1a52 75%, #3d1a4a 100%);</code><br><br>
+                                            
+                                            <strong>"Welcome" 文字：</strong>保持纯白色，添加轻微阴影增强可读性<br><br>
+                                            
+                                            <strong>"what the dog doing" 文字：</strong>使用渐变效果（浅蓝 → 天蓝 → 靛蓝 → 紫色 → 品红），完全匹配图片中的样式<br><br>
+                                            
+                                            <strong>移除了毛玻璃背景框：</strong>文字直接显示在渐变背景上，与图片一致<br><br>
+                                            
+                                            <strong>📋 其他页面不受影响：</strong><br>
+                                            About us、Team members、Daily Homework、Final Project 等页面保持简洁的深色背景，直接显示内容
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <img src="./image/8.png" alt="AI Agent Design 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/9.png" alt="AI Agent Design 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/10.png" alt="AI Agent Design 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/11.png" alt="AI Agent Design 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/12.png" alt="AI Agent Design 5" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/13.png" alt="AI Agent Design 6" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/14.png" alt="AI Agent Design 7" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-step4" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Step four: Upload them to Github.</h4>
+                                <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Locate the directory where the web page file is stored</li>
+                                </ol>
+                                <img src="./image/15.png" alt="Upload to GitHub 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="2" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>The index file and the readme file can be found.</li>
+                                </ol>
+                                <img src="./image/16.png" alt="Upload to GitHub 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="3" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Paste all modified files into the local GitHub library.</li>
+                                </ol>
+                                <img src="./image/17.png" alt="Upload to GitHub 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="4" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Open Github Desktop, open the corresponding project, enter the content you want to publish in the bottom left corner, and click commit to main. Finally, click on Push Origin and upload it to the Github cloud.</li>
+                                </ol>
+                                <img src="./image/18.png" alt="Upload to GitHub 4" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="5" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Open Github on the web page, find the corresponding project, and wait for the project data to be uploaded and loaded successfully.</li>
+                                </ol>
+                                <img src="./image/19.png" alt="Upload to GitHub 5" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <ol start="6" style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Find Pages in Setting, where you can access your website and check for any issues.</li>
+                                </ol>
+                                <img src="./image/20.png" alt="Upload to GitHub 6" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-code" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Main part code of webpage</h4>
+                                <p style="color: rgba(255, 255, 255, 0.7); font-style: italic; margin-bottom: 1.5rem;">Due to the length of the original code, only a portion of it will be displayed here</p>
+                                
+                                <!-- Additional Screenshots -->
+                                <img src="./image/21.png" alt="Screenshot 21" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/22.png" alt="Screenshot 22" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/23.png" alt="Screenshot 23" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/24.png" alt="Screenshot 24" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/25.png" alt="Screenshot 25" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/26.png" alt="Screenshot 26" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/27.png" alt="Screenshot 27" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/28.png" alt="Screenshot 28" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/29.png" alt="Screenshot 29" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/30.png" alt="Screenshot 30" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/31.png" alt="Screenshot 31" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/32.png" alt="Screenshot 32" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/33.png" alt="Screenshot 33" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/34.png" alt="Screenshot 34" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <!-- Key Code Snippets -->
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2);">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">1. Navigation Bar - Frosted Glass Effect</h5>
+                                    <pre style="margin: 0; max-height: 600px; overflow-y: auto; background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>&lt;!-- Navigation Bar - Frosted Glass Effect --&gt;
+&lt;nav class="navbar"&gt;
+    &lt;div class="navbar-content"&gt;
+        &lt;a href="index.html" class="logo"&gt;what the dog doing&lt;/a&gt;
+        &lt;ul class="nav-links"&gt;
+            &lt;li&gt;&lt;a href="index.html" class="active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="assets/about-us/index.html"&gt;About us&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="assets/dailyhomework/index.html"&gt;Daily Homework&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="assets/final-project/index.html"&gt;Final Project&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                                </div>
+                                
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2);">
+                                    <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">2. Exercise Sidebar - Dynamic Table of Contents</h5>
+                                    <pre style="margin: 0; max-height: 600px; overflow-y: auto; background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>// JavaScript - Generate TOC dynamically
+function generateDetailedTOC(exerciseId) {
+    const tocList = document.getElementById('toc-list-' + exerciseId);
+    if (!tocList) return;
+    
+    const homeworkSection = exerciseDetailContent.querySelector('.homework-content-section');
+    if (!homeworkSection) return;
+    
+    const headings = homeworkSection.querySelectorAll('h4, h5');
+    let tocHTML = '';
+    tocHTML += '&lt;li&gt;&lt;a href="#section-exercise-info"&gt;Exercise ' + (exerciseId + 1) + '&lt;/a&gt;&lt;/li&gt;';
+    tocHTML += '&lt;li&gt;&lt;a href="#section-exercise-content"&gt;Exercise Content&lt;/a&gt;&lt;/li&gt;';
+    tocHTML += '&lt;li&gt;&lt;a href="#section-homework" class="active"&gt;Assignment Content&lt;/a&gt;&lt;/li&gt;';
+    
+    headings.forEach((heading, index) =&gt; {
+        const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+        const text = heading.textContent.trim();
+        const id = heading.id || 'section-heading-' + index;
+        
+        if (!heading.id) {
+            heading.id = id;
+        }
+        
+        tocHTML += '&lt;li class="' + level + '"&gt;&lt;a href="#' + id + '"&gt;' + text + '&lt;/a&gt;&lt;/li&gt;';
+    });
+    
+    tocList.innerHTML = tocHTML;
+    setupScrollSpy();
+}</code></pre>
+                                </div>
+                                
+                                <h4 id="section-path-tree" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Path tree</h4>
+                                <pre style="margin: 0; max-height: 600px; overflow-y: auto; background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 8px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.9rem; line-height: 1.8; color: rgba(255, 255, 255, 0.9); white-space: pre;"><code>zwu-2026-2-001/
+├── index.html
+└── assets/
+    ├── css/
+    │   └── style.css
+    ├── about-us/
+    │   └── index.html
+    ├── dailyhomework/
+    │   ├── index.html
+    │   ── assignment-0/
+    │       ── image/
+    │           ├── 1.png
+    │           ├── 2.png
+    │           ├── ... (更多图片)
+    │           └── 20.png
+    ├── final-project/
+    │   └── index.html
+    └── image/
+        ├── avatars/
+        │   ── (团队成员头像)
+        └── eggs/
+            └── (彩蛋图片)</code></pre>
+                                
+                                <h4 id="section-pdr" style="color: #00d4ff; margin: 3rem 0 1.5rem 0;">PDR document</h4>
+                                <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: #ffffff;">小组网页 PDR 报告</h3>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">1. 项目概述</h4>
+                                    <p><strong>项目名称：</strong>what the dog doing – 团队展示网站</p>
+                                    <p><strong>目的：</strong>展示团队名称、成员信息、期末项目及课程练习，体现专业、简洁、现代的团队形象。</p>
+                                    <p><strong>目标用户：</strong>课程教师、同学、外部访客。</p>
+                                    <p><strong>核心页面：</strong>首页、关于团队（含团队成员列表）、每日作业（含5个练习详情页）、期末项目。</p>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. 设计目标与原则</h4>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>极简主义：</strong>遵循 Apple 设计语言——大量留白、无边框卡片、微妙的阴影、流畅动效。</li>
+                                        <li><strong>内容优先：</strong>导航清晰，信息层级明确，减少视觉干扰。</li>
+                                        <li><strong>一致体验：</strong>所有页面保持相同的导航栏、间距、字体和交互反馈。</li>
+                                        <li><strong>响应式：</strong>完美适配桌面端、平板和手机。</li>
+                                    </ul>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">3. 界面设计（颜色系统 & 组件建议）</h4>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3.1 颜色系统</h5>
+                                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                                        <thead>
+                                            <tr style="background: rgba(0, 212, 255, 0.1);">
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">用途</th>
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">色值（HEX）</th>
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">应用场景</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">背景主色</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">#000000</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">纯黑基底</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">次级背景</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">rgba(255,255,255,0.05)</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">半透明卡片背景</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">文字主色</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">#FFFFFF</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">白色正文</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">文字次级</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">rgba(255,255,255,0.7)</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">灰色辅助说明</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">强调/链接</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">#00D4FF</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">青色高亮（按钮、链接）</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">强调粉色</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">#FF00D4</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">粉色副标题</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">强调金色</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">#FFD740</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">金色小标题</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">分割线</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">rgba(255,255,255,0.1)</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">极细线条</td></tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3.2 字体系统</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>英文字体：</strong>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif（Apple 默认 SF 字体回退）。</li>
+                                        <li><strong>中文字体：</strong>"PingFang SC", "Microsoft YaHei"，保证优雅降级。</li>
+                                        <li><strong>字重：</strong>标题使用 600（Semibold），正文使用 400（Regular）。</li>
+                                        <li><strong>字号：</strong>导航栏 14px，大标题 48px（桌面）/ 32px（移动），正文 16px，H4标题 24px（青色），H5标题 20px（粉色），H6标题 18px（金色）。</li>
+                                    </ul>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3.3 组件建议</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>导航栏：</strong>固定在顶部，半透明毛玻璃效果（backdrop-filter: blur(30px)），圆角 16px，滚动时自动隐藏/显示。</li>
+                                        <li><strong>卡片：</strong>半透明背景，圆角 16px，悬停时轻微上浮（transform: translateY(-5px)）和阴影加深。</li>
+                                        <li><strong>按钮：</strong>圆角 8px，青色渐变背景，内边距 12px 24px，悬停时上浮效果。</li>
+                                        <li><strong>成员头像：</strong>圆形（直径 120px），悬停时 360° 翻转动画，配合简洁图标。</li>
+                                        <li><strong>图片展示：</strong>圆角 8px，带阴影效果，宽度 100%，高度自适应。</li>
+                                        <li><strong>代码块：</strong>深色背景，等宽字体，最大高度 600px，可滚动查看。</li>
+                                        <li><strong>侧边栏目录：</strong>左侧固定，自动生成，支持滚动高亮当前章节。</li>
+                                        <li><strong>间距：</strong>主要内容区距离导航栏 80px，区块之间 64px，卡片内边距 32px。</li>
+                                    </ul>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">4. 信息架构与页面设计（多页应用 MPA）</h4>
+                                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                                        <thead>
+                                            <tr style="background: rgba(0, 212, 255, 0.1);">
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">页面文件</th>
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">页面名称</th>
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">内容说明</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">index.html</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">首页</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">团队名称 + 大号欢迎语 + 渐变流动背景动画</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">about-us.html</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">关于团队</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">团队介绍 + 成员列表</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">member-detail</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">成员个人页</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">每个成员独立页面</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">dailyhomework</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">每日作业索引</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">-</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace;">final-project.html</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">期末项目</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">项目描述、进度条、技术栈、文件上传管理</td></tr>
+                                        </tbody>
+                                    </table>
+                                    <p style="margin-top: 1rem;"><strong>成员个人页独立：</strong>每位成员拥有独立的详情页面，完全符合“每个人需要一页”的要求。</p>
+                                    <p><strong>练习详情页独立：</strong>每个练习拥有完整的侧边栏导航和详细内容展示，包含图片、代码、说明文档。</p>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">5. 技术方案</h4>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>纯静态实现：</strong>HTML5 + CSS3 + 原生 JavaScript。</li>
+                                        <li><strong>架构模式：</strong>多页应用（MPA），每个页面为独立 HTML 文件，通过标准链接导航。</li>
+                                        <li><strong>路由管理：</strong>页面间使用标准 &lt;a&gt; 标签链接，页面内使用 hash 路由切换 section。</li>
+                                        <li><strong>数据驱动：</strong>成员信息、项目、练习均使用 JavaScript 对象存储，便于修改和扩展。</li>
+                                        <li><strong>本地存储：</strong>使用 LocalStorage 保存文件上传数据和用户编辑内容。</li>
+                                        <li><strong>部署平台：</strong>GitHub Pages（将代码保存为 HTML 文件上传至仓库并启用 Pages）。</li>
+                                        <li><strong>兼容性：</strong>支持 Chrome / Firefox / Safari / Edge 最近两个版本。</li>
+                                    </ul>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">6. 核心功能模块</h4>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.1 智能导航栏</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>自动隐藏：</strong>向下滚动超过 100px 时自动隐藏，向上滚动时重新显示。</li>
+                                        <li><strong>紧凑模式：</strong>查看练习详情时自动缩小尺寸，聚焦内容区域。</li>
+                                        <li><strong>毛玻璃效果：</strong>半透明背景配合 backdrop-filter 模糊效果，呈现 Apple 风格质感。</li>
+                                    </ul>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.2 返回顶部按钮</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>位置：</strong>右下角固定定位，距离边缘 2rem。</li>
+                                        <li><strong>显示条件：</strong>滚动超过 500px 后出现。</li>
+                                        <li><strong>交互：</strong>点击平滑滚动至页面顶部，悬停时上浮效果。</li>
+                                    </ul>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.3 成员展示系统</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>卡片网格：</strong>响应式布局，桌面端 3 列，平板端 2 列，移动端 1 列。</li>
+                                        <li><strong>悬停效果：</strong>卡片上浮、阴影加深、边框高亮。</li>
+                                        <li><strong>详情页面：</strong>点击卡片跳转至成员个人详情页，展示完整信息。</li>
+                                        <li><strong>头像动画：</strong>悬停时 360° 翻转动画。</li>
+                                    </ul>
+                                    
+                                    <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.4 练习详情系统</h5>
+                                    <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                        <li><strong>侧边栏目录：</strong>自动生成，基于文档标题（H4、H5），支持滚动高亮。</li>
+                                        <li><strong>平滑滚动：</strong>点击目录项平滑滚动至对应章节。</li>
+                                        <li><strong>图片展示：</strong>所有截图按顺序展示，带圆角和阴影效果。</li>
+                                        <li><strong>代码展示：</strong>等宽字体，语法高亮，可滚动查看长代码。</li>
+                                        <li><strong>返回列表：</strong>每页提供“Back to List”链接，快速返回练习列表。</li>
+                                    </ul>
+                                    
+                                    <h4 style="color: #00d4ff; margin: 2rem 0 1rem 0;">7. 非功能性需求</h4>
+                                    <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                                        <thead>
+                                            <tr style="background: rgba(0, 212, 255, 0.1);">
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">需求类型</th>
+                                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(255, 255, 255, 0.1);">具体要求</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">性能</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">首屏加载时间 &lt; 1.5s（预加载关键 CSS），图片使用懒加载，GIF 按需加载。</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">响应式</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">断点：1024px（桌面）、768px（平板）、480px（手机）、360px（小屏手机）。导航栏在移动端自动调整宽度。</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">可访问性</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">语义化 HTML 标签，链接有焦点环，对比度 ≥ 4.5:1，支持键盘导航，图片提供 alt 文本。</td></tr>
+                                            <tr style="background: rgba(255, 255, 255, 0.02);"><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">SEO</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">设置 &lt;title&gt; 和 &lt;meta name="description"&gt;，使用语义化标题层级，Open Graph 元数据。</td></tr>
+                                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">健壮性</td><td style="padding: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.1);">无后端依赖，错误路由自动重定向到首页，LocalStorage 满时提示用户清理。</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function initScrollHandlers() {
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            if (!navbar || !backToTopBtn) return;
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+                        
+                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                            navbar.classList.add('hidden');
+                        } else {
+                            navbar.classList.remove('hidden');
+                        }
+                        
+                        if (currentScrollY > 500) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
+                        
+                        lastScrollY = currentScrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+        
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-0');
+            if (!tocList) return;
+        
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+        
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise 1</a></li>
+                <li><a href="#section-homework" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}" style="margin-left: ${level === 'toc-sub' ? '1rem' : '0'}; margin-bottom: 0.5rem;"><a href="#${id}" onclick="scrollToSection(event, '${id}')" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s ease;" onmouseover="this.style.color='#00d4ff'" onmouseout="if(!this.classList.contains('active')) this.style.color='rgba(255, 255, 255, 0.7)'">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'rgba(255, 255, 255, 0.7)';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = '#00d4ff';
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            // 生成目录
+            generateDetailedTOC();
+        });
+    </script>
+</body>
+</html>

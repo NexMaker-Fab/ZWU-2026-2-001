@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 3 - Arduino Output&Input - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">↑</button>
+    
+    <main class="main-content">
+        <section id="exercise-2" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-2">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                    
+                    <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 3: Arduino Output&Input</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">Use various sensors to collect environmental data and perform initial processing.</p>
+                    
+                    <!-- Exercise Content (Read-only) -->
+                    <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            Do one project which contain switch, sensor(photosensitive sensor, temperature ,etc);<br>
+                            Build one environment monitoring device
+                        </div>
+                    </div>
+                    
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-assignment" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px;">
+                            <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino Output&Input - Interactive Visualization Project</h4>
+                            
+                            <div style="margin-top: 2rem;">
+                                <h4 id="section-introduction" style="color: #00d4ff; margin: 1.5rem 0 1rem 0;">1. Project Introduction</h4>
+                                <p>Implemented by Arduino R4 WiFi board, OLED screen, RFID RF module (MFRC522), and WS2812 LED strip. This program can recognize the UID of different cards and respond accordingly. Therefore, different feedback can be obtained by scanning different cards. As our final task is to design an autonomous driving interaction signal system for the elderly (or other special groups), we have currently created cards and interactions corresponding to the elderly</p>
+                                
+                                <h4 id="section-code" style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Code</h4>
+                                <div style="background: rgba(0, 212, 255, 0.05); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; border: 1px solid rgba(0, 212, 255, 0.2); max-height: 600px; overflow-y: auto;">
+                                    <pre style="margin: 0; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.8rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); white-space: pre-wrap; word-wrap: break-word;"><code>// ==================== 老人卡专用代码 ====================
+// 功能：RFID识别老人卡 -&gt; OLED显示动画 + LED灯带红色旋转效果
+// 连线：
+//   OLED (I2C): SDA-&gt;A4, SCL-&gt;A5 (UNO)
+//   RFID:      SS-&gt;10, RST-&gt;9, MOSI-&gt;11, MISO-&gt;12, SCK-&gt;13
+//   LED灯带:   DATA-&gt;6
+
+#include &lt;Wire.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+#include &lt;SPI.h&gt;
+#include &lt;MFRC522.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+// ---------- OLED 配置 ----------
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
+
+// ---------- RFID 配置 ----------
+#define RST_PIN 9
+#define SS_PIN 10
+MFRC522 mfrc522(SS_PIN, RST_PIN);
+
+// ---------- LED灯带配置 ----------
+#define LED_PIN 6
+#define LED_COUNT 60
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// ---------- 老人卡UID ----------
+byte seniorCardUID[] = {0x32, 0x49, 0xCF, 0x06};
+
+// ---------- 状态与动画变量 ----------
+bool seniorCardDetected = false;      // 是否检测到老人卡
+unsigned long cardDetectedTime = 0;   // 检测到卡的时间
+unsigned long lastAnimationUpdate = 0;
+unsigned long lastLedUpdate = 0;
+const unsigned long ANIMATION_INTERVAL = 100;  // 动画更新间隔
+const unsigned long LED_INTERVAL = 50;         // LED更新间隔
+int animationFrame = 0;
+int rotatingPosition = 0;
+
+// ---------- 函数声明 ----------
+bool compareUID(byte* uid1, byte* uid2, int length);
+void updateAnimation();
+void drawSeniorCardAnimation();
+void drawSmallCard(int x, int y);
+void drawMiniSenior(int x, int y);
+void updateLEDs();
+void rotatingEffect(int r, int g, int b);
+
+// ==================== 初始化 ====================
+void setup() {
+  Serial.begin(115200);
+
+  // 初始化OLED
+  if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+    Serial.println(F("OLED初始化失败"));
+    for(;;);
+  }
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.cp437(true);
+  display.display();
+
+  // 初始化RFID
+  SPI.begin();
+  mfrc522.PCD_Init();
+
+  // 初始化LED灯带
+  strip.begin();
+  strip.show();
+  strip.setBrightness(50);
+
+  Serial.println(F("老人卡系统就绪 - 请刷老人卡"));
+}
+
+// ==================== 主循环 ====================
+void loop() {
+  // 1. 检测老人卡
+  checkForSeniorCard();
+
+  // 2. 更新OLED动画（非阻塞）
+  if (millis() - lastAnimationUpdate &gt;= ANIMATION_INTERVAL) {
+    lastAnimationUpdate = millis();
+    updateAnimation();
+  }
+
+  // 3. 更新LED灯带效果（非阻塞）
+  if (millis() - lastLedUpdate &gt;= LED_INTERVAL) {
+    lastLedUpdate = millis();
+    updateLEDs();
+  }
+
+  // 4. 检测到老人卡后，5秒自动清除显示（超时可调）
+  if (seniorCardDetected &amp;&amp; (millis() - cardDetectedTime &gt; 5000)) {
+    seniorCardDetected = false;
+  }
+}
+
+// ==================== 老人卡检测 ====================
+void checkForSeniorCard() {
+  if (!mfrc522.PICC_IsNewCardPresent()) return;
+  if (!mfrc522.PICC_ReadCardSerial()) return;
+
+  // 比较是否为老人卡
+  if (compareUID(mfrc522.uid.uidByte, seniorCardUID, 4)) {
+    seniorCardDetected = true;
+    cardDetectedTime = millis();
+    Serial.println(F("检测到老人卡！"));
+  }
+
+  mfrc522.PICC_HaltA();
+}
+
+// ==================== UID比较 ====================
+bool compareUID(byte* uid1, byte* uid2, int length) {
+  for (int i = 0; i &lt; length; i++) {
+    if (uid1[i] != uid2[i]) return false;
+  }
+  return true;
+}
+
+// ==================== OLED动画更新 ====================
+void updateAnimation() {
+  display.clearDisplay();
+  if (seniorCardDetected) {
+    drawSeniorCardAnimation();   // 显示老人卡动画
+  } else {
+    drawNoCardAnimation();       // 待机动画：摆动卡片 + 提示
+  }
+  display.display();
+  animationFrame++;
+}
+
+// 待机动画（无卡片时）
+void drawNoCardAnimation() {
+  static int cardX = 44;
+  static int swingDir = 1;
+  cardX += swingDir * 2;
+  if (cardX &lt;= 30 || cardX &gt;= 60) swingDir *= -1;
+  drawSmallCard(cardX, 20);
+
+  display.setTextSize(1);
+  display.setCursor(20, 40);
+  display.print("Please swipe");
+  display.setCursor(35, 50);
+  display.print("Senior Card");
+}
+
+// 老人卡动画（卡片 + 老人图标 + 文字）
+void drawSeniorCardAnimation() {
+  drawSmallCard(44, 20);
+  drawMiniSenior(64, 5);
+
+  display.setTextSize(1);
+  display.setCursor(40, 45);
+  display.print("Senior Card");
+}
+
+// 小卡片绘制
+void drawSmallCard(int x, int y) {
+  display.drawRect(x, y, 40, 15, SSD1306_WHITE);
+  display.fillRect(x + 5, y + 5, 30, 7, SSD1306_WHITE);
+  display.drawRect(x + 30, y + 4, 6, 4, SSD1306_WHITE);
+}
+
+// 老人图标（带拐杖和行走动画）
+void drawMiniSenior(int x, int y) {
+  int animPhase = animationFrame % 20;
+  display.fillRect(x - 2, y - 2, 5, 2, SSD1306_WHITE);
+  display.fillCircle(x, y + 2, 3, SSD1306_WHITE);
+  display.fillRect(x - 1, y + 1, 1, 1, SSD1306_BLACK);
+  display.fillRect(x + 1, y + 1, 1, 1, SSD1306_BLACK);
+  display.drawLine(x - 1, y + 3, x + 1, y + 3, SSD1306_BLACK);
+  display.fillRect(x - 3, y + 5, 7, 8, SSD1306_WHITE);
+
+  // 手臂摆动
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 5, y + 6, 3, 2, SSD1306_WHITE);
+    display.fillRect(x + 3, y + 6, 3, 2, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 5, y + 8, 3, 2, SSD1306_WHITE);
+    display.fillRect(x + 3, y + 8, 3, 2, SSD1306_WHITE);
+  }
+  // 腿步
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 2, y + 13, 2, 4, SSD1306_WHITE);
+    display.fillRect(x + 1, y + 13, 2, 4, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 3, y + 13, 2, 4, SSD1306_WHITE);
+    display.fillRect(x + 2, y + 13, 2, 4, SSD1306_WHITE);
+  }
+  // 拐杖
+  if (animPhase &lt; 10) {
+    display.fillRect(x - 6, y + 5, 2, 6, SSD1306_WHITE);
+    display.fillRect(x - 7, y + 10, 4, 2, SSD1306_WHITE);
+  } else {
+    display.fillRect(x - 7, y + 3, 2, 6, SSD1306_WHITE);
+    display.fillRect(x - 8, y + 8, 4, 2, SSD1306_WHITE);
+  }
+  display.drawLine(x - 1, y + 5, x + 1, y + 5, SSD1306_BLACK);
+}
+
+// ==================== LED灯带效果（老人卡 = 红色旋转） ====================
+void updateLEDs() {
+  if (seniorCardDetected) {
+    // 老人卡激活时：红色旋转效果
+    rotatingEffect(255, 0, 0);
+  } else {
+    // 待机：呼吸灯效果（柔和白色）
+    breathingEffect();
+  }
+  strip.show();
+}
+
+// 红色旋转效果（老人卡专用）
+void rotatingEffect(int r, int g, int b) {
+  rotatingPosition = (rotatingPosition + 2) % LED_COUNT;
+  // 清空所有LED
+  for (int i = 0; i &lt; LED_COUNT; i++) strip.setPixelColor(i, 0);
+  // 主光带
+  for (int i = 0; i &lt; 12; i++) {
+    int pos = (rotatingPosition - i + LED_COUNT) % LED_COUNT;
+    int brightness = 255 - (i * 20);
+    if (brightness &lt; 0) brightness = 0;
+    int currentR = (r * brightness) / 255;
+    int currentG = (g * brightness) / 255;
+    int currentB = (b * brightness) / 255;
+    strip.setPixelColor(pos, strip.Color(currentR, currentG, currentB));
+  }
+  // 对称光带（增加视觉丰富度）
+  int secondPos = (rotatingPosition + LED_COUNT/2) % LED_COUNT;
+  for (int i = 0; i &lt; 12; i++) {
+    int pos = (secondPos - i + LED_COUNT) % LED_COUNT;
+    int brightness = 255 - (i * 20);
+    if (brightness &lt; 0) brightness = 0;
+    int currentR = (r * brightness) / 255;
+    int currentG = (g * brightness) / 255;
+    int currentB = (b * brightness) / 255;
+    uint32_t existing = strip.getPixelColor(pos);
+    if (existing == 0) {
+      strip.setPixelColor(pos, strip.Color(currentR, currentG, currentB));
+    } else {
+      int er = (existing &gt;&gt; 16) &amp; 0xFF;
+      int eg = (existing &gt;&gt; 8) &amp; 0xFF;
+      int eb = existing &amp; 0xFF;
+      strip.setPixelColor(pos, strip.Color(max(er, currentR), max(eg, currentG), max(eb, currentB)));
+    }
+  }
+}
+
+// 呼吸灯效果（待机）
+void breathingEffect() {
+  static int brightness = 0;
+  static int direction = 1;
+  brightness += direction * 3;
+  if (brightness &gt;= 150) direction = -1;
+  if (brightness &lt;= 0) direction = 1;
+  for (int i = 0; i &lt; LED_COUNT; i++) {
+    strip.setPixelColor(i, strip.Color(brightness, brightness, brightness));
+  }
+}</code></pre>
+                                </div>
+                                
+                                <h4 id="section-circuit" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3. Circuit diagram</h4>
+                                <img src="./image/7.png" alt="Circuit Diagram" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                <img src="./image/10.png" alt="Circuit Diagram 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-connection" style="color: #00d4ff; margin: 2rem 0 1rem 0;">4. Physical connection mode</h4>
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Standby mode</h5>
+                                <img src="./image/8.png" alt="Standby Mode" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Activation mode</h5>
+                                <img src="./image/11.png" alt="Activation Mode" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                
+                                <h4 id="section-effect" style="color: #00d4ff; margin: 2rem 0 1rem 0;">5. Effect display</h4>
+                                <img src="./image/9.gif" alt="Effect Display GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // ===== 滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ===== 显示/隐藏回到顶部按钮 =====
+        function initScrollHandlers() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+        }
+
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-2');
+            if (!tocList) return;
+
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise 3</a></li>
+                <li><a href="#section-homework" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}" style="margin-left: ${level === 'toc-sub' ? '1rem' : '0'}; margin-bottom: 0.5rem;"><a href="#${id}" onclick="scrollToSection(event, '${id}')" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s ease;" onmouseover="this.style.color='#00d4ff'" onmouseout="if(!this.classList.contains('active')) this.style.color='rgba(255, 255, 255, 0.7)'">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'rgba(255, 255, 255, 0.7)';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = '#00d4ff';
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            // 生成目录
+            generateDetailedTOC();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 2 - Arduino Basic - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">
+        ↑
+    </button>
+    
+    <main class="main-content">
+        <section id="exercise-1" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-1">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                
+                <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 2: Arduino Basic</h2>
+                <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">Learn basic Arduino input and output operations, including button detection and LED control.</p>
+                
+                <!-- Exercise Content (Read-only) -->
+                <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                    <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        In this exercise, we learned how to use Arduino to read digital input from buttons and control digital output to LEDs. Key concepts included:<br><br>
+                        • Digital pin configuration (INPUT/OUTPUT)<br>
+                        • Pull-up and pull-down resistors<br>
+                        • Button debouncing<br>
+                        • LED brightness control with PWM<br>
+                        • Serial monitor for debugging<br><br>
+                        Components used: Arduino Uno, breadboard, jumper wires, push buttons, LEDs, resistors.
+                    </div>
+                </div>
+                
+                <!-- Assignment Content -->
+                <div class="homework-content-section" style="margin-bottom: 3rem;">
+                    <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                    <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                        <h4 id="section-title" style="color: #00d4ff; margin-bottom: 1rem;">📄 Arduino OUTPUT - Assignment Documentation</h4>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4 id="section-hardware">Hardware</h4>
+                            <p><strong>Arduino UNO R4 WiFi</strong></p>
+                            <img src="./image/2.png" alt="Hardware Image 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-top: 0.5rem;"><strong>Image source:</strong> <a href="https://www.hackatronic.com/tag/arduino-uno-r4-specifications/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.hackatronic.com/tag/arduino-uno-r4-specifications/</a></p>
+                            <p>It retains the classic UNO appearance, the main controller is a Renesas RA4M1 32-bit MCU, and the board also comes with an ESP32 module, supporting Wi-Fi / Bluetooth, and there is also a 12×8 LED Matrix that is very suitable for making 'interactive signals'.</p>
+                            
+                            <h5 id="section-hardware-advantage" style="color: #ff00d4; margin: 2rem 0 1rem 0;">Advantage</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>There are plenty of beginner resources, and the Arduino ecosystem is well-established.</li>
+                                <li>Can quickly connect sensors, buzzers, buttons, LEDs, and ultrasonic modules. Easy to get started with in the Arduino IDE.</li>
+                                <li>Comes with built-in wireless capability, making it convenient later for 'vehicle status broadcasting,' 'mobile client auxiliary reminders,' and 'remote debugging'.</li>
+                            </ol>
+                            
+                            <h4 id="section-ide-overview" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Overview of the Arduino IDE</h4>
+                            <img src="./image/6.png" alt="Arduino IDE Overview" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-top: 0.5rem;"><strong>Image source:</strong> <a href="https://seeklogo.com/vector-logo/593165/arduino" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://seeklogo.com/vector-logo/593165/arduino</a></p>
+                            
+                            <h5 id="section-ide-definition" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Definition and Features</h5>
+                            <p>Arduino IDE is a lightweight development environment based on C/C++, mainly used for:</p>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Writing Arduino programs (called Sketches)</li>
+                                <li>Compiling code</li>
+                                <li>Uploading programs to development boards (such as Arduino Uno, Nano, Mega, etc.)</li>
+                            </ol>
+                            <p>Its core features include:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Simplified syntax: Encapsulates standard C/C++ (e.g., automatically generates the main function)</li>
+                                <li>Cross-platform: Supports Windows / macOS / Linux</li>
+                                <li>Open source: Both the IDE and core libraries are open source</li>
+                                <li>Rich library ecosystem: Supports a large number of third-party sensors and modules</li>
+                            </ul>
+                            
+                            <p style="margin: 1rem 0;"><a href="https://www.arduino.cc/en/software" target="_blank" style="color: #00d4ff;">Arduino IDE Official Website →</a></p>
+                            
+                            <h5 id="section-ide-interface" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Arduino IDE Interface Diagram</h5>
+                            <img src="./image/7.png" alt="Arduino IDE Interface" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-ide-flowchart" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Basic flowchart for using the Arduino IDE</h5>
+                            <p>Write code ↓ Verify code ↓ Connect Arduino development board ↓ Select development board model ↓ Select serial port ↓ Upload program ↓ Observe running effect</p>
+                            
+                            <h5 id="section-ide-settings" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Must be set before use</h5>
+                            <p><strong>1. Development board model</strong></p>
+                            <img src="./image/8.png" alt="Development Board Model" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>2. Serial port</strong></p>
+                            <img src="./image/9.png" alt="Serial Port" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-coding-methods" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Arduino Coding Methods</h4>
+                            <p>Almost every program has two core functions:</p>
+                            <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace;">
+                                <code style="color: rgba(255, 255, 255, 0.9);">
+                                    void setup() {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;// Runs only once here<br>
+                                    }<br><br>
+                                    void loop() {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;// Loops repeatedly here<br>
+                                    }
+                                </code>
+                            </div>
+                            <img src="./image/10.png" alt="Coding Methods" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-coding-meaning" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">What do they mean respectively?</h5>
+                            <p><strong>1. setup()</strong></p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Execute first after powering on</li>
+                                <li>Execute only once</li>
+                                <li>Commonly used for 'initialization'</li>
+                                <li>For example: Set a certain pin as output, Open the serial port</li>
+                            </ul>
+                            
+                            <p><strong>2. loop()</strong></p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Repeatedly executing</li>
+                                <li>is the main body of the program</li>
+                                <li>For example: Turn on the light → Wait for one second → Turn off the light → Wait for another second → Repeat continuously</li>
+                            </ul>
+                            
+                            <h5 id="section-coding-process" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Program execution process</h5>
+                            <p>Power on ↓ setup() executes once ↓ loop() 1st time ↓ loop() 2nd time ↓ loop() 3rd time ↓ keeps looping...</p>
+                            
+                            <h4 id="section-hardware-connection" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Hardware connection</h4>
+                            <h5 id="section-hw-basic-principles" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Principles of Arduino Hardware Connection:</h5>
+                            <p>When performing hardware connections, the following principles need to be followed:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>First, check the working voltage of the module to confirm whether it is 5V or 3.3V;</li>
+                                <li>First connect the power and ground lines to ensure all modules share the same ground;</li>
+                                <li>Then connect the signal lines, and connect them to digital or analog pins according to the signal type;</li>
+                                <li>Finally, check whether the connections are correct to avoid short circuits or reversing connections.</li>
+                            </ul>
+                            
+                            <h5 id="section-hw-objects" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Common Connection Objects</h5>
+                            <p style="margin-bottom: 1rem;">The following electronic component images are all from <a href="https://www.taobao.com/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.taobao.com/</a></p>
+                            
+                            <p><strong>LED lights:WS2812 LED</strong></p>
+                            <p style="margin: 0.5rem 0;">We used a total of 60 LED light beads in the WS2812 light strip for our final assignment</p>
+                            <img src="./image/11.png" alt="LED Lights" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">The runtime library used for WS2812 LED strip：adafruit/Adafruit_NeoPixel</h5>
+                            <img src="./image/31.png" alt="Adafruit NeoPixel Library" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-top: 0.5rem;"><strong>Source link：</strong><a href="https://github.com/adafruit/Adafruit_NeoPixel" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/adafruit/Adafruit_NeoPixel</a></p>
+                            
+                            <p><strong>Resistors</strong></p>
+                            <img src="./image/12.png" alt="Resistors" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Buttons</strong></p>
+                            <img src="./image/13.png" alt="Buttons" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Buzzers</strong></p>
+                            <img src="./image/14.png" alt="Buzzers" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Ultrasonic modules</strong></p>
+                            <img src="./image/15.png" alt="Ultrasonic Modules" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Temperature and humidity sensors</strong></p>
+                            <img src="./image/16.png" alt="Temperature Sensors" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Soil moisture sensors</strong></p>
+                            <img src="./image/17.png" alt="Soil Moisture Sensors" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Relay modules</strong></p>
+                            <img src="./image/18.png" alt="Relay Modules" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-hw-example" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Running an example project for Arduino IDE</h5>
+                            <p><strong>Example project: AnalogReadSerial</strong></p>
+                            <h6 style="color: #00d4ff; margin: 1rem 0 0.5rem 0;">Code</h6>
+                            <img src="./image/30.png" alt="AnalogReadSerial Code" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin: 0.5rem 0;">Actual operation display</p>
+                            <img src="./image/19.gif" alt="AnalogReadSerial Example" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-autoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">A. Autoware</h4>
+                            <p><a href="https://autoware.org/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://autoware.org/</a></p>
+                            <p>Autoware is currently one of the most representative open-source autonomous driving software stacks, based on ROS, and its goal is a software system for autonomous vehicles. Both the official site and GitHub clearly position it as an open-source project for autonomous driving. The repository currently uses the Apache-2.0 license.</p>
+                            <img src="./image/20.png" alt="Autoware" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>The main autonomous driving link is complete and has the highest reference value.</li>
+                                <li>The community is mature, and the level of engineering is much higher than that of typical student projects.</li>
+                                <li>Suitable for your reference 'Where does vehicle status come from': Perception, Localization, Planning, Control</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Too big and too heavy, not suitable for you to use directly for Arduino beginners</li>
+                                <li>It leans more towards 'whether the car can drive,' rather than specifically addressing 'whether elderly or special groups can understand the car's intentions.'</li>
+                            </ol>
+                            
+                            <h5 id="section-autoware-inspiration" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration</h5>
+                            <p>Refer to its 'vehicle status interface' and then translate these statuses into concise, perceptible external signals</p>
+                            
+                            <h4 id="section-ehmi" style="color: #00d4ff; margin: 2rem 0 1rem 0;">B. Autonomous Vehicle eHMI Prototype</h4>
+                            <p><a href="https://www.mdpi.com/1424-8220/21/9/2912" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.mdpi.com/1424-8220/21/9/2912</a></p>
+                            <p>This GitHub project explicitly states that it is about external Human-Machine Interfaces (eHMIs) for autonomous vehicle-to-pedestrian communication, that is, 'external human-machine interfaces for communication between autonomous vehicles and pedestrians'</p>
+                            <img src="./image/21.png" alt="eHMI Prototype 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/22.png" alt="eHMI Prototype 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Directly study 'how to express intentions outside the car'</li>
+                                <li>It is suitable to first conduct interface semantic verification, such as which is easier to understand: text, color, arrows, or animations.</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>More like an interactive prototype or simulation, not a mature hardware system</li>
+                                <li>Multimodal adaptation for the elderly, visually impaired, and hearing-impaired groups is not obvious enough</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>High-contrast large icons</li>
+                                <li>Short text</li>
+                                <li>Rhythmic lighting</li>
+                                <li>Buzzer/voice</li>
+                                <li>Close-range vibration alert</li>
+                            </ol>
+                            
+                            <h4 id="section-harmoware" style="color: #00d4ff; margin: 2rem 0 1rem 0;">C. Harmoware-HMI</h4>
+                            <p><a href="https://github.com/Harmoware/Harmoware-HMI" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/Harmoware/Harmoware-HMI</a></p>
+                            <p>This project leans more towards 'human-computer interaction in autonomous driving,' including voice interaction, nod/shake confirmation, speed voice control, etc. It is focused on in-car scenarios, but it can give you strong inspiration for 'user-friendly interaction for special groups'.</p>
+                            <img src="./image/23.png" alt="Harmoware-HMI" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Clearly emphasize human-computer interaction, not just algorithms</li>
+                                <li>Strong multimodal interaction ideas, suitable for reference in elderly scenarios</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Biased towards in-vehicle HMI, not the main scenario for communication between pedestrians and vehicles outside the car</li>
+                                <li>Design of external signal lights and external prompts provides limited help</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>You can learn 'do not rely on only one channel for a signal'; it's best to use both visual and auditory channels.</li>
+                                <li>For the elderly, redundant cues are usually more reliable than single cues.</li>
+                            </ol>
+                            
+                            <h4 id="section-smartcane" style="color: #00d4ff; margin: 2rem 0 1rem 0;">D. Smart Cane</h4>
+                            <p><a href="https://wewalk.io/en/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://wewalk.io/en/</a></p>
+                            <p>The Smart-cane project on GitHub is aimed at visually impaired and elderly users. Its core approach is to use multiple ultrasonic sensors and buzzers for real-time obstacle alerts. The project description explicitly states that its target users are visually impaired and elderly people, and it plans to further add features such as Bluetooth, GPS, and vibration feedback.</p>
+                            <img src="./image/24.png" alt="Smart Cane 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/25.png" alt="Smart Cane 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Very close to 'special group assisted interaction'</li>
+                                <li>Low cost, easy to replicate</li>
+                                <li>It is suitable to first study 'whether the prompt method is clear and whether it is overloaded'</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>It is mainly for single-person close-range obstacle avoidance, not vehicle-person interaction.</li>
+                                <li>The medium is somewhat single in type, mainly focused on sound</li>
+                                <li>Limited capability in noisy environments and complex road scenarios</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>You can refer to the 'multimodal alert' approach: sound, vibration, light</li>
+                                <li>You can refer to 'simplified interactions for elderly users': few and clear, do not give too many signals at the same time.</li>
+                            </ol>
+                            
+                            <h4 id="section-hapticglove" style="color: #00d4ff; margin: 2rem 0 1rem 0;">E. OpenHapticGlove</h4>
+                            <p><a href="https://github.com/vidklopcic/openhapticglove" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/vidklopcic/openhapticglove</a></p>
+                            <p>OpenHapticGlove is an open-source haptic glove designed for navigation for the visually impaired, using ToF distance sensing and vibration feedback. It is not an in-vehicle system, but it is well suited for your research on 'non-visual interaction.' This approach is valuable for the elderly, low-vision users, or users in bright light environments.</p>
+                            <img src="./image/26.png" alt="OpenHapticGlove 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/27.png" alt="OpenHapticGlove 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Haptic feedback is naturally suitable for people who have difficulty looking at screens or lights.</li>
+                                <li>More private than a simple buzzer, and not easily drowned out by environmental noise</li>
+                                <li>Very suitable to complement visual signals outside the vehicle</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Users need to wear the device</li>
+                                <li>Cost, comfort, and range all need to be considered additionally</li>
+                                <li>May require training for first-time users</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>It doesn't necessarily have to only make the 'car send signal'; it can also design a 'human-end receiver'.</li>
+                                <li>It's best not to bet on a single channel for special group projects; tactile sense is worth preserving.</li>
+                            </ol>
+                            
+                            <h4 id="section-smartpole" style="color: #00d4ff; margin: 2rem 0 1rem 0;">F. Smartpole-VR-AWSIM</h4>
+                            <p><a href="https://github.com/tlab-wide/Smartpole-VR-AWSIM" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://github.com/tlab-wide/Smartpole-VR-AWSIM</a></p>
+                            <p>This project combines AWSIM/Autoware/ROS 2/Unity/VR to simulate the impact of infrastructure eHMI (external human-machine interface) on pedestrians, aiming to assess the safety, clarity, and timing of signals. Its research path is very close to your 'autonomous driving interactive signaling system,' except that it is more oriented towards a simulation evaluation platform.</p>
+                            <img src="./image/28.png" alt="Smartpole-VR-AWSIM" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>Very close to the autonomous driving interaction signal research scenario</li>
+                                <li>Able to quickly test different signal designs without actually being on the road</li>
+                                <li>Can conduct VR human factors experiments, suitable for comparing 'GO/STOP/path projection' and other schemes</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Disadvantage:</h5>
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>The tech stack is heavier, and the threshold is much higher than Arduino.</li>
+                                <li>More suitable for 'design verification' rather than 'rapid hardware prototyping'</li>
+                                <li>High requirements for the team's software/simulation capabilities</li>
+                            </ol>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Inspiration:</h5>
+                            <p>It can be divided into two stages:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li>The first stage: Arduino for low-cost interactive prototyping;</li>
+                                <li>The second stage: CARLA/AWSIM/Unity for human factor validation and scenario simulation</li>
+                            </ul>
+                            
+                            <h4 id="section-mit-license" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Introduction and Legal Explanation of MIT License</h4>
+                            <h5 id="section-mit-definition" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1. Basic Definition</h5>
+                            <p>The MIT License is a permissive open source license derived from the Massachusetts Institute of Technology (MIT), and is one of the shortest, most popular, and business friendly open source licenses in the world.</p>
+                            <img src="./image/29.png" alt="MIT License" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-mit-auth" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2. Core authorization (what can be done)</h5>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Free use:</strong> Personal, internal, and commercial closed source projects can all be used</li>
+                                <li><strong>Free modification:</strong> freely modify the source code</li>
+                                <li><strong>Free distribution:</strong> publish, copy, sublicense, sell</li>
+                                <li><strong>Free closed source:</strong> The modified version can be closed source without the need for open-source derivative code</li>
+                            </ul>
+                            
+                            <h5 id="section-mit-obligation" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3. Sole legal obligation</h5>
+                            <p>The original copyright statement and full MIT license must be retained in all copies and important parts of the software.</p>
+                            
+                            <h5 id="section-mit-fulltext" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Full text of the standard (in English)</h5>
+                            <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem;">
+                                <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap;">
+Copyright (c) &lt;year&gt; &lt;copyright holder&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+                                </code>
+                            </div>
+                            
+                            <h5 id="section-mit-keypoints" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5. Key Legal Points</h5>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>No 'Copyleft' (contagious):</strong> Unlike GPL, which forces derivative works to be open sourced</li>
+                                <li><strong>Strong disclaimer:</strong> 'AS IS provided as is', the author assumes no responsibility for any use risks, defects, or losses</li>
+                                <li><strong>Patent ambiguity:</strong> No clear patent authorization granted (compared to Apache 2.0)</li>
+                                <li><strong>Highly compatible:</strong> can be mixed with most protocol codes such as GPL</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function initScrollHandlers() {
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            if (!navbar || !backToTopBtn) return;
+            
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+                        
+                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                            navbar.classList.add('hidden');
+                        } else {
+                            navbar.classList.remove('hidden');
+                        }
+                        
+                        if (currentScrollY > 500) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
+                        
+                        lastScrollY = currentScrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+        
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-1');
+            if (!tocList) return;
+        
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+        
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise 2</a></li>
+                <li><a href="#section-homework" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}" style="margin-left: ${level === 'toc-sub' ? '1rem' : '0'}; margin-bottom: 0.5rem;"><a href="#${id}" onclick="scrollToSection(event, '${id}')" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s ease;" onmouseover="this.style.color='#00d4ff'" onmouseout="if(!this.classList.contains('active')) this.style.color='rgba(255, 255, 255, 0.7)'">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'rgba(255, 255, 255, 0.7)';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = '#00d4ff';
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            // 生成目录
+            generateDetailedTOC();
+        });
+    </script>
+</body>
+</html>

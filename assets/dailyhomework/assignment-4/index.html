@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 5 - 3D Printing - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">↑</button>
+    
+    <main class="main-content">
+        <section id="exercise-4" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-4">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                    
+                    <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 5: 3D Printing</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">Explore 3D printing technology and create physical models from digital designs.</p>
+                    
+                    <!-- Exercise Content (Read-only) -->
+                    <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <!-- Exercise content is empty for this exercise -->
+                        </div>
+                    </div>
+                    
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <h4 id="section-tech-intro" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.75rem;">Technical introduction</h4>
+                            <p>3D printing (additive manufacturing) is a technology that constructs three-dimensional objects by stacking materials layer by layer. Compared with traditional cutting, it has the advantages of high design freedom, less material waste, and the ability to form complex structures.</p>
+                            <p>The new generation of desktop level 3D printers, represented by Bambu Lab, significantly reduces the threshold for use and enhances the printing experience. Bambu's products (such as X1 series, P1 series, and the latest A2L) have the following core technical features:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>High speed printing:</strong> With the help of high flow hot end and active vibration compensation algorithm, the printing speed can reach several times that of ordinary machines, while maintaining excellent surface quality.</li>
+                                <li><strong>Intelligent and user-friendly:</strong> automatic leveling, first layer scanning, blockage detection, AI fault recognition and other functions, allowing users to go from unboxing to high-quality printing in just over ten minutes.</li>
+                                <li><strong>Multi color and multi material:</strong> The independently developed automatic feeding system (AMS) supports up to 16-19 color switching and can mix printing support materials or different materials. RFID automatically identifies the original consumable parameters.</li>
+                                <li><strong>Ecological Loop:</strong> Paired with a mobile app and cloud model library MakerWorld, users can remotely print, share, and download massive models with just one click.</li>
+                            </ul>
+                            
+                            <p style="margin: 1rem 0;"><a href="https://bambulab.com/zh/download/studio" target="_blank" style="color: #00d4ff;">Bambu Studio Official Website →</a></p>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Advantages in terms of materials:</h5>
+                            <p>Bambu is compatible with various FDM wires, including ordinary PLA, PETG, ABS, TPU, carbon fiber reinforced nylon, etc. The core advantage of its original consumables lies in:</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Automatic recognition:</strong> Each roll of consumables is equipped with an RFID chip, and after being placed in AMS, the printer automatically reads the optimal temperature, flow rate, and pullback parameters, avoiding the trouble of manual parameter adjustment.</li>
+                                <li><strong>Stable quality:</strong> The wire diameter tolerance is controlled within ± 0.03mm, making it less prone to clogging, wire drawing, or edge curling, and providing stronger interlayer bonding.</li>
+                                <li><strong>Safety and Environmental Protection:</strong> We have launched the "Pure PLA" series, which has been reduced to 5 types of ingredients and all have passed EU food contact safety certification, suitable for families and educational settings.</li>
+                            </ul>
+                            <p>Overall, Bambu has brought industrial grade technology to the consumer market, transforming 3D printing from a "geek toy" into a truly reliable creative tool, while greatly reducing the learning cost for beginners through an intelligent consumables system.</p>
+                            
+                            <h4 id="section-operations" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">Operations section</h4>
+                            
+                            <h4 id="section-modeling" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.5rem;">1. Modeling</h4>
+                            <p>Using AI modeling software for 3D modeling from images</p>
+                            
+                            <p><strong>Software website：</strong><a href="https://studio.tripo3d.ai/workspace/generate" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://studio.tripo3d.ai/workspace/generate</a></p>
+                            
+                            <p><strong>Images used:</strong></p>
+                            <img src="./image/1.png" alt="Input Image 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p><strong>Image source:</strong></p>
+                            <p><a href="https://www.telpopay.com/products/" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.telpopay.com/products/</a></p>
+                            <img src="./image/2.png" alt="Source Image" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-print" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">2.Print</h4>
+                            
+                            <h5 id="section-open-bambu" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">1.Open the .3mf file using Bambu Studio</h5>
+                            <img src="./image/5.png" alt="Open Bambu Studio" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-connect-printer" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">2.Connect the 3D printer via a mobile app</h5>
+                            <img src="./image/6.png" alt="Connect Printer" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-import-file" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">3.Import the modeling file into Bambu Studio</h5>
+                            <img src="./image/7.png" alt="Import File" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-adjust-direction" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">4. Adjust the modeling direction</h5>
+                            <p style="margin-bottom: 1rem;">The parts in the figure that involve modeling parameters are default parameters and have not been adjusted</p>
+                            <img src="./image/8.png" alt="Adjust Direction 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/9.png" alt="Adjust Direction 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-adjust-dimensions" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">5.Adjust the modeling dimensions</h5>
+                            <img src="./image/10.png" alt="Adjust Dimensions 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/11.png" alt="Adjust Dimensions 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-slicing" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">6.Click the slicing button to slic a single piece</h5>
+                            <img src="./image/12.png" alt="Slicing" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 id="section-click-print" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">7.Click to print a single disc</h5>
+                            <img src="./image/13.png" alt="Click Print" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-start-printing" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">3.The 3D printer began printing</h4>
+                            
+                            <h5 id="section-actual-printing" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Actual printing and display</h5>
+                            <img src="./image/14.gif" alt="Actual Printing GIF" loading="eager" decoding="async" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-finish-printing" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">4.Finish printing and take the module</h4>
+                            
+                            <h5 id="section-finished-product" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Finished product display</h5>
+                            <img src="./image/15.png" alt="Finished Product" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                        </div>
+                    </div>
+                    
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // ===== 滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ===== 显示/隐藏回到顶部按钮 =====
+        function initScrollHandlers() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+        }
+
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-4');
+            if (!tocList) return;
+
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise 5</a></li>
+                <li><a href="#section-homework" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}" style="margin-left: ${level === 'toc-sub' ? '1rem' : '0'}; margin-bottom: 0.5rem;"><a href="#${id}" onclick="scrollToSection(event, '${id}')" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s ease;" onmouseover="this.style.color='#00d4ff'" onmouseout="if(!this.classList.contains('active')) this.style.color='rgba(255, 255, 255, 0.7)'">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'rgba(255, 255, 255, 0.7)';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = '#00d4ff';
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            // 生成目录
+            generateDetailedTOC();
+        });
+    </script>
+</body>
+</html>

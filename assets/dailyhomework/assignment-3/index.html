@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 4 - CAD Design - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">↑</button>
+    
+    <main class="main-content">
+        <section id="exercise-3" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-3">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                    
+                    <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 4: CAD Design</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">Learning about model design through CAD design</p>
+                    
+                    <!-- Exercise Content (Read-only) -->
+                    <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            Further design the existing model through AI and fusion360.
+                        </div>
+                    </div>
+                    
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <h4 id="section-tools" style="color: #00d4ff; margin: 2rem 0 1rem 0;">Tools:<a href="https://www.autodesk.com/products/fusion-360" target="_blank" style="color: #00d4ff; text-decoration: none;">Fusion360</a> <a href="https://gemini.google.com" target="_blank" style="color: #00d4ff; text-decoration: none;">Gemini</a></h4>
+                            
+                            <h4 id="section-fusion-intro" style="color: #00d4ff; margin: 2rem 0 1rem 0;">1. Fusion360 Introduction</h4>
+                            <p>Fusion 360 is an integrated cloud platform launched by Autodesk, aimed at integrating the entire process of product development from concept to manufacturing into one software.</p>
+                            <p>Unlike traditional design, engineering, and manufacturing software that operate independently, Fusion 360 breaks down these barriers and provides a unified collaborative environment for designers, engineers, and manufacturers.</p>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Core functions and positioning</h5>
+                            <p>Fusion 360 is not just a 3D modeling tool, its core value lies in integration.</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Integrated platform:</strong> It seamlessly integrates four functional modules: computer-aided design (CAD), computer-aided manufacturing (CAM), computer-aided engineering (CAE), and electronic design (PCB).</li>
+                                <li><strong>CAD (3D modeling):</strong> Provides various modeling methods such as parameterization, freeform surfaces (T-Splines), direct and mesh, etc., flexibly responding to different design needs.</li>
+                                <li><strong>CAM (Numerical Control Programming):</strong> Integrating machining strategies from 2-axis to 5-axis milling, turning, etc., it can directly generate G code executable by CNC (Computer Numerical Control) machine tools in the design environment.</li>
+                                <li><strong>CAE (Simulation Analysis):</strong> Built in Finite Element Analysis (FEA) function, which can perform structural, thermal, and modal simulation verification on designs to optimize product performance.</li>
+                                <li><strong>PCB (Electronic Design):</strong> Supports schematic capture and up to 16 layers of printed circuit board design, achieving mechatronics collaboration.</li>
+                                <li><strong>Cloud collaboration:</strong> All design data is stored in the cloud, supporting team members to view, comment, and collaborate on the same project in real-time across regions and devices, achieving efficient data management.</li>
+                            </ul>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Target audience and application areas</h5>
+                            <p>Due to its comprehensive functionality and flexible licensing model, Fusion 360 covers a very wide user base.</p>
+                            <ul style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li><strong>Individuals, enthusiasts, and startup teams:</strong> Fusion 360 provides a free version for personal non-commercial use and students, while startups with less than 3 years of establishment and less than 10 employees can also apply for free authorization, greatly reducing the learning threshold.</li>
+                                <li><strong>Small and medium-sized manufacturing enterprises:</strong> For enterprises with limited budgets but requiring professional CAD/CAM tools, Fusion 360's integrated solution can significantly improve efficiency from design to manufacturing.</li>
+                                <li><strong>Product designers and engineers:</strong> Integrated workflow and data management capabilities enable professional designers and engineers to complete the entire process from concept to final product on one platform.</li>
+                            </ul>
+                            
+                            <h5 style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">Practical application case:</h5>
+                            <p>Fusion 360 is widely used in many fields. For example, Shanghai Jirui Industrial Design Company used its derivative design and simulation modules to develop one of the lightest commercial vehicle wheels in the world for international bearing giant Schaeffler, achieving a weight reduction of 25.2%; The Coalesse department of furniture brand Steelcase uses it to design modern office furniture; In addition, its presence can be seen in racing parts, smart locks, and even in the design of the European Space Agency's lunar training facilities.</p>
+                            
+                            <h4 id="section-download-model" style="color: #00d4ff; margin: 2rem 0 1rem 0;">2. Download the educational car model</h4>
+                            
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-sophicar" style="color: #ff00d4; margin: 0.5rem 0;">Open SophiCar and download the educational car model from the website</h5>
+                                    <p>SophiCar: <a href="http://www.sophicar.com/parametric-modeling" target="_blank" style="color: #00d4ff;">http://www.sophicar.com/parametric-modeling</a></p>
+                                    <img src="./image/1.png" alt="SophiCar Website" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-export-f3d" style="color: #ff00d4; margin: 0.5rem 0;">Export the F3D model</h5>
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-import-fusion" style="color: #ff00d4; margin: 0.5rem 0;">Import Fusion360</h5>
+                                </li>
+                            </ol>
+                            
+                            <h4 id="section-ai-tools" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3.Choose AI tools</h4>
+                            
+                            <ol style="padding-left: 1.5rem; margin: 0.5rem 0;">
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-team-choice" style="color: #ff00d4; margin: 0.5rem 0;">Our team chose Gemini and Fusion360 with built-in AI to jointly complete the car seat fabrication.</h5>
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <h5 id="section-gemini-script" style="color: #ff00d4; margin: 0.5rem 0;">Using the STL file of the educational cart and screenshots of the cart model in Fusion360, gemini outputs basic scripts</h5>
+                                    
+                                    <!-- Q&A Bubble Chat -->
+                                    <div style="margin: 1.5rem 0; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.2); max-height: 500px; overflow-y: auto;">
+                                        <h5 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.1rem;">💬 AI Assistant Interaction - Gemini</h5>
+                                        
+                                        <!-- Question 1 & Answer 1 -->
+                                        <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                            <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                                <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;"> User:</strong>
+                                                这是一个Fusion360当中的一个模型小车,我希望能用<br>
+                                                Fusion360当中的Ai去为这个小车在中间添加一个座椅,给出<br>
+                                                代码
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="display: flex; justify-content: flex-start; margin-bottom: 1.5rem;">
+                                            <div style="max-width: 80%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                                <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 Gemini:</strong>
+                                                从你上传的截图和STL文件来看,这是一辆非常酷的流线型概念小车模型!<br><br>
+                                                你想用"Fusion 360当中的AI"来写代码加个座椅,这里需要先帮你理清一个概念:Fusion 360目前<br>
+                                                内置的自动化/编程接口主要依赖其官方的Python API(也就是内置的脚本和插件功能),它本身并<br>
+                                                没有一个直接输入一句话就能生成复杂3D模型的"原生AI绘图引擎"。<br><br>
+                                                不过,Fusion 360的Python API非常强大,完全可以通过写一段Python脚本,在小车的指定坐标自<br>
+                                                动新建一个基础的座椅模型(比如通过方块和拉伸组合成一个简易座椅)。<br><br>
+                                                下面我为你编写了一段Fusion 360的Python自动化脚本。它会在小车的中心位置附近自动创建一个<br>
+                                                由"座垫"和"靠背"组成的简易座椅。
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Question 2 & Answer 2 -->
+                                        <div style="margin-bottom: 1rem; display: flex; justify-content: flex-end;">
+                                            <div style="max-width: 80%; background: rgba(0, 212, 255, 0.15); padding: 1rem; border-radius: 16px 16px 4px 16px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                                <strong style="color: #00d4ff; display: block; margin-bottom: 0.5rem;">👤 User:</strong>
+                                                我想要一个赛车造型的座椅
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="display: flex; justify-content: flex-start;">
+                                            <div style="max-width: 80%; background: rgba(255, 0, 212, 0.15); padding: 1rem; border-radius: 16px 16px 16px 4px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; line-height: 1.6;">
+                                                <strong style="color: #ff00d4; display: block; margin-bottom: 0.5rem;">🤖 Gemini:</strong>
+                                                为了让这个小车拥有更硬核的运动感,我们可以通过Fusion 360的Python API自动绘制一个具备赛<br>
+                                                车桶椅(Bucket Seat)轮廓的座椅。<br><br>
+                                                赛车座椅的特点是:包覆性强的侧翼(Side Bolsters)以及向前微倾并带有安全带孔造型的赛车靠<br>
+                                                背。下面的代码通过多步拉伸和组合,在小车中心为你自动生成一个动感的赛车座椅。
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <img src="./image/2.png" alt="Gemini Script Generation 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                    <img src="./image/3.png" alt="Gemini Script Generation 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                                </li>
+                            </ol>
+                            
+                            <h5 id="section-script-code" style="color: #ff00d4; margin: 1.5rem 0 0.75rem 0;">script:</h5>
+                            <div style="background: rgba(0, 212, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0; font-family: monospace; font-size: 0.85rem; overflow-x: auto;">
+                                <code style="color: rgba(255, 255, 255, 0.85); white-space: pre-wrap; display: block;">
+import adsk.core, adsk.fusion, adsk.cam, traceback
+
+
+def run(context):
+    ui = None
+    try:
+        app = adsk.core.Application.get()
+        ui  = app.userInterface
+        design = app.activeProduct
+        
+        # 获取根组件
+        rootComp = design.rootComponent
+        features = rootComp.features
+        extrudes = features.extrudeFeatures
+        
+        # ================= 配置参数（单位：厘米） =================
+        seat_w = 4.2      # 座椅总总宽
+        seat_d = 4.0      # 座垫总深
+        base_h = 0.8      # 座垫厚度
+        back_h = 5.5      # 靠背高度
+        wing_w = 0.5      # 赛车座椅两侧包裹侧翼的宽度
+        wing_h = 1.2      # 侧翼翘起高度
+        
+        # 座椅在小车中的中心坐标位置（可根据需要微调）
+        cx = 0.0
+        cy = 0.0
+        cz = 1.5 
+        # =========================================================
+
+        # 创建新组件
+        allOccs = rootComp.occurrences
+        newOcc = allOccs.addNewComponent(adsk.core.Matrix3D.create())
+        seatComp = newOcc.component
+        seatComp.name = "Racing_Bucket_Seat"
+        
+        sketches = seatComp.sketches
+        xyPlane = seatComp.xYConstructionPlane
+        xzPlane = seatComp.xZConstructionPlane
+        
+        # 1. 绘制带有两侧包围（桶椅底座）的草图
+        sketch_base = sketches.add(xyPlane)
+        lines = sketch_base.sketchCurves.sketchLines
+        
+        # 绘制主座垫矩形
+        lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2, cy - seat_d/2, cz),
+            adsk.core.Point3D.create(cx + seat_w/2, cy + seat_d/2, cz)
+        )
+        # 内部画两条线，用来区分"主体底座"和"两侧包裹翼"
+        lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2 + wing_w, cy - seat_d/2, cz),
+            adsk.core.Point3D.create(cx + seat_w/2 - wing_w, cy + seat_d/2, cz)
+        )
+        
+        # 拉伸主座垫
+        prof_main = sketch_base.profiles.item(0) # 对应中间主体部分
+        extInput1 = seatComp.features.extrudeFeatures.createInput(prof_main, adsk.fusion.FeatureOperations.NewBodyFeatureOperation)
+        extInput1.setDistanceExtent(False, adsk.core.ValueInput.createByReal(base_h))
+        seatBodyFeat = extrudes.add(extInput1)
+        seatBody = seatBodyFeat.bodies.item(0)
+        
+        # 拉伸两侧的赛车防滚包裹侧翼（多拉伸出一点高度）
+        for i in range(sketch_base.profiles.count):
+            prof = sketch_base.profiles.item(i)
+            # 自动识别两侧区域进行加高拉伸
+            if prof.areaProperties().area < (seat_w * seat_d * 0.3):
+                extInput_wing = extrudes.createInput(prof, adsk.fusion.FeatureOperations.JoinFeatureOperation)
+                extInput_wing.setDistanceExtent(False, adsk.core.ValueInput.createByReal(base_h + wing_h))
+                extrudes.add(extInput_wing)
+
+        # 2. 绘制赛车椅靠背（侧面视角，带倾斜感）
+        sketch_back = sketches.add(xzPlane)
+        back_lines = sketch_back.sketchCurves.sketchLines
+        
+        # 靠背起点在座垫后部
+        back_start_y = cy - seat_d/2
+        
+        # 在 XZ 截面上绘制有动感线条的靠背厚度矩形
+        rec_back = back_lines.addTwoPointRectangle(
+            adsk.core.Point3D.create(cx - seat_w/2, cz + base_h),
+            adsk.core.Point3D.create(cx + seat_w/2, cz + base_h + back_h)
+        )
+        
+        # 将靠背向后拉伸（赛车椅厚度）
+        prof_back = sketch_back.profiles.item(0)
+        extInput2 = extrudes.createInput(prof_back, adsk.fusion.FeatureOperations.JoinFeatureOperation)
+        extInput2.setDistanceExtent(False, adsk.core.ValueInput.createByReal(0.8)) # 靠背厚度 8mm
+        extrudes.add(extInput2)
+        
+        # 3. 自动为赛车桶椅添加人体工学圆角（Fillet）
+        fillets = seatComp.features.filletFeatures
+        edgeCollection = adsk.core.ObjectCollection.create()
+        
+        # 选中座椅顶部的边缘使其圆润，模仿赛车头枕
+        for edge in seatBody.edges:
+            if abs(edge.startVertex.geometry.z - (cz + base_h + back_h)) < 0.1:
+                edgeCollection.add(edge)
+                
+        if edgeCollection.count > 0:
+            filletInput = fillets.createInput()
+            filletInput.addRadiusEdgeSet(edgeCollection, adsk.core.ValueInput.createByReal(0.6), True)
+            fillets.add(filletInput)
+            
+        ui.messageBox('赛车造型桶椅（Racing Bucket Seat）已成功组装到车舱中央！')
+        
+    except:
+        if ui:
+            ui.messageBox('运行失败:\n{}'.format(traceback.format_exc()))
+                                </code>
+                            </div>
+                            
+                            <h4 id="section-first-version" style="color: #00d4ff; margin: 2rem 0 1rem 0;">3.Open the Fusion360 AI assistant, input a script, and produce the first version of the seat model (photo screenshot from the process).</h4>
+                            <img src="./image/4.png" alt="First Version Seat Model" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-refine-model" style="color: #00d4ff; margin: 2rem 0 1rem 0;">4.Let the Fusion360 AI assistant refine the seat model</h4>
+                            <img src="./image/5.png" alt="Refine Model Step 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/6.png" alt="Refine Model Step 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/7.png" alt="Refine Model Step 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-adjust-position" style="color: #00d4ff; margin: 2rem 0 1rem 0;">5.Adjust the seat model position</h4>
+                            <img src="./image/8.png" alt="Adjust Position" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-gallery-data" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">The use of official gallery data</h4>
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">1.Download the model online and install it on the car model</h5>
+                            <p>Log in to the website:<a href="https://www.autodesk.com/community/gallery" target="_blank" style="color: #00d4ff; text-decoration: underline;">https://www.autodesk.com/community/gallery</a> And search streering wheel.</p>
+                            <img src="./image/10.png" alt="Gallery Search" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">2.Find a suitable model and download it</h5>
+                            <img src="./image/11.png" alt="Download Model 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/33.png" alt="Download Model 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/12.png" alt="Download Model 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">3. Open the downloaded file in Fusion360</h5>
+                            <img src="./image/13.png" alt="Open in Fusion360" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">4: Import this model component into the car model</h5>
+                            
+                            <h6 style="color: #ffd740; margin: 1.5rem 0 0.75rem 0;">4.1Add to the component</h6>
+                            <img src="./image/14.png" alt="Add Component 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h6 style="color: #ffd740; margin: 1.5rem 0 0.75rem 0;">4.2Adding to existing parts</h6>
+                            <img src="./image/15.png" alt="Add to Existing Parts" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h6 style="color: #ffd740; margin: 1.5rem 0 0.75rem 0;">4.3 Select the car model save and import it</h6>
+                            <img src="./image/16.png" alt="Save and Import" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">5: Select the component, right-click and click 'Edit' in place:</h5>
+                            <img src="./image/17.png" alt="Edit In Place" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">6. Shrink the size of the component to an appropriate size</h5>
+                            <img src="./image/18.png" alt="Shrink Size" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">7.Click to complete in-place editing to resize the component</h5>
+                            <img src="./image/19.png" alt="Complete Editing" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">8.After moving the component to a suitable position, complete its installation</h5>
+                            <img src="./image/20.png" alt="Complete Installation 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/21.png" alt="Complete Installation 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-sketch-component" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">Use the sketch to draw a component yourself and install it</h4>
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">1.Now sketch a flat surface</h5>
+                            <img src="./image/22.png" alt="Sketch Flat Surface" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">2.Draw a curve on a plane perpendicular to the sketch</h5>
+                            <img src="./image/23.png" alt="Draw Curve" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">3.Use the extruding tool to sketch the circular ring surface and complete the exhaust pipe modeling</h5>
+                            <img src="./image/24.png" alt="Extrude Ring 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/25.png" alt="Extrude Ring 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">4.Use the sweeping tool to make the connecting part for the exhaust pipe</h5>
+                            <img src="./image/26.png" alt="Sweep Tool 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/27.png" alt="Sweep Tool 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/28.png" alt="Sweep Tool 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h5 style="color: #ff00d4; margin: 2rem 0 1rem 0;">5.Use steps 5 to 8 in Part 1 to install the exhaust pipe (refer to the explanation in Part 1 for details).</h5>
+                            <img src="./image/29.png" alt="Install Exhaust 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/30.png" alt="Install Exhaust 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/31.png" alt="Install Exhaust 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-finished" style="color: #00d4ff; margin: 3rem 0 1.5rem 0; font-size: 1.75rem;">Finished image display</h4>
+                            <img src="./image/9.png" alt="Finished Image" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                        </div>
+                    </div>
+                    
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // ===== 滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ===== 显示/隐藏回到顶部按钮 =====
+        function initScrollHandlers() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+        }
+
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-3');
+            if (!tocList) return;
+
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise 4</a></li>
+                <li><a href="#section-homework" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}" style="margin-left: ${level === 'toc-sub' ? '1rem' : '0'}; margin-bottom: 0.5rem;"><a href="#${id}" onclick="scrollToSection(event, '${id}')" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s ease;" onmouseover="this.style.color='#00d4ff'" onmouseout="if(!this.classList.contains('active')) this.style.color='rgba(255, 255, 255, 0.7)'">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = 'rgba(255, 255, 255, 0.7)';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                        link.style.color = '#00d4ff';
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            // 生成目录
+            generateDetailedTOC();
+        });
+    </script>
+</body>
+</html>

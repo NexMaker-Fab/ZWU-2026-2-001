@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="what the dog doing - Team Showcase Website">
+    <title>Exercise 6 - what the dog doing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <nav class="navbar compact">
+        <div class="navbar-content">
+            <a href="../../../index.html" class="logo">what the dog doing</a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../assets/about-us/index.html">About us</a></li>
+                <li><a href="../index.html">Daily Homework</a></li>
+                <li><a href="../../../assets/final-project/index.html">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">↑</button>
+    
+    <main class="main-content">
+        <section id="exercise-5" class="page-section active">
+            <div class="exercise-detail-container">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-5">
+                            <!-- 目录将通过JavaScript动态生成 -->
+                        </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to List</a>
+                        </div>
+                    
+                    <h2 id="section-exercise-info" style="font-size: 2.5rem; margin-bottom: 1rem;">Exercise 6: Material</h2>
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">BMW TCB Remote Communication Control Unit (IoT Core Device)</p>
+                    
+                    <!-- Exercise Content (Read-only) -->
+                    <div id="section-exercise-content" style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Exercise Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <p>This is the report we obtained from our search for IoT projects</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Assignment Content -->
+                    <div class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 id="section-homework" style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Assignment Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            
+                            <h4 id="section-what-is-tcb" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">WHAT IS TCB?</h4>
+                            <p>TCB is a BMW shared car factory integrated onboard terminal. As a vehicle networking gateway, it connects vehicles, the cloud, and user ends, serving as the core hardware of SHARE NOW's shared fleet.</p>
+                            <img src="./image/1.png" alt="TCB Overview" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <h4 id="section-overview" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">1. Overview of Equipment Basics</h4>
+                            <p>Embedded electronic control unit on board, standard throughout the vehicle, with individual vehicle coding for each vehicle, compatible with fuel and new energy vehicles. It features automotive-grade vibration resistance, high and low temperature resistance, and electromagnetic interference resistance, integrating communication, processing, encryption, and storage modules, and undertakes five major functions: data acquisition, networked communication, command execution, offline computing, and security protection.</p>
+                            <img src="./image/2.png" alt="Equipment Overview" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="color: rgba(255, 255, 255, 0.6); font-style: italic; font-size: 0.9rem;">Image source: BMW official repair manual (A231 module installation location diagram)</p>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Referance: <a href="https://www.6post.com/forums/showthread.php?t=1714826" target="_blank" style="color: #00d4ff; text-decoration: none;">6post Technology forum</a></p>
+                            
+                            <h4 id="section-communication" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">2. Communication Capability</h4>
+                            <p>Adopts a dual communication mode of 4G/5G main link + NFC/UWB backup link, long-distance connection to the cloud based on MQTT protocol, and automatically switches near-field communication between weak network and signal blind spots. Supports local caching of data and instructions, automatically reissues after disconnection and reconnection, ensuring uninterrupted communication.</p>
+                            
+                            <h4 id="section-data-collection" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">3. Data Collection</h4>
+                            <p>By connecting the vehicle's sensors via the onboard bus, data is collected and uploaded lightweightly: including basic information such as positioning, range, and mileage; Body condition such as doors, tire pressure, and impact impact; Power and electronic control system operating data as well as driving behavior data such as rapid acceleration and speeding provide a basis for operation, maintenance, and risk control.</p>
+                            
+                            <h4 id="section-instruction" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">4. Instruction Execution</h4>
+                            <p>Receiving cloud commands to complete two types of remote control: user-facing for remote unlocking, pre-activating air conditioning, and using a horn to find the car; For operation, it can restrict power, lock vehicles, and perform self-checks upon wake-up, cooperating with geofences to regulate driving ranges.</p>
+                            
+                            <h4 id="section-offline" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">5. Offline operation</h4>
+                            <p>Local cache authorization information, vehicle usage data, and basic operational logic. Even when the internet is offline, unlocking and identity verification can be completed, allowing normal vehicle use; Travel and vehicle status data generated offline are automatically synchronized to the cloud after connection.</p>
+                            
+                            <h4 id="section-safety" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">6. Safety protection</h4>
+                            <p>Built-in independent encryption chip, fully encrypting data and instructions. Generates a one-time dynamic signature with each vehicle use to prevent key theft; Device partition isolation permissions monitor abnormal operations and automatically alert against hacking and intrusions.</p>
+                            <img src="./image/3.png" alt="TCB Physical Photo" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="color: rgba(255, 255, 255, 0.6); font-style: italic; font-size: 0.9rem;">Image source: BMW TCB (A231) remote communication control unit physical photo | Source: eBay.de product page</p>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">References: <a href="https://www.ebay.de/itm/175585418326" target="_blank" style="color: #00d4ff; text-decoration: none;">eBay.de Product page</a> (BMW TCB/A231 remote communication control unit physical product link).</p>
+                            
+                            <h4 id="section-application" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">7. Application value</h4>
+                            <p>Factory integration requires no additional modifications, reducing deployment costs. Supports full-process self-service vehicle use, combined with cloud-based solutions for predictive maintenance, intelligent scheduling, and automatic billing, while maintaining data traceability throughout the process, balancing operational efficiency with compliant risk control.</p>
+                            
+                            <h4 id="section-core-features" style="color: #00d4ff; margin: 2rem 0 1rem 0; font-size: 1.3rem;">8. Core Features</h4>
+                            <p>It belongs to automotive-grade edge computing IoT terminals, integrating gateway, data acquisition, control, and security functions, with stability, anti-interference capability, and offline capabilities far superior to ordinary consumer-grade IoT devices.</p>
+                        </div>
+                    </div>
+                    </main>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // ===== 滚动到顶部 =====
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== 滚动处理（导航栏隐藏 + 置顶按钮） =====
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function initScrollHandlers() {
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            if (!navbar || !backToTopBtn) return;
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+
+                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                            navbar.classList.add('hidden');
+                        } else {
+                            navbar.classList.remove('hidden');
+                        }
+
+                        if (currentScrollY > 500) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
+
+                        lastScrollY = currentScrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // ===== 生成详细目录（TOC） =====
+        function generateDetailedTOC(exerciseId) {
+            const tocList = document.getElementById(`toc-list-${exerciseId}`);
+            if (!tocList) return;
+        
+            // 获取当前练习的作业内容区域
+            const homeworkSection = document.querySelector('.homework-content-section');
+            if (!homeworkSection) return;
+        
+            const headings = homeworkSection.querySelectorAll('h4, h5');
+            let tocHTML = `
+                <li><a href="#section-exercise-info" onclick="scrollToSection(event, 'section-exercise-info')">Exercise ${exerciseId + 1}</a></li>
+                <li><a href="#section-exercise-content" onclick="scrollToSection(event, 'section-exercise-content')">Exercise Content</a></li>
+                <li><a href="#section-homework" class="active" onclick="scrollToSection(event, 'section-homework')">Assignment Content</a></li>
+            `;
+
+            headings.forEach((heading, index) => {
+                const level = heading.tagName === 'H4' ? '' : 'toc-sub';
+                const text = heading.textContent.trim();
+                const id = heading.id || `section-heading-${index}`;
+                
+                if (!heading.id) {
+                    heading.id = id;
+                }
+
+                tocHTML += `<li class="${level}"><a href="#${id}" onclick="scrollToSection(event, '${id}')">${text}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+
+            // 添加滚动监听以高亮当前章节
+            setupScrollSpy();
+        }
+
+        // ===== 滚动监听（Scroll Spy） =====
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('[id^="section-"]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // ===== 平滑滚动到指定章节 =====
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const offsetTop = section.offsetTop - 100; // 减去导航栏高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 更新 URL hash（不触发页面跳转）
+                history.pushState(null, null, `#${sectionId}`);
+            }
+        }
+
+        // ===== 初始化 =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollHandlers();
+            generateDetailedTOC(5);
+        });
+    </script>
+</body>
+</html>
