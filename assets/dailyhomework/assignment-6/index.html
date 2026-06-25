@@ -388,9 +388,9 @@
         window.addEventListener('scroll', () => {
             const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
+                backToTop.classList.add('visible');
             } else {
-                backToTop.style.display = 'none';
+                backToTop.classList.remove('visible');
             }
         });
 
