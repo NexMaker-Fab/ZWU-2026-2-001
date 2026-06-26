@@ -102,32 +102,21 @@
                             
                             <h5 id="section-step1" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">1.User Request Reporting</h5>
                             <p>The user initiates a remote unlock command on the SHARE NOW client. The device carries the user's authorization information and unique vehicle code, which is encrypted and uploaded to the shared fleet cloud server.</p>
-                            <img src="./image/4.png" alt="User Request Reporting" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Image source: <a href="https://www.free2move.com/de/en/car-sharing/app/?utm_source=chatgpt.com" target="_blank" style="color: #00d4ff; text-decoration: none;">https://www.free2move.com/de/en/car-sharing/app/</a></p>
                             
                             <h5 id="section-step2" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">2.Cloud permission and order verification</h5>
                             <p>The cloud backend verifies valid vehicle orders, user identity, and geofence compliance. After verification, an encrypted control command with one-time dynamic signature is generated and sent to the onboard TCB (A231) communication unit based on MQTT long connections</p>
-                            <img src="./image/5.png" alt="Cloud Permission Verification" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Image source: <a href="https://learn.microsoft.com/en-us/industry/mobility/architecture/automotive-messaging-data-analytics-content?utm_source=chatgpt.com" target="_blank" style="color: #00d4ff; text-decoration: none;">https://learn.microsoft.com/en-us/industry/mobility/architecture/automotive-messaging-data-analytics-content</a></p>
                             
                             <h5 id="section-step3" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">3.TCB Terminal Security Authentication Reception</h5>
                             <p>TCB receives cloud instructions via 4G/5G main links, uses built-in independent encryption chips to verify and decrypt signatures, intercepts tampered and illegal instructions, and confirms the legitimacy and validity of instructions.</p>
-                            <img src="./image/6.png" alt="TCB Security Authentication" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Image source: <a href="https://www.st.com/en/secure-mcus/secure-automotive.html?utm_source=chatgpt.com" target="_blank" style="color: #00d4ff; text-decoration: none;">https://www.st.com/en/secure-mcus/secure-automotive.html?utm_source=chatgpt.com</a></p>
                             
                             <h5 id="section-step4" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">4.Protocol Conversion and Onboard Bus Forwarding</h5>
                             <p>The TCB converts cloud network protocol data into in-vehicle CAN bus packets, which are sent to the vehicle's central gateway to connect external network commands to the vehicle's internal electronic control system.</p>
-                            <img src="./image/7.png" alt="Protocol Conversion" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Image source: <a href="https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial?utm_source=chatgpt.com" target="_blank" style="color: #00d4ff; text-decoration: none;">https://www.csselectronics.com/pages/can-bus-simple-intro-tutorial</a></p>
                             
                             <h5 id="section-step5" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">5.Vehicle module execution</h5>
                             <p>The vehicle gateway forwards the message to the BDC body control module, driving the door lock mechanism to perform unlocking and synchronously update the door status.</p>
-                            <img src="./image/8.png" alt="Vehicle Module Execution" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
-                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">Image source: <a href="https://bmw.scene7.com/is/image/BMW/connected-drive_digital-key_advantages_easy-to-activate%3A3to2?fit=constrain%2C1&fmt=webp&wid=2560" target="_blank" style="color: #00d4ff; text-decoration: none;">BMW Connected Drive Digital Key</a></p>
                             
                             <h5 id="section-step6" style="color: #ff00d4; margin: 2rem 0 1rem 0; font-size: 1.2rem;">6.Closed-loop transmission of vehicle status data</h5>
                             <p>TCB collects door lock status, vehicle location, and vehicle condition information in real time, packages and encrypts it, then transmits it back to the cloud, synchronously updating order status and online vehicle data, achieving operation traceability and status synchronization, with users displaying unlocking results in real time.</p>
-                            <img src="./image/9.png" alt="Closed-loop Data Transmission" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
                         </div>
                     </div>
                     </main>
