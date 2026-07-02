@@ -5,300 +5,1111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="what the dog doing - Team Showcase Website">
     <title>Final Project - what the dog doing</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <nav class="navbar compact">
         <div class="navbar-content">
             <a href="../../index.html" class="logo">what the dog doing</a>
             <ul class="nav-links">
                 <li><a href="../../index.html">Home</a></li>
                 <li><a href="../about-us/index.html">About us</a></li>
-                <li><a href="../../assets/dailyhomework/index.html">Daily Homework</a></li>
+                <li><a href="../dailyhomework/index.html">Daily Homework</a></li>
                 <li><a href="../final-project/index.html" class="active">Final Project</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Scroll to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">
-        ↑
-    </button>
-
-    <!-- Main Content Area -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to Top">↑</button>
+    
     <main class="main-content">
-        <section id="project" class="page-section active">
-            <h2 class="page-title">Final Project</h2>
-            <div class="project-showcase" id="project-content">
-                <div class="editable-area" data-field="project.title">
-                    <h2>Health Monitoring System</h2>
-                </div>
-                <div class="editable-area" data-field="project.description">
-                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
-                        Our final project is an Arduino-based health monitoring system that can collect and analyze users' physiological data in real-time,
-                        and visualize it through a web interface. The system integrates multiple sensors including heart rate sensors, temperature sensors, etc.,
-                        providing users with comprehensive health data monitoring services.
-                    </p>
-                </div>
-
-                <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: #00d4ff;">Technology Stack</h3>
-                <div class="tech-stack" id="project-tech-stack">
-                    <span class="tech-item">Arduino</span>
-                    <span class="tech-item">HTML5</span>
-                    <span class="tech-item">CSS3</span>
-                    <span class="tech-item">JavaScript</span>
-                    <span class="tech-item">Sensor Technology</span>
-                    <span class="tech-item">Data Visualization</span>
-                </div>
-
-                <h3 style="font-size: 1.25rem; margin: 2rem 0 1rem; color: #00d4ff;">Project Progress</h3>
-                <div class="editable-area" data-field="project.progress">
-                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 0.5rem;" contenteditable="false">Development Progress: 75%</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 12px;">
-                    <div class="editable-area" data-field="project.achievements">
-                        <h4 style="margin-bottom: 0.5rem;" contenteditable="false">Key Achievements</h4>
-                        <ul style="color: rgba(255, 255, 255, 0.8); line-height: 2; padding-left: 1.5rem;" contenteditable="false">
-                            <li>Completed hardware prototype design and assembly</li>
-                            <li>Implemented data collection and transmission functionality</li>
-                            <li>Developed web visualization interface</li>
-                            <li>Optimized user interaction experience</li>
+        <section id="final-project" class="page-section active">
+            <div style="padding: 2rem; max-width: 1800px; margin: 0 auto;">
+                <!-- 使用左右布局 -->
+                <div class="exercise-detail-layout">
+                    
+                    <!-- 左侧目录导航 -->
+                    <aside class="exercise-toc">
+                        <h4>📑 Contents</h4>
+                        <ul class="toc-list" id="toc-list-final">
+                            <!-- 目录将通过JavaScript动态生成 -->
                         </ul>
+                    </aside>
+                    
+                    <!-- 右侧内容区 -->
+                    <main class="exercise-content-main">
+                        <div style="margin-bottom: 2rem;">
+                            <a href="../dailyhomework/index.html" style="color: #00d4ff; text-decoration: none; font-size: 1rem;">← Back to Daily Homework</a>
+                        </div>
+                    
+                    <h2 id="section-project-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Final Project</h2>
+                    <p id="project-description" style="color: rgba(255, 255, 255, 0.6); font-size: 1.125rem; margin-bottom: 2rem;">An interactive driver assistance device for seniors based on Arduino and the Internet of Things</p>
+                    
+                    <!-- Project Content -->
+                    <div id="section-project-content" class="homework-content-section" style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #00d4ff;">Project Content</h3>
+                        <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8;">
+                            <!-- Video Section -->
+                            <video controls style="width: 100%; max-width: 800px; margin: 2rem auto; display: block; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);">
+                                <source src="./image/1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            
+                            <!-- Image after video -->
+                            <img src="./image/2.png" alt="Project Overview" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- Main Title -->
+                            <h4 id="section-main-title" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">An autonomous driving interactive signal system designed for the elderly (or other special groups).</h4>
+                            
+                            <!-- Image after main title -->
+                            <img src="./image/3.png" alt="System Design" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <p>This project is an assisted driving interaction system specially designed for the elderly and special groups. By integrating functions such as RFID identity authentication, voice broadcasting, emergency braking, and computer-based driving simulation linkage, it builds a complete closed-loop system of "recognition → feedback → warning → training," aiming to compensate elderly drivers for driving risks caused by declining physical function through technical means.</p>
+                            
+                            <!-- System Architecture -->
+                            <h5 id="section-system-architecture" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">System architecture</h5>
+                            <img src="./image/4.png" alt="System Architecture" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- Section 2: Which problem does the customer solve? -->
+                            <h4 id="section-problem-solve" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">2. Which problem does the customer solve?</h4>
+                            
+                            <!-- 2.1 Core User Pain Points -->
+                            <h5 id="section-pain-points" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">2.1 Core User Pain Points</h5>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">User pain points</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Specific performance</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">This project is a solution</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Urgent help for difficulty</td>
+                                        <td style="padding: 1rem;">Elderly drivers who suddenly feel unwell or encounter danger cannot seek help quickly</td>
+                                        <td style="padding: 1rem;">One-click emergency button + serial SOS command to trigger alarms and lock the system</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Reduced reaction ability</td>
+                                        <td style="padding: 1rem;">Slowed response to sudden traffic situations (traffic lights, obstacles).</td>
+                                        <td style="padding: 1rem;">Voice broadcast early warnings (traffic light detection, red light violation alarm)</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Operation is complex</td>
+                                        <td style="padding: 1rem;">Existing in-vehicle systems are complex and difficult for elderly people to master</td>
+                                        <td style="padding: 1rem;">Minimalist interaction: card swipe to start + large button + voice prompt</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Lack of training environment</td>
+                                        <td style="padding: 1rem;">Road driving practice carries high risks, and elderly people lack safe training channels</td>
+                                        <td style="padding: 1rem;">Comes with a 3D driving simulation game, offering zero-risk training scenarios</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Difficulty in state perception</td>
+                                        <td style="padding: 1rem;">Elderly people find it difficult to judge whether the system is functioning properly</td>
+                                        <td style="padding: 1rem;">OLED + LED dual visual feedback makes the status clear at a glance</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Emergency recovery is difficult</td>
+                                        <td style="padding: 1rem;">After emergency treatment, it is unclear how to restore normal condition</td>
+                                        <td style="padding: 1rem;">In emergency situations, you can recover by swiping the senior card</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- 2.2 Target User Profiling -->
+                            <h5 id="section-user-profiling" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">2.2 Target User Profiling</h5>
+                            <img src="./image/5.png" alt="Target Users" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Dimension</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Age</td>
+                                        <td style="padding: 1rem;">Elderly drivers over 60 years old with a driver's license</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Features</td>
+                                        <td style="padding: 1rem;">Vision declines, reaction speed slows, and acceptance of new technologies is lower</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Demand</td>
+                                        <td style="padding: 1rem;">Safety assistance, simple operation, emergency assistance, driving practice</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Scene</td>
+                                        <td style="padding: 1rem;">For daily driving, elderly care community travel, and family use</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- Section 3: Project Innovation -->
+                            <h4 id="section-innovation" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">3. Project Innovation</h4>
+                            <img src="./image/6.png" alt="Project Innovation" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Innovation dimension</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Specific content</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Innovation level</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Age-friendly interactive design</td>
+                                        <td style="padding: 1rem;">Large buttons (30mm diameter), large font (≥16px), clear voice control, and intuitive lighting reduce cognitive load</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Dual-mode emergency trigger</td>
+                                        <td style="padding: 1rem;">Device button + remote serial SOS command, ensuring seamless emergency response without delay</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Card swipe to remove emergency logic</td>
+                                        <td style="padding: 1rem;">In emergencies, recovery can be achieved by swiping a card, which fits the habits of elderly people and does not require searching for the reset button</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Software-hard integrated driving training</td>
+                                        <td style="padding: 1rem;">The hardware device and the 3D driving simulation game are linked in real time via serial ports to build a complete training ecosystem</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Sound effects mapping → game events</td>
+                                        <td style="padding: 1rem;">13 types of driving scene sound effects (going straight, turning, reversing, slowing down, traffic light detection, red light running, etc.)</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">A low-cost open-source solution</td>
+                                        <td style="padding: 1rem;">All use Arduino open-source hardware + corrugated paper casing + 3D-printed interior, with a total cost of about 287 yuan</td>
+                                        <td style="padding: 1rem;">⭐⭐⭐⭐</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <img src="./image/7.png" alt="Innovation Details 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/8.png" alt="Innovation Details 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- Section 4: Market -->
+                            <h4 id="section-market" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">4. Market</h4>
+                            
+                            <!-- 4.1 Comparison of similar products -->
+                            <h5 id="section-product-comparison" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">4.1 Comparison of similar products</h5>
+                            
+                            <div style="overflow-x: auto;">
+                                <table style="width: 100%; min-width: 1200px; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                    <thead>
+                                        <tr style="background: rgba(0, 212, 255, 0.2);">
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Contrast dimensions</th>
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">This project is equipped with</th>
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">In-car voice assistant<br>(CarPlay/Baidu CarLife)</th>
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Smart Rearview Mirror<br>(360/Xiaomi)</th>
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Emergency Assistance Device<br>(Teacher Xiao Ai / Ping An Tong)</th>
+                                            <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Senior driver assistance system<br>(optional on high-end models)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Age-friendly design</td>
+                                            <td style="padding: 1rem;">✅ Designed specifically for the elderly</td>
+                                            <td style="padding: 1rem;">❌ Universal design, complex interface</td>
+                                            <td style="padding: 1rem;">❌ Universal design</td>
+                                            <td style="padding: 1rem;">✅ Some are suitable for the elderly</td>
+                                            <td style="padding: 1rem;">️ Some models include</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Emergency braking</td>
+                                            <td style="padding: 1rem;">✅ Dual triggers of hardware buttons + software commands</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;">⚠️ Some have collision warnings</td>
+                                            <td style="padding: 1rem;">✅ One-click help</td>
+                                            <td style="padding: 1rem;">✅ There is</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Voice broadcast</td>
+                                            <td style="padding: 1rem;">✅ 13 Scene Sound Effects</td>
+                                            <td style="padding: 1rem;">✅ There is</td>
+                                            <td style="padding: 1rem;">✅ There is</td>
+                                            <td style="padding: 1rem;">✅ There is</td>
+                                            <td style="padding: 1rem;">✅ There is</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Driving Training</td>
+                                            <td style="padding: 1rem;">✅ 3D game collaboration</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;"> None</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Visual feedback</td>
+                                            <td style="padding: 1rem;">✅ OLED + LED dual feedback</td>
+                                            <td style="padding: 1rem;">✅ Screen</td>
+                                            <td style="padding: 1rem;">✅ Screen</td>
+                                            <td style="padding: 1rem;">⚠️ Simple LED</td>
+                                            <td style="padding: 1rem;">✅ Screen</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Identity Authentication</td>
+                                            <td style="padding: 1rem;">✅ RFID card swipe</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;">❌ None</td>
+                                            <td style="padding: 1rem;">⚠️ Some include</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                            <td style="padding: 1rem;">Price</td>
+                                            <td style="padding: 1rem;">About ¥287</td>
+                                            <td style="padding: 1rem;">¥500-2000</td>
+                                            <td style="padding: 1rem;">¥300-1500</td>
+                                            <td style="padding: 1rem;">¥200-800</td>
+                                            <td style="padding: 1rem;">¥10,000-50,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 1rem;">Scalability</td>
+                                            <td style="padding: 1rem;">✅ Open source and secondary development available</td>
+                                            <td style="padding: 1rem;">❌ Closed-source</td>
+                                            <td style="padding: 1rem;">❌ Closed-source</td>
+                                            <td style="padding: 1rem;">❌ Closed-source</td>
+                                            <td style="padding: 1rem;">❌ Closed-source</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- 4.2 Market Analysis -->
+                            <h5 id="section-market-analysis" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">4.2 Market Analysis</h5>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Factor</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Analysis</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Target User</td>
+                                        <td style="padding: 1rem;">Elderly drivers aged 60 and above (over 280 million elderly people in China), elderly care institutions, community transportation services</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Market size</td>
+                                        <td style="padding: 1rem;">The population aged 60 and above in China has exceeded 280 million, with the number of elderly drivers holding driver's licenses continuing to grow</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Market Positioning</td>
+                                        <td style="padding: 1rem;">Differentiated solutions fill the gap in "elderly-friendly in-car interaction + driving training," targeting elderly communities, senior universities, and family use</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Competitive Advantages</td>
+                                        <td style="padding: 1rem;">Low cost (¥287 vs competitor ¥500+), hardware-software integration, open-source customizable</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Sales channels</td>
+                                        <td style="padding: 1rem;">Cooperation with elderly care institutions, community exhibitions, senior products platforms, and university courses for the elderly</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- Section 5: Key Technology Analysis -->
+                            <h4 id="section-key-tech" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">5. Key Technology Analysis and Potential Technical Issues</h4>
+                            
+                            <!-- 5.1 List of Core Technologies -->
+                            <h5 id="section-core-tech" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">5.1 List of Core Technologies</h5>
+                            <p style="margin-bottom: 1.5rem;">For components used, refer to the section in <a href="../dailyhomework/assignment-1/index.html" style="color: #00d4ff; text-decoration: none;">Exercise 2: Arduino Basic</a></p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Technology</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Implementation Plan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">RFID identity authentication</td>
+                                        <td style="padding: 1rem;">Distinguishing between verified and unauthenticated users</td>
+                                        <td style="padding: 1rem;">RC522 module, 13.56MHz, sensing distance 3-5cm</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Speech synthesis and broadcasting</td>
+                                        <td style="padding: 1rem;">13 types of driving scenario voice prompts</td>
+                                        <td style="padding: 1rem;">DFPlayer Mini + Pre-recorded MP3 files</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Emergency response system</td>
+                                        <td style="padding: 1rem;">High-priority tasks independent of the main process</td>
+                                        <td style="padding: 1rem;">State machine design + polling preemptive</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Serial communication protocol</td>
+                                        <td style="padding: 1rem;">Bidirectional data exchange between hardware and computer</td>
+                                        <td style="padding: 1rem;">USB serial port, baud rate 115,200</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3D Driving Simulation</td>
+                                        <td style="padding: 1rem;">Urban driving scenarios and physical simulations</td>
+                                        <td style="padding: 1rem;">Three.js 3D Engine</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Visual feedback system</td>
+                                        <td style="padding: 1rem;">Status display and lighting feedback</td>
+                                        <td style="padding: 1rem;">OLED screen (128×64) + WS2812 light strip (60 pieces)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- 5.2 Hardware and Software Interaction Protocols -->
+                            <h5 id="section-interaction-protocols" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">5.2 Hardware and Software Interaction Protocols</h5>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Command</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Direction</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Trigger scenario</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">sos</td>
+                                        <td style="padding: 1rem;">Computer → Arduino</td>
+                                        <td style="padding: 1rem;">Collision/Danger</td>
+                                        <td style="padding: 1rem;">Emergency braking is triggered</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">reset</td>
+                                        <td style="padding: 1rem;">Computer → Arduino</td>
+                                        <td style="padding: 1rem;">Danger Removed</td>
+                                        <td style="padding: 1rem;">Lift the emergency</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1 ~ 13</td>
+                                        <td style="padding: 1rem;">Computer → Arduino</td>
+                                        <td style="padding: 1rem;">Driving Incident</td>
+                                        <td style="padding: 1rem;">Play the corresponding sound effect</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Detected elderly card!</td>
+                                        <td style="padding: 1rem;">Arduino → Computer</td>
+                                        <td style="padding: 1rem;">Card swipe authentication</td>
+                                        <td style="padding: 1rem;">Launch the game</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Emergency braking has been triggered</td>
+                                        <td style="padding: 1rem;">Arduino → Computer</td>
+                                        <td style="padding: 1rem;">Press the button</td>
+                                        <td style="padding: 1rem;">Notification of Game Pause</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- 5.3 3D Driving Simulation Games for Computers -->
+                            <h5 id="section-3d-game" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">5.3 3D Driving Simulation Games for Computers</h5>
+                            <p style="margin-bottom: 1.5rem;">The computer-side program for this project is a 3D city driving simulation game (implemented in HTML/Three.js), with the core functions and event mappings as follows:</p>
+                            <img src="./image/9.png" alt="3D Driving Simulation" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Game Event</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Send command</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Arduino responds</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Player Experience</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Game launch</td>
+                                        <td style="padding: 1rem;">6</td>
+                                        <td style="padding: 1rem;">Play 0006.mp3 (before system activation)</td>
+                                        <td style="padding: 1rem;">Auditory confirmation system activated</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Card swipe authentication</td>
+                                        <td style="padding: 1rem;">7</td>
+                                        <td style="padding: 1rem;">Play 0007.mp3 (Card Authentication Credentials)</td>
+                                        <td style="padding: 1rem;">Identity verification</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Accelerate straight</td>
+                                        <td style="padding: 1rem;">9</td>
+                                        <td style="padding: 1rem;">Play 0009.mp3 (straight line)</td>
+                                        <td style="padding: 1rem;">Engine/Driving Sound</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Turn left</td>
+                                        <td style="padding: 1rem;">10</td>
+                                        <td style="padding: 1rem;">Play 0010.mp3 (turn left)</td>
+                                        <td style="padding: 1rem;">Turn prompt</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Turn right</td>
+                                        <td style="padding: 1rem;">11</td>
+                                        <td style="padding: 1rem;">Play 0011.mp3 (turn right)</td>
+                                        <td style="padding: 1rem;">Turn prompt</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Reverse</td>
+                                        <td style="padding: 1rem;">12</td>
+                                        <td style="padding: 1rem;">Play 0012.mp3 (Reverse)</td>
+                                        <td style="padding: 1rem;">Reverse alert sound</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Slow down</td>
+                                        <td style="padding: 1rem;">13</td>
+                                        <td style="padding: 1rem;">Play 0013.mp3 (slow down)</td>
+                                        <td style="padding: 1rem;">Slowdown prompt</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Approach traffic lights</td>
+                                        <td style="padding: 1rem;">5</td>
+                                        <td style="padding: 1rem;">Play 0005.mp3 (Traffic light detected)</td>
+                                        <td style="padding: 1rem;">Early warning</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Running a red light</td>
+                                        <td style="padding: 1rem;">4</td>
+                                        <td style="padding: 1rem;">Play 0004.mp3 (Red Light)</td>
+                                        <td style="padding: 1rem;">Violation alert</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Collision/loss of control</td>
+                                        <td style="padding: 1rem;">sos</td>
+                                        <td style="padding: 1rem;">Emergency braking triggered, red flash flash</td>
+                                        <td style="padding: 1rem;">Emergency safety protection</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- 5.4 Potential Technical Issues and Solutions -->
+                            <h5 id="section-tech-issues" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">5.4 Potential Technical Issues and Solutions</h5>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Technical issues</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Risk Level</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Solution</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">DFPlayer repeated initialization causes playback failure</td>
+                                        <td style="padding: 1rem;">High</td>
+                                        <td style="padding: 1rem;">Separate initialization and playback commands, remove repeated begin() calls, and add 3 retry mechanisms</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Emergency response delays</td>
+                                        <td style="padding: 1rem;">High</td>
+                                        <td style="padding: 1rem;">Place emergency detection at the top of the main loop and use status locks to prevent repeated activation</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Serial port instructions overload/packet loss</td>
+                                        <td style="padding: 1rem;">Medium</td>
+                                        <td style="padding: 1rem;">Added cooling mechanism (audioBlockedUntil) and instruction deduplication logic</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">LED strip power supply is insufficient</td>
+                                        <td style="padding: 1rem;">Medium</td>
+                                        <td style="padding: 1rem;">Uses an external 5V 3A power supply for independent power supply to ensure shared ground</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Insufficient RFID sensing distance</td>
+                                        <td style="padding: 1rem;">Low</td>
+                                        <td style="padding: 1rem;">Optimized antenna position, panel thickness controlled at 1-2mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Game event and sound effects synchronization delay</td>
+                                        <td style="padding: 1rem;">Medium</td>
+                                        <td style="padding: 1rem;">Serial port baud rate 115200, instruction response < 200ms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- Section 6: Materials and Preparation Methods -->
+                            <h4 id="section-materials" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">6. Materials and Preparation Methods</h4>
+                            
+                            <!-- 6.1 Bill of Materials (BOM) -->
+                            <h5 id="section-bom" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">6.1 Bill of Materials (BOM)</h5>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Component name</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Model/Specifications</th>
+                                        <th style="padding: 1rem; text-align: center; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Quantity</th>
+                                        <th style="padding: 1rem; text-align: right; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Unit price (yuan)</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">主控板</td>
+                                        <td style="padding: 1rem;">Arduino Uno R4 WiFi</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">150</td>
+                                        <td style="padding: 1rem;">核心控制</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">RFID card reader</td>
+                                        <td style="padding: 1rem;">MFRC-522</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">15</td>
+                                        <td style="padding: 1rem;">Identity Authentication</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">RFID card</td>
+                                        <td style="padding: 1rem;">Fudan Card (compatible with M1)</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">2</td>
+                                        <td style="padding: 1rem;">ID</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">OLED screen</td>
+                                        <td style="padding: 1rem;">0.96-inch I2C 128×64</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">12</td>
+                                        <td style="padding: 1rem;">Status display</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">LED light strip</td>
+                                        <td style="padding: 1rem;">WS2812B 60 lights/meter</td>
+                                        <td style="padding: 1rem; text-align: center;">1 meter</td>
+                                        <td style="padding: 1rem; text-align: right;">20</td>
+                                        <td style="padding: 1rem;">Lighting feedback</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">DFPlayer Mini</td>
+                                        <td style="padding: 1rem;">MP3 playback module</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">10</td>
+                                        <td style="padding: 1rem;">Voice broadcast</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Micro SD card</td>
+                                        <td style="padding: 1rem;">8GB (FAT32 format)</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">20</td>
+                                        <td style="padding: 1rem;">Sound Effect Storage</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Speaker</td>
+                                        <td style="padding: 1rem;">3W 4Ω</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">5</td>
+                                        <td style="padding: 1rem;">Audio output</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Emergency button</td>
+                                        <td style="padding: 1rem;">Keyes Large Button Module</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">8</td>
+                                        <td style="padding: 1rem;">Emergency trigger</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Breadboard</td>
+                                        <td style="padding: 1rem;">830 holes</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">15</td>
+                                        <td style="padding: 1rem;">Circuit connection</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Jumper</td>
+                                        <td style="padding: 1rem;">Male to male / male to female / female to mother</td>
+                                        <td style="padding: 1rem; text-align: center;">Several</td>
+                                        <td style="padding: 1rem; text-align: right;">10</td>
+                                        <td style="padding: 1rem;">Circuit connection</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Power supply</td>
+                                        <td style="padding: 1rem;">USB power adapter 5V 2A</td>
+                                        <td style="padding: 1rem; text-align: center;">1</td>
+                                        <td style="padding: 1rem; text-align: right;">20</td>
+                                        <td style="padding: 1rem;">Power supply</td>
+                                    </tr>
+                                    <tr style="background: rgba(0, 212, 255, 0.1); font-weight: bold;">
+                                        <td style="padding: 1rem; text-align: right;" colspan="3">Total</td>
+                                        <td style="padding: 1rem; text-align: right; color: #00e5ff; font-size: 1.2rem;">287</td>
+                                        <td style="padding: 1rem;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- 6.2 Sandbox Scene Production Plan -->
+                            <h5 id="section-sandbox-plan" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">6.2 Sandbox Scene Production Plan</h5>
+                            <p style="margin-bottom: 1.5rem;">This project uses a sandbox scenario solution of corrugated paper shells + 3D-printed interiors, simulating a real cockpit environment to enhance the sense of immersion and operational familiarity for seniors.</p>
+                            <img src="./image/10.png" alt="Sandbox Scene 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/11.png" alt="Sandbox Scene 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Component</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Materials</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Color</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Manufacturing method</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Main shell</td>
+                                        <td style="padding: 1rem;">Corrugated cardboard (3-5mm)</td>
+                                        <td style="padding: 1rem;">Original color/white stickers</td>
+                                        <td style="padding: 1rem;">Manual cutting + hot melt glue splicing</td>
+                                        <td style="padding: 1rem;">Lightweight, easy to process, extremely low-cost, providing basic structural support</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Dashboard</td>
+                                        <td style="padding: 1rem;">PLA</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">3D printing</td>
+                                        <td style="padding: 1rem;">Simulating a car dashboard, installing an OLED screen and indicator lights</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Steering wheel</td>
+                                        <td style="padding: 1rem;">PLA</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">3D printing</td>
+                                        <td style="padding: 1rem;">Simulated steering wheel design enhances driving immersion</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Transmission</td>
+                                        <td style="padding: 1rem;">PLA</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">3D printing</td>
+                                        <td style="padding: 1rem;">Simulated gear lever design</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Seat</td>
+                                        <td style="padding: 1rem;">PLA</td>
+                                        <td style="padding: 1rem;">White</td>
+                                        <td style="padding: 1rem;">3D printing</td>
+                                        <td style="padding: 1rem;">Simulated driving seat, providing visual reference</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Simulation Base</td>
+                                        <td style="padding: 1rem;">PLA</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">3D printing</td>
+                                        <td style="padding: 1rem;">Supports all components, stabilizes the structure</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- Exterior decoration methods -->
+                            <p style="margin-top: 2rem; margin-bottom: 1rem;"><strong>Exterior decoration methods:</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                                <li style="margin-bottom: 0.5rem;">Simulate the car's appearance by printing and pasting it onto the outside of the corrugated paper casing</li>
+                                <li>No additional shell decorations are made, keeping things simple</li>
+                            </ul>
+                            <img src="./image/12.png" alt="Exterior Decoration 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/13.png" alt="Exterior Decoration 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- 6.3 Production Process -->
+                            <h5 id="section-production-process" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">6.3 Production Process</h5>
+                            
+                            <!-- Step 1: Make the outer shell -->
+                            <p style="margin-bottom: 1rem; font-weight: bold; color: #ffd740;">Step 1: Make the outer shell of the corrugated cardboard</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Step</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1.1 Design and Cutting</td>
+                                        <td style="padding: 1rem;">Based on the internal component layout, draw the shell unfolding diagram, with dimensions of approximately 250×200×150mm</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1.2 Cutting</td>
+                                        <td style="padding: 1rem;">Use a utility knife to cut corrugated cardboard along the drawing (recommended thickness 5mm).</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1.3 Opening</td>
+                                        <td style="padding: 1rem;">Reserve installation slots for 3D-printed interior parts (dashboard, steering wheel, transmission, seats, base)</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1.4 Bending and Splicing</td>
+                                        <td style="padding: 1rem;">Bend along the creases and use hot melt adhesive to assemble a box-shaped structure</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">1.5 Reinforcement</td>
+                                        <td style="padding: 1rem;">Corrugated paper triangular supports are added at internal corners to enhance structural strength</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">1.6 Appearance Decoration</td>
+                                        <td style="padding: 1rem;">Paste the printed car image onto the outside of the casing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <img src="./image/19.png" alt="Production Step 1 - Image 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/20.png" alt="Production Step 1 - Image 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/21.png" alt="Production Step 1 - Image 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- Step 2: 3D print the interior parts -->
+                            <p style="margin-top: 2rem; margin-bottom: 1rem; font-weight: bold; color: #ffd740;">Step 2: 3D print the interior parts</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Decorative parts</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Size (approx.)</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Color</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Print parameters</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Dashboard</td>
+                                        <td style="padding: 1rem;">150×60×40mm</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">Floor height 0.2mm, fill 20%</td>
+                                        <td style="padding: 1rem;">Simulated dashboard, embedded OLED screen</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Steering wheel</td>
+                                        <td style="padding: 1rem;">Diameter 100mm</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">Floor height 0.15mm, fill 30%</td>
+                                        <td style="padding: 1rem;">Ring-shaped structure, rotatable (optional)</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Transmission</td>
+                                        <td style="padding: 1rem;">40×30×50mm</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">Floor height 0.2mm, fill 20%</td>
+                                        <td style="padding: 1rem;">Simulated gear lever design</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">Seat</td>
+                                        <td style="padding: 1rem;">80×60×50mm</td>
+                                        <td style="padding: 1rem;">White</td>
+                                        <td style="padding: 1rem;">Floor height 0.2mm, fill 15%</td>
+                                        <td style="padding: 1rem;">Simulated driver's seat</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">Simulation Base</td>
+                                        <td style="padding: 1rem;">230×180×10mm</td>
+                                        <td style="padding: 1rem;">Black</td>
+                                        <td style="padding: 1rem;">Floor height 0.2mm, fill 20%</td>
+                                        <td style="padding: 1rem;">Supports all components</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <img src="./image/14.png" alt="3D Printed Parts 1" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <img src="./image/15.png" alt="3D Printed Parts 2" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            
+                            <!-- Step 3: Assemble the components -->
+                            <p style="margin-top: 2rem; margin-bottom: 1rem; font-weight: bold; color: #ffd740;">Step 3: Assemble the components</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Step</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.1 Install the base</td>
+                                        <td style="padding: 1rem;">Fix the 3D printed simulation base to the bottom of the corrugated paper</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.2 Installing the Instrument Panel</td>
+                                        <td style="padding: 1rem;">Fix the 3D-printed instrument panel to the front and embed an OLED screen</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.3 Installing the steering wheel</td>
+                                        <td style="padding: 1rem;">Fix the 3D-printed steering wheel in front of the dashboard</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.4 Installing the transmission</td>
+                                        <td style="padding: 1rem;">Fix the 3D printed transmission in the middle</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.6 Installing the Seat</td>
+                                        <td style="padding: 1rem;">Fix the 3D-printed seat at the rear</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.7 Installing RFID</td>
+                                        <td style="padding: 1rem;">Close to the inner side of the panel (sensor zone thickness 1-2mm)</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.8 Install Button</td>
+                                        <td style="padding: 1rem;">Stuck to the installation wall</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.9 Connecting Lines</td>
+                                        <td style="padding: 1rem;">Connect all modules according to the wiring list, tie the cable tie to arrange the wiring harness</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">3.10 Pasting Appearance Decoration</td>
+                                        <td style="padding: 1rem;">Attach the printed car image to the outside of the casing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- Section 7: SDGs -->
+                            <h4 id="section-sdgs" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">7. Addressing some issues within the SDGs</h4>
+                            <p style="margin-bottom: 1.5rem; font-style: italic; color: rgba(255, 255, 255, 0.6);">Note: The so-called specific uses here refer to the actual effect of the product produced under the production mode of the device</p>
+                            <p style="margin-bottom: 2rem;">This project corresponds to the three most relevant goals of the United Nations Sustainable Development Goals (SDGs):</p>
+                            
+                            <!-- SDG 3 -->
+                            <h5 id="section-sdg3" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">✅ SDG 3: Good Health and Well-being</h5>
+                            <img src="./image/16.png" alt="SDG 3" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-bottom: 1.5rem;"><strong>Core Goal:</strong> Ensure a healthy lifestyle and promote well-being for people of all ages.</p>
+                            <p style="margin-bottom: 1rem; font-weight: bold;">Specific Manifestations:</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">SDG 3 Sub-Goals</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Contribution of this project</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.6 Reduce traffic accident casualties</td>
+                                        <td style="padding: 1rem;">Traffic light detection and warning (within a 40-meter range) provides elderly drivers with ample reaction time; Real-time alerts for running red lights, reducing accident risks at the source</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">3.8 Universal Health Coverage</td>
+                                        <td style="padding: 1rem;">The low-cost solution (¥287) allows driver assistance technology to benefit ordinary elderly users, not exclusive to high-end models</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">3.4 Reducing Premature Deaths from Non-Communicable Diseases</td>
+                                        <td style="padding: 1rem;">Reducing accident injuries through assisted driving and ensuring the safety of elderly drivers</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <!-- SDG 11 -->
+                            <h5 id="section-sdg11" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">✅ SDG 11: Sustainable Cities and Communities</h5>
+                            <img src="./image/17.png" alt="SDG 11" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-bottom: 1.5rem;"><strong>Core Goal:</strong> Build inclusive, safe, and resilient cities and communities.</p>
+                            <p style="margin-bottom: 1rem; font-weight: bold;">Specific Manifestations:</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">SDG 11 Sub-Goals</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Contribution of this project</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">11.2 Provide safe and affordable transportation systems for everyone</td>
+                                        <td style="padding: 1rem;">This enables elderly drivers to participate more safely in urban traffic, integrate into community travel networks, and enhance the inclusiveness of the urban transportation system for the elderly</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">11.7 Provide safe and inclusive public spaces</td>
+                                        <td style="padding: 1rem;">Providing a safe driving practice environment through 3D driving simulation games to help seniors build confidence in their travels</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <p style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: bold;">Specific contributions:</p>
+                            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Reduce the risk of traffic accidents for elderly drivers and improve urban road safety</li>
+                                <li>Affordable assisted driving technology solutions for senior communities and the elderly</li>
+                            </ul>
+                            
+                            <!-- SDG 9 -->
+                            <h5 id="section-sdg9" style="font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #ff4081;">✅ SDG 9: Industry, Innovation, and Infrastructure</h5>
+                            <img src="./image/18.png" alt="SDG 9" style="width: 100%; height: auto; margin: 1rem 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: contain;">
+                            <p style="margin-bottom: 1.5rem;"><strong>Core Objective:</strong> Build resilient infrastructure, promote inclusive and sustainable industrialization, and drive innovation.</p>
+                            <p style="margin-bottom: 1rem; font-weight: bold;">Specific Manifestations:</p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
+                                <thead>
+                                    <tr style="background: rgba(0, 212, 255, 0.2);">
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">SDG 9 Sub-Goal</th>
+                                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid rgba(0, 212, 255, 0.3);">Contribution of this project</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                        <td style="padding: 1rem;">9.5 Enhancing Technological Innovation Capability</td>
+                                        <td style="padding: 1rem;">By combining technologies such as RFID, IoT, speech synthesis, and 3D game engines with age-friendly needs, it builds intelligent interactive terminals tailored to specific groups</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 1rem;">9.1 Developing Sustainable Infrastructure</td>
+                                        <td style="padding: 1rem;">It provides replicable technological innovation examples in the elderly assisted driving field, driving the elderly-friendly upgrade of intelligent transportation infrastructure</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <p style="margin-top: 1.5rem; margin-bottom: 1rem; font-weight: bold;">Specific contributions:</p>
+                            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                                <li style="margin-bottom: 0.5rem;">Low-cost, open-source solutions have promoted the adoption of assisted driving technology for seniors</li>
+                                <li>The software-hardware integration model provides a reference for the age-friendly transformation of smart city transportation systems</li>
+                            </ul>
+                            
+                            <!-- Summary -->
+                            <h4 id="section-summary" style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #00e5ff;">Summary</h4>
+                            <div style="color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 2rem;">
+                                <p>This project starts from the essential needs of elderly-friendly interaction, comprehensively utilizing embedded systems, sensor technology, human-machine interaction, and Web 3D knowledge to build a practical application value assisted driving interactive device for seniors. The project achieved core functions such as RFID identity authentication, 13 scenario voice broadcasts, emergency braking linkage, and 3D driving simulation training at a low cost (¥287), offering significant price advantages and open-source customizable flexibility compared to competing products on the market (¥500-50,000).</p>
+                                <p style="margin-top: 1.5rem;">On the technical side, the project overcame key challenges such as repeated initialization of DFPlayer, priority preemption in emergency situations, and serial communication overload, achieving stable linkage between hardware and computer software. In terms of materials and manufacturing, a sandbox scenario solution was adopted using corrugated paper casings + 3D-printed interior (dashboard/steering wheel/transmission/seats/base) + printed car image exterior decorations, balancing cost, immersion, and iteration.</p>
+                                <p style="margin-top: 1.5rem;">The project directly corresponds to SDG 3 (Good Health and Well-being), SDG 11 (Sustainable Cities and Communities), and SDG 9 (Industry, Innovation and Infrastructure), providing practical technical guarantees for the life safety and dignity of elderly drivers.</p>
+                                <p style="margin-top: 2rem; text-align: center; font-style: italic; font-size: 1.25rem; color: #00d4ff;">"Let technology serve people, making travel safer and warmer."</p>
+                            </div>
+                        </div>
                     </div>
+                    
+                    </main>
                 </div>
             </div>
         </section>
     </main>
-    
+
+    <footer class="footer">
+        <p>&copy; 2026 what the dog doing. All rights reserved.</p>
+    </footer>
+
     <script>
-        // ===== 滚动到顶部 =====
+        // 滚动到顶部
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== 滚动处理（导航栏隐藏 + 置顶按钮） =====
-        let lastScrollY = window.scrollY;
-        let ticking = false;
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
 
-        function initScrollHandlers() {
-            const navbar = document.querySelector('.navbar');
-            const backToTopBtn = document.getElementById('backToTop');
+        // 平滑滚动到指定章节
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offset = 100; // 导航栏高度偏移
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
 
-            if (!navbar || !backToTopBtn) return;
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const currentScrollY = window.scrollY;
-
-                        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                            navbar.classList.add('hidden');
-                        } else {
-                            navbar.classList.remove('hidden');
-                        }
-
-                        if (currentScrollY > 500) {
-                            backToTopBtn.classList.add('visible');
-                        } else {
-                            backToTopBtn.classList.remove('visible');
-                        }
-
-                        lastScrollY = currentScrollY;
-                        ticking = false;
-                    });
-                    ticking = true;
+        // 自动生成详细目录（扫描所有h4和h5标题）
+        function generateDetailedTOC() {
+            const tocList = document.getElementById('toc-list-final');
+            if (!tocList) return;
+            
+            const contentMain = document.querySelector('.exercise-content-main');
+            if (!contentMain) return;
+            
+            // 获取所有h4和h5标题
+            const headings = contentMain.querySelectorAll('h4, h5');
+            
+            tocList.innerHTML = '';
+            
+            // 添加基础目录项
+            const baseItems = [
+                { id: 'section-project-title', text: 'Project Title', level: 0 },
+                { id: 'section-project-content', text: 'Project Content', level: 0 }
+            ];
+            
+            baseItems.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#${item.id}`;
+                a.textContent = item.text;
+                a.onclick = (e) => scrollToSection(e, item.id);
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+            
+            // 添加扫描到的h4和h5标题
+            headings.forEach((heading, index) => {
+                const tagName = heading.tagName.toLowerCase();
+                const level = tagName === 'h4' ? 1 : 2;
+                
+                // 为标题生成ID（如果没有的话）
+                let headingId = heading.id;
+                if (!headingId) {
+                    headingId = `section-${tagName}-${index}`;
+                    heading.id = headingId;
                 }
-            }, { passive: true });
+                
+                const li = document.createElement('li');
+                if (level === 2) {
+                    li.style.marginLeft = '1rem';
+                    li.style.fontSize = '0.9rem';
+                }
+                
+                const a = document.createElement('a');
+                a.href = `#${headingId}`;
+                a.textContent = heading.textContent;
+                a.onclick = (e) => scrollToSection(e, headingId);
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
         }
 
+        // 滚动监听：高亮当前章节
+        function setupScrollSpy() {
+            const tocLinks = document.querySelectorAll('#toc-list-final a');
+            const sections = [];
+            
+            tocLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const sectionId = href.substring(1);
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        sections.push({ id: sectionId, element: section, link: link });
+                    }
+                }
+            });
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    if (section.element.offsetTop <= scrollPos) {
+                        current = section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', () => {
-            initScrollHandlers();
+            generateDetailedTOC();
+            setupScrollSpy();
         });
-    
-        // ===== 团队成员数据 =====
-const members = [
-            {
-                id: 0,
-                name: 'Ash',
-                chineseName: '范洲豪',
-                role: 'Frontend Developer',
-                bio: 'Specialized in modern web technologies with expertise in HTML, CSS, and JavaScript. Passionate about user experience design and dedicated to creating beautiful and functional interfaces.',
-                skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'UI/UX'],
-                email: '1059436880@qq.com',
-                github: 'https://github.com/17poi',
-                avatar: './assets/image/avatars/Ash.jpg',
-                hobby: ['Game', 'Music', 'Sleep'],
-                assignment: ['Software Building', 'Web Building']
-            },
-            {
-                id: 1,
-                name: 'Felix',
-                chineseName: '徐克丰',
-                role: 'Hardware Engineer',
-                bio: 'College student passionate about interactive hardware systems and web development. Leveraging AI tools to accelerate learning and exploring the intersection of hardware and software. Dedicated to building innovative projects that bridge the physical and digital worlds.',
-                skills: ['Arduino', 'Sensor Technology', 'Circuit Design', 'Prototyping', 'Interactive Systems'],
-                email: '2301618056@qq.com',
-                github: 'https://github.com/WanShang2026',
-                avatar: './assets/image/avatars/Felix.jpg',
-                hobby: ['Electronics', 'Coding', 'Gaming'],
-                assignment: ['Software Building', 'Web Building']
-            },
-            {
-                id: 2,
-                name: 'Howie',
-                chineseName: '吴浩瑜',
-                role: 'Backend Developer',
-                bio: 'Passionate backend developer with expertise in server-side development and database management. Focused on building robust APIs and scalable systems. Experienced in Python, Node.js, and database optimization to deliver high-performance solutions.',
-                skills: ['Node.js', 'Database Design', 'API Development', 'Data Visualization', 'Python'],
-                email: 'howie@example.com',
-                github: 'https://github.com/Howie-jbg',
-                avatar: './assets/image/avatars/howie-avatar.jpg',
-                hobby: ['Coding', 'Reading', 'Music'],
-                assignment: ['Software Building', 'Web Building']
-            },
-            {
-                id: 3,
-                name: 'Max',
-                chineseName: '韩明哲',
-                role: 'Project Manager',
-                bio: 'College student currently studying Interactive Application Systems. Experienced in project planning, team coordination, and progress tracking. Skilled at breaking down complex tasks, facilitating team communication, and ensuring timely delivery of high-quality results.',
-                skills: ['Project Planning', 'Team Coordination', 'Progress Tracking', 'Risk Management', 'Stakeholder Communication'],
-                email: '2500401537@qq.com',
-                github: 'https://github.com/HMZ766',
-                avatar: './assets/image/avatars/Max.jpg',
-                hobby: ['Coding', 'Gaming', 'Reading'],
-                assignment: ['Software Building', 'Web Building']
-            },
-            {
-                id: 4,
-                name: 'Joe',
-                chineseName: '张敏强',
-                role: 'UI/UX Designer',
-                bio: '20岁99新一手大学生',
-                skills: ['平面设计', '美术美工'],
-                email: '2012362350@QQ.COM',
-                github: 'https://github.com/SONATA360',
-                avatar: './assets/image/avatars/Joe.jpg',
-                hobby: ['电子游戏', '手绘'],
-                assignment: []
-            },
-            {
-                id: 5,
-                name: 'David',
-                chineseName: '叶骁纬',
-                role: 'Full Stack Developer',
-                bio: '神秘的大二新生',
-                skills: ['平面设计'],
-                email: '2417857974@qq.com',
-                github: 'https://github.com/Excalibuuuuur',
-                avatar: './assets/image/avatars/Excalibuuuuur.jpg',
-                hobby: ['电子游戏', '绘画'],
-                assignment: []
-            }
-        ];
-
-        // ===== 渲染成员卡片 =====
-        function renderMembers() {
-            const grid = document.getElementById('members-grid');
-            if (!grid) return;
-            
-            grid.innerHTML = members.map(member => {
-                const avatarSrc = member.avatar || './assets/image/avatars/default-avatar.png';
-                return `
-                    <div class="card" onclick="showMemberDetail(${member.id})">
-                        <div class="card-avatar">
-                            <img src="${avatarSrc}" alt="${member.chineseName}">
-                        </div>
-                        <h3>
-                            <span class="chinese-name">${member.chineseName}</span>
-                            <span class="name-separator">/</span>
-                            <span class="english-name">${member.name}</span>
-                        </h3>
-                        <p class="role">${member.role}</p>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // ===== 显示成员详情 =====
-        function showMemberDetail(id) {
-            const member = members.find(m => m.id === id);
-            if (!member) return;
-
-            const avatarContent = member.avatar 
-                ? `<img src="${member.avatar}" alt="${member.chineseName}">`
-                : `${member.chineseName[0]}`;
-
-            const detailContent = document.getElementById('member-detail-content');
-            if (!detailContent) return;
-            
-            detailContent.innerHTML = `
-                <div class="member-detail">
-                    <div class="member-header">
-                        <div class="member-avatar-large">${avatarContent}</div>
-                        <h2>
-                            <span class="chinese-name">${member.chineseName}</span>
-                            <span class="name-separator">/</span>
-                            <span class="english-name">${member.name}</span>
-                        </h2>
-                        <p class="role">${member.role}</p>
-                    </div>
-                    
-                    <div class="member-section">
-                        <h3>Bio</h3>
-                        <p>${member.bio}</p>
-                    </div>
-
-                    <div class="member-section">
-                        <h3>Skills</h3>
-                        <div class="skills">
-                            ${member.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
-                        </div>
-                    </div>
-
-                    <div class="member-section">
-                        <h3>Contact</h3>
-                        <p>Email: ${member.email}</p>
-                        <p>GitHub: <a href="${member.github}" target="_blank" style="color: #00d4ff;">${member.github}</a></p>
-                    </div>
-
-                    <button onclick="history.back()" style="
-                        margin-top: 2rem;
-                        background: rgba(255, 255, 255, 0.1);
-                        color: white;
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                        padding: 0.75rem 1.5rem;
-                        border-radius: 8px;
-                        cursor: pointer;
-                    ">← Back to Members</button>
-                </div>
-            `;
-
-            // 隐藏 members section，显示 member-detail section
-            const membersSection = document.getElementById('members');
-            const memberDetailSection = document.getElementById('member-detail');
-            const introSection = document.getElementById('intro');
-            
-            if (membersSection) membersSection.style.display = 'none';
-            if (introSection) introSection.style.display = 'none';
-            if (memberDetailSection) {
-                memberDetailSection.style.display = 'block';
-                memberDetailSection.classList.add('active');
-            }
-        }
-
-        // ===== 初始化 =====
-        document.addEventListener('DOMContentLoaded', () => {
-            // 只在 members-grid 存在时渲染成员
-            if (document.getElementById('members-grid')) {
-                renderMembers();
-            }
-        });
-</script>
+    </script>
 </body>
 </html>
